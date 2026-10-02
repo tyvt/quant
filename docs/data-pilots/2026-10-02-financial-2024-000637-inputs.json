@@ -1,0 +1,51 @@
+{
+  "schema_version": "financial_2024_000637_scope_v1",
+  "security_id": "sz.000637",
+  "issuer": "茂名石化实华股份有限公司",
+  "as_of": "2026-09-30",
+  "review_date": "2026-10-02",
+  "period_start": "2024-01-01",
+  "period_end": "2024-12-31",
+  "statement_scope": "CONSOLIDATED",
+  "unit": "CNY",
+  "diagnostic_only": true,
+  "official_selection": false,
+  "timing_policy": "UNKNOWN_UNLESS_VERIFIED",
+  "capture": {
+    "path": "storage/pilots/financial-000637-2024-chain-2026-10-02/capture.json",
+    "sha256": "26e7c180d20658831637b5ab0cd9baa9f3305aa097386ec44e2e053527dea6c2"
+  },
+  "previous_2025_lease_review": {
+    "path": "docs/data-pilots/lease-cash-000637-2026-10-02/diagnostic-only.json",
+    "sha256": "b614e7c8901bd8c1ac81b16d2501e6ccf68e557841c12d51e7c74c8b61cea022",
+    "logical_content_hash": "4f85206bebdc3497ae7fc77bfbc26d899a3b214e6d5bd2cd4b225d6857018425"
+  },
+  "documents": [
+    {
+      "role": "original_2024_annual_report",
+      "announcement_id": "1223369814",
+      "pdf_sha256": "1cbaf0a4548ac651e6e21622ddea7dd9f94ce928098a1dc7a99e705cb43c03f0",
+      "page_count": 240,
+      "asset_pages": [113, 114, 115, 116],
+      "cashflow_pages": [121, 122],
+      "lease_note_page": 208,
+      "currency_page": 138,
+      "consolidated_notes_page": 169,
+      "parent_notes_page": 231,
+      "expected": {"E": "645132659.65", "N": "112947471.32", "OCF": "9077909.18", "Capex": "79764639.75", "lease_financing_component": "14834290.95"}
+    },
+    {
+      "role": "amended_2024_annual_report",
+      "announcement_id": "1225460241",
+      "pdf_sha256": "e9295282fdf06579d3c4f4c4aa47189268def6dbaf458d8a082876ad26012a2e",
+      "page_count": 260,
+      "asset_pages": [115, 116, 117, 118],
+      "cashflow_pages": [123, 124, 125],
+      "lease_note_page": 226,
+      "currency_page": 141,
+      "consolidated_notes_page": 185,
+      "parent_notes_page": 251,
+      "expected": {"E": "645132659.65", "N": "112947471.32", "OCF": "-185115131.48", "Capex": "79764639.75", "lease_financing_component": "14834290.95"}
+    }
+  ]
+}
