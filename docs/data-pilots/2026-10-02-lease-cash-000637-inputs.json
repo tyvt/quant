@@ -1,0 +1,68 @@
+{
+  "schema_version": "lease_cash_source_review_scope_v1",
+  "security_id": "sz.000637",
+  "issuer": "茂名石化实华股份有限公司",
+  "as_of": "2026-09-30",
+  "review_date": "2026-10-02",
+  "period_start": "2025-01-01",
+  "period_end": "2025-12-31",
+  "statement_scope": "CONSOLIDATED",
+  "timing_policy": "UNKNOWN_UNLESS_VERIFIED",
+  "diagnostic_only": true,
+  "official_selection": false,
+  "cashflow_supplement": {
+    "path": "docs/data-pilots/ocf-capex-000637-2026-10-02/diagnostic-only.json",
+    "sha256": "72d245b8136f93c48c0a366e5eafcf549862f6faa75b4523d4c618c2ec0299c0",
+    "logical_content_hash": "059ccf34098000d14265e8041a6bbaff2a5460c8595c85846dfca58c34edfd02"
+  },
+  "documents": [
+    {
+      "role": "original_2025_annual_report",
+      "announcement_id": "1225248741",
+      "pdf_sha256": "18231670324fb8ab60c264dbaebf4972004a4c153aa5a046dc7be4d2e40646d9"
+    },
+    {
+      "role": "amended_2025_annual_report",
+      "announcement_id": "1225460240",
+      "pdf_sha256": "1188d9bcac97cc67fa75424b8382acfbb387384b5e3dfeb71f545d1f90fb4791"
+    }
+  ],
+  "physical_pages": {
+    "contract_summary": 74,
+    "cashflow_header": 101,
+    "consolidated_financing_cashflow": 102,
+    "functional_currency": 117,
+    "lease_policy": [139, 140],
+    "consolidated_notes_start": 143,
+    "liability_balance_not_cash": 172,
+    "cashflow_note_header": 182,
+    "cashflow_note_payment": 183,
+    "lessee_expenses": 185,
+    "parent_notes_start": 200
+  },
+  "expected_per_version": {
+    "financing_lease_cash_current_cny": "13214300.68",
+    "financing_lease_cash_prior_cny": "14834290.95",
+    "other_financing_payment_current_cny": "128214300.68",
+    "other_financing_payment_prior_cny": "85086290.95",
+    "variable_lease_expense_current_display": "691333.32",
+    "variable_lease_expense_prior_display": "371190.47",
+    "short_term_lease_expense_current_display": "12645699.90",
+    "short_term_lease_expense_prior_display": null,
+    "contract_expense_current_display": "2844651.25",
+    "contract_rent_paid_current_display": "13565977.47",
+    "contract_interest_expense_current_display": "5869196.00",
+    "liability_closing_balance_cny_not_cash": "139414669.20"
+  },
+  "visual_review": {
+    "reviewer": "Codex",
+    "review_date": "2026-10-02",
+    "method": "manual_visual_check_of_2x_raw_pdf_page_renders_after_text_and_geometry_extraction",
+    "pages_per_version": [74, 183, 185],
+    "render_directory": "storage/pilots/lease-cash-000637-2026-10-02",
+    "verified": ["current_vs_prior", "financing_payment_subtable", "cash_not_liability_balance", "expense_not_cash", "lessee_vs_lessor", "contract_summary_not_consolidated_cashflow_total", "source_comparative_column_clipping"],
+    "render_is_source_evidence": false,
+    "independent_third_party_review": false
+  },
+  "boundary": "Identify a financing lease cash component, not a complete Lease_cash input. Do not add expense, contract summary, interest or liability balances to it; no zero-fill, full FCF, historical PIT admission, Reader or rule run. All prior artifacts remain unchanged. No conclusion that every public PDF route is impossible."
+}
