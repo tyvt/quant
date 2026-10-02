@@ -1,0 +1,60 @@
+{
+  "schema_version": "ocf_capex_source_supplement_scope_v1",
+  "security_id": "sz.000637",
+  "issuer": "茂名石化实华股份有限公司",
+  "review_date": "2026-10-02",
+  "as_of": "2026-09-30",
+  "period_start": "2025-01-01",
+  "period_end": "2025-12-31",
+  "statement_scope": "CONSOLIDATED",
+  "unit": "CNY",
+  "target_fields": ["operating_cash_flow", "capex_cash_paid"],
+  "timing_policy": "UNKNOWN_UNLESS_VERIFIED",
+  "diagnostic_only": true,
+  "official_selection": false,
+  "parent_report": {
+    "path": "docs/data-pilots/limited-diagnostics-2026-10-02/cashflow-000637-diagnostic-only.json",
+    "sha256": "5af4fda2cb3d54d67a781e8d5f54bc5f750d4662be5d38be7a91ec444be38f0f",
+    "logical_content_hash": "7f4762710ee73a7d86fb8ca9cef7eb71793124a70533395f366fdb44dfb4bfcf"
+  },
+  "equity_supplement": {
+    "path": "docs/data-pilots/attributable-equity-000637-2026-10-02/diagnostic-only.json",
+    "sha256": "e9977536167e19dd9f4a61ff266ba0863bd30a4a9717971d6187f5c3a79e425c",
+    "logical_content_hash": "60662e64e86ed7bfbfc71c47ab9f7fddf7bee14ef0f6167ba8d24d5adadfa701"
+  },
+  "documents": [
+    {
+      "role": "original_2025_annual_report",
+      "announcement_id": "1225248741",
+      "pdf_sha256": "18231670324fb8ab60c264dbaebf4972004a4c153aa5a046dc7be4d2e40646d9",
+      "field_page": 101,
+      "continuation_page": 102,
+      "expected_operating_cash_flow_cny": "42986260.08",
+      "expected_comparative_operating_cash_flow_cny": "9077909.18",
+      "expected_capex_cash_paid_cny": "62173312.84",
+      "expected_comparative_capex_cash_paid_cny": "79764639.75"
+    },
+    {
+      "role": "amended_2025_annual_report",
+      "announcement_id": "1225460240",
+      "pdf_sha256": "1188d9bcac97cc67fa75424b8382acfbb387384b5e3dfeb71f545d1f90fb4791",
+      "field_page": 101,
+      "continuation_page": 102,
+      "expected_operating_cash_flow_cny": "-79583416.97",
+      "expected_comparative_operating_cash_flow_cny": "-185115131.48",
+      "expected_capex_cash_paid_cny": "62173312.84",
+      "expected_comparative_capex_cash_paid_cny": "79764639.75"
+    }
+  ],
+  "visual_review": {
+    "reviewer": "Codex",
+    "review_date": "2026-10-02",
+    "method": "manual_visual_check_of_2x_raw_pdf_page_renders_after_text_and_geometry_extraction",
+    "pages_per_version": [101, 102],
+    "render_directory": "storage/pilots/ocf-capex-000637-2026-10-02",
+    "verified": ["issuer", "consolidated_cashflow_table", "2025_vs_2024_columns", "yuan_unit", "negative_amended_OCF", "split_capex_label", "payment_not_disposal_or_total", "parent_table_boundary"],
+    "independent_third_party_review": false,
+    "render_is_source_evidence": false
+  },
+  "boundary": "OCF/Capex source values already appear in the unchanged parent report. Independently verify cells and bind only to same-PDF E/N for FCF_ordinary source arithmetic. All PIT values and FCF_conservative remain UNKNOWN. Missing lease cash is not zero. Do not select the September archive as a latest visible version or call premise/valuation/Readers."
+}
