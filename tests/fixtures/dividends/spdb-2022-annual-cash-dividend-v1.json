@@ -1,0 +1,92 @@
+{
+  "fixture_version": 1,
+  "captured_at_utc": "2026-09-25T05:14:54Z",
+  "akshare_version": "1.18.74",
+  "baostock_version": "00.9.30",
+  "capture_policy": "minimal_cross_source_projection_as_decimal_text",
+  "sample": {
+    "security_id": "sh.600000",
+    "fiscal_period_end": "2022-12-31",
+    "event_kind": "CASH_DIVIDEND",
+    "akshare": {
+      "source_interface": "stock_fhps_detail_em",
+      "source_endpoint": "https://datacenter-web.eastmoney.com/api/data/v1/get",
+      "observed_shape": [26, 19],
+      "request": {
+        "symbol": "600000"
+      },
+      "raw_row": {
+        "报告期": "2022-12-31",
+        "业绩披露日期": "2023-04-19",
+        "现金分红-现金分红比例": "3.2",
+        "现金分红-现金分红比例描述": "10派3.20元(含税,扣税后2.88元)",
+        "总股本": "29352175642",
+        "预案公告日": "2023-04-19",
+        "股权登记日": "2023-07-20",
+        "除权除息日": "2023-07-21",
+        "方案进度": "实施分配",
+        "最新公告日期": "2023-07-13"
+      }
+    },
+    "baostock": {
+      "source_interface": "query_dividend_data",
+      "request": {
+        "code": "sh.600000",
+        "year": "2023",
+        "yearType": "report"
+      },
+      "raw_row": {
+        "code": "sh.600000",
+        "dividPreNoticeDate": "",
+        "dividAgmPumDate": "2023-06-29",
+        "dividPlanAnnounceDate": "2023-04-19",
+        "dividPlanDate": "2023-07-13",
+        "dividRegistDate": "2023-07-20",
+        "dividOperateDate": "2023-07-21",
+        "dividPayDate": "2023-07-21",
+        "dividStockMarketDate": "",
+        "dividCashPsBeforeTax": "0.32",
+        "dividCashPsAfterTax": "0.288或0.32",
+        "dividStocksPs": "0.000000",
+        "dividCashStock": "10派3.2元（含税，扣税后2.88或3.2元）",
+        "dividReserveToStockPs": ""
+      }
+    },
+    "legal_announcement": {
+      "source_name": "spdb_official",
+      "url": "https://www.spdb.com.cn/today_s_spd/investor_relation/company_report/202307/P020230712640521382645.pdf",
+      "sha256": "556db2246673babc2d6dcc996fd3d9dff308b6610b4cd61dfe78baf5c005f17b",
+      "page_count": 3,
+      "announcement_number": "临2023-042",
+      "document_date": "2023-07-12",
+      "security_code": "600000",
+      "distribution_year": 2022,
+      "share_class": "COMMON",
+      "gross_cash_per_share": "0.32",
+      "currency": "CNY",
+      "record_date": "2023-07-20",
+      "ex_date": "2023-07-21",
+      "scheduled_payment_date": "2023-07-21",
+      "differential_distribution": false,
+      "basis_shares": "29352175642",
+      "gross_cash_total": "9392696205.44",
+      "evidence_pages": [1, 2]
+    },
+    "payment_completion_evidence": {
+      "source_name": "cninfo",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-08-31/1217716491.PDF",
+      "sha256": "fbb1f078f3c845973aefcf5d3fa8cbcc5c978ba86310619dfdb4d0ee9edcfe63",
+      "page_count": 302,
+      "announcement_id": "1217716491",
+      "document_title": "上海浦东发展银行2023年半年度报告",
+      "announcement_date": "2023-08-31",
+      "security_code": "600000",
+      "completed": true,
+      "payment_date": "2023-07-21",
+      "gross_cash_per_share": "0.32",
+      "basis_shares": "29352175642",
+      "gross_cash_total": "9392696205.44",
+      "evidence_pages": [54]
+    }
+  }
+}

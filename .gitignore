@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.coverage
+htmlcov/
+
+# Raw data snapshots and transient checkpoints are local artifacts.
+storage/

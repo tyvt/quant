@@ -1,0 +1,66 @@
+{
+  "schema_version": "legal_pdf_year_chain_probe_v1",
+  "domain": "shares",
+  "probe_date": "2026-10-01",
+  "security_id": "sz.000858",
+  "issuer": "宜宾五粮液股份有限公司",
+  "target_period": ["2025-01-01", "2025-12-31"],
+  "purpose": "technical_legal_pdf_chain_probe_only",
+  "research_eligible": false,
+  "snapshot_published": false,
+  "production_reader_ready": false,
+  "daily_s_coverage_complete": false,
+  "exact_available_at_utc": null,
+  "catalogue": {
+    "endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+    "stock": "000858,gssz0000858",
+    "column": "szse",
+    "plate": "sz",
+    "query_window": ["2024-10-01", "2026-04-30"],
+    "reported_total": 153,
+    "returned_count": 153,
+    "unique_adjunct_urls": 153,
+    "local_dir": "storage/pilots/shares-000858-2025-chain-2026-10-01",
+    "page_sha256_in_order": [
+      "941c826b29ceb1ce7b7f935b21e5dc0e8b6e0a6030f3572e2f5905e5cadcdceb",
+      "5ef7325eed8c09933243895870d0776f9c92bd71d730860ce6724015788d3fb7",
+      "2918588ecc11a69be0029810b8fbae9579931271b588fc8d1510e4a23c2a2b8e",
+      "5417a7e78e4fbf23bf6a1e37b1566971b669374415e746ea39f25c3c699bbefc",
+      "a0ce3a668da673fbca91c7985ee8c546fe68d16cada1a473df6fc2128d2b3556",
+      "e74098a859cbc76202e387f7ea4e344c242b16969238cff140cedd4b4072ac65"
+    ],
+    "completeness_scope": "returned_query_pages_only_not_full_disclosure_universe"
+  },
+  "documents": [
+    {"role": "2024q3_prior_observation", "file": "2024q3.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2024-10-31/1221573332.PDF", "sha256": "010c025c30ed80af154436ddd317909896215353459375931b30458642674cea", "pages": 11},
+    {"role": "2024annual_opening_bridge", "file": "2024annual.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-26/1223311527.PDF", "sha256": "b737191a758994a35e9442d46847de771fe48b758feb9a7f35601def922435e7", "pages": 147, "evidence_pages": [47, 51]},
+    {"role": "2025q1_original", "file": "2025q1-original.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-26/1223311586.PDF", "sha256": "f122e5b24db190aefab468de3de58974dde094a9be531b561057c53d49c91757", "pages": 9, "evidence_pages": [6]},
+    {"role": "2025h1_original", "file": "2025h1-original.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2025-08-28/1224596951.PDF", "sha256": "e460cfeaac9388f493dcafc14f4f5a6f83521f24a5ad3d3dd8a447cb437d755a", "pages": 126, "evidence_pages": [26]},
+    {"role": "2025q3_original", "file": "2025q3-original.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2025-10-31/1224774300.PDF", "sha256": "657fd49e5aa3b33b65af5ef942dc98c165f2017df4023ecf96bf5378e3ad425c", "pages": 10, "evidence_pages": [6]},
+    {"role": "2025annual", "file": "2025annual.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225273091.PDF", "sha256": "09133e1f44b3bb4b2cebe211529ad68f5b04b6be10b43870f2a78c947d5910a4", "pages": 141, "evidence_pages": [42, 46, 53]},
+    {"role": "2025q1_updated", "file": "2025q1-updated.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225273125.PDF", "sha256": "36472c5fe41f28b761734e3c0f6d5c1b0da2fc72a95f19ba4e6fb9a265f91319", "pages": 10, "evidence_pages": [6]},
+    {"role": "2025h1_updated", "file": "2025h1-updated.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225273126.PDF", "sha256": "43763a06159d47b7ec2600a8c6c73fcc28799643849b5dd1f855ed29a9996f2a", "pages": 126, "evidence_pages": [26]},
+    {"role": "2025q3_updated", "file": "2025q3-updated.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225273123.PDF", "sha256": "505e447c47f70ded9bc311834d0df499768b56bbb8126876844200057f6ca500", "pages": 10, "evidence_pages": [6]},
+    {"role": "2026_accounting_correction", "file": "2026-correction.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225273122.PDF", "sha256": "466e1e18f25c1391fd160945b5977ce83732a40f223fc0dee7407bd90bb0e10d", "pages": 6, "evidence_pages": [1, 2]},
+    {"role": "2026_future_buyback_plan_not_2025_event", "file": "2026-buyback-plan.pdf", "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225273089.PDF", "sha256": "6836d05a01f3666de9c7acb3b0401f9d7cb3ce298efedbb67310f5c6d08056cd", "pages": 7, "evidence_pages": [4]}
+  ],
+  "observed_share_bridge": {
+    "unit": "shares",
+    "2024_opening": "3881608005",
+    "2024_closing": "3881608005",
+    "2025h1_opening": "3881608005",
+    "2025h1_closing": "3881608005",
+    "2025_opening": "3881608005",
+    "2025_closing": "3881608005",
+    "2025_restricted_to_unrestricted_net": "53933",
+    "2025_annual_buyback_implementation": "NOT_APPLICABLE_REPORTED",
+    "2025_annual_preferred_shares": "NONE_REPORTED",
+    "2025_treasury_balance": "NOT_PROVEN_ZERO_BY_BLANK_LINE_ALONE"
+  },
+  "blockers": [
+    "No independent daily registration/event-complete share chain or zero-event attestation.",
+    "Exact earliest public availability timestamps not verified; catalogue timestamps have inconsistent precision.",
+    "Complete original/correction/withdrawal chain and bulk-use licence not verified.",
+    "No immutable production snapshot or real PIT fixture."
+  ]
+}

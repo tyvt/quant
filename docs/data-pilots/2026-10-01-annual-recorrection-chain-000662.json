@@ -1,0 +1,219 @@
+{
+  "schema_version": "legal_pdf_recorrection_capture_v1",
+  "security_id": "sz.000662",
+  "period_end": "2008-12-31",
+  "purpose": "technical_legal_pdf_revision_probe_only",
+  "captured_at_utc": "2026-10-01T12:15:22.498690+00:00",
+  "research_eligible": false,
+  "snapshot_published": false,
+  "production_reader_ready": false,
+  "complete_revision_chain_verified": false,
+  "exact_available_at_utc": null,
+  "catalogue": {
+    "endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+    "payload": {
+      "stock": "000662,gssz0000662",
+      "column": "szse",
+      "plate": "sz",
+      "pageNum": 1,
+      "pageSize": 30,
+      "tabName": "fulltext",
+      "seDate": "2009-04-01~2009-04-30",
+      "searchkey": "",
+      "sortName": "time",
+      "sortType": "desc",
+      "isHLtitle": "true"
+    },
+    "local_path": "storage/pilots/recorrection-000662-chain-2026-10-01/catalogue.json",
+    "sha256": "3da617026d4e8473a7b19ea53096b3cfe2f78997c0f841411a32c21e5b112fe1",
+    "reported_total": 14,
+    "returned_count": 14,
+    "completeness_scope": "this_query_response_only_not_entire_revision_history"
+  },
+  "documents": [
+    {
+      "role": "original_annual",
+      "announcement_id": "51114405",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2009-04-10/51114405.PDF",
+      "local_path": "storage/pilots/recorrection-000662-chain-2026-10-01/original_annual-51114405.pdf",
+      "sha256": "21a0398277976cb94430b9a4bb1a896d5e3d975b2be1edaa6c912ca39e11bcc6",
+      "bytes": 1401856,
+      "catalogue_title": "2008年年度报告",
+      "catalogue_time_raw_ms": 1239316200000,
+      "catalogue_time_utc": "2009-04-09T22:30:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 83,
+      "evidence_pages": [
+        8,
+        10,
+        44
+      ]
+    },
+    {
+      "role": "original_audit",
+      "announcement_id": "51114401",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2009-04-10/51114401.PDF",
+      "local_path": "storage/pilots/recorrection-000662-chain-2026-10-01/original_audit-51114401.pdf",
+      "sha256": "95e08baa5a063cba2815e10627add6f1b46c81cb8a8d8f813ca03cd6f7d333c3",
+      "bytes": 974969,
+      "catalogue_title": "2008年度审计报告",
+      "catalogue_time_raw_ms": 1239316200000,
+      "catalogue_time_utc": "2009-04-09T22:30:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 42,
+      "evidence_pages": [
+        2,
+        3
+      ]
+    },
+    {
+      "role": "first_corrected_annual",
+      "announcement_id": "51167822",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2009-04-11/51167822.PDF",
+      "local_path": "storage/pilots/recorrection-000662-chain-2026-10-01/first_corrected_annual-51167822.pdf",
+      "sha256": "094e6ad625ed08c93f888063c0df234b280682087187fc2521113defcacc70c0",
+      "bytes": 1219958,
+      "catalogue_title": "2008年年度报告（更正后）",
+      "catalogue_time_raw_ms": 1239402600000,
+      "catalogue_time_utc": "2009-04-10T22:30:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 84,
+      "evidence_pages": [
+        8,
+        10,
+        44
+      ]
+    },
+    {
+      "role": "first_correction_notice",
+      "announcement_id": "51167823",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2009-04-11/51167823.PDF",
+      "local_path": "storage/pilots/recorrection-000662-chain-2026-10-01/first_correction_notice-51167823.pdf",
+      "sha256": "134c1f15ae482594a41fd6a3d00768fc16a9c06c9cf0ce5e0eb53a0b9b0df460",
+      "bytes": 71741,
+      "catalogue_title": "关于2008年年报的更正公告",
+      "catalogue_time_raw_ms": 1239402600000,
+      "catalogue_time_utc": "2009-04-10T22:30:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 1,
+      "evidence_pages": [
+        1
+      ]
+    },
+    {
+      "role": "second_corrected_annual",
+      "announcement_id": "51681509",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2009-04-24/51681509.PDF",
+      "local_path": "storage/pilots/recorrection-000662-chain-2026-10-01/second_corrected_annual-51681509.pdf",
+      "sha256": "e71ead75006cbc504f18f2188ad95bc3d727469e29037fdec8abe2671fefc97c",
+      "bytes": 1241319,
+      "catalogue_title": "2008年年度报告（再次更正）",
+      "catalogue_time_raw_ms": 1240525800000,
+      "catalogue_time_utc": "2009-04-23T22:30:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 84,
+      "evidence_pages": [
+        8,
+        10,
+        44
+      ]
+    },
+    {
+      "role": "second_correction_notice",
+      "announcement_id": "51681510",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2009-04-24/51681510.PDF",
+      "local_path": "storage/pilots/recorrection-000662-chain-2026-10-01/second_correction_notice-51681510.pdf",
+      "sha256": "44d2a897ed757f105af461edaf0bb23069d204aeb7f9479db29491d04ecf551e",
+      "bytes": 72841,
+      "catalogue_title": "关于2008年年报再次更正公告",
+      "catalogue_time_raw_ms": 1240525800000,
+      "catalogue_time_utc": "2009-04-23T22:30:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 1,
+      "evidence_pages": [
+        1
+      ]
+    }
+  ],
+  "observed_versions": [
+    {
+      "role": "original_annual",
+      "catalogue_date": "2009-04-10",
+      "shareholder_count": "22917",
+      "shareholder_count_unit": "PERSONS",
+      "shareholder_count_page": 8,
+      "remuneration_unit_label": "TEN_THOUSAND_CNY",
+      "remuneration_unit_page": 10,
+      "embedded_audit_report_number": "深鹏所股审字[2009]070号",
+      "embedded_audit_page": 44
+    },
+    {
+      "role": "first_corrected_annual",
+      "catalogue_date": "2009-04-11",
+      "shareholder_count": "31891",
+      "shareholder_count_unit": "PERSONS",
+      "shareholder_count_page": 8,
+      "remuneration_unit_label": "TEN_THOUSAND_CNY",
+      "remuneration_unit_page": 10,
+      "embedded_audit_report_number": "深鹏所股审字[2009]070号",
+      "embedded_audit_page": 44
+    },
+    {
+      "role": "second_corrected_annual",
+      "catalogue_date": "2009-04-24",
+      "shareholder_count": "31891",
+      "shareholder_count_unit": "PERSONS",
+      "shareholder_count_page": 8,
+      "remuneration_unit_label": "CNY",
+      "remuneration_unit_page": 10,
+      "embedded_audit_report_number": "深鹏所股审字[2009]070号",
+      "embedded_audit_page": 44
+    }
+  ],
+  "observed_correction_events": [
+    {
+      "notice_role": "first_correction_notice",
+      "page": 1,
+      "stated_prior_publication_date": "2009-04-10",
+      "field": "year_end_shareholder_count",
+      "original_value": "22917",
+      "corrected_value": "31891",
+      "unit": "PERSONS"
+    },
+    {
+      "notice_role": "second_correction_notice",
+      "page": 1,
+      "stated_prior_publication_dates": [
+        "2009-04-10",
+        "2009-04-11"
+      ],
+      "field": "remuneration_unit_label",
+      "original_unit": "TEN_THOUSAND_CNY",
+      "corrected_unit": "CNY"
+    }
+  ],
+  "three_report_versions_fixed": true,
+  "two_correction_events_verified": true,
+  "withdrawal_or_platform_replacement_verified": false,
+  "core_financial_recorrection_fixture_accepted": false,
+  "timestamp_note": "All six source catalogue timestamps are non-midnight 06:30:00 Asia/Shanghai. They are preserved as source observations, not verified earliest public availability. Capture time, PDF signature date and URL date do not fill exact_available_at_utc.",
+  "blockers": [
+    "Three reports and two notices close the previously missing raw-document gap, not the entire historical revision/withdrawal universe.",
+    "Catalogue associateAnnouncement and storageTime are null; complete platform replacement/withdrawal mapping and earliest public visibility remain unverified.",
+    "Observed changes concern shareholder count and remuneration units; this is not an accepted core financial-statement withdrawal/re-correction fixture.",
+    "Repeating the original audit number in all three reports does not prove the audit status of every amended statement or the absence of a re-audit.",
+    "Usage applicability, immutable production snapshot and real PIT fixture remain unverified."
+  ]
+}

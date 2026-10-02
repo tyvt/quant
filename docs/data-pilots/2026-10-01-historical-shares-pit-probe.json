@@ -1,0 +1,110 @@
+{
+  "schema_version": "historical_shares_pit_probe_v1",
+  "probe_date": "2026-10-01",
+  "rule_version": "v1.3.1",
+  "purpose": "technical_source_probe_only",
+  "research_eligible": false,
+  "snapshot_published": false,
+  "samples": [
+    {
+      "market": "SH",
+      "issuer": "海尔智家股份有限公司",
+      "security_ids": ["sh.600690"],
+      "announcement_number": "临2026-052",
+      "pdf": {
+        "source_url": "https://static.cninfo.com.cn/finalpage/2026-09-01/1225538081.PDF",
+        "local_path": "storage/pilots/historical-shares-2026-10-01/sh-600690-2026-052.pdf",
+        "bytes": 184858,
+        "sha256": "1d07e5c39310e103311c4d5d33d0c77fddc14ebe9d190a5be1a0844aa9c1161a",
+        "pages": 3
+      },
+      "time_axes": {
+        "issuer_signed_on": "2026-08-31",
+        "reported_pre_share_date": "2026-08-31",
+        "event_completion_date_claimed": "2026-09-01",
+        "event_completion_status": "SCHEDULED_NOT_INDEPENDENTLY_CONFIRMED",
+        "official_pdf_url_date": "2026-09-01",
+        "cninfo_catalogue_date": "2026-09-01",
+        "cninfo_announcement_time_raw_ms": 1788192000000,
+        "exact_platform_publication_at_utc": null,
+        "earliest_public_availability_at_utc": null,
+        "availability_note": "CNINFO catalogue timestamp encodes 00:00 Asia/Shanghai on the URL date; it is treated as a date marker, not a verified precise publication time. Other listing venues may have disclosed earlier."
+      },
+      "share_bridge": {
+        "event_kind": "A_SHARE_TREASURY_CANCELLATION",
+        "pre_total_issued_shares": 9377629650,
+        "cancelled_shares": 74541486,
+        "post_total_issued_shares": 9303088164,
+        "post_total_status": "PROJECTED_PENDING_REGISTRAR_CONFIRMATION",
+        "classes": [
+          {"class": "A", "pre_issued_shares": 6253028411, "post_issued_shares": 6178486925},
+          {"class": "D", "pre_issued_shares": 271013973, "post_issued_shares": 271013973},
+          {"class": "H", "pre_issued_shares": 2853587266, "post_issued_shares": 2853587266}
+        ],
+        "a_treasury_shares_before": 127425775,
+        "a_treasury_shares_projected_after": 52884289,
+        "d_treasury_shares_before": 865598
+      },
+      "evidence": [
+        {"fact": "issuer_identity_and_planned_completion", "ref": "sha256:1d07e5c39310e103311c4d5d33d0c77fddc14ebe9d190a5be1a0844aa9c1161a#page=1"},
+        {"fact": "share_class_bridge_and_registrar_caveat", "ref": "sha256:1d07e5c39310e103311c4d5d33d0c77fddc14ebe9d190a5be1a0844aa9c1161a#page=2"},
+        {"fact": "issuer_signature_date", "ref": "sha256:1d07e5c39310e103311c4d5d33d0c77fddc14ebe9d190a5be1a0844aa9c1161a#page=3"}
+      ],
+      "pit_disposition": "NO_PRODUCTION_S_VALUE",
+      "blockers": [
+        "Multi-class ordinary-share economic-rights mapping is not approved.",
+        "Post-cancellation share count is projected; final registration is not evidenced by this PDF.",
+        "Exact public availability timestamp and complete prior revision chain are not verified."
+      ]
+    },
+    {
+      "market": "SZ",
+      "issuer": "中国南玻集团股份有限公司",
+      "security_ids": ["sz.000012", "sz.200012"],
+      "announcement_number": "2026-006",
+      "pdf": {
+        "source_url": "https://static.cninfo.com.cn/finalpage/2026-03-14/1225007698.PDF",
+        "local_path": "storage/pilots/historical-shares-2026-10-01/sz-000012-2026-006.pdf",
+        "bytes": 183745,
+        "sha256": "6b416370a9e2ec50eec0abb794cf4f1f43a1201520ffb28ff26945ae657cfb35",
+        "pages": 4
+      },
+      "time_axes": {
+        "issuer_signed_on": "2026-03-14",
+        "reported_pre_share_date": null,
+        "event_completion_date_claimed": "2026-03-12",
+        "event_completion_status": "COMPLETED_AS_REPORTED_BY_ISSUER",
+        "official_pdf_url_date": "2026-03-14",
+        "cninfo_catalogue_date": "2026-03-14",
+        "cninfo_announcement_time_raw_ms": 1773417600000,
+        "exact_platform_publication_at_utc": null,
+        "earliest_public_availability_at_utc": null,
+        "availability_note": "CNINFO catalogue timestamp encodes 00:00 Asia/Shanghai on the URL date and is treated as a date marker. Completion predates the announcement; the PDF does not prove when the pre-event total first became public."
+      },
+      "share_bridge": {
+        "event_kind": "B_SHARE_TREASURY_CANCELLATION",
+        "pre_total_issued_shares": 3070692107,
+        "cancelled_shares": 28223296,
+        "post_total_issued_shares": 3042468811,
+        "post_total_status": "COMPLETED_AS_REPORTED_BY_ISSUER",
+        "classes": [
+          {"class": "A", "pre_issued_shares": 1961323047, "post_issued_shares": 1961323047},
+          {"class": "B", "pre_issued_shares": 1109369060, "post_issued_shares": 1081145764}
+        ],
+        "a_repurchase_shares_reported_at_program_end": 52838338
+      },
+      "evidence": [
+        {"fact": "issuer_identity_and_completed_registration_date", "ref": "sha256:6b416370a9e2ec50eec0abb794cf4f1f43a1201520ffb28ff26945ae657cfb35#page=1"},
+        {"fact": "a_repurchase_not_cancelled_and_b_cancellation_plan", "ref": "sha256:6b416370a9e2ec50eec0abb794cf4f1f43a1201520ffb28ff26945ae657cfb35#page=2"},
+        {"fact": "registration_statement_and_class_bridge", "ref": "sha256:6b416370a9e2ec50eec0abb794cf4f1f43a1201520ffb28ff26945ae657cfb35#page=3"},
+        {"fact": "issuer_signature_date_and_registrar_caveat", "ref": "sha256:6b416370a9e2ec50eec0abb794cf4f1f43a1201520ffb28ff26945ae657cfb35#page=4"}
+      ],
+      "pit_disposition": "NO_PRODUCTION_S_VALUE",
+      "blockers": [
+        "A/B class economic-rights and price-to-shares mapping is not approved.",
+        "A-share repurchases held for incentive plans do not reduce issued total in this event; treasury-share treatment needs a rule.",
+        "Exact public availability timestamp and complete prior revision chain are not verified."
+      ]
+    }
+  ]
+}

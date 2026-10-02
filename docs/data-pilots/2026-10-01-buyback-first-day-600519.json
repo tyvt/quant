@@ -1,0 +1,41 @@
+{
+  "probe_date": "2026-10-01",
+  "security_id": "sh.600519",
+  "plan_id": "sh.600519:2024-09-21:capital-reduction",
+  "source": {
+    "name": "cninfo_issuer_announcement",
+    "url": "https://static.cninfo.com.cn/finalpage/2025-01-03/1222206659.PDF",
+    "local_file": "storage/pilots/buyback-first-day-2026-10-01/moutai-2025-first-buyback.pdf",
+    "bytes": 530437,
+    "sha256": "9daacceadc60030620ca85863e00ac59576892202261f8d86e2ad40ae8575d0c",
+    "page_count": 2,
+    "evidence_page": 2,
+    "announcement_number": "临2025-001",
+    "document_date": "2025-01-03",
+    "safe_available_on": "2025-01-06",
+    "safe_availability_basis": "next_trading_day_after_document_date",
+    "calendar_snapshot_id": "snapshot-2abff764afcbfb52"
+  },
+  "exact_first_execution": {
+    "executed_on": "2025-01-02",
+    "shares": 200900,
+    "amount_cny": "299919221.00",
+    "evidence_ref": "cninfo:1222206659:page:2"
+  },
+  "later_cumulative_checkpoint": {
+    "through": "2025-04-07",
+    "shares": 1315901,
+    "amount_cny": "1948495151.53",
+    "evidence_ref": "moutai:临2025-013:page:2"
+  },
+  "unlocated_remainder": {
+    "interval_start_exclusive": "2025-01-02",
+    "interval_end_inclusive": "2025-04-07",
+    "shares": 1115001,
+    "amount_cny": "1648575930.53",
+    "exact_execution_date": null
+  },
+  "source_coverage_complete": false,
+  "snapshot_published": false,
+  "research_eligible": false
+}

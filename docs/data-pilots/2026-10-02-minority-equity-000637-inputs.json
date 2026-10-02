@@ -1,0 +1,61 @@
+{
+  "schema_version": "single_field_evidence_supplement_scope_v1",
+  "security_id": "sz.000637",
+  "issuer": "茂名石化实华股份有限公司",
+  "review_date": "2026-10-02",
+  "as_of": "2026-09-30",
+  "period_end": "2025-12-31",
+  "target_field": "minority_interest",
+  "source_label": "少数股东权益",
+  "statement_scope": "CONSOLIDATED",
+  "unit": "CNY",
+  "timing_policy": "UNKNOWN_UNLESS_VERIFIED",
+  "diagnostic_only": true,
+  "official_selection": false,
+  "parent_report": {
+    "path": "docs/data-pilots/limited-diagnostics-2026-10-02/cashflow-000637-diagnostic-only.json",
+    "sha256": "5af4fda2cb3d54d67a781e8d5f54bc5f750d4662be5d38be7a91ec444be38f0f",
+    "logical_content_hash": "7f4762710ee73a7d86fb8ca9cef7eb71793124a70533395f366fdb44dfb4bfcf"
+  },
+  "source_inputs": [
+    {
+      "path": "docs/data-pilots/2026-10-01-financial-revision-000637.json",
+      "sha256": "c7c2062a6ebdbaec430c59901f3498e1f8e024539939382238c1e0f9184a364a"
+    },
+    {
+      "path": "docs/data-pilots/2026-10-01-financial-year-chain-000637.json",
+      "sha256": "fdcd7942de2cce723d695100c73121f59afbe64d6f93e9f4f967817050de7176"
+    }
+  ],
+  "documents": [
+    {
+      "role": "original_2025_annual_report",
+      "announcement_id": "1225248741",
+      "header_page": 93,
+      "continuation_page": 94,
+      "field_page": 95,
+      "expected_closing_amount_cny": "94585884.15",
+      "expected_opening_comparative_amount_cny": "112947471.32"
+    },
+    {
+      "role": "amended_2025_annual_report",
+      "announcement_id": "1225460240",
+      "header_page": 93,
+      "continuation_page": 94,
+      "field_page": 95,
+      "expected_closing_amount_cny": "94585884.15",
+      "expected_opening_comparative_amount_cny": "112947471.32"
+    }
+  ],
+  "visual_review": {
+    "reviewer": "Codex",
+    "review_date": "2026-10-02",
+    "method": "manual_visual_check_of_2x_raw_pdf_page_renders_after_text_and_geometry_extraction",
+    "pages_per_version": [93, 95],
+    "render_directory": "storage/pilots/minority-equity-000637-2026-10-02",
+    "verified": ["issuer", "consolidated_scope", "2025_period_end", "yuan_unit", "closing_vs_opening_columns", "minority_equity_row_above_parent_table", "both_amounts"],
+    "independent_third_party_review": false,
+    "render_is_source_evidence": false
+  },
+  "boundary": "Only the per-version source observation of minority_interest is supplemented; availability, audit, revision coverage, alpha, FCF and strategy permissions are not resolved. Parent reports are immutable."
+}

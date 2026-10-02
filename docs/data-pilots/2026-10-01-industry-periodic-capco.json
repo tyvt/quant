@@ -1,0 +1,38 @@
+{
+  "probe_date": "2026-10-01",
+  "source_name": "capco_official_periodic_industry_classification",
+  "historical_pdf_bytes_proven_at_original_publication": false,
+  "exact_first_observed_at_utc": null,
+  "snapshot_published": false,
+  "research_eligible": false,
+  "publications": [
+    {
+      "period": "2024H2",
+      "article_url": "https://www.capco.org.cn/xhgg/hyfl/hyfljg/202504/20250418/j_2025041815003000017449597508305299.html",
+      "article_date": "2025-04-18",
+      "attachment_url": "https://sp.capco.org.cn:82/file/202603/hangyefenlei/2024xiaban/hangyefenleigupiaodaima.pdf",
+      "local_file": "storage/pilots/industry-history-2026-10-01/capco-2024h2-code.pdf",
+      "bytes": 4600775,
+      "sha256": "e373ad9173b69c65291569c7d36679ee3e0cf85d03a03be61138f46692f41fa5",
+      "page_count": 113,
+      "sample_rows": [
+        {"security_code": "600000", "evidence_page": 61, "category_code": "J", "major_code": "66", "profile_hint": "BANK_NOT_SUPPORTED"},
+        {"security_code": "600519", "evidence_page": 68, "category_code": "C", "subclass_code": "CA", "major_code": "15", "profile_hint": "FOOD_BEVERAGE_REQUIRES_MAPPING"}
+      ]
+    },
+    {
+      "period": "2025H1",
+      "article_url": "https://www.capco.org.cn/xhgg/hyfl/hyfljg/202509/20250930/j_2025093014371200017592143530187679.html",
+      "article_date": "2025-09-30",
+      "attachment_url": "https://sp.capco.org.cn:82/file/202603/hangyefenlei/2025shangban/hangyefenleigupiaodaima.pdf",
+      "local_file": "storage/pilots/industry-history-2026-10-01/capco-2025h1-code.pdf",
+      "bytes": 4626417,
+      "sha256": "b622b76b96d59611db36b01888cf6afd8cd711c5753a19ab8547e74bb0bb8228",
+      "page_count": 114,
+      "sample_rows": [
+        {"security_code": "600000", "evidence_page": 61, "category_code": "J", "major_code": "66", "profile_hint": "BANK_NOT_SUPPORTED"},
+        {"security_code": "600519", "evidence_page": 69, "category_code": "C", "subclass_code": "CA", "major_code": "15", "profile_hint": "FOOD_BEVERAGE_REQUIRES_MAPPING"}
+      ]
+    }
+  ]
+}

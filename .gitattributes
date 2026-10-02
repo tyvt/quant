@@ -1,0 +1,3 @@
+# Approved hashes refer to exact bytes, including existing line endings.
+# Do not apply machine-global newline, clean-filter, or ident transformations.
+* -text -filter -ident

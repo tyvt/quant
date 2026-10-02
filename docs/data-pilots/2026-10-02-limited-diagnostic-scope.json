@@ -1,0 +1,52 @@
+{
+  "schema_version": "limited_sample_diagnostic_scope_v1",
+  "review_date": "2026-10-02",
+  "as_of": "2026-09-30",
+  "as_of_semantics": "requested_historical_close_not_capture_date",
+  "timing_policy": "UNKNOWN_UNLESS_VERIFIED",
+  "rule_version": "v1.3.2",
+  "rule_sha256": "db43fd01f88a4db7a43859abe45d2d8903fddd765363f4763fe4287eafc33812",
+  "diagnostic_only": true,
+  "official_selection": false,
+  "real_pit_strategy_run": false,
+  "samples": [
+    {
+      "sample_id": "shares-000858",
+      "security_id": "sz.000858",
+      "economic_period": ["2025-01-01", "2025-12-31"],
+      "output_scope": ["reported_share_endpoints", "reported_buyback_applicability", "share_input_gaps", "share_policy_unknown_propagation"],
+      "source_inputs": [
+        {"path": "docs/data-pilots/2026-10-01-shares-year-chain-000858.json", "sha256": "9fa5e09f48dbee6c83733b6e5e7428f28360d83f7f156ca973bab2e99678b403"}
+      ]
+    },
+    {
+      "sample_id": "buybacks-600519",
+      "security_id": "sh.600519",
+      "economic_period": ["2024-09-21", "2025-08-29"],
+      "plan_id": "sh.600519:2024-09-21:capital-reduction",
+      "output_scope": ["first_execution_observation", "cumulative_interval_differences", "buyback_input_gaps"],
+      "source_inputs": [
+        {"path": "docs/data-pilots/2026-10-01-buyback-plan-chain-600519.json", "sha256": "544be53be4434f74a16cced66545f62536c8e979b3f6a4dd7921c9d4e479ec4f"}
+      ]
+    },
+    {
+      "sample_id": "cashflow-000637",
+      "security_id": "sz.000637",
+      "economic_period": ["2025-01-01", "2025-12-31"],
+      "output_scope": ["cashflow_version_comparison", "ocf_minus_capex_subtotal_not_fcf", "financial_input_gaps", "premise_unknown_propagation"],
+      "source_inputs": [
+        {"path": "docs/data-pilots/2026-10-01-financial-cashflow-crosscheck-000637.json", "sha256": "c0ffd8892d2b6b85291a8b52434194996f548b98c739d870a6451339d92f5eba"},
+        {"path": "docs/data-pilots/2026-10-01-financial-year-chain-000637.json", "sha256": "fdcd7942de2cce723d695100c73121f59afbe64d6f93e9f4f967817050de7176"}
+      ]
+    },
+    {
+      "sample_id": "financial-002570",
+      "security_id": "sz.002570",
+      "economic_period": ["2022-01-01", "2022-12-31"],
+      "output_scope": ["core_field_version_comparison", "gross_profit_and_margin_arithmetic", "financial_input_gaps", "premise_unknown_propagation"],
+      "source_inputs": [
+        {"path": "docs/data-pilots/2026-10-01-core-financial-recorrection-002570.json", "sha256": "b5e2e3ede8f41d19294720292a93fcf3b89c1b95767907d32f7221179ae6112c"}
+      ]
+    }
+  ]
+}

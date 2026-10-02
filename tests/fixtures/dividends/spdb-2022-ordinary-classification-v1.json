@@ -1,0 +1,18 @@
+{
+  "fixture_version": 1,
+  "classification_rule_version": "v1.2.0",
+  "reviewed_at": "2026-10-01",
+  "ordinary_classification_evidence": {
+    "source_name": "cninfo",
+    "plan_document_url": "https://static.cninfo.com.cn/finalpage/2023-04-19/1216456205.PDF",
+    "plan_document_sha256": "3304f19cd12fc66b019017756c4da6c5e12b04de5750ce2d422cb93d048d3a9d",
+    "plan_document_date": "2023-04-18",
+    "plan_available_on": "2023-04-19",
+    "plan_evidence_pages": [1, 2],
+    "implementation_document_sha256": "556db2246673babc2d6dcc996fd3d9dff308b6610b4cd61dfe78baf5c005f17b",
+    "security_code": "600000",
+    "fiscal_year": 2022,
+    "annual_base_cash_distribution": true,
+    "special_component_present": false
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "schema_version": "bounded_public_evidence_gap_search_v1",
+  "probe_date": "2026-10-01",
+  "purpose": "technical_source_feasibility_followup_only",
+  "research_eligible": false,
+  "snapshot_published": false,
+  "production_reader_ready": false,
+  "exact_available_at_utc": null,
+  "search_scope_note": "Web queries are discovery only; no claim that every public site or PDF has been searched. Captured issuer PDFs and previously frozen CNINFO query responses are the reproducible evidence scope.",
+  "documents": [
+    {
+      "id": "1225584992",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-09-29/1225584992.PDF",
+      "file": "storage/pilots/public-gap-followup-2026-10-01/000637-issuance-sponsor-1225584992.pdf",
+      "bytes": 1766051,
+      "sha256": "8dcea9b84668a6c1a2fe403f33f5e267bab2f00813d29479b22539fe315b71b2",
+      "role": "issuance_sponsor",
+      "pages": 44,
+      "extractable_text_pages": 44,
+      "text_search_scope": "extractable_text_only_not_ocr_or_all_image_content",
+      "term_pages": {
+        "重新审计": [],
+        "重审": [],
+        "未重新": [],
+        "会计差错": [],
+        "更正": [],
+        "审计报告": [
+          10,
+          19
+        ],
+        "逐日": [],
+        "逐笔": [],
+        "明细": [],
+        "专用证券账户": [],
+        "2025年9月1日": []
+      }
+    },
+    {
+      "id": "1225584993",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-09-29/1225584993.PDF",
+      "file": "storage/pilots/public-gap-followup-2026-10-01/000637-listing-sponsor-1225584993.pdf",
+      "bytes": 1005464,
+      "sha256": "e6875ff803f04ef0a3e8660d815b6ad40e23f5d2caa67e62d14a59474006fb48",
+      "role": "listing_sponsor",
+      "pages": 33,
+      "extractable_text_pages": 33,
+      "text_search_scope": "extractable_text_only_not_ocr_or_all_image_content",
+      "term_pages": {
+        "重新审计": [],
+        "重审": [],
+        "未重新": [],
+        "会计差错": [],
+        "更正": [
+          26
+        ],
+        "审计报告": [
+          6,
+          25
+        ],
+        "逐日": [],
+        "逐笔": [],
+        "明细": [],
+        "专用证券账户": [],
+        "2025年9月1日": []
+      }
+    },
+    {
+      "id": "1225114741",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-17/1225114741.PDF",
+      "file": "storage/pilots/public-gap-followup-2026-10-01/600519-2025-annual-1225114741.pdf",
+      "bytes": 1082847,
+      "sha256": "474905deeaf0f875fc0a1b097a626c0c7852c427faadc5d7fc7816cbf45ea288",
+      "role": "moutai_annual",
+      "pages": 143,
+      "extractable_text_pages": 143,
+      "text_search_scope": "extractable_text_only_not_ocr_or_all_image_content",
+      "term_pages": {
+        "重新审计": [],
+        "重审": [],
+        "未重新": [],
+        "会计差错": [
+          38,
+          83
+        ],
+        "更正": [
+          38,
+          68,
+          69,
+          70,
+          71,
+          83
+        ],
+        "审计报告": [
+          2,
+          4,
+          35,
+          37,
+          53,
+          55,
+          56
+        ],
+        "逐日": [],
+        "逐笔": [],
+        "明细": [
+          54,
+          96,
+          102,
+          142
+        ],
+        "专用证券账户": [
+          2,
+          32
+        ],
+        "2025年9月1日": []
+      }
+    }
+  ],
+  "existing_documents": [
+    {
+      "role": "wuliangye_2025_annual",
+      "security_id": "sz.000858",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225273091.PDF",
+      "local_path": "storage/pilots/shares-000858-2025-chain-2026-10-01/2025annual.pdf",
+      "sha256": "09133e1f44b3bb4b2cebe211529ad68f5b04b6be10b43870f2a78c947d5910a4",
+      "checked_pages": [
+        42,
+        46,
+        53
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "domain": "financial_statements",
+      "security_id": "sz.000637",
+      "scope": "Two 2026-09-29 sponsor PDFs, plus prior corrected annual/auditor special report/prospectus probe",
+      "checked_pages_by_announcement_id": {
+        "1225584992": [
+          10,
+          19
+        ],
+        "1225584993": [
+          6,
+          25,
+          26
+        ]
+      },
+      "amended_full_statement_reaudit_stated": null,
+      "explicit_no_reaudit_stated": null,
+      "referenced_2025_audit_number": "鹏盛A审字[2026]00179号",
+      "reference_to_original_report_observed": true,
+      "legal_replacement_relation_verified": false,
+      "route_conclusion": "NO_TARGET_REAUDIT_STATEMENT_VERIFIED_IN_REVIEWED_FILES",
+      "notes": "Issuance sponsor page 10 and listing sponsor page 6 reference the original audit number and unqualified opinion, without expressly binding that opinion to the August amended statements. The listing sponsor page 26 correction term is a generic continuous-disclosure supervision clause, not a statement about the August 2025-report correction. Search absence only applies to extractable text."
+    },
+    {
+      "domain": "buybacks",
+      "security_id": "sh.600519",
+      "plan_id": "sh.600519:2024-09-21:capital-reduction",
+      "scope": "Prior full query return set and 15 plan/cumulative PDFs, plus 2025 annual report 1225114741",
+      "checked_pages": [
+        2,
+        32,
+        47,
+        54,
+        96,
+        102,
+        142
+      ],
+      "all_actual_execution_days_known": false,
+      "actual_last_execution_day": null,
+      "registration_effective_on": null,
+      "issuer_reported_cancelled_shares": "3927585",
+      "issuer_reported_issued_shares_before": "1256197800",
+      "issuer_reported_issued_shares_after": "1252270215",
+      "issuer_reported_completed_cancellation_evidence_page": 47,
+      "route_conclusion": "REVIEWED_PUBLIC_CUMULATIVE_REPORTS_INSUFFICIENT_FOR_DAILY_ALLOCATION",
+      "notes": "Annual report page 47 corroborates retrospective completed cancellation and year-end total, but not each execution day or registry-effective date. Detail-table search hits on pages 54/96/102/142 are unrelated accounting/audit disclosures, not dedicated-account trade records. Later second-plan treasury balances are not first-plan executions."
+    },
+    {
+      "domain": "shares",
+      "security_id": "sz.000858",
+      "target_period": [
+        "2025-01-01",
+        "2025-12-31"
+      ],
+      "scope": "Prior full query return set and original/updated reports; annual report pages 42/46/53 rechecked",
+      "daily_s_coverage_complete": false,
+      "zero_treasury_attestation_verified": false,
+      "zero_registration_event_coverage_verified": false,
+      "route_conclusion": "REVIEWED_PUBLIC_ENDPOINT_REPORTS_INSUFFICIENT_FOR_DAILY_PIT_REGISTRATION",
+      "notes": "Share-movement columns report unchanged total and a restricted-share reclassification; repurchase implementation is not applicable and treasury line blank. These are bounded issuer observations, not independent daily registry coverage or proof of every treasury balance being zero."
+    }
+  ],
+  "universal_public_pdf_impossibility_proven": false,
+  "cross_issuer_pit_inputs_combined": false,
+  "external_evidence_requests_sent": false,
+  "blockers": [
+    "No verified earliest-public timestamps or full platform replacement/withdrawal mapping.",
+    "No dedicated-account daily ledger or independent event-complete share/treasury registration statement within the reviewed scope.",
+    "No production snapshots, domain readiness changes or real strategy outputs."
+  ]
+}

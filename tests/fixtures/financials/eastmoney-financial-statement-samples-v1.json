@@ -1,0 +1,349 @@
+{
+  "fixture_version": 1,
+  "captured_at_utc": "2026-09-25T04:09:31Z",
+  "akshare_version": "1.18.74",
+  "capture_policy": "minimal_projection_as_decimal_text",
+  "default_statement_scope": "UNKNOWN",
+  "scope_evidence": {
+    "cninfo_1225114741": {
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-17/1225114741.PDF",
+      "sha256": "474905deeaf0f875fc0a1b097a626c0c7852c427faadc5d7fc7816cbf45ea288",
+      "balance_sheet_page": 56,
+      "income_statement_page": 61,
+      "cash_flow_statement_page": 64,
+      "parent_statement_pages": [59, 63, 66]
+    },
+    "spdb_P020260330690876003415": {
+      "url": "https://news.spdb.com.cn/investor_relation/periodic_report/202603/P020260330690876003415.pdf",
+      "sha256": "e4d1cff0461c0ef24d26551ca68e31ad323a1b3eadd8a3c03f00feada364de22",
+      "balance_sheet_page": 157,
+      "income_statement_page": 160,
+      "cash_flow_statement_page": 163,
+      "scope_basis": "legal statements show separate 本集团 and 本行 columns; fixed values match 本集团"
+    },
+    "cninfo_57234723": {
+      "url": "https://static.cninfo.com.cn/finalpage/2009-10-31/57234723.PDF",
+      "sha256": "844360d273aa95625241553544e1bf03b57062e1a261b4c91659ed23ed7b80e8",
+      "balance_sheet_page": 7,
+      "income_statement_page": 9,
+      "cash_flow_statement_page": 10,
+      "scope_basis": "legal quarterly report presents company financial statements compiled by 邯郸钢铁股份有限公司 without a consolidated statement"
+    },
+    "cninfo_50765415_supporting": {
+      "url": "https://static.cninfo.com.cn/finalpage/2009-03-31/50765415.PDF",
+      "sha256": "efbe692bc773778f953dd8cf54dd14acdf3ab53f754b66eb716760d2074c56f6",
+      "audit_report_page": 23,
+      "company_statement_pages": [24, 26, 27],
+      "scope_basis": "preceding audited annual report explicitly identifies company-only statements"
+    }
+  },
+  "samples": [
+    {
+      "source_interface": "stock_balance_sheet_by_report_em",
+      "source_endpoint": "https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/zcfzbAjaxNew",
+      "source_variant": "listed",
+      "statement_type": "balance_sheet",
+      "statement_scope": "CONSOLIDATED",
+      "scope_evidence_ref": "spdb:P020260330690876003415:page:157",
+      "observed_shape": [105, 221],
+      "expected_line_item_count": 5,
+      "request": {
+        "code": "SH600000",
+        "reportDateType": "0",
+        "reportType": "1",
+        "dates": "2025-12-31"
+      },
+      "raw_row": {
+        "SECUCODE": "600000.SH",
+        "SECURITY_CODE": "600000",
+        "SECURITY_NAME_ABBR": "浦发银行",
+        "ORG_CODE": "10002252",
+        "ORG_TYPE": "银行",
+        "REPORT_DATE": "2025-12-31 00:00:00",
+        "REPORT_TYPE": "年报",
+        "REPORT_DATE_NAME": "2025年报",
+        "NOTICE_DATE": "2026-03-31 00:00:00",
+        "UPDATE_DATE": "2026-08-28 00:00:00",
+        "CURRENCY": "CNY",
+        "TOTAL_ASSETS": "10081746000000",
+        "TOTAL_LIABILITIES": "9257316000000",
+        "TOTAL_PARENT_EQUITY": "816914000000",
+        "MINORITY_EQUITY": "7516000000",
+        "TOTAL_EQUITY": "824430000000"
+      }
+    },
+    {
+      "source_interface": "stock_profit_sheet_by_report_em",
+      "source_endpoint": "https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/lrbAjaxNew",
+      "source_variant": "listed",
+      "statement_type": "income_statement",
+      "statement_scope": "CONSOLIDATED",
+      "scope_evidence_ref": "spdb:P020260330690876003415:page:160",
+      "observed_shape": [108, 170],
+      "expected_line_item_count": 4,
+      "request": {
+        "code": "SH600000",
+        "reportDateType": "0",
+        "reportType": "1",
+        "dates": "2025-12-31"
+      },
+      "raw_row": {
+        "SECUCODE": "600000.SH",
+        "SECURITY_CODE": "600000",
+        "SECURITY_NAME_ABBR": "浦发银行",
+        "ORG_CODE": "10002252",
+        "ORG_TYPE": "银行",
+        "REPORT_DATE": "2025-12-31 00:00:00",
+        "REPORT_TYPE": "年报",
+        "REPORT_DATE_NAME": "2025年报",
+        "NOTICE_DATE": "2026-03-31 00:00:00",
+        "UPDATE_DATE": "2026-03-31 00:00:00",
+        "CURRENCY": "CNY",
+        "OPERATE_INCOME": "173964000000",
+        "PARENT_NETPROFIT": "50017000000",
+        "NETPROFIT": "50405000000",
+        "BASIC_EPS": "1.52"
+      }
+    },
+    {
+      "source_interface": "stock_cash_flow_sheet_by_report_em",
+      "source_endpoint": "https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/xjllbAjaxNew",
+      "source_variant": "listed",
+      "statement_type": "cash_flow_statement",
+      "statement_scope": "CONSOLIDATED",
+      "scope_evidence_ref": "spdb:P020260330690876003415:page:163",
+      "observed_shape": [92, 316],
+      "expected_line_item_count": 4,
+      "request": {
+        "code": "SH600000",
+        "reportDateType": "0",
+        "reportType": "1",
+        "dates": "2025-12-31"
+      },
+      "raw_row": {
+        "SECUCODE": "600000.SH",
+        "SECURITY_CODE": "600000",
+        "SECURITY_NAME_ABBR": "浦发银行",
+        "ORG_CODE": "10002252",
+        "ORG_TYPE": "银行",
+        "REPORT_DATE": "2025-12-31 00:00:00",
+        "REPORT_TYPE": "年报",
+        "REPORT_DATE_NAME": "2025年报",
+        "NOTICE_DATE": "2026-03-31 00:00:00",
+        "UPDATE_DATE": "2026-03-31 00:00:00",
+        "CURRENCY": "CNY",
+        "NETCASH_OPERATE": "375836000000",
+        "NETCASH_INVEST": "-39120000000",
+        "NETCASH_FINANCE": "-274094000000",
+        "CCE_ADD": "59827000000"
+      }
+    },
+    {
+      "source_interface": "stock_balance_sheet_by_report_delisted_em",
+      "source_endpoint": "https://datacenter.eastmoney.com/securities/api/data/get?type=RPT_F10_FINANCE_GBALANCE",
+      "source_variant": "delisted",
+      "statement_type": "balance_sheet",
+      "statement_scope": "PARENT",
+      "scope_evidence_ref": "cninfo:57234723:page:7",
+      "observed_shape": [44, 319],
+      "expected_line_item_count": 5,
+      "request": {
+        "symbol": "SH600001",
+        "report_date": "2009-09-30"
+      },
+      "raw_row": {
+        "SECUCODE": "600001.SH",
+        "SECURITY_CODE": "600001",
+        "SECURITY_NAME_ABBR": "邯郸钢铁",
+        "ORG_CODE": "10002253",
+        "ORG_TYPE": "通用",
+        "REPORT_DATE": "2009-09-30",
+        "REPORT_TYPE": "三季报",
+        "REPORT_DATE_NAME": "2009三季报",
+        "NOTICE_DATE": "2009-10-31 00:00:00",
+        "UPDATE_DATE": null,
+        "CURRENCY": "CNY",
+        "TOTAL_ASSETS": "27725667987.02",
+        "TOTAL_LIABILITIES": "15310783342.03",
+        "TOTAL_PARENT_EQUITY": "12414884644.99",
+        "MINORITY_EQUITY": "0",
+        "TOTAL_EQUITY": "12414884644.99"
+      }
+    },
+    {
+      "source_interface": "stock_profit_sheet_by_report_delisted_em",
+      "source_endpoint": "https://datacenter.eastmoney.com/securities/api/data/get?type=RPT_F10_FINANCE_GINCOME",
+      "source_variant": "delisted",
+      "statement_type": "income_statement",
+      "statement_scope": "PARENT",
+      "scope_evidence_ref": "cninfo:57234723:page:9",
+      "observed_shape": [44, 203],
+      "expected_line_item_count": 5,
+      "request": {
+        "symbol": "SH600001",
+        "report_date": "2009-09-30"
+      },
+      "raw_row": {
+        "SECUCODE": "600001.SH",
+        "SECURITY_CODE": "600001",
+        "SECURITY_NAME_ABBR": "邯郸钢铁",
+        "ORG_CODE": "10002253",
+        "ORG_TYPE": "通用",
+        "REPORT_DATE": "2009-09-30",
+        "REPORT_TYPE": "三季报",
+        "REPORT_DATE_NAME": "2009三季报",
+        "NOTICE_DATE": "2009-10-31 00:00:00",
+        "UPDATE_DATE": null,
+        "CURRENCY": "CNY",
+        "TOTAL_OPERATE_INCOME": "25024852300.64",
+        "OPERATE_INCOME": "25024852300.64",
+        "PARENT_NETPROFIT": "200894642.84",
+        "NETPROFIT": "200894642.84",
+        "BASIC_EPS": "0.071"
+      }
+    },
+    {
+      "source_interface": "stock_cash_flow_sheet_by_report_delisted_em",
+      "source_endpoint": "https://datacenter.eastmoney.com/securities/api/data/get?type=RPT_F10_FINANCE_GCASHFLOW",
+      "source_variant": "delisted",
+      "statement_type": "cash_flow_statement",
+      "statement_scope": "PARENT",
+      "scope_evidence_ref": "cninfo:57234723:page:10",
+      "observed_shape": [36, 254],
+      "expected_line_item_count": 4,
+      "request": {
+        "symbol": "SH600001",
+        "report_date": "2009-09-30"
+      },
+      "raw_row": {
+        "SECUCODE": "600001.SH",
+        "SECURITY_CODE": "600001",
+        "SECURITY_NAME_ABBR": "邯郸钢铁",
+        "ORG_CODE": "10002253",
+        "ORG_TYPE": "通用",
+        "REPORT_DATE": "2009-09-30",
+        "REPORT_TYPE": "三季报",
+        "REPORT_DATE_NAME": "2009三季报",
+        "NOTICE_DATE": "2009-10-31 00:00:00",
+        "UPDATE_DATE": null,
+        "CURRENCY": "CNY",
+        "NETCASH_OPERATE": "1335990771.72",
+        "NETCASH_INVEST": "-1604076792.99",
+        "NETCASH_FINANCE": "29045797.91",
+        "CCE_ADD": "-239040223.36"
+      }
+    },
+    {
+      "source_interface": "stock_balance_sheet_by_report_em",
+      "source_endpoint": "https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/zcfzbAjaxNew",
+      "source_variant": "listed",
+      "statement_type": "balance_sheet",
+      "statement_scope": "CONSOLIDATED",
+      "scope_evidence_ref": "cninfo:1225114741:page:56",
+      "observed_shape": [103, 319],
+      "expected_line_item_count": 15,
+      "request": {
+        "code": "SH600519",
+        "reportDateType": "0",
+        "reportType": "1",
+        "dates": "2025-12-31"
+      },
+      "raw_row": {
+        "SECUCODE": "600519.SH",
+        "SECURITY_CODE": "600519",
+        "SECURITY_NAME_ABBR": "贵州茅台",
+        "ORG_CODE": "10002602",
+        "ORG_TYPE": "通用",
+        "REPORT_DATE": "2025-12-31 00:00:00",
+        "REPORT_TYPE": "年报",
+        "REPORT_DATE_NAME": "2025年报",
+        "NOTICE_DATE": "2026-04-17 00:00:00",
+        "UPDATE_DATE": "2026-08-15 00:00:00",
+        "CURRENCY": "CNY",
+        "MONETARYFUNDS": "51690610946.5",
+        "TRADE_FINASSET": null,
+        "OTHER_CURRENT_ASSET": "51027010.56",
+        "NONCURRENT_ASSET_1YEAR": "26871114612.71",
+        "SHORT_LOAN": null,
+        "NONCURRENT_LIAB_1YEAR": "44206237.05",
+        "SHORT_BOND_PAYABLE": null,
+        "LONG_LOAN": null,
+        "BOND_PAYABLE": null,
+        "LEASE_LIAB": "189504942.77",
+        "TOTAL_ASSETS": "303834844021.44",
+        "TOTAL_LIABILITIES": "49875590112.37",
+        "TOTAL_PARENT_EQUITY": "244637811032.18",
+        "MINORITY_EQUITY": "9321442876.89",
+        "TOTAL_EQUITY": "253959253909.07"
+      }
+    },
+    {
+      "source_interface": "stock_profit_sheet_by_report_em",
+      "source_endpoint": "https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/lrbAjaxNew",
+      "source_variant": "listed",
+      "statement_type": "income_statement",
+      "statement_scope": "CONSOLIDATED",
+      "scope_evidence_ref": "cninfo:1225114741:page:61",
+      "observed_shape": [103, 203],
+      "expected_line_item_count": 5,
+      "request": {
+        "code": "SH600519",
+        "reportDateType": "0",
+        "reportType": "1",
+        "dates": "2025-12-31"
+      },
+      "raw_row": {
+        "SECUCODE": "600519.SH",
+        "SECURITY_CODE": "600519",
+        "SECURITY_NAME_ABBR": "贵州茅台",
+        "ORG_CODE": "10002602",
+        "ORG_TYPE": "通用",
+        "REPORT_DATE": "2025-12-31 00:00:00",
+        "REPORT_TYPE": "年报",
+        "REPORT_DATE_NAME": "2025年报",
+        "NOTICE_DATE": "2026-04-17 00:00:00",
+        "UPDATE_DATE": "2026-04-17 00:00:00",
+        "CURRENCY": "CNY",
+        "TOTAL_OPERATE_INCOME": "172054171890.91",
+        "OPERATE_INCOME": "168838102514.79",
+        "PARENT_NETPROFIT": "82320067101.68",
+        "NETPROFIT": "85310324833.67",
+        "BASIC_EPS": "65.66"
+      }
+    },
+    {
+      "source_interface": "stock_cash_flow_sheet_by_report_em",
+      "source_endpoint": "https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/xjllbAjaxNew",
+      "source_variant": "listed",
+      "statement_type": "cash_flow_statement",
+      "statement_scope": "CONSOLIDATED",
+      "scope_evidence_ref": "cninfo:1225114741:page:64",
+      "observed_shape": [99, 254],
+      "expected_line_item_count": 5,
+      "request": {
+        "code": "SH600519",
+        "reportDateType": "0",
+        "reportType": "1",
+        "dates": "2025-12-31"
+      },
+      "raw_row": {
+        "SECUCODE": "600519.SH",
+        "SECURITY_CODE": "600519",
+        "SECURITY_NAME_ABBR": "贵州茅台",
+        "ORG_CODE": "10002602",
+        "ORG_TYPE": "通用",
+        "REPORT_DATE": "2025-12-31 00:00:00",
+        "REPORT_TYPE": "年报",
+        "REPORT_DATE_NAME": "2025年报",
+        "NOTICE_DATE": "2026-04-17 00:00:00",
+        "UPDATE_DATE": "2026-04-17 00:00:00",
+        "CURRENCY": "CNY",
+        "NETCASH_OPERATE": "61522204989.35",
+        "CONSTRUCT_LONG_ASSET": "3127594916.41",
+        "NETCASH_INVEST": "-31641898948.89",
+        "NETCASH_FINANCE": "-73427081208.87",
+        "CCE_ADD": "-43544479810.11"
+      }
+    }
+  ]
+}

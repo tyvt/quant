@@ -1,0 +1,91 @@
+{
+  "schema_version": "financial_revision_probe_v1",
+  "probe_date": "2026-10-01",
+  "security_id": "sz.000637",
+  "issuer": "茂名石化实华股份有限公司",
+  "period_end": "2025-12-31",
+  "statement_scope": "CONSOLIDATED",
+  "purpose": "technical_legal_pdf_revision_probe_only",
+  "research_eligible": false,
+  "snapshot_published": false,
+  "source_coverage_complete": false,
+  "exact_available_at_utc": null,
+  "catalogue_time_note": "CNINFO announcementTime is 00:00 Asia/Shanghai for both publication dates; preserve it as a date marker, not a verified exact public timestamp.",
+  "documents": [
+    {
+      "role": "original_2025_annual_report",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225248741.PDF",
+      "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-annual-original.pdf",
+      "sha256": "18231670324fb8ab60c264dbaebf4972004a4c153aa5a046dc7be4d2e40646d9",
+      "bytes": 1291103,
+      "pages": 209,
+      "catalogue_date": "2026-04-29",
+      "catalogue_announcement_time_raw_ms": 1777392000000,
+      "pdf_cover_date": "2026-04-29"
+    },
+    {
+      "role": "correction_announcement",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460245.PDF",
+      "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-correction.pdf",
+      "sha256": "9f450c4fc9370aeb5023e498cdc1a9601b24f28ffba5ec3d865e97af0bcd346b",
+      "bytes": 340728,
+      "pages": 26,
+      "catalogue_date": "2026-08-06",
+      "catalogue_announcement_time_raw_ms": 1785945600000,
+      "pdf_cover_date": null
+    },
+    {
+      "role": "amended_2025_annual_report",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460240.PDF",
+      "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-annual-amended.pdf",
+      "sha256": "1188d9bcac97cc67fa75424b8382acfbb387384b5e3dfeb71f545d1f90fb4791",
+      "bytes": 1231152,
+      "pages": 209,
+      "catalogue_date": "2026-08-06",
+      "catalogue_announcement_time_raw_ms": 1785945600000,
+      "pdf_cover_date": "2026-04-29"
+    },
+    {
+      "role": "corrected_statements_and_notes",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460244.PDF",
+      "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-corrected-statements.pdf",
+      "sha256": "d568c02d881faecb0e937d189147b4673ceb2680543268ef5bb7136ef13a86b3",
+      "bytes": 355940,
+      "pages": 29,
+      "catalogue_date": "2026-08-06",
+      "catalogue_announcement_time_raw_ms": 1785945600000,
+      "pdf_cover_date": null
+    },
+    {
+      "role": "auditor_special_report",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460243.PDF",
+      "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-auditor-special-report.pdf",
+      "sha256": "be1ad3b1b42cff24e5b76969a995af107e3bfbaab5f3b921741b6320cd03fe5b",
+      "bytes": 2306022,
+      "pages": 10,
+      "catalogue_date": "2026-08-06",
+      "catalogue_announcement_time_raw_ms": 1785945600000,
+      "pdf_cover_date": null,
+      "text_extraction_status": "IMAGE_ONLY_REQUIRES_OCR_OR_MANUAL_REVIEW"
+    }
+  ],
+  "observed_revision": {
+    "statement": "consolidated_cash_flow",
+    "item": "net_cash_from_operating_activities",
+    "period_end": "2025-12-31",
+    "unit": "CNY",
+    "original_value": "42986260.08",
+    "amended_value": "-79583416.97",
+    "delta": "-122569677.05",
+    "original_evidence_ref": "sha256:18231670324fb8ab60c264dbaebf4972004a4c153aa5a046dc7be4d2e40646d9#page=101",
+    "correction_evidence_ref": "sha256:9f450c4fc9370aeb5023e498cdc1a9601b24f28ffba5ec3d865e97af0bcd346b#page=21",
+    "amended_report_evidence_ref": "sha256:1188d9bcac97cc67fa75424b8382acfbb387384b5e3dfeb71f545d1f90fb4791#page=101",
+    "corrected_statement_evidence_ref": "sha256:d568c02d881faecb0e937d189147b4673ceb2680543268ef5bb7136ef13a86b3#page=25"
+  },
+  "limitations": [
+    "One issuer and one corrected annual period do not prove complete revisions for the issuer or market.",
+    "The exact public availability timestamp is unverified; the amended PDF cover retains the original date.",
+    "The auditor special report is image-only and has not been OCR-validated.",
+    "No complete provider revision sequence, ingestion snapshot or production PIT Reader exists."
+  ]
+}

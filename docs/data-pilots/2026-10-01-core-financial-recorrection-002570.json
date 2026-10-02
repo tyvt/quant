@@ -1,0 +1,613 @@
+{
+  "schema_version": "legal_pdf_core_financial_recorrection_capture_v1",
+  "security_id": "sz.002570",
+  "period_end": "2022-12-31",
+  "purpose": "technical_core_financial_revision_probe_only",
+  "capture_completed_at_utc": "2026-10-01T13:27:52.288744+00:00",
+  "research_eligible": false,
+  "snapshot_published": false,
+  "production_reader_ready": false,
+  "complete_revision_chain_verified": false,
+  "withdrawal_or_platform_replacement_verified": false,
+  "exact_available_at_utc": null,
+  "catalogues": [
+    {
+      "endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "payload": {
+        "stock": "002570,9900019035",
+        "column": "szse",
+        "plate": "sz",
+        "pageNum": 1,
+        "pageSize": 30,
+        "tabName": "fulltext",
+        "seDate": "2023-01-01~2025-06-30",
+        "sortName": "time",
+        "sortType": "desc",
+        "isHLtitle": "false",
+        "searchkey": "2022年年度报告"
+      },
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/catalogue-1.json",
+      "sha256": "e63af119e61161ee51bc12a88825dd5329d2a1d91041021ad407ceba28f2162c",
+      "reported_total": 11,
+      "returned_count": 11,
+      "request_started_at_utc": "2026-10-01T13:27:48.860343+00:00",
+      "completeness_scope": "this_query_response_only_not_entire_revision_history"
+    },
+    {
+      "endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "payload": {
+        "stock": "002570,9900019035",
+        "column": "szse",
+        "plate": "sz",
+        "pageNum": 1,
+        "pageSize": 30,
+        "tabName": "fulltext",
+        "seDate": "2023-01-01~2025-06-30",
+        "sortName": "time",
+        "sortType": "desc",
+        "isHLtitle": "false",
+        "searchkey": "会计差错"
+      },
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/catalogue-2.json",
+      "sha256": "0b81858e0120071d7cd9389a03ddccaaca832050f3b74ae37fa85979a73a5dfd",
+      "reported_total": 5,
+      "returned_count": 5,
+      "request_started_at_utc": "2026-10-01T13:27:48.997069+00:00",
+      "completeness_scope": "this_query_response_only_not_entire_revision_history"
+    },
+    {
+      "endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "payload": {
+        "stock": "002570,9900019035",
+        "column": "szse",
+        "plate": "sz",
+        "pageNum": 1,
+        "pageSize": 30,
+        "tabName": "fulltext",
+        "seDate": "2023-01-01~2025-06-30",
+        "sortName": "time",
+        "sortType": "desc",
+        "isHLtitle": "false",
+        "searchkey": "年报问询函"
+      },
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/catalogue-3.json",
+      "sha256": "6456bce179dec16fdbe0e64689e556017418c9c94016d91025bd3926fa0f0298",
+      "reported_total": 6,
+      "returned_count": 6,
+      "request_started_at_utc": "2026-10-01T13:27:49.116466+00:00",
+      "completeness_scope": "this_query_response_only_not_entire_revision_history"
+    },
+    {
+      "endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "payload": {
+        "stock": "002570,9900019035",
+        "column": "szse",
+        "plate": "sz",
+        "pageNum": 1,
+        "pageSize": 30,
+        "tabName": "fulltext",
+        "seDate": "2023-01-01~2025-06-30",
+        "sortName": "time",
+        "sortType": "desc",
+        "isHLtitle": "false",
+        "searchkey": "财务报表更正"
+      },
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/catalogue-4.json",
+      "sha256": "111e4129971220dbab3df36df275adc39b6b49ade0343306e9e2b34014d96d35",
+      "reported_total": 1,
+      "returned_count": 1,
+      "request_started_at_utc": "2026-10-01T13:27:49.243545+00:00",
+      "completeness_scope": "this_query_response_only_not_entire_revision_history"
+    }
+  ],
+  "documents": [
+    {
+      "role": "original_annual",
+      "announcement_id": "1216702448",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2023-04-29/1216702448.PDF",
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/original_annual-1216702448.pdf",
+      "sha256": "00c181533558cb7f4dac647d25a2d7d92b8aaafcb5f495e1f6a08582904558fc",
+      "bytes": 4657265,
+      "request_started_at_utc": "2026-10-01T13:27:49.381169+00:00",
+      "catalogue_title": "2022年年度报告",
+      "catalogue_time_raw_ms": 1682697600000,
+      "catalogue_time_utc": "2023-04-28T16:00:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 188,
+      "extractable_text_pages": 188,
+      "text_counting_scope": "page_has_nonblank_text_including_footer_not_full_page_extraction"
+    },
+    {
+      "role": "first_corrected_annual",
+      "announcement_id": "1219043674",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2024-01-31/1219043674.PDF",
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/first_corrected_annual-1219043674.pdf",
+      "sha256": "d84185d150bc513af25a06921ce617fd1d311d0819d47cfad02b3096458bc76e",
+      "bytes": 4638807,
+      "request_started_at_utc": "2026-10-01T13:27:49.962831+00:00",
+      "catalogue_title": "2022年年度报告（更正后）",
+      "catalogue_time_raw_ms": 1706630400000,
+      "catalogue_time_utc": "2024-01-30T16:00:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 188,
+      "extractable_text_pages": 188,
+      "text_counting_scope": "page_has_nonblank_text_including_footer_not_full_page_extraction"
+    },
+    {
+      "role": "second_corrected_annual",
+      "announcement_id": "1223388226",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-29/1223388226.PDF",
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/second_corrected_annual-1223388226.pdf",
+      "sha256": "21fbe574b039f6004558ef89aeaa787d5d89b51e7b7998862b56c08ffee84410",
+      "bytes": 4776768,
+      "request_started_at_utc": "2026-10-01T13:27:50.666728+00:00",
+      "catalogue_title": "2022年年度报告（更正后）",
+      "catalogue_time_raw_ms": 1745856000000,
+      "catalogue_time_utc": "2025-04-28T16:00:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 188,
+      "extractable_text_pages": 188,
+      "text_counting_scope": "page_has_nonblank_text_including_footer_not_full_page_extraction"
+    },
+    {
+      "role": "first_correction_notice",
+      "announcement_id": "1219043656",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2024-01-31/1219043656.PDF",
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/first_correction_notice-1219043656.pdf",
+      "sha256": "25e3efdb2b5388b3a90f79184525a9e72bb6605e16500d0e8bf2d9e7b35d20ef",
+      "bytes": 301454,
+      "request_started_at_utc": "2026-10-01T13:27:51.398314+00:00",
+      "catalogue_title": "关于公司前期会计差错更正的公告",
+      "catalogue_time_raw_ms": 1706630400000,
+      "catalogue_time_utc": "2024-01-30T16:00:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 6,
+      "extractable_text_pages": 6,
+      "text_counting_scope": "page_has_nonblank_text_including_footer_not_full_page_extraction"
+    },
+    {
+      "role": "first_correction_special_review",
+      "announcement_id": "1219043661",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2024-01-31/1219043661.PDF",
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/first_correction_special_review-1219043661.pdf",
+      "sha256": "1972c8d10734bb8dea43a45dd92ec3cd37273eab9e10859620b0e2c2919fa6aa",
+      "bytes": 479017,
+      "request_started_at_utc": "2026-10-01T13:27:51.523978+00:00",
+      "catalogue_title": "前期会计差错更正专项说明的审核报告",
+      "catalogue_time_raw_ms": 1706630400000,
+      "catalogue_time_utc": "2024-01-30T16:00:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 8,
+      "extractable_text_pages": 8,
+      "text_counting_scope": "page_has_nonblank_text_including_footer_not_full_page_extraction"
+    },
+    {
+      "role": "second_correction_notice",
+      "announcement_id": "1223388206",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-29/1223388206.PDF",
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/second_correction_notice-1223388206.pdf",
+      "sha256": "29b0e2ee2a5889af0bbc75e16e9ebcea6c113d8e88e95daaa853bace049815fd",
+      "bytes": 429220,
+      "request_started_at_utc": "2026-10-01T13:27:51.667498+00:00",
+      "catalogue_title": "关于公司前期会计差错更正的公告",
+      "catalogue_time_raw_ms": 1745856000000,
+      "catalogue_time_utc": "2025-04-28T16:00:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 8,
+      "extractable_text_pages": 8,
+      "text_counting_scope": "page_has_nonblank_text_including_footer_not_full_page_extraction"
+    },
+    {
+      "role": "second_correction_special_review",
+      "announcement_id": "1223478760",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2025-05-07/1223478760.PDF",
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/second_correction_special_review-1223478760.pdf",
+      "sha256": "8ac7933cb5c4b1678de41562ded55bff05078cf275e9e7d97bdf0b62dc70bdb9",
+      "bytes": 1910964,
+      "request_started_at_utc": "2026-10-01T13:27:51.787579+00:00",
+      "catalogue_title": "关于2022-2023年度财务报表更正事项的专项鉴证报告",
+      "catalogue_time_raw_ms": 1746547200000,
+      "catalogue_time_utc": "2025-05-06T16:00:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 7,
+      "extractable_text_pages": 7,
+      "text_counting_scope": "page_has_nonblank_text_including_footer_not_full_page_extraction"
+    },
+    {
+      "role": "auditor_2023_inquiry_reply",
+      "announcement_id": "1220361222",
+      "source_url": "https://static.cninfo.com.cn/finalpage/2024-06-15/1220361222.PDF",
+      "local_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/auditor_2023_inquiry_reply-1220361222.pdf",
+      "sha256": "fe3b66a2fc0b9b303492621580e7603abfa223dbc879231590de8acf285f78bf",
+      "bytes": 1929092,
+      "request_started_at_utc": "2026-10-01T13:27:52.029677+00:00",
+      "catalogue_title": "大华会计师事务所关于对深圳证券交易所2023年年报问询函的回复",
+      "catalogue_time_raw_ms": 1718380800000,
+      "catalogue_time_utc": "2024-06-14T16:00:00+00:00",
+      "associate_announcement": null,
+      "storage_time": null,
+      "exact_available_at_utc": null,
+      "pages": 79,
+      "extractable_text_pages": 79,
+      "text_counting_scope": "page_has_nonblank_text_including_footer_not_full_page_extraction"
+    }
+  ],
+  "observation_scope": {
+    "statement_scope": "CONSOLIDATED",
+    "period_end": "2022-12-31",
+    "unit": "CNY",
+    "annual_version_roles": "probe_local_roles_not_a_complete_history_order",
+    "annual_pages_checked": [
+      70,
+      74,
+      75,
+      76,
+      78,
+      82
+    ],
+    "three_annual_bytes_fixed": true,
+    "two_core_statement_corrections_observed": true,
+    "core_financial_recorrection_fixture_accepted": false,
+    "withdrawal_event_verified": false
+  },
+  "field_definitions": [
+    {
+      "field": "revenue",
+      "source_label": "一、营业总收入",
+      "evidence_page": 78
+    },
+    {
+      "field": "operating_cost",
+      "source_label": "其中：营业成本",
+      "evidence_page": 78
+    },
+    {
+      "field": "investment_property",
+      "source_label": "投资性房地产",
+      "evidence_page": 74
+    },
+    {
+      "field": "fixed_assets",
+      "source_label": "固定资产",
+      "evidence_page": 74
+    },
+    {
+      "field": "intangible_assets",
+      "source_label": "无形资产",
+      "evidence_page": 74
+    },
+    {
+      "field": "other_noncurrent_financial_assets",
+      "source_label": "其他非流动金融资产",
+      "evidence_page": 74
+    },
+    {
+      "field": "other_noncurrent_assets",
+      "source_label": "其他非流动资产",
+      "evidence_page": 75
+    },
+    {
+      "field": "other_payables",
+      "source_label": "其他应付款",
+      "evidence_page": 75
+    },
+    {
+      "field": "other_noncurrent_liabilities",
+      "source_label": "其他非流动负债",
+      "evidence_page": 76
+    },
+    {
+      "field": "operating_cashflow_net",
+      "source_label": "经营活动产生的现金流量净额",
+      "evidence_page": 82
+    }
+  ],
+  "observed_versions": [
+    {
+      "role": "original_annual",
+      "announcement_id": "1216702448",
+      "fields": {
+        "revenue": "2654624655.97",
+        "operating_cost": "1503441070.62",
+        "investment_property": "302928100.09",
+        "fixed_assets": "872526576.41",
+        "intangible_assets": "159161422.48",
+        "other_noncurrent_financial_assets": "74631520.32",
+        "other_noncurrent_assets": "71002840.72",
+        "other_payables": "400069089.61",
+        "other_noncurrent_liabilities": null,
+        "operating_cashflow_net": "377416659.60"
+      },
+      "source_states": {
+        "other_noncurrent_liabilities": "BLANK_NOT_ZERO"
+      },
+      "embedded_audit_report_number": "大华审字[2023]001405号",
+      "embedded_audit_signed_on": "2023-04-27",
+      "embedded_audit_opinion_label": "UNQUALIFIED_WITH_EMPHASIS_OF_MATTER",
+      "embedded_audit_page": 70,
+      "amended_full_statement_reaudit_stated": null,
+      "explicit_no_reaudit_stated": null
+    },
+    {
+      "role": "first_corrected_annual",
+      "announcement_id": "1219043674",
+      "fields": {
+        "revenue": "2509171932.67",
+        "operating_cost": "1357988347.32",
+        "investment_property": "302928100.09",
+        "fixed_assets": "872526576.41",
+        "intangible_assets": "159161422.48",
+        "other_noncurrent_financial_assets": "74631520.32",
+        "other_noncurrent_assets": "71002840.72",
+        "other_payables": "400069089.61",
+        "other_noncurrent_liabilities": null,
+        "operating_cashflow_net": "377416659.60"
+      },
+      "source_states": {
+        "other_noncurrent_liabilities": "BLANK_NOT_ZERO"
+      },
+      "embedded_audit_report_number": "大华审字[2023]001405号",
+      "embedded_audit_signed_on": "2023-04-27",
+      "embedded_audit_opinion_label": "UNQUALIFIED_WITH_EMPHASIS_OF_MATTER",
+      "embedded_audit_page": 70,
+      "amended_full_statement_reaudit_stated": null,
+      "explicit_no_reaudit_stated": null
+    },
+    {
+      "role": "second_corrected_annual",
+      "announcement_id": "1223388226",
+      "fields": {
+        "revenue": "2509171932.67",
+        "operating_cost": "1357988347.32",
+        "investment_property": "42915188.04",
+        "fixed_assets": "1131862577.55",
+        "intangible_assets": "159838333.39",
+        "other_noncurrent_financial_assets": "56271520.32",
+        "other_noncurrent_assets": "89362840.72",
+        "other_payables": "382069089.61",
+        "other_noncurrent_liabilities": "18000000.00",
+        "operating_cashflow_net": "377416659.60"
+      },
+      "source_states": {
+        "other_noncurrent_liabilities": "EXPLICIT_NUMERIC"
+      },
+      "embedded_audit_report_number": "大华审字[2023]001405号",
+      "embedded_audit_signed_on": "2023-04-27",
+      "embedded_audit_opinion_label": "UNQUALIFIED_WITH_EMPHASIS_OF_MATTER",
+      "embedded_audit_page": 70,
+      "amended_full_statement_reaudit_stated": null,
+      "explicit_no_reaudit_stated": null
+    }
+  ],
+  "correction_evidence": [
+    {
+      "role": "first_correction_notice",
+      "announcement_id": "1219043656",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "observed_scope": "2022 annual consolidated revenue and operating cost",
+      "changes": [
+        {
+          "field": "revenue",
+          "before": "2654624655.97",
+          "after": "2509171932.67",
+          "declared_change": "-145452723.30",
+          "unit": "CNY",
+          "page": 3
+        },
+        {
+          "field": "operating_cost",
+          "before": "1503441070.62",
+          "after": "1357988347.32",
+          "declared_change": "-145452723.30",
+          "unit": "CNY",
+          "page": 4
+        }
+      ],
+      "source_of_change": "gross_to_net_revenue_presentation"
+    },
+    {
+      "role": "second_correction_notice",
+      "announcement_id": "1223388206",
+      "pages": [
+        1,
+        2,
+        3,
+        7,
+        8
+      ],
+      "observed_scope": "2022 consolidated balance sheet",
+      "source_of_change": "property_financial_asset_and_liability_reclassification",
+      "source_delta_columns_verified": true,
+      "blank_old_other_noncurrent_liabilities_preserved": true
+    },
+    {
+      "role": "auditor_2023_inquiry_reply",
+      "announcement_id": "1220361222",
+      "pages": [
+        5,
+        6,
+        12,
+        17
+      ],
+      "scope_note": "Discussion of earlier gross/net corrections, not evidence of a 2025 withdrawal or full amended audit. Rounded amount in CNY ten-thousands is not the exact CNY amount.",
+      "rounded_revenue_change": "-14545.27",
+      "rounded_change_unit": "CNY_10000",
+      "exact_annual_change": "-145452723.30",
+      "exact_change_unit": "CNY",
+      "difference_from_rounded_cny": "-23.30"
+    }
+  ],
+  "arithmetic_checks": [
+    {
+      "check": "first_revenue_and_cost_delta",
+      "expected_delta": "-145452723.30",
+      "equal_deltas": true,
+      "gross_profit_difference": "0.00"
+    },
+    {
+      "check": "property_reclassification",
+      "fields": [
+        "investment_property",
+        "fixed_assets",
+        "intangible_assets"
+      ],
+      "deltas": [
+        "-260012912.05",
+        "259336001.14",
+        "676910.91"
+      ],
+      "sum": "0.00"
+    },
+    {
+      "check": "financial_asset_reclassification",
+      "fields": [
+        "other_noncurrent_financial_assets",
+        "other_noncurrent_assets"
+      ],
+      "deltas": [
+        "-18360000.00",
+        "18360000.00"
+      ],
+      "sum": "0.00"
+    },
+    {
+      "check": "cashflow_net_anchor",
+      "all_three_equal": "377416659.60",
+      "does_not_prove_complete_fcf_inputs": true
+    }
+  ],
+  "special_review_scopes": [
+    {
+      "announcement_id": "1219043661",
+      "report_number": "大华核字[2024]0011000344号",
+      "evidence_pages": [
+        3,
+        4
+      ],
+      "object": "special_statement_of_prior_accounting_error_correction",
+      "full_amended_2022_statement_audit_verified": false,
+      "purpose_restriction_observed": true
+    },
+    {
+      "announcement_id": "1223478760",
+      "report_number": "众环专字（2025）3600122号",
+      "evidence_pages": [
+        1,
+        2,
+        3
+      ],
+      "object": "special_statement_of_2022_2023_corrections_on_basis_of_2024_audit",
+      "full_amended_2022_statement_audit_verified": false,
+      "purpose_restriction_observed": true,
+      "report_title_periods": [
+        "2022",
+        "2023"
+      ],
+      "purpose_paragraph_period": "2024",
+      "appendix_running_header_period": "2024",
+      "period_wording_ambiguity_observed": true,
+      "ambiguity_resolved": false,
+      "appendix_values_used_as_primary_numeric_input": false
+    }
+  ],
+  "visual_review": {
+    "rendered_from_fixed_local_pdfs": true,
+    "pages": [
+      {
+        "role": "first_correction_notice",
+        "page": 3
+      },
+      {
+        "role": "original_annual",
+        "page": 74
+      },
+      {
+        "role": "first_corrected_annual",
+        "page": 78
+      },
+      {
+        "role": "second_corrected_annual",
+        "page": 74
+      },
+      {
+        "role": "second_corrected_annual",
+        "page": 76
+      },
+      {
+        "role": "second_correction_special_review",
+        "page": 1
+      },
+      {
+        "role": "second_correction_special_review",
+        "page": 3
+      }
+    ],
+    "does_not_prove_entire_page_or_document_identity": true
+  },
+  "search_followup": {
+    "discovery_only": true,
+    "queries": [
+      {
+        "domain": "financial_statements",
+        "q": "\"茂化实华\" \"更正后\" \"重新审计\"",
+        "new_qualified_target_reaudit_evidence": false
+      },
+      {
+        "domain": "financial_statements",
+        "q": "\"茂化实华\" \"更正后\" \"未重新审计\"",
+        "new_qualified_target_reaudit_evidence": false
+      },
+      {
+        "domain": "buybacks",
+        "q": "\"贵州茅台\" \"2025\" \"回购\" \"成交清单\"",
+        "new_qualified_plan_daily_ledger": false
+      },
+      {
+        "domain": "buybacks",
+        "q": "\"贵州茅台\" \"2025\" \"回购\" \"交易记录\"",
+        "new_qualified_plan_daily_ledger": false
+      },
+      {
+        "domain": "shares",
+        "q": "\"五粮液\" \"2025\" \"证券登记\"",
+        "new_qualified_daily_or_event_complete_attestation": false
+      },
+      {
+        "domain": "shares",
+        "q": "\"五粮液\" \"零库存股\"",
+        "new_qualified_daily_or_event_complete_attestation": false
+      }
+    ],
+    "universal_public_pdf_impossibility_proven": false,
+    "external_evidence_requests_sent": false,
+    "cross_issuer_pit_inputs_combined": false
+  },
+  "blockers": [
+    "Specified three annual PDFs and two notices do not exhaust all historical revisions or withdrawals.",
+    "Catalogue dates are midnight Asia/Shanghai source observations; earliest public visibility remains unverified.",
+    "Repeated original audit number and special correction assurance do not establish full amended 2022 statement re-audit or explicit no-re-audit.",
+    "2025 special report title, running header and purpose paragraph disagree on the period; no silent correction.",
+    "Blank pre-correction liability stays unknown, not an observed zero.",
+    "Source usage applicability, independent immutable snapshot and accepted real PIT fixture remain unverified.",
+    "Other issuers' finance, buyback and share-coverage blockers are not closed by this new issuer sample."
+  ]
+}

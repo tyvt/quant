@@ -1,0 +1,254 @@
+{
+  "schema_version": "financial_cash_flow_crosscheck_probe_v1",
+  "probe_date": "2026-10-01",
+  "security_id": "sz.000637",
+  "period_end": "2025-12-31",
+  "statement_scope": "CONSOLIDATED",
+  "unit": "CNY",
+  "purpose": "technical_source_evidence_crosscheck_only",
+  "research_eligible": false,
+  "snapshot_published": false,
+  "production_reader_ready": false,
+  "complete_revision_chain_verified": false,
+  "full_statement_numeric_identity_proven": false,
+  "exact_available_at_utc": null,
+  "amended_full_statements_audit_opinion_verified": false,
+  "legal_replacement_relation_verified": false,
+  "documents": [
+    {
+      "id": "original_annual",
+      "path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-annual-original.pdf",
+      "sha256": "18231670324fb8ab60c264dbaebf4972004a4c153aa5a046dc7be4d2e40646d9",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225248741.PDF",
+      "pages": [
+        101,
+        102
+      ],
+      "method": "extractable_statement_text"
+    },
+    {
+      "id": "original_audit",
+      "path": "storage/pilots/financial-000637-2025-chain-2026-10-01/2025-original-audit.pdf",
+      "sha256": "448049c623801d7b2389f799637eeb8332b8d4cce420fa9ec467790f71ef47c9",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225248743.PDF",
+      "pages": [
+        12
+      ],
+      "method": "extractable_statement_text"
+    },
+    {
+      "id": "amended_annual",
+      "path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-annual-amended.pdf",
+      "sha256": "1188d9bcac97cc67fa75424b8382acfbb387384b5e3dfeb71f545d1f90fb4791",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460240.PDF",
+      "pages": [
+        101,
+        102
+      ],
+      "method": "extractable_statement_text"
+    },
+    {
+      "id": "corrected_statements",
+      "path": "storage/pilots/financial-revision-2026-10-01/sz-000637-corrected-statements.pdf",
+      "sha256": "d568c02d881faecb0e937d189147b4673ceb2680543268ef5bb7136ef13a86b3",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460244.PDF",
+      "pages": [
+        24,
+        25,
+        26
+      ],
+      "method": "extractable_statement_text"
+    },
+    {
+      "id": "september_bundle",
+      "path": "storage/pilots/financial-000637-2025-chain-2026-10-01/2026-09-29-financial-bundle.pdf",
+      "sha256": "a42401180f78bf4d345f2a3a84c15769659c79b14c3b60e7140bb810eb8908db",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-09-29/1225584994.PDF",
+      "pages": [
+        12
+      ],
+      "method": "manual_visual_review_of_source_page_render",
+      "render_path": "storage/pilots/financial-000637-2025-chain-2026-10-01/september-bundle-page-12.png"
+    }
+  ],
+  "items": [
+    {
+      "id": "sales_cash_receipts",
+      "label": "销售商品、提供劳务收到的现金",
+      "original_value": "3501901812.73",
+      "amended_value": "3379332135.68",
+      "september_value": "3501901812.73",
+      "source_pages": {
+        "original_annual": 101,
+        "original_audit": 12,
+        "amended_annual": 101,
+        "corrected_statements": 24,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "operating_inflow",
+      "label": "经营活动现金流入小计",
+      "original_value": "3527194370.04",
+      "amended_value": "3404624692.99",
+      "september_value": "3527194370.04",
+      "source_pages": {
+        "original_annual": 101,
+        "original_audit": 12,
+        "amended_annual": 101,
+        "corrected_statements": 25,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "operating_outflow",
+      "label": "经营活动现金流出小计",
+      "original_value": "3484208109.96",
+      "amended_value": "3484208109.96",
+      "september_value": "3484208109.96",
+      "source_pages": {
+        "original_annual": 101,
+        "original_audit": 12,
+        "amended_annual": 101,
+        "corrected_statements": 25,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "operating_net",
+      "label": "经营活动产生的现金流量净额",
+      "original_value": "42986260.08",
+      "amended_value": "-79583416.97",
+      "september_value": "42986260.08",
+      "source_pages": {
+        "original_annual": 101,
+        "original_audit": 12,
+        "amended_annual": 101,
+        "corrected_statements": 25,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "capex_cash_paid",
+      "label": "购建固定资产、无形资产和其他长期资产支付的现金",
+      "original_value": "62173312.84",
+      "amended_value": "62173312.84",
+      "september_value": "62173312.84",
+      "source_pages": {
+        "original_annual": 101,
+        "original_audit": 12,
+        "amended_annual": 101,
+        "corrected_statements": 25,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "investing_net",
+      "label": "投资活动产生的现金流量净额",
+      "original_value": "99170943.48",
+      "amended_value": "99170943.48",
+      "september_value": "99170943.48",
+      "source_pages": {
+        "original_annual": 101,
+        "original_audit": 12,
+        "amended_annual": 101,
+        "corrected_statements": 25,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "financing_inflow",
+      "label": "筹资活动现金流入小计",
+      "original_value": "974280000.00",
+      "amended_value": "1096849677.05",
+      "september_value": "974280000.00",
+      "source_pages": {
+        "original_annual": 102,
+        "original_audit": 12,
+        "amended_annual": 102,
+        "corrected_statements": 25,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "financing_outflow",
+      "label": "筹资活动现金流出小计",
+      "original_value": "1100823838.67",
+      "amended_value": "1100823838.67",
+      "september_value": "1100823838.67",
+      "source_pages": {
+        "original_annual": 102,
+        "original_audit": 12,
+        "amended_annual": 102,
+        "corrected_statements": 26,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "financing_net",
+      "label": "筹资活动产生的现金流量净额",
+      "original_value": "-126543838.67",
+      "amended_value": "-3974161.62",
+      "september_value": "-126543838.67",
+      "source_pages": {
+        "original_annual": 102,
+        "original_audit": 12,
+        "amended_annual": 102,
+        "corrected_statements": 26,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "cash_net_increase",
+      "label": "现金及现金等价物净增加额",
+      "original_value": "15613364.89",
+      "amended_value": "15613364.89",
+      "september_value": "15613364.89",
+      "source_pages": {
+        "original_annual": 102,
+        "original_audit": 12,
+        "amended_annual": 102,
+        "corrected_statements": 26,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "cash_begin",
+      "label": "期初现金及现金等价物余额",
+      "original_value": "180316289.42",
+      "amended_value": "180316289.42",
+      "september_value": "180316289.42",
+      "source_pages": {
+        "original_annual": 102,
+        "original_audit": 12,
+        "amended_annual": 102,
+        "corrected_statements": 26,
+        "september_bundle": 12
+      }
+    },
+    {
+      "id": "cash_end",
+      "label": "期末现金及现金等价物余额",
+      "original_value": "195929654.31",
+      "amended_value": "195929654.31",
+      "september_value": "195929654.31",
+      "source_pages": {
+        "original_annual": 102,
+        "original_audit": 12,
+        "amended_annual": 102,
+        "corrected_statements": 26,
+        "september_bundle": 12
+      }
+    }
+  ],
+  "observed_transfer_cny": "122569677.05",
+  "observed_transfer_direction": "cash_receipts_reclassified_from_operating_to_financing_not_operating_payments",
+  "cash_reconciliation": "For both observed versions, operating_net + investing_net + financing_net equals reported cash_net_increase, and cash_begin + cash_net_increase equals cash_end; this arithmetic does not turn a blank exchange-rate-effect cell into an observed zero.",
+  "limitations": [
+    "Only twelve selected consolidated 2025 cash-flow rows were crosschecked; no complete statement, issuer-year chain, or historical PIT coverage is claimed.",
+    "September page 12 visually agrees with original selected values, not amended values; this does not prove the legal identity or replacement status of the entire 136-page file.",
+    "Dash/blank cells (including original other financing receipts and exchange-rate effect) were not converted to zero and are not included as observed numeric inputs.",
+    "The original and amended 2024 comparative columns and other periods are outside this twelve-row crosscheck.",
+    "Exact availability, full amended audit status, replacement/withdrawal chain, usage scope, production snapshot and PIT fixture remain unverified."
+  ]
+}

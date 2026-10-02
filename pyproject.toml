@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "turtle-quant"
+version = "0.1.0"
+description = "Data-source-independent quantitative research rule engine"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+sync = [
+    "akshare",
+    "baostock",
+    "pandas",
+    "pyarrow",
+    "requests",
+]
+test = [
+    "coverage",
+]
+
+[tool.setuptools.packages.find]
+include = ["turtle_quant*"]

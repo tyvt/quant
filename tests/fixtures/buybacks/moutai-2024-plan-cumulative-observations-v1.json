@@ -1,0 +1,132 @@
+{
+  "fixture_version": 1,
+  "captured_at_utc": "2026-09-25T05:27:59Z",
+  "akshare_version": "1.18.74",
+  "capture_policy": "issuer_legal_cumulative_observations_plus_provider_final_row",
+  "sample": {
+    "security_id": "sh.600519",
+    "plan_id": "sh.600519:2024-09-21:capital-reduction",
+    "currency": "CNY",
+    "plan_first_disclosed_on": "2024-09-21",
+    "plan_amount_min": "3000000000",
+    "plan_amount_max": "6000000000",
+    "intended_use": "CANCEL_AND_REDUCE_CAPITAL",
+    "first_execution_date": "2025-01-02",
+    "last_execution_date": "2025-08-29",
+    "akshare_final_row": {
+      "source_interface": "stock_repurchase_em",
+      "observed_shape": [5523, 18],
+      "raw_row": {
+        "序号": 1300,
+        "股票代码": "600519",
+        "股票简称": "贵州茅台",
+        "最新价": "1237.0",
+        "计划回购价格区间": "1744.3",
+        "计划回购数量区间-下限": null,
+        "计划回购数量区间-上限": null,
+        "占公告前一日总股本比例-下限": null,
+        "占公告前一日总股本比例-上限": null,
+        "计划回购金额区间-下限": "5999985966.95",
+        "计划回购金额区间-上限": "5999985966.95",
+        "回购起始时间": "2024-09-20",
+        "实施进度": "完成实施",
+        "已回购股份价格区间-下限": "1408.29",
+        "已回购股份价格区间-上限": "1639.99",
+        "已回购股份数量": "3927585",
+        "已回购金额": "5999985966.95",
+        "最新公告日期": "2025-08-30"
+      }
+    },
+    "legal_cumulative_observations": [
+      {
+        "announcement_number": "临2025-013",
+        "document_date": "2025-04-08",
+        "cumulative_through": "2025-04-07",
+        "cumulative_shares": "1315901",
+        "cumulative_amount": "1948495151.53",
+        "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/04/2025040817580783272.pdf",
+        "sha256": "2e0227ad707b0b5030411ed774de28b540e6bcef289f7ef6f401d65c6dd3e1f7",
+        "evidence_page": 2,
+        "kind": "PROGRESS"
+      },
+      {
+        "announcement_number": "临2025-018",
+        "document_date": "2025-05-08",
+        "cumulative_through": "2025-04-30",
+        "cumulative_shares": "2017483",
+        "cumulative_amount": "3038850762.50",
+        "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/05/2025050810593693161.pdf",
+        "sha256": "de9da873a530071355a42ea6ea1eae3e30bd7b9e52f6a84084c2c36941cae8d1",
+        "evidence_page": 2,
+        "kind": "PROGRESS"
+      },
+      {
+        "announcement_number": "临2025-020",
+        "document_date": "2025-05-17",
+        "cumulative_through": "2025-05-16",
+        "cumulative_shares": "2642129",
+        "cumulative_amount": "4050254683.12",
+        "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/05/2025052211083462270.pdf",
+        "sha256": "8e7031203203a9c6c68d59d7a98a756b18715652abb2b2f6b2ad447cb4ef6802",
+        "evidence_page": 2,
+        "kind": "PROGRESS"
+      },
+      {
+        "announcement_number": "临2025-022",
+        "document_date": "2025-06-05",
+        "cumulative_through": "2025-05-31",
+        "cumulative_shares": "3310085",
+        "cumulative_amount": "5099947291.83",
+        "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/06/2025061613153990084.pdf",
+        "sha256": "e8b99f4f9359b163be4e4911bc9ee270709cc690dd48adf38e96d0f05cfcc07b",
+        "evidence_page": 2,
+        "kind": "PROGRESS"
+      },
+      {
+        "announcement_number": "临2025-026",
+        "document_date": "2025-07-03",
+        "cumulative_through": "2025-06-30",
+        "cumulative_shares": "3382085",
+        "cumulative_amount": "5201527341.83",
+        "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/07/2025070309570769098.pdf",
+        "sha256": "49f0de4a1451e41cb0f743cc45d7833fa680237275de489f11ece9eab99a8b23",
+        "evidence_page": 2,
+        "kind": "PROGRESS"
+      },
+      {
+        "announcement_number": "临2025-030",
+        "document_date": "2025-08-05",
+        "cumulative_through": "2025-07-31",
+        "cumulative_shares": "3451685",
+        "cumulative_amount": "5301459045.23",
+        "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/08/2025081210391740203.pdf",
+        "sha256": "361ae54ff0add9530bf85e57e5d7b8c3a6cc2c5c39dc472c86f11a164fb421a2",
+        "evidence_page": 2,
+        "kind": "PROGRESS"
+      },
+      {
+        "announcement_number": "临2025-032",
+        "document_date": "2025-08-30",
+        "cumulative_through": "2025-08-29",
+        "cumulative_shares": "3927585",
+        "cumulative_amount": "5999985966.95",
+        "url": "https://www.moutaichina.com/eportal/attachDir/mtgf/2025/09/2025090517070797388.pdf",
+        "sha256": "9ad8dda3c43bbc19bf9926394ddf4a030543455910f7ef1b1bb736bd4385215b",
+        "evidence_page": 2,
+        "kind": "FINAL"
+      }
+    ],
+    "cancellation_confirmation": {
+      "source_name": "cninfo_annual_report",
+      "document_date": "2026-04-17",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-17/1225114741.PDF",
+      "sha256": "474905deeaf0f875fc0a1b097a626c0c7852c427faadc5d7fc7816cbf45ea288",
+      "evidence_page": 47,
+      "cancelled_shares": "3927585",
+      "pre_cancellation_shares": "1256197800",
+      "post_cancellation_shares": "1252270215",
+      "cancellation_date": null,
+      "status": "VERIFIED_TRUE"
+    }
+  }
+}

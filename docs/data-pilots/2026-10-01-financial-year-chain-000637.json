@@ -1,0 +1,62 @@
+{
+  "schema_version": "legal_pdf_year_chain_probe_v1",
+  "domain": "financial_statements",
+  "probe_date": "2026-10-01",
+  "security_id": "sz.000637",
+  "issuer": "茂名石化实华股份有限公司",
+  "target_period_end": "2025-12-31",
+  "purpose": "technical_legal_pdf_chain_probe_only",
+  "research_eligible": false,
+  "snapshot_published": false,
+  "production_reader_ready": false,
+  "complete_revision_chain_verified": false,
+  "exact_available_at_utc": null,
+  "catalogue": {
+    "endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+    "stock": "000637,gssz0000637",
+    "column": "szse",
+    "plate": "sz",
+    "query_window": ["2026-01-01", "2026-10-01"],
+    "reported_total": 103,
+    "returned_count": 103,
+    "unique_adjunct_urls": 103,
+    "local_dir": "storage/pilots/financial-000637-2025-chain-2026-10-01",
+    "page_sha256_in_order": [
+      "57ab0110cadef1123441905de4c90ce992f1cdb2d5df5fbbbd7a85626d5426aa",
+      "4b48c18f5ed25368881665485c635b5c93c3f7c60a4959ad5bcf03ecc62883e4",
+      "ba51837344f836526bbd84521d7f8a3bf5f380b61f6948e6b86d35af9601d301",
+      "04bc02c2265967dbf944797b238b5466e672ff6f393e11780d83d1d156a2495b"
+    ],
+    "completeness_scope": "returned_query_pages_only_not_full_version_history"
+  },
+  "prior_four_way_value_probe": "docs/data-pilots/2026-10-01-financial-revision-000637.json",
+  "complete_page_screen_report": "docs/data-pilots/2026-10-01-financial-page-screen-000637.json",
+  "selected_cash_flow_crosscheck": "docs/data-pilots/2026-10-01-financial-cashflow-crosscheck-000637.json",
+  "documents": [
+    {"role": "original_annual_report", "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225248741.PDF", "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-annual-original.pdf", "sha256": "18231670324fb8ab60c264dbaebf4972004a4c153aa5a046dc7be4d2e40646d9", "evidence_pages": [101]},
+    {"role": "original_annual_audit", "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225248743.PDF", "local_path": "storage/pilots/financial-000637-2025-chain-2026-10-01/2025-original-audit.pdf", "sha256": "448049c623801d7b2389f799637eeb8332b8d4cce420fa9ec467790f71ef47c9", "pages": 120, "evidence_pages": [3, 12], "statement_scope_text_verified": "consolidated_and_parent_balance_income_cash_flow_equity_and_notes"},
+    {"role": "correction_announcement", "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460245.PDF", "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-correction.pdf", "sha256": "9f450c4fc9370aeb5023e498cdc1a9601b24f28ffba5ec3d865e97af0bcd346b", "evidence_pages": [21, 25, 26], "correction_scope_stated": "2023_to_2026q1_cash_flow_classification_only", "listed_accountant_document": "special_review_of_prior_period_error_correction_statement_not_full_reaudit"},
+    {"role": "amended_annual_report", "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460240.PDF", "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-annual-amended.pdf", "sha256": "1188d9bcac97cc67fa75424b8382acfbb387384b5e3dfeb71f545d1f90fb4791", "evidence_pages": [101]},
+    {"role": "corrected_statements", "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460244.PDF", "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-corrected-statements.pdf", "sha256": "d568c02d881faecb0e937d189147b4673ceb2680543268ef5bb7136ef13a86b3", "evidence_pages": [25]},
+    {"role": "auditor_special_review_image_only", "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460243.PDF", "local_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-auditor-special-report.pdf", "sha256": "be1ad3b1b42cff24e5b76969a995af107e3bfbaab5f3b921741b6320cd03fe5b", "pages": 10, "evidence_pages": [3, 4], "review_method": "PyMuPDF 2x render; EasyOCR Chinese/English; manual visual verification", "special_review_scope_verified": "bill_discount_business_adjustment_only", "special_review_conclusion": "adjustment_complies_and_fairly_reflects_related_correction", "amended_full_statements_audit_opinion_verified": false},
+    {"role": "later_financial_bundle_partially_reconciled", "source_url": "https://static.cninfo.com.cn/finalpage/2026-09-29/1225584994.PDF", "local_path": "storage/pilots/financial-000637-2025-chain-2026-10-01/2026-09-29-financial-bundle.pdf", "sha256": "a42401180f78bf4d345f2a3a84c15769659c79b14c3b60e7140bb810eb8908db", "pages": 136, "evidence_pages": [3, 8, 12, 125, 129, 131], "review_method": "PyMuPDF page-image screening and contact sheet; manual review of selected statement pages", "checked_audit_report_number": "鹏盛A审字[2026]00179号", "checked_audit_report_date": "2026-04-27", "checked_operating_cash_flow_cny": "42986260.08", "page_ranges": {"original_audit_material_candidate": [1, 120], "auditor_credentials": [121, 124], "2026_half_year_balance_sheets": [125, 128], "2026_half_year_income_statements": [129, 130], "2026_half_year_cash_flows": [131, 132], "2026_half_year_equity_changes": [133, 136]}, "same_index_screened_close_pages": 116, "screening_threshold_empirical": 0.04, "numeric_identity_proven": false, "whole_bundle_version_relation_verified": false},
+    {"role": "2026_half_year_comparison_document", "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-28/1225518161.PDF", "local_path": "storage/pilots/financial-000637-2025-chain-2026-10-01/2026-half-year-report.pdf", "sha256": "f4275a12b793799e36e841cb827d1fb7bd0725838bae19d801db11b3f277055a", "pages": 147, "audit_status": "unaudited", "comparison_scope": "selected 2026 H1 statement headings and line items only"},
+    {"role": "same_day_prospectus_application", "source_url": "https://static.cninfo.com.cn/finalpage/2026-09-29/1225584991.PDF", "local_path": "storage/pilots/financial-000637-2025-chain-2026-10-01/2026-09-29-prospectus-application.pdf", "sha256": "e48fe08527a2de216744c407c13fccd377d4c38c75334a12b399a7cf211ff62c", "pages": 120, "text_search_absent_terms": ["会计差错", "更正", "重新审计", "重审"], "audit_report_term_pages": [75, 85, 117], "search_scope": "extractable_text_only", "amended_full_statements_audit_opinion_verified": false, "legal_replacement_relation_verified": false}
+  ],
+  "observed_revision": {
+    "statement_scope": "CONSOLIDATED",
+    "statement": "cash_flow",
+    "item": "net_cash_from_operating_activities",
+    "unit": "CNY",
+    "original_value": "42986260.08",
+    "amended_value": "-79583416.97",
+    "delta": "-122569677.05"
+  },
+  "blockers": [
+    "Exact public availability timestamps and same-day version order are not verified.",
+    "Auditor special report only covers bill discount adjustment; a full amended-statement audit opinion is not verified.",
+    "2026-09-29 application attachment repeats the original amount on checked pages; no legal replacement or withdrawal relation has been verified.",
+    "The same-day prospectus application does not establish a new full-year audit opinion or legal replacement of the corrected annual report on the checked extractable-text pages.",
+    "No complete withdrawal/re-correction proof, bulk-use licence, immutable production snapshot or real PIT fixture."
+  ]
+}

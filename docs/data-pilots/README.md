@@ -1,0 +1,50 @@
+# 法定 PDF 探针工具的使用边界
+
+本目录保存**来源可行性与缺口证据**，不是生产数据域 `ready` 证明，也不是可发布研究结果。原始 PDF 与目录响应固定在 `storage/pilots/`；渲染图、联系表和相似度结果只是派生检查材料，不替代原文、公告目录、版本 ID 或可用时点。
+
+## 限定原文链与缺口记录
+
+[四个限定样本诊断](2026-10-02-limited-sample-diagnostics.md)冻结单证券、`as_of=2026-09-30`、输出范围与时点选择。离线工具 `scripts/pilots/build_limited_diagnostics.py` 区分“原文观察算术”和“已接纳的 PIT 输入”，不将未知值填零，不调用未就绪 Reader；逐份报告显式标注 `diagnostic_only=true`、`official_selection=false`。本批历史可用性保持 UNKNOWN，仅验证已有纯逻辑的缺口传播，不以法定澄清阻止原文对照，也不因此放宽规则依赖。
+
+[茂化实华单字段补证](2026-10-02-minority-equity-000637.md)只补原版/更正版 2025 年末少数股东权益 `N`，核对跨页表头、期末/期初列与母公司表边界；已知原文不等于已知历史 PIT。`scripts/pilots/verify_minority_equity_000637.py` 离线验证并生成独立证据包，不修改父诊断、原四份报告或生产状态。
+
+[000662 三版年报续查](2026-10-01-annual-recorrection-candidate-000662.md)已固定指定三版年报、两份更正公告及原版独立审计报告；[机器可读清单](2026-10-01-annual-recorrection-chain-000662.json)保留稳定公告 ID、源 bytes 哈希、物理页码及原始目录时间。`scripts/pilots/capture_recorrection_000662.py` 只允许该次目录请求与六个显式 PDF，不覆盖已有抓取目录、不回退第三方。目录分页完整只是请求范围内完整，不是完整修订/撤回宇宙。
+
+原文齐全不等于 PIT 链齐全；目录有非零时分秒也不等于最早可用时刻已核实。股东人数不是股本 `S`，重复原审计报告号不是更正后整份审计意见。[三域限定续查](2026-10-01-public-evidence-gaps-followup.md)同样区分“所核证据不足”和“所有公开 PDF 不可能”，不由关键词未命中推定无事件。
+
+[贝因美核心科目再更正探针](2026-10-01-core-financial-recorrection-002570.md)进一步固定同一 2022 年报的三版，核对收入/成本及资产分类的两轮变化。`scripts/pilots/capture_financial_recorrection_002570.py` 限定四次目录查询及八个法定 PDF，检验跨查询漂移，拒绝覆盖已有目录或回退第三方。专项鉴证标题/用途段年份冲突必须保留为歧义，不能自动纠正年份或提升为整份财报重审证明；金额桥接也不自动产生历史 PIT 输入。
+
+[贝因美公开澄清与平台详情续查](2026-10-02-002570-public-clarification-followup.md)固定 2025-04-01 至 2026-10-01 的十二个标题查询、四个当前公告详情及三个后续年度审计相关 PDF。`scripts/pilots/capture_002570_public_clarification.py` 只调用显式的公开读取请求，保存前端接口来源，拒绝覆盖、重定向和第三方回退。空查询严格核验返回计数，但不证明无更正/无撤回；当前详情和后续年度比较栏不证明最早公开、连续公开或目标年度整份重审。原始抓取时间与后续复核日期分开保留。
+
+## 页级图像筛查
+
+`scripts/pilots/compare_pdf_page_renders.py` 需要本地 PyMuPDF（`fitz`）和 Pillow。示例：
+
+```powershell
+python scripts/pilots/compare_pdf_page_renders.py `
+  storage/pilots/financial-000637-2025-chain-2026-10-01/2025-original-audit.pdf `
+  storage/pilots/financial-000637-2025-chain-2026-10-01/2026-09-29-financial-bundle.pdf
+```
+
+脚本把每页以 0.75 倍灰度渲染并缩到 128×128，计算平均绝对像素差/255；默认 `0.04` **只是本次样本的经验筛查阈值，不是通用标准**。`close_match_count` 是“每个原页至少有一个低于阈值的候选页”的计数，可能被空白版面、多页相似模板或重复页误导；`same_index_close_count` 是相同页码的筛查计数，也**不是**同版证明。低差异不能证明每个数字、审计意见或完整 PDF 相同；高差异可能只因旋转、扫描、盖章、裁切、字体或压缩。脚本结果内固定给出 `identity_proven=false`。
+
+**高差异页必须目视核对；低差异中的关键数值页也必须与原始法定文件逐项核对。** 尤其要检查页码错位、不同期间却共用表格模板、OCR/渲染缺失、重复目录和页内只有少数字符改动。若无法核实数值和版本关系，维持 `UNKNOWN`。图像相似不能证明公告的撤回、替换、首次公开时间或更正后的整份审计意见；这些必须另取法定平台记录或文件正文证据。
+
+`scripts/pilots/pdf_contact_sheet.py` 可为指定页段生成带物理页码的缩略图总览，例如：
+
+```powershell
+python scripts/pilots/pdf_contact_sheet.py `
+  storage/pilots/financial-000637-2025-chain-2026-10-01/2026-09-29-financial-bundle.pdf `
+  storage/pilots/financial-000637-2025-chain-2026-10-01/september-appendix-contact-sheet.png `
+  121 136
+```
+
+联系表只能帮助定位页段，具体标题、日期、数字仍须打开原 PDF 或足够清晰的单页渲染核对。对比前后记录每份原始 PDF 的 SHA-256、页数、来源 URL、公告 ID、检索日期与脚本参数；不要修改原始文件来追求更好的相似度。一个已记录的反例见[茂化实华 9 月归档文件复核](2026-10-01-financial-year-chain-000637.md)：四页旋转并盖章的权益表被默认阈值标为高差异，不能据此断言财务数字变化。
+
+## 完整逐页清单与误匹配边界
+
+筛查输出现包含输入 PDF 的 SHA-256、工具文件 SHA-256、PyMuPDF/Pillow 版本、全部 `page_matches`、候选文件逐页可提取文字计数，而非只有前后十页。工具直接渲染已哈希的原始 bytes，避免报告哈希与被渲染输入不一致。`passes_threshold` 和 `same_index_passes_threshold` 使用未舍入距离判定；显示距离保留六位小数，不能再用显示值自行判断是否过阈值。
+
+`close_candidate_pages` 与 `ambiguous_close_match` 明示一页存在多个近似候选；`candidate_pages_without_close_original_match` 只是“没有原页通过当前图像阈值”的候选页列表，不证明附页、缺页或数值变化。算法不建立一对一对应关系。实际反例：[120→136 页完整筛查清单](2026-10-01-financial-page-screen-000637.json)中，原版第 13、14、19、20 页的最近邻均误落到候选第 60 页，且全部 120 个原页均有多个阈值内候选。不能把 `close_match_count=120` 当成全部页面已核对或版本相同。
+
+`same_index_extracted_numbers_equal` 只比较未规范化的可提取数字串，缺数字时为 `null`，空文本不算相等；页码、日期、抽取顺序、签章和图像缺失都可能影响结果。即使为 `true`，也不证明科目、单位、报表范围或全部图像数字一致；`numeric_identity_proven` 固定为 `false`。茂化实华附件第 1—20、125—136 页没有可提取文字，其余页的分页标签也不同，不能由数字串不等直接推断财务更正。关键科目另做逐项证据对账，不从筛查结果自动产生财务输入。
