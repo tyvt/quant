@@ -1,0 +1,56 @@
+{
+  "schema_version": "financial_2022_000637_scope_v1",
+  "security_id": "sz.000637",
+  "issuer": "茂名石化实华股份有限公司",
+  "as_of": "2026-09-30",
+  "review_date": "2026-10-02",
+  "period_start": "2022-01-01",
+  "period_end": "2022-12-31",
+  "statement_scope": "CONSOLIDATED",
+  "unit": "CNY",
+  "diagnostic_only": true,
+  "official_selection": false,
+  "timing_policy": "UNKNOWN_UNLESS_VERIFIED",
+  "capture": {
+    "path": "storage/pilots/financial-000637-2022-chain-2026-10-02/capture.json",
+    "sha256": "9c302608aa308ac57a1f6e2bd39da614024467f1344bddcad9a54a8841a9dafb"
+  },
+  "previous_2023_review": {
+    "path": "docs/data-pilots/financial-2023-000637-2026-10-02/diagnostic-only.json",
+    "sha256": "6a7ab3c936636796b4ccb49bcb7ad09cbb9ebf6565352b1e402ea2e4cf5211a3",
+    "logical_content_hash": "d8a15652577cef027f737a325bce9265019adf5572c8f5a83ce4a9e9077ddd2f"
+  },
+  "annual": {
+    "role": "original_2022_annual_report",
+    "announcement_id": "1216687772",
+    "pdf_sha256": "527871a9b13735822128d12df2ccf3d8b0c5a020ab5b35e2076ff319ce14d09a",
+    "page_count": 241,
+    "asset_pages": [120, 121, 122],
+    "cashflow_pages": [127, 128, 129],
+    "lease_note_pages": [206],
+    "currency_page": 144,
+    "consolidated_notes_page": 170,
+    "parent_notes_page": 234,
+    "expected": {"E": "879714239.26", "N": "151932084.12", "OCF": "435473652.17", "Capex": "169336831.83", "lease_financing_component": "14537724.60"}
+  },
+  "inquiry_supplement": {
+    "announcement_id": "1217202489",
+    "pdf_sha256": "43c366ffa056d687a056a77a5124984c21bdc8f03b52ac39b7f41177d2e0fa2f",
+    "page_count": 2,
+    "evidence_pages": [1, 2],
+    "interpretation": "CONTROLLING_SHAREHOLDER_PLEDGE_FREEZE_NOT_ANNUAL_FINANCIAL_FIELD_VERSION"
+  },
+  "policy_bridge": {
+    "source_2023_document_role": "original_2023_annual_report",
+    "announcement_id": "1221364107",
+    "pdf_sha256": "0824585f0f067ca45d46101d9e03dd62dba2cd92d308e15e792762a15a109f15",
+    "page_count": 258,
+    "evidence_pages": [86, 87, 132, 133, 134, 135, 156],
+    "reason_page": 86,
+    "table_page": 87,
+    "currency_page": 156,
+    "statement_date": "2022-12-31",
+    "interpretation": "ACCOUNTING_POLICY_ADJUSTMENT_SOURCE_BRIDGE_ONLY_NOT_PIT",
+    "expected_impacts": {"retained_earnings": "1966829.87", "N": "-104.66", "deferred_tax_asset": "38460514.69", "deferred_tax_liability": "36493789.48", "surplus_reserve": null}
+  }
+}
