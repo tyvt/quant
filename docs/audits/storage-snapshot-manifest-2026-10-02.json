@@ -1,0 +1,2247 @@
+{
+  "schema_version": "workspace_integrity_inventory_v1",
+  "baseline_date": "2026-10-02",
+  "scope": "existing_production_snapshots_and_frozen_governance_diagnostics",
+  "file_count": 538,
+  "inventory_sha256": "2f77ef0b7fbf2588d80735f161a39c7d4694a6e5b1c57a612f592018560d1270",
+  "inventory_encoding": "UTF-8 compact JSON array; entries ordered by path; keys path,hash",
+  "files": [
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/corporate_actions/adjustment_factors/part.parquet",
+      "hash": "e6eda4b9211e3067d5f4006d7b1e9147f560951846fa4a5343104b5f9e8926db"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00000.parquet",
+      "hash": "972f7e979f18681924359aaed378693289ad1390b9266674fa496f0d54221f04"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00001.parquet",
+      "hash": "20d68c07650ecde61637952dec4e3898042a692a0a31eea37748fb829fe5ddf1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00002.parquet",
+      "hash": "4e31e816e8e237247047647de13a0e6fac553bc2100378f13a6a3213b7d151ca"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00003.parquet",
+      "hash": "4e3533e5585ef26002ea5688b2253a605230818abc2ab98432b671471af42b01"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00004.parquet",
+      "hash": "39be877f861a1f5c351e850350e20557557502d9b5ec24a89d9e78204217dcbc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00005.parquet",
+      "hash": "13a909140a278dbc99011a3027dfed57de35b7f8d7559da24d97f1c3fe6c93bd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00006.parquet",
+      "hash": "538415041195e4583e0a7f292e19ffde512c5804db14d84bb68337b94be4ffa6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00007.parquet",
+      "hash": "c11ade24cdd7055281a48c0f260575079347b71a6803b5732b83fb6f54fdfad1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00008.parquet",
+      "hash": "5e519d8eeea29983ea9ec73dd52a8c0b693bdb0f98be65699d3869d50d3c944a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00009.parquet",
+      "hash": "b5f48a72984652ac9c2ad01b475d8142ac2c3355d3468878b7f5062ef7583ceb"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00010.parquet",
+      "hash": "325accf2bfeb88e1874612ab81e4db08fb1fe5dd9adebbab420e3714472c8aa2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00015.parquet",
+      "hash": "f106622d497f7d4e1605e66e414996a131f1ab6d5e149582990aac2e384f97bb"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00016.parquet",
+      "hash": "023c4b707bbd654a960621a47cfcdffdbff720de0a2f8d0d7396cf69cf736f48"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00030.parquet",
+      "hash": "556ddc6d2adf42f70013d8043d5f56f2f441f545688515658aedac9f4b16e20c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00033.parquet",
+      "hash": "6eeabe8d0f89f615446bc0509829869213a4fbb9919684f4cc26514bf8a07db5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00040.parquet",
+      "hash": "5808e8b49b5803b48d3d04d03621515f49af50d08973959885cf190cd50ed1ca"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00041.parquet",
+      "hash": "7aee73d44f8e011e6af80e61757182d89b1a2b5f64da492249f77950e5bd87a5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00042.parquet",
+      "hash": "335e60ab0a49d234a6fb52e8431ea5a82ba3d1922ad39bb11c5364c288245564"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00043.parquet",
+      "hash": "4927714db3e9663b927d72f7056e203029c47744206a040fd87cd05ff35cd2ad"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00048.parquet",
+      "hash": "57cd631b973fdb04e00e66dfe33c05baba9b5b8dde1c8a35637012286a82a220"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00049.parquet",
+      "hash": "01875c63bbdf4b2179ff1190d8f88e70eb0feed0dbf53310eb6bb3afe0edc25d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00050.parquet",
+      "hash": "f3937944d8371b1cb2b796d38afbd80c29bf7e51dd3d8c1fd29913275143ce80"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00051.parquet",
+      "hash": "3d0dac51a79584fb06d9e451ecd62525f8126eee0289a77653285147e6048fb7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00052.parquet",
+      "hash": "700c66007555b736348c76fbf520528565e56fd5656d34eedc1f43a693818df2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00053.parquet",
+      "hash": "b152b40a270527536e9905e9765e6a651038b029a53e0985ccc0979782467e7e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00054.parquet",
+      "hash": "bf7e58803b3fcd09d50abf8ed78073510ea186a55f1d78f7cc316f8eb645646e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00055.parquet",
+      "hash": "fe4c16b44353c80f1856fefa9b96314653d91b5f5ef002d52bfcb19db193634a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00056.parquet",
+      "hash": "c397b81f1df83f30ff879015cb71c30bb49b414ab78841b4fca858b001d469e0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00057.parquet",
+      "hash": "69bb667f64572450233c6e3e44a61e84c8a9fd9f1e07e880d3a4d563db804e77"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00058.parquet",
+      "hash": "fec01d32845d7ff92eceb1b5f4d0b5bde543ace36bded62ca9c40086b6ebb057"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00059.parquet",
+      "hash": "e7f2d445b7b69849a71e56dec8dedc7c2ad3d1f1cb530fd239bcd0ca81ac882b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00060.parquet",
+      "hash": "29cbd59267011c62f91da555f8a36ba1818edd17db313e968ab28c3498460948"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00061.parquet",
+      "hash": "6bf9618e220d59052a60178044551e98e5b900f9a50fa4817401d10d45600d80"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00062.parquet",
+      "hash": "873f9e2586b4f1713d687a710c819b036e82bb13baf3052c990cd8afa8e02fb3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00063.parquet",
+      "hash": "b9ec5213d5e477682621311aac230bb17cc46e37d14466dc70bb8afc03dd4e59"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00065.parquet",
+      "hash": "8917a86a222bb7bf7a01776b28013c9efe4226cb947fbed262467b1b1502bbf0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00066.parquet",
+      "hash": "b67e18d7d473f6505921b6116a81bba784ab31944e0fc52ac8a26fadb6e19ce5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00067.parquet",
+      "hash": "c5176b5bd24c474d4f3e493dcc2a70ef5636ba348c185dd4f8c13778d77b394c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00068.parquet",
+      "hash": "e88bcd78d06ace268f3093ed1daad5bf4ac307d754f71db017b09f14df2d8a1a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00069.parquet",
+      "hash": "e79c828fecabd0c254121514d642eeddf0a544036de1120dd842f30ef0aa5f0e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00070.parquet",
+      "hash": "bb1bdc09be537579e7f9017c99c5695274a8333e2a7f3300c9a03252bc040097"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00071.parquet",
+      "hash": "a6ef2d606ecab7f27587c9304297cec785c242cac90a0c4829e7f5420e1ad484"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00072.parquet",
+      "hash": "4ecf88e84c33769f6a6ef4542f0c65b7866c128dffc495bd8c2761ff923a3dbd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00073.parquet",
+      "hash": "3aaf7e3cc3c24b0eb33e8d699fc27afffa8f7924a2b17925d19bef1a7d272f4f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00074.parquet",
+      "hash": "7b7287aa1dd65296b8f12499dc0f4583c4a7bb72214a91fbc5eb3bc32128eb78"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00075.parquet",
+      "hash": "f3d7d420a773fb1df3c34f86916cd6f408dcdbcd684b3af1aabd282540eec89b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00076.parquet",
+      "hash": "99b7dbfd701eacaf0df5bf2ec6559f3db8121d1654f90a848d8f3bf05953ba0e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00077.parquet",
+      "hash": "6b468aaf792c5118b1693453e42d5919824959c1e5ed15b5f1aa5001cf2b0531"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00078.parquet",
+      "hash": "dcd4919d9491c738ff4ec9c562f36e8cc351b78d79e1b871e5c475269c43bbda"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00079.parquet",
+      "hash": "fddf298149afbb7c70ec75fcf140b738c45a18321ba6e856df72394f30646c74"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00080.parquet",
+      "hash": "dc66ee76d6e2c110416490c1cd340263c2b06cfc032be32934354582d111f409"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00081.parquet",
+      "hash": "04e70fe492f2320d5da5748f0f1d1805792cf0427da09c90eeb4dc11f5af57db"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00082.parquet",
+      "hash": "b2c54aa7e90156a06bf0b7965d0c2c59ea2d3f15bb4a293f52987f23f0d9da60"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00083.parquet",
+      "hash": "f41f1222d6bc795fa8425c6098201b90b501c98ee548c4183be17d1b1f8e2723"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00084.parquet",
+      "hash": "55a3dabf8dd263e438f62f94f82f0267856e1a7136c6e24e6f4303b6ac8f07f4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00085.parquet",
+      "hash": "16a9e79f0b44aeaa8b11345a13b21908866c8d6931573ce3be484722f56d4834"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00086.parquet",
+      "hash": "896f198271a3f99778741572a8ae189e671727eb083702432fbd2255e73a2b1a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00087.parquet",
+      "hash": "733354e36beac4b9624612bc85e6fd8e94f2d070d83035ebf2f193d96b7fdfe0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00088.parquet",
+      "hash": "0e110c48bc9533863e5a469955a4e434e236437eb235e1abedb405bcedd4b80a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00089.parquet",
+      "hash": "726bd26c845ca12b748933c6c3e9a3078c609947e262f9a7e8f72dd37e6a7ca7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00090.parquet",
+      "hash": "f4c1adfc4ab4dfd01139a64f402a8c3fa5c2ffdf3efb773e1afff0948a8849a1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00091.parquet",
+      "hash": "e2c05c5651c49cdd12687f725397579c5524f4556e39ed5a857cf5051c5a2edf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00092.parquet",
+      "hash": "0078779d70f5b9ac4110c77a03e8c039645952e960c16a7b85eb2676c0c15ed4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00093.parquet",
+      "hash": "bfe82c827811800d5b44794f9d335489cf165c7c8ef22870da30841a006d2298"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00094.parquet",
+      "hash": "3076207a195af4a46cad935440fd7f2abc362ef1ad74a39d4020adf48fd27401"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00095.parquet",
+      "hash": "dcab992d1ce28ba53107433165dfcd550dd661b91904200a20c4d0f92dfd9f9a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00096.parquet",
+      "hash": "d07f4686f0fe668a11b019803a6200204faa3afd450863e6a7ed759714e01c3d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00097.parquet",
+      "hash": "5341fc80017ec428171d57e548f6f0424dc744316ba9352ce17db34504472e37"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00098.parquet",
+      "hash": "87597206ab298064a6b6391a41c80e5a0e8e4c7bd42593044a22319c487e40dd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00099.parquet",
+      "hash": "c6e14d388d1e52085a712d3967a7784d7acd311ec765e7e9ade938f313ad2103"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00120.parquet",
+      "hash": "e86f8ad129849d76f5c6335b615b6ca92e55c3ac3e1b33269d2585cbb44a8814"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00121.parquet",
+      "hash": "cd87015e185a4a2dcc457427e3153eca9dc112cd9f19752668306a8440ca12a7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00122.parquet",
+      "hash": "f6a544dbd73161eab0018cd04e6fae6e4b7e00fd493ffd430acfee374b6f2f80"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00123.parquet",
+      "hash": "29e23fdfa87d71f8acba39fc8aaf733455a8a3a6dabd4b1cca0155208bda5c5c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00124.parquet",
+      "hash": "120c9915dca9d60edcd781f535fac4a84695684bb2a61326518addf0f9fb25af"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00125.parquet",
+      "hash": "03e4ae6969ee4ae628baa55ce5976ae534d3092fb926d4f5de2eb1408ab40926"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00126.parquet",
+      "hash": "2ed1d08d92f8571f10eec03718158a0026f66082c43a9407115a6533f3386283"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00127.parquet",
+      "hash": "6b6c532065cab2e13b3422c5ac6e7ae6633296a17699539767ec1584d79d5f06"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00128.parquet",
+      "hash": "3fb833ecdf45bc5130a0c6dec67426d2e296678fbea896e7792ef2f14c2441c6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00129.parquet",
+      "hash": "1bd9b401aff94e151b05b4221d78e002bd567903b9f4d2b153cda1c3a55b30f8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00130.parquet",
+      "hash": "aa51f309165a7a8a34c9ddd74cb8b998a93cf5fedf957b0bdf3a58f37448beb0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00131.parquet",
+      "hash": "f551fe665199e44e508ce42dbee5fb9d51012d24e9b0bcd1da0d7903cf5416f6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00132.parquet",
+      "hash": "533d5afd5abb9f5064323bfe47fe7c8b95b701489dad2b306a1cf81cab31d316"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00133.parquet",
+      "hash": "57a5b0c5f0df51a24a142129499d2a052ec5f21329f0087da7b2c0096171257d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00135.parquet",
+      "hash": "ce549fc0af9711304ad526aa0d7832be15d0b60d77a713aecda85474e3c0bba6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00136.parquet",
+      "hash": "deaae840d96a0146c7f5f1350e699794a72b1c99b75e48faf8f519e26768cb77"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00137.parquet",
+      "hash": "c58644d19d02148635ef6d53370492657b18cf31931efd5d1a0a618fc897772e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00138.parquet",
+      "hash": "5fa1112e6e02f3f309f4e845c8ff06402e4413277072beefd3c360aecc6e9e63"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00139.parquet",
+      "hash": "c1102c4e9418ee5d81d8ec73774ce6a86786364aa4249a9b54d52e309fa49e78"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00140.parquet",
+      "hash": "7ae57ebe108372cfab53c5b3b0356699c46647a4414c515cd2b80578dca726a4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00169.parquet",
+      "hash": "f56c952a2b83cc08543c17d081178791a021f8fff2c2a0ab4f2626f43babfffd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00187.parquet",
+      "hash": "a5c418adc858f86fbf436c31767ede8a3c79977cae4bd9a236a77fa15f4e5240"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00189.parquet",
+      "hash": "f6fb0f7d013a13df7163f2c88afbae309589384169309e81a3f27fe04a40f536"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00191.parquet",
+      "hash": "57cc3dabea4af56721dadec2e30e1679ab9bc645a8f31c302c513c736004ac69"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00196.parquet",
+      "hash": "61d523603aa046c1187aaf5c3dda87c64ff778911c2d660c012347a3ddf11e5c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00197.parquet",
+      "hash": "6c3aa02e5962f96f295bb64c9e2c4e50e70035950344c96675a462fa6520dcb3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00200.parquet",
+      "hash": "102c21ddfa04956325fdf7ec9158b6ae920262fabc8af9feb7fc074ff23f67f9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00201.parquet",
+      "hash": "8b74b1794b794439bf1c5033935fd971696e9bf81907a3ed1f858967ac8644e1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00202.parquet",
+      "hash": "6824c43ad8fe25de8e0c8c0c2e0cfeba07f69ec54b97350aa0825889e7a76412"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00203.parquet",
+      "hash": "b7403aba47786af7035341dc744f6e289a436fc0dbba5eb1f281883b8e40e723"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00204.parquet",
+      "hash": "83bdc8949cb2ebc8ed6889fe623abaf41e969e42f325f8cf0821e4e453dbe6fc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00205.parquet",
+      "hash": "978a2c04e9cdb2910956fb4655f6839816961eb03295b74830a169875cefd568"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00206.parquet",
+      "hash": "eabc83dae758c59993ca115f0e06a5a5b1ae2ddfd7f5352c37d8f2965c3c1d77"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00207.parquet",
+      "hash": "0c9dbb4da847ccd9cd4e82b3a6acc7e31a4efba3aba4567680dcce07f545bef0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00208.parquet",
+      "hash": "ca807cb7a83569e30c344f09ba35e2de9ee9264c24d58213d54c070c3770f423"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00209.parquet",
+      "hash": "077b1682cf045e2a75fd136dba9395241e169600da89c8df1f8424e83de833e8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00210.parquet",
+      "hash": "ade99dde06a46fb050600f210143f4a16f7a360e348c9723af02ad606e42d4fc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00211.parquet",
+      "hash": "ed4770eb03b4e92a1700d186ad56d1fa76b8ced0040bf5627bde280bed287c3f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00212.parquet",
+      "hash": "53d2f33cfea4722a21e0d85ef553fc39b909ac0b84f07f81e41a238bc7401819"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00213.parquet",
+      "hash": "a5a1ca8010719d0fd59c9210a7e9f7ee800fd9db9eccd3300fccbf1a22c4eaf6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00214.parquet",
+      "hash": "b4172c76de48568189a588a736104ff1015fb7fb3ad341e856a695b49884448b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00215.parquet",
+      "hash": "c780173e55e346a27e739bfb9dcc73e8f1b72eb05c5108488a9e1c6dd8bf677c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00216.parquet",
+      "hash": "da9b5399daaf4bd782cbc8b52a13c667881bc0e5517df8724b81e4f6b3ae1eae"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00217.parquet",
+      "hash": "066d4e68345635dc172036141d5fea3f2da6e2536a10cf864b4624c35d13a594"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00218.parquet",
+      "hash": "853b223c9feb5bad07f07899c962fd05f959b1560ac47c4d69aad398ac405cde"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00219.parquet",
+      "hash": "23228666dfa2862e4cc7b486cb670085a4b401af93d64890fd39e19de4282403"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00220.parquet",
+      "hash": "6e4625fdab6b40c799a41f69e43fb148a4159d7327332a64eca4451a8edc23df"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00221.parquet",
+      "hash": "17d456c14f2a045c425c69ffca3c693d06a4e2fa5daa4f2ffae6c113aae316d0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00222.parquet",
+      "hash": "4f49a9c316c20bcce2166286199aefbc423bb1ee4ed0ec01b8d6f8311e78c40a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00223.parquet",
+      "hash": "016fbf400fbf8172022f1ff69bce391dad63c5d037f82074bbbc5630115a3153"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00224.parquet",
+      "hash": "9b479f69aaab77732dcf740a198326f779dbb2924a636a10d8bd874ece565928"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00225.parquet",
+      "hash": "65b70543e13e4fdb5ad048211d6bda5ac187c7c3f62262af5d2f7036667600b4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00226.parquet",
+      "hash": "2e35b193b6b9d07c89a8f3519b25e5ca250c7b6233f1e8a6938f344a9d8d88ab"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00227.parquet",
+      "hash": "19d343632b06d4d045ff5ccf44951663c3f3a590476e8bb8114fd0f551902b30"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00228.parquet",
+      "hash": "d9963d7d276feebc2ad3f8511d0fb961b383b2f7e7eada8f13f8e5093e5690a2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00229.parquet",
+      "hash": "d17111b8118b60bf5c8cb8abbab2604ada6d253a93c502a3089924c9c5c65e71"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00230.parquet",
+      "hash": "de8133091b6b296e4d866d4a3f85915e400337d2ef6d5895a064e972810e4be2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00231.parquet",
+      "hash": "87edc727998691856dcafc5689c3986f262b901b53052d0914551b5f9af07a98"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00232.parquet",
+      "hash": "9df1d3b8d1a20e403c82590b64ff36268edb42518ddc8b5e342e02f871369eb8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00233.parquet",
+      "hash": "0907348b2fd5dacd0ccf3989df99dc36c3bba552633547ecdfe3d687e9aaa4dd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00234.parquet",
+      "hash": "7ee854c3c53fca3d6c194875ff9ed25cfaac6b5b2f80a46dae604b9e7201d845"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00235.parquet",
+      "hash": "2231a555a08d67a6f5f76004ed875f3d3cc5f833bcceea3b4fa573bc68ed8aa3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00236.parquet",
+      "hash": "ee3e63f3bd31189558e66d6a745c83f990ced7d845d8a2641bad5420fd68a36a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00237.parquet",
+      "hash": "f392220290cd5c3886ca8602f8b2dc056a9d3c9f6f47d1e8337444c88c68e1a5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00238.parquet",
+      "hash": "8df2e9fe5977ff38b6f3eca5e63329c4cf8aefc633bf2cf2a0fe6c1582d06489"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00239.parquet",
+      "hash": "10c9e9c789f36c7c2fb8deca716f64fc1ff1e53457a508f21c456409a7dbeeac"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00240.parquet",
+      "hash": "15c34f2c884583486f58581cbbee98f2c55a95201842d0ac3861bd2263ba7ee2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00241.parquet",
+      "hash": "bebbdcfbd11c178fce02d6b2fc4bd57a140759487ceb5ec6584c9cf0d85e53c3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00242.parquet",
+      "hash": "589acbf217f374854a0efe08d14af35f9ccf22598e7f7ca56675b84b48c25185"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00243.parquet",
+      "hash": "3f13c6184045a1d0f29bc93a85470c480dbfb0e76dea7ca8e0a7e32049bac92f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00244.parquet",
+      "hash": "79ba85f65765a5402a64d14c03586c91ffbc37fed964b1c1fcb9eefe64cb4053"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00245.parquet",
+      "hash": "afb2d858029241b6b0ea8eebf735c93f933f769a2fc624d66735ef4642525d3e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00246.parquet",
+      "hash": "f4e7bb3f1a9674b899fe6ce0e6c30683de3cd717e510ee81f2de64b378c432cf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00247.parquet",
+      "hash": "af1ed6cdfb43467f6c42a6e273bfcf595aaa983fcf841c611b2b294165bab883"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00248.parquet",
+      "hash": "db8e9c54734622126eeba59861ffe65bc709c1d9adb7aba5b532af9d75d36d97"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00249.parquet",
+      "hash": "af2ddb90886991e1c4702eac9df4b317a02995e6ba72844b28fe344cdd60a831"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00250.parquet",
+      "hash": "37c8accd697565dd5d83ab7f0aed20c2630db2d6008cd0f18bc36b4fec69eeee"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00251.parquet",
+      "hash": "4fe6e0d9cbfccc4b35f336806eb2e22a482c6488dd45547c1abb9ce03a704ebc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00252.parquet",
+      "hash": "bbe2127cf51b7862e2ec0b898b20a8929a3a08a163b0e786bd56293e7a42c310"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00253.parquet",
+      "hash": "7eae94ead2adb39a82d041bbe1fd92bc086e0ee40b087b215d03b5f2dc32a7fa"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00254.parquet",
+      "hash": "4617aa229816d2402bd5856f7d4df552a22f454237380cc2ab60046dc1992013"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00255.parquet",
+      "hash": "73be66a6a86ed31b4af9db7999a6bb3a49f4d42c3e3a55d93d99be7318f91255"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00256.parquet",
+      "hash": "1dab3fb5944083d40bfd8f142bf33dd93a92bd4267217646a1364d48377909fb"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00257.parquet",
+      "hash": "15fa595af49f2f6e47926ea2397071b900ff29da06eb944b4165b57c2d5f159a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00258.parquet",
+      "hash": "dbdd73bec588d471fadf62b5813ba710728fad6c722d1efd8df4e80a5d238fef"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00259.parquet",
+      "hash": "befba1c89ef40b898979eed0140cabf9ccbb264feb7e2eb912fa7893fa4583e6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00260.parquet",
+      "hash": "1d47e1e32ac5488e3c148cd234238106530038167bc28cf70f37961de11d88a3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00261.parquet",
+      "hash": "313bf43a7b667403d7a4f1d5b26cb61c92782e9b49d3a063d87fce2a0b2edcf2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00262.parquet",
+      "hash": "d73a1d539fdec72da86156aed62c9284c5a8e9678a0609813beb69ba6956dacb"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00263.parquet",
+      "hash": "8aaea8d2c883616b2d0457a3b49d21358676bd746d70b00b84bb8127201100b9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00264.parquet",
+      "hash": "e99b06ee44830bf24b5742ff85ea8cbed11ad389646e68de8b5a644b5d5f310c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00265.parquet",
+      "hash": "6404ad7ea95d249846b29c5ab87e6f89f12d7e9e07b7787d68a670c5eb1f2fac"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00266.parquet",
+      "hash": "598322119b56f182088bc9c0a07ab8dac45a2648ee2e1bcdb2ab8bc0c9c5a0c4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00267.parquet",
+      "hash": "d543be13c781503fa065b9f90e643c28dffa3d972decb9f02cd6759a4f25b282"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00268.parquet",
+      "hash": "941bd2af3cc8dfa53a080814029ec879fe75f5d4da183ccb5d9b13fb8a7ee95a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00269.parquet",
+      "hash": "fa56a1ac859496142a1abf1d4cbe46e6ac7b6dffff9d0e61a0ceea0e26b1da0f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00270.parquet",
+      "hash": "6e0932e5969e95c501417cc1ec79b2c0b9f60de823d9c07e9376b147e321c79d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00271.parquet",
+      "hash": "8639fd21c7d499acabe883029347811f1b8b6df8c8e091e1e83f2fd3f6e72525"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00272.parquet",
+      "hash": "49e8eb0410041604b07a93ba510713cf6e80d78ebe36b9f844f00b7bba31853d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00273.parquet",
+      "hash": "f1531e17f692d67fd0bda58185092b41a692f541b3feb98832ac89af695ddbda"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00274.parquet",
+      "hash": "1b76ddc1923230c62121d830f1c1e3dbde609a614a451f7201c602a1d444ac93"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00275.parquet",
+      "hash": "f411e2b78479c55197f048daa6114cc8d529428d82d53f587f9394370ce307b8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00276.parquet",
+      "hash": "970e5e1ac7bea536127d705c2fe0cf6a943b4b65a327a59f87d92c083efc9335"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00277.parquet",
+      "hash": "8101a86a9fd796ebe1623c9fd9da735caad52794bcc0b9ca0e0593896280c1bd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00278.parquet",
+      "hash": "3b298a9cdc284abe9a67fa6f5801cb5fc5790ebda700b826aef3e5785eea2cc7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00279.parquet",
+      "hash": "b63ce885ad77c8fba24faa0dd02f990ec3ee54bc6c2f2ca1655209adae069e1f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00280.parquet",
+      "hash": "1ef94b80ca78b6f65e14ebae9f639c67b1d1e75e7558aab80ab7715136490036"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00281.parquet",
+      "hash": "e36db0384b531e4464fad9a977f92d83ceca4298a88121c1c129b626ff54ee48"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00282.parquet",
+      "hash": "7e2c97e83ea702c364d63e3ea35849eba4f5e32c5500ed38fc6ded6205f48286"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00283.parquet",
+      "hash": "744dcfac475ba424c4c3f94b476d3e15bb01988a7fddf10d99c0699982e9f276"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00284.parquet",
+      "hash": "7d0e954c0e0f0f23f632fc211bbe5ecceaaecc776cbfcab50dd3e407e47e4258"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00285.parquet",
+      "hash": "7aa55d58e2c598136eab219d56eaa72247a43efea6a7c7ea16f4962c141e3722"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00286.parquet",
+      "hash": "3dbf31d9649e71d8e4714f9570ee856d6681c2b8788667e59ce7a281563c7695"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00287.parquet",
+      "hash": "c5a84199f6351cb6d90f0219a27be644183d4d5db0021d643b1098744b8d0d8e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00288.parquet",
+      "hash": "dba134a7904b1e70864329fd246060beb6aa75fce96d508086ed23853c9547c8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00289.parquet",
+      "hash": "73eb3e06223beab93b783c49f7c2944a3374bbe775318573b170adbbc3f56f74"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00290.parquet",
+      "hash": "9209f423b8049bfacc9296bc012f0d71095f82a77b6e35e6c487a349b4e0720d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00291.parquet",
+      "hash": "7d71df97e2eacf36a521cd32641c6c90b907867460da225410248e5fa9db2eda"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00292.parquet",
+      "hash": "be637b29766a387b3cd43fbf6c5ea9317187b38609809c129531148fbeebfa35"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00293.parquet",
+      "hash": "1bd5e119104af0b6380e8b6c86c8b9eaeeb602fd783dbf7dd0f484b06a584bf7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00294.parquet",
+      "hash": "a7f5a0c5d5cf38a2ad639622942312b117a49552f9a6c35665598683f5306df5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00295.parquet",
+      "hash": "6d9f7ce0fd734f2ee9aa92dd8ffab8498d71f757a73407e31a1835c3623bc6e1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00296.parquet",
+      "hash": "8f696954072e2037cdd5ccacbc8c859fdc3fecb9589f159c5ce5ee6b02d01e46"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00297.parquet",
+      "hash": "d0b0ff670035bc43f77790cec20a291dbe06cdf109a0e763ae976adbc8d6d24b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00298.parquet",
+      "hash": "0b976d04df69ce65b2875537d7afba11387d532140b6dd2a9838d6ac6560c1d8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00299.parquet",
+      "hash": "4cfda6c2e0139957cd0437b90c5be2f5d969c895118a3bc9a82aaffce4d853be"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00300.parquet",
+      "hash": "12e6d2635de9563a0d4c19ba2ed3caea401e5dff855cc893062de2c960790352"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00301.parquet",
+      "hash": "3e1b0607cb89f8f39b99cef7ae7990da75723c969c88aa3bb011899771a3e87d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00302.parquet",
+      "hash": "c9796f8cf2bef6d728bea25066ab7919a1fa7d9da447dadd80bb0416da58e212"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00303.parquet",
+      "hash": "a509e91a4f7fddc67c45ddd4bd94cafe9697fb3672fe97656080304257128409"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00304.parquet",
+      "hash": "406ffc1a7893b71a5a77ec1c2eea4c38b7939ffbecacb1b8c1015532f37841b6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-00381.parquet",
+      "hash": "abb0de45b0d6a270c55c54b2281906fc117d7c9cb394d1c321389d170f40ad70"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60000.parquet",
+      "hash": "a6bdd5ece134b945e7765b804418a22f61f09621256e2a8298f7155fd563df58"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60001.parquet",
+      "hash": "44fd2dfc2d1003596e3b36da8484c34cc2ed008b6af14974506329b0628b1c53"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60002.parquet",
+      "hash": "865b03d4f344ac436cf742be6f97c4e311ac35c85b1a4da8e3d33da4584205a7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60003.parquet",
+      "hash": "c46a784fd80f7ee3159d12846b22569429e18482c72d2b8148267ce2d62b7a6f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60004.parquet",
+      "hash": "035dd458e3408935cb508b8a6a893bc949fef5c1fba4838ea409afd709f378fc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60005.parquet",
+      "hash": "25b62e0773bba828986255737b740ae46eb5795e41a9bf874887cf11d8683b5a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60006.parquet",
+      "hash": "57bf2419acfbef46847b67e1be15a6a9fd6b037738da53b092e2c16a3b94f9cf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60007.parquet",
+      "hash": "768a23fc18824948f0619438bf77c92c8862cb5935739c2899cdaf9652d49d86"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60008.parquet",
+      "hash": "dd95a87bff224f611f5011cbdf3c3631d48e5e6c3a7f8c0c7fde51b20fbc7370"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60009.parquet",
+      "hash": "06cf613aa635ae9e25bda95ee23b577efa3a5d71a4e00180199a31cc0d84cfcd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60010.parquet",
+      "hash": "3d38ee58ba6fa16af19053eca66f8ea4b1701417fb19b11b976bfeee102741df"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60011.parquet",
+      "hash": "cd5f33217784678753b3831050c1450df2bf5b57dc73eb056dddfc6f9f73eb4a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60012.parquet",
+      "hash": "827c280c17ac2e89c33bbf68e7a774890afb9c4693d747d3caa8dff4d16519fc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60013.parquet",
+      "hash": "a05b64383ced9798447c1a01451d09bc4c68454b99d493ab71ef928a78624a1e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60014.parquet",
+      "hash": "5ba1bad24b12028e0274d6cc847f9d12f50745c56c97e483e886a03b960159ce"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60015.parquet",
+      "hash": "545f35f5d864455951861564fd722da9d75cf7a8f460bfca07a6159e40a2e968"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60016.parquet",
+      "hash": "daa63232c47a107404022bdf895b3aeb016c2267f5987bb7aa00d84bbd93aeee"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60017.parquet",
+      "hash": "ad78aed852f9380209e260745b1125dcd03e6ca4d90d9a0523745533d41fa234"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60018.parquet",
+      "hash": "f27cd7e3ca696f94d116072b0e39e44dd6952fcea9f0c7e67f3d9063ce76eb64"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60019.parquet",
+      "hash": "00978d17ef25b395c3eae0f6b0dc02b3e1a9cb7507635c64af7db93584afcad8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60020.parquet",
+      "hash": "4b46b5505349c251f100d4054156b533c40a76a62ea910dd2b96fb24ba403e6f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60021.parquet",
+      "hash": "6d6419c7e86c17d5279797e17debf6588bb88e5348e1deebb4731b1b143b42e0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60022.parquet",
+      "hash": "47493448802e09780c1c2f559f4ad9f0cbde5a825e19953e94c8761a28aeaadf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60023.parquet",
+      "hash": "b122251421cb89d5c98b888fec0ad87fc0c9bb9265d8b4d3b120e9e111172d3a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60024.parquet",
+      "hash": "8438f97112fe42a3fdb0cdee1afa2bc6ecfdcc178e9bdf5f775ff769b752cca9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60025.parquet",
+      "hash": "e2aaa63a8e4c353fb6fa3f31cd6f76a6318bebdd45e0c774c63501463d673d72"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60026.parquet",
+      "hash": "5a33669c8e76889c1bd0f203ce42861d57be72772ff0feea1f24b28f495a6628"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60027.parquet",
+      "hash": "dcbac91bdce8c80719ead3e354b9ba8dd043d51984dc349b48c391ee9e5cebda"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60028.parquet",
+      "hash": "1b6eaa4cfff9ab8ae3dfbb72bf9ef3e3c87a5c11171c8b6834833171c319944c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60029.parquet",
+      "hash": "34afa6cf4fd4fbd8ae253e1cfbcc6811f41244b7bbce9dca1fe4f1aa6e1e24d6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60030.parquet",
+      "hash": "467e189febbe5ca34bb3f8bf4d425868be271b0e596c8f0a5ac42f7e819bf898"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60031.parquet",
+      "hash": "b1c0a831f5f527c14abdbeeeeb97d322902d477a1227b332953873e1ef134977"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60032.parquet",
+      "hash": "ad18dcdacbc6267275742fd99c6e69023a9f96d63b7960613fff9108a1776a68"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60033.parquet",
+      "hash": "02dfcabd2d27ff8e7957e9e610717fe406089d09b2c9a3e1635100d1d3521983"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60034.parquet",
+      "hash": "009085c21d9c279ef9fe57ea692f07c180f2de1aa77d5a3f33c384f7e1cfa74a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60035.parquet",
+      "hash": "f7eeeea91ad05abe8fe75df992ecbec53981219ff4541db370688a02ce1eaaec"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60036.parquet",
+      "hash": "34ceb2517cfbe460aceb7cb6434f959c471a90677bbe947d3f1e19d32d8bb2ad"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60037.parquet",
+      "hash": "e8e5971026e1a2587e6164a030bceaf525a4b7503eb7f7d8a96fdcc4983b8514"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60038.parquet",
+      "hash": "af8e1f2bbef20b3772413ddda9636e9f8e448afe755cb5cc738260bdf8a418a9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60039.parquet",
+      "hash": "8dafb57d10c00153b4b1381a12b56c8a88936ec13eb31d7afe3da442982eb1ef"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60040.parquet",
+      "hash": "48d1a17f1556664a4b57831d60f56126f9ec3a210c386bdbeaa7720fa415b049"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60041.parquet",
+      "hash": "596d759fe350144d95d5148be1a74397e1c42156f9362580e9ee831f132b8170"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60042.parquet",
+      "hash": "f63f43632ede3fabed9029cb74b793ef11317f53680375fda16daae0228395c1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60043.parquet",
+      "hash": "4a469d67127111b79395486f4ebb3e104f545e714a79cc9a1e313bfbda3ee3d2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60044.parquet",
+      "hash": "0db5f7f4ab3d0c036607ad16a570891216f01493ed1943dd963e9c09f34e2cb2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60045.parquet",
+      "hash": "719d1f202119220548dcda5a5d180e320c947e73dd99f7ea5acf68893af7a9c7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60046.parquet",
+      "hash": "abc0afb33eca7c43d6b960bfec30e124edbdfd7fa55c7e18d1ba5d163ac9c58f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60047.parquet",
+      "hash": "0b6b789ffc452b626167fe2acbb9e5a522b189fb5dd4332e2cbe01759c00c8a8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60048.parquet",
+      "hash": "3224aaae720bde6ec46afe2edb6599f6c490adfc0faf2ea7929095dfbaed59b3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60049.parquet",
+      "hash": "2b7d2bd203a233263cabf5ecf9f1b358a81fa612354035c41dec431f3e0791fb"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60050.parquet",
+      "hash": "447a1131fe079a063d025d64a80b06fdbe9e7e2e3bb2ff19e323df6d6db66e8f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60051.parquet",
+      "hash": "f8e08fdccb67fe601a639eb4996c4f4f51c33c241892e89d701a6843e2faaecf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60052.parquet",
+      "hash": "877d3f0349ce5ad7dfe5f1aa6a3af1d3e6fb1d68f187cc11a01523daf469bca6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60053.parquet",
+      "hash": "364a1ce410ff64efad5799cd8b8e7f39d6f8acf542ec9f4e75faa91406ac49a0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60054.parquet",
+      "hash": "5320a5b7dac2297d630b15521c897cfb32a250844202057eda7f134c98af8d18"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60055.parquet",
+      "hash": "f9d8c54363b7bc0d966c5574f7c89ce496733ed6a9513065d189aec860af5de3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60056.parquet",
+      "hash": "1918018b55e998c8fe98b5201965b9baabc796bd66a3b64d900d00f1985dd0c7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60057.parquet",
+      "hash": "20608a9e30435ce8c190f3a96f85beeb68853b4d955201adfb053321bdba0adf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60058.parquet",
+      "hash": "8a82f871067deab828e77601447ba204e428424404b2d668efc1695f3b14ed49"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60059.parquet",
+      "hash": "d3c89f54755d35d2ea371fc52fe210ceaedb4635317693d5177292284a5d206e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60060.parquet",
+      "hash": "4eae8a10d692cdb1f009ac980c505e5702ae9ff01aa130e89f3f778013da5e8a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60061.parquet",
+      "hash": "8901b1463ffd9a464d3736d7299fdcfdf6b61a1cd3649cb82c523b7d53d95f0a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60062.parquet",
+      "hash": "91a1199387eb6de42ca068d8e0720839fd8108541105e33c218df63ea65873f4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60063.parquet",
+      "hash": "bb9617949d86c935be5765187e326b45e724d9c21d103d8ec98b01940ca1813b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60064.parquet",
+      "hash": "251adbefa34dd6690e789052fee25481b8d0ca540aa2304bfe9bd3240e30dd39"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60065.parquet",
+      "hash": "54838e67b298aff33a6fea982031ad4bcb0544ff8aa0ef1ebffd05db3708fafd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60066.parquet",
+      "hash": "0633b9a552cb066284c90a78b678235bc1415e67d4478cc96a0fac8e6f100551"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60067.parquet",
+      "hash": "47271fa4519f507e61cd317606777e59eb1644313611ad568f10e512b7b664b9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60068.parquet",
+      "hash": "8121be26cd82ae854c6da54764a45943353014ff8b1c1edcf95d122837ce368e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60069.parquet",
+      "hash": "c3e12be4eb59786eeafb57617a45b68bcd8380cec6553b384a57c710ed1b529c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60070.parquet",
+      "hash": "b833807d153d1bb2a2727b0243db180925ab664e031af5f5b1508a82cfaf91bb"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60071.parquet",
+      "hash": "e2f9f5f67a356814b5b06c95825524e1c6d9b9ee2a6a42ed3d34c574819920c3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60072.parquet",
+      "hash": "2434fa89fe1f179955fee9206f12202bde34475af84e1650ba5151934da90114"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60073.parquet",
+      "hash": "29b0ad04d58d37b8ff3fa923bef6bdf56bfefc82f3044855f246f86d5699796e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60074.parquet",
+      "hash": "de26bc37211ad586a302f315a67149a3e4108c6076235e7f2600e8f76ba67878"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60075.parquet",
+      "hash": "783de899afbf78079a313af4bb701c56e67654683bf220e5701327e76c474498"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60076.parquet",
+      "hash": "f22cf143ad71c582b2572d6a42d803fc6d3dfd6701b0248f7a3cfa86ce017b65"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60077.parquet",
+      "hash": "31bcca2efaa4d0ca711ae97fe3e1aef3d415ad78384a8e2e10f8dd5e6bd1110f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60078.parquet",
+      "hash": "1d43dfb1e4cfc7dc761b12ae5cc0062254fb6c7f483f8a65f5731b78a7e25dc1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60079.parquet",
+      "hash": "081c64a8353bb88e358ab0307e9f5e77e0499044ca1cbed70134a80bab26347d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60080.parquet",
+      "hash": "a754be8357c149950660d50d523a040fa1206534b6e78ba96773585e92fd2488"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60081.parquet",
+      "hash": "c646f54818c4019bb5eb08a57e8b34bdf71fbf1de35a76e719bf331307aec513"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60082.parquet",
+      "hash": "5078086222466da45d5c85aa7ab2ce48aa40a629a84cf57338f8a491bbb8149c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60083.parquet",
+      "hash": "6df5369570e69cbaa37eb9d2773bc3e22a520dcef64cdc538cb4919e48b614a4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60084.parquet",
+      "hash": "0bde90797cc36c4406c324a868c872530d9a37e14a6458cf3badf1d013a4e08c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60085.parquet",
+      "hash": "0e33e41c6b305debd99f953a0d3a6fe393f9a317a15b4feb70f5a7705d24d803"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60086.parquet",
+      "hash": "b336472e3d55f8b65b4ae0d282d261720835c5cf11b0e83986b692fee4d68652"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60087.parquet",
+      "hash": "d7e943259cd5c739e7709247a3af6a6c1fd9a71a0e880ebc262fb67e4a72b6ec"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60088.parquet",
+      "hash": "92338517d62d5e9a7a75025af81d6baf665a645bae78f74a93ddeba79c066ebf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60089.parquet",
+      "hash": "502d86d13d4f63b7c28fce45198d44e2853f94a64f772f5c822bf6cc402958bd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60090.parquet",
+      "hash": "9349424daf530039d306a81fe7594900083858233b9cc73498dd829b039af492"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60091.parquet",
+      "hash": "708fe2e724f7f635a0ccf61a2b1a6f2b05c4d0b3898b228bd051c1ac296929ec"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60092.parquet",
+      "hash": "94e02433b06493cafb48b00e46353f0e0c9a877d4f50ae1f0bc199e51eadb195"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60093.parquet",
+      "hash": "69dd89e872f992ec695c6577894ad81357390552b48193862116e3705a287444"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60094.parquet",
+      "hash": "0fb05800cd564b303504b3aa336be55ddfad276baf8650e283efa02be285bd4b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60095.parquet",
+      "hash": "0b4c4253094767d951fa559779a53dcb404f2c1ac14ea55c339d1ccb5a0ba287"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60096.parquet",
+      "hash": "40a403ae1ae4ef52fcc77f4f3a74fc5f5b5388cfff54d0d1266b1a41b7c24412"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60097.parquet",
+      "hash": "7ceecb5f96470b44ed7e42e8281526816080f8f644fbb124b2d43c321527a5d8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60098.parquet",
+      "hash": "b68000aed1b1791a1d836d76e856fb894f91b0205adee7bd36a229cd3a5a9b5e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60099.parquet",
+      "hash": "7afcbe1aeacd2aac107c2bf343145cfc2811703e781976a1ef292a9a2298cd94"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60100.parquet",
+      "hash": "b78d9d9abbe214cfd48cfe1edf549814b0754f884e327e771ca1bd81cddc9951"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60101.parquet",
+      "hash": "01f243159e052e6d54eb3e8bb4e421f4b5cab33844f3f6135ca97bb52db25903"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60102.parquet",
+      "hash": "312ee3e45089ac55ca812d82c76532d75bc880d00c98a1fcf28aba300f137bca"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60103.parquet",
+      "hash": "e829fbab81dcad5abf84a818a50ad1e1190573fcb4ba154c11cec45d2182b723"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60105.parquet",
+      "hash": "0cb5080171b077765d0cbe46bf98c192357aa0961f5812f80de1b8e430f95525"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60106.parquet",
+      "hash": "0574f6e1940c41014f522a75e29147f62d908a81f5858f6577d977d53f33b4a5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60107.parquet",
+      "hash": "3b7f38620be3fe7f0b8765d07d6806cfc5cc3a930ef3b91d2c025c16eca02608"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60108.parquet",
+      "hash": "7354628832d74b47a73e9fb8bd8468c1942800559b0cf508fc2bde73694940f6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60109.parquet",
+      "hash": "40ccb074f4671fc607b76e792b78014b6c801196f98733e48af7ce5359ecd9c1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60110.parquet",
+      "hash": "5fde802e2c3a4a0b2d71e88edf8c6e89346d0bb1c2c7dec9714d6ee3816bc1d7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60111.parquet",
+      "hash": "d834851df25453bd35d916baf85daaedf58efd1aa5948284aefee3cea59603f2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60112.parquet",
+      "hash": "d83671c90f312ca707a3b3eff953fa6fb30eb7f026ca951aaee0d299f6f8cf21"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60113.parquet",
+      "hash": "6e63265fe98c835caf81a9c6f82f401496e54c37bd72c8741b6ca1e8b3fca28c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60115.parquet",
+      "hash": "b8d1ddd12baf457af873e1d63ffaf27ae4ce03d31836c455c8dfa48f81f01867"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60116.parquet",
+      "hash": "8d29b27911da8259387e7aeb2708817ffcfaa2cc2f830e362f4a41e98eb82faf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60117.parquet",
+      "hash": "bdb3a88bd2cc21c4eb00309010dd8ede2d507c6e9f03b63169b2071772189b20"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60118.parquet",
+      "hash": "0f1dd27126d8acd02c8942e308b4b3723ada7016ffbf210a8ce264a6651fa587"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60119.parquet",
+      "hash": "9a7e71f776ac2383a6a64cb8012411f4f0cd0e2e1a28bf4b9e1ccaf7e22fff1f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60120.parquet",
+      "hash": "b570c88101eacd5db291987b498b6a1463206db150ab6bed951ba4063bf3d233"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60121.parquet",
+      "hash": "1d76eaf0c8fa281d15eef8028f75d573867d5721b582feaf8372ef6f339c770f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60122.parquet",
+      "hash": "aa4de9b32a6cb21763724ed6dd798ef133ea8bb992e0fbbffa92bfc586f19179"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60123.parquet",
+      "hash": "1628c1b4fa9844d74eadaf41bd6064d69e8924e78aa901fa0a645306f0d345b9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60125.parquet",
+      "hash": "503727d997efe8e2fdb10361cbe3db299ab9f522f70fa0fb58a50b9cd590cd70"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60126.parquet",
+      "hash": "1cd1374b07ab8509f43849f39062d592cede3487785888543043ff058794d3da"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60127.parquet",
+      "hash": "7813430c5fe5f692a9fdd2871588d9ec1eccfaf099072289ba636b6602cfc760"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60128.parquet",
+      "hash": "a555c1b50ce8190c1be5cac50981f012f5e929be698b93cbec4ccb885c0f7f6e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60129.parquet",
+      "hash": "9a04d72a02d7b19723cea785d13b19660ce6a5072182b60d2caae18bd1faf0ae"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60131.parquet",
+      "hash": "0b81de7412aca6dd4e4688c4a64d1d10cbb165b35a0b2171e985fba221ebc9ec"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60132.parquet",
+      "hash": "c6849b8405f11a991132033311c0873162a0e9f42e56c43da2eeb1a231342d53"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60133.parquet",
+      "hash": "c33fc29da3d9388d2a1ef95ba45884d43dcea3c8ddbf03056beb50730f128aef"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60136.parquet",
+      "hash": "8bde6eb57de3404f45e9525a3980282c89addb11de0f166c621c9b6ec053a069"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60137.parquet",
+      "hash": "ae98a4628b4a9c0e3d009103ac5e12e9adc90904876be384c5b0a958c02bf3d4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60138.parquet",
+      "hash": "b2288f157b1a2e104b8f2627946d947ce95e1cc97bd9888c49fd40cbabda19bc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60139.parquet",
+      "hash": "9b5076fc55175ee8753a9038909fec1e51d307ba808df6dd3fb07fdd74983cc5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60145.parquet",
+      "hash": "79d51f145ef3d371cb54e77d760ece3e33878bb3fd32f4a5f7a7558fa0524aa5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60150.parquet",
+      "hash": "1bff15d4ddf0424e30f072a8fcd1e4fe507c6160892ab5d7e294701bb95aebaf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60151.parquet",
+      "hash": "7e286d10a09aa4af9c154021af8faa1a9212c35fb6eae75a8a63ad1e71fc48c9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60152.parquet",
+      "hash": "03a44b5e28f62aad3e94b2d9c0072dde87b1317b322eab93a02cb1e27c535b89"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60155.parquet",
+      "hash": "cee0ef9b4e1e5311359c3f802c2e3e4bc1bb6823d92b043b18fc316f8f0a9404"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60156.parquet",
+      "hash": "ba0899f706cd6e326f6863265065ccf4161fa99f58d9600924918670369e54f1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60157.parquet",
+      "hash": "0a188a926df1fbde5cda216aa023d26ec7706b8e238326fd25db00a4a4f7e7ac"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60158.parquet",
+      "hash": "b9f3f44cb3f4280ece4944ba87402130b5131c1af3601780868656d7718ba63d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60159.parquet",
+      "hash": "c1cb2b328cd8fd71bb089f099d0cb46e5e0b9ebd0cc092dae887465838f071d1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60160.parquet",
+      "hash": "5c29ba5acb6a3afe4b33a13044a5e1d73837e5b13689162f9107ae68b59a0c71"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60161.parquet",
+      "hash": "13460c52b446c5872bd3a791b629e92ab54cd0d63235887d8b98138bc39d7151"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60162.parquet",
+      "hash": "391f17bf3dbbb5e9ff1b8b0e47e3cee6c518718cb89fe3f9d9cf76ba7ea93983"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60163.parquet",
+      "hash": "01b2d7b6245e6ed822e906d88fe4ccb0418e869daa10840e667899e1d06aabd5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60165.parquet",
+      "hash": "cfce5631c9980a38014f6039d6d1d78c30161aa679048156f11d364b6c545c16"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60166.parquet",
+      "hash": "52e8f0a820f08dcc6fd3b41b033482155d8a1becef3fe39e9dc60ddf36838ce3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60167.parquet",
+      "hash": "6fb5a852cbd3ece64257912876254a38d36e9bcfd39ca1bdbd62f40fc84ae934"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60168.parquet",
+      "hash": "e8a566ddd075a2c23bfb29c8f6485c729bf6f7759ad3f15ffb032d276d3118d4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60169.parquet",
+      "hash": "12ca230dca581ea4066ef614e64dbd2ee19be39ed9b5a580c1a1505e8735c4f1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60170.parquet",
+      "hash": "5b24d5364d55db719b74f572d1a1d1b2e2ee6e9383bff4d260a975e16a5e05ac"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60171.parquet",
+      "hash": "7e2a1ed5d9c6b40b837155db854339d0b1598e2701114775dbdedb7e09ddb372"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60172.parquet",
+      "hash": "ce2bb6c6962536e881321fc51c0cf9d07b9597cc21173c62c217c48b1c84ff22"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60176.parquet",
+      "hash": "00c85bab3b83947bed3297bd93cc72ff07d4875e7f6563784799a1ee12ae72af"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60177.parquet",
+      "hash": "0ddf8627c5923c588f7e3987f50876a545c11a81ca1e9a172e7d200e12b8ba0e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60178.parquet",
+      "hash": "544f71b4ff101e1ee19368dec876654bbdbaf0593f5d36572523ceeb828af869"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60179.parquet",
+      "hash": "88eec90489052867257cac8c3dc37aa7d4e2ddf0747713e1fcef7aff0989c0c8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60180.parquet",
+      "hash": "a27d2c7b17cbdd2af2f28f9f58c165edea24dfc245c7e39de3770d32953a879d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60181.parquet",
+      "hash": "3fe40c7374f18c540c69f03462afe20aad97982c451eb05ccd908e11b1e9224c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60182.parquet",
+      "hash": "6902702b0056190578d241078ab10994ef05ff4f59acb3101dd6ca9a24678614"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60183.parquet",
+      "hash": "914668617e69b3e721cc8cdb1dedb8b945a7a6c520f6c673ffbd54302cb2c20c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60185.parquet",
+      "hash": "0b37c3122dcaf42e6ea268d93c3297d88baf3d5485a909c71169c80326082db4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60186.parquet",
+      "hash": "2f2b7388746bce0dc0ede2cee0984e9c62534fec1afc2121933c9a52cd296edc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60187.parquet",
+      "hash": "d6d63b5896bc17748eb1846eb98571a14b1e1addb302552f31eae8af705bb657"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60188.parquet",
+      "hash": "9e2d2d8bff9e7299074da4aa790837363814c38bce0b7d4a97f489c7f164fc1a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60189.parquet",
+      "hash": "8249cd2dfbc4d064e6715d0aadd7c1c06fdacb986ed176dae7d3c8610e543905"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60190.parquet",
+      "hash": "c0583002e57167e1c791a4eecd0949014064128842a9113292354d8c3d13ffed"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60191.parquet",
+      "hash": "909730622e56f5438bc354faed092de79d73410db257c2cddb8c531424a1f306"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60192.parquet",
+      "hash": "21fc40e18b58d91acac7d4fe8a8bc35c3fe716a1f67b5ba401bb851bdadc9c8c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60193.parquet",
+      "hash": "c6dcfe3ce9fff37e00c7e82d6aae27b705737ac2c95354844cb3dbffdc7aae6a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60194.parquet",
+      "hash": "56c59f2786259515ee52cafc2fb7dcccceea97a99982b5efd69b9b89221fd342"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60195.parquet",
+      "hash": "8dbb4c2bc803d16cd67be56633f6de4e203db72cad6d1e147faeb4f9240a4a5b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60196.parquet",
+      "hash": "ee8ed995b328fd45c6599108070c4b3f2de7967b5ac4e17fc456f292f5581197"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60197.parquet",
+      "hash": "91a30cd4992748691ed0e23bc36dff2ac167b405fc5bdd5c578ea1e21b48cf54"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60198.parquet",
+      "hash": "00e6ff3b96509390da31430ae59450a9c20bb0758b99a678b107c8c05f712902"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60199.parquet",
+      "hash": "424e825dd5c8cbc3a9ff3e1df63d9ed84e49d4a96cfec8ae033f26703512ac44"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60300.parquet",
+      "hash": "9ad0991c32bab4aeb7833a273befd2f455e2d6ccd1e2ff2e420c084085b761e3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60301.parquet",
+      "hash": "f331e678473717d663c359606493c872ebbee1d538a36b59e531d2d3ddc147f0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60302.parquet",
+      "hash": "1147e9c1d228d9f88b338289065d62c7ec547a9597ec4ac4942fc9c424d20634"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60303.parquet",
+      "hash": "93970d671b257a5f6aa4bef3ed58d93392273293a077ea2ec2c99c302abc11bf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60304.parquet",
+      "hash": "0fee25d88bdf6c5713285acd9d9045e885c47d680ef62990d9513f1cb6e1902c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60305.parquet",
+      "hash": "b38d5ace8e433f87fe0d6e6551b51b825e01b202188125c4b21f51b9f82f56db"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60306.parquet",
+      "hash": "794b259752639ee6dc1ea78584a32e0f6ec784b56ce4322adde35089130a82e9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60307.parquet",
+      "hash": "63fb4a1cfdc7fa70507eee9572eb712b581215b0be03989fb2246837992d8c0d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60308.parquet",
+      "hash": "f9914f61d1eb4dca06deb38b882847fc452cf33c0f74ba0527121f4c2ce2b291"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60309.parquet",
+      "hash": "36415c98d704ab7fa202c17fc73955c88b2cfb049ac7eaeadeb532de4fa13e87"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60310.parquet",
+      "hash": "bd5d542192e4568d11a2660e7600d6bbd01bb2c972fb748e31c7bb9a7858842e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60311.parquet",
+      "hash": "387422adc4750ffaa7103ce3462ed242812fdcc456a8f3959d3d7c830aadd496"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60312.parquet",
+      "hash": "a037da23acdcb77ff8d00bcc755123dbc8db2389c2c579334436890fcc25a99e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60313.parquet",
+      "hash": "b61f93cbc11667c979ec17abdffbfdd036a344410ee93b503e06c0a84f1a9e9b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60315.parquet",
+      "hash": "38c6aa8c3ea01d82d0f83aff5616e2d482163bd74c7386d22ac82f6832ba0ae1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60316.parquet",
+      "hash": "d0e425dd43d444e58b39121b6eccababa99ae2064e3ff6329e7628ef88249778"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60317.parquet",
+      "hash": "4b390fc8cdb9010e2fad3514b1adb2196ced1c9901204ab711188f0c37590895"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60318.parquet",
+      "hash": "64169f41095932e16449b3944ebbb03be2b3104066bb4af19c1634774c38a489"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60319.parquet",
+      "hash": "454785a5eac40f84d9967837a57931ae61c84281a6fccd2a1ef0e3bac7b7cce5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60320.parquet",
+      "hash": "a5de9ab43036af0299b1e0577c11f8b7bc03b5354c46415f722b7c8973958f6c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60321.parquet",
+      "hash": "2f150c41ff76f13be79b1cfba5a24d952050f12be40fadf91835775340e4b66d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60322.parquet",
+      "hash": "27b199574f065d807cf07c8ea8e3f7a4b201abf12af3a7df1b795838625ff928"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60323.parquet",
+      "hash": "12107b75279b0b75208f371e5889c67ea0332884a18704484ada3178bdf99c98"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60324.parquet",
+      "hash": "b2a25ba6fa9298439e11ab9e5f6da6031d877cc680bbbcef54757a0861f9bd8c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60325.parquet",
+      "hash": "4ca6c0c5f0ac78000d631af89963ea1405f554e809edc976e04205afc40fac48"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60326.parquet",
+      "hash": "4aeb93bc094512277627486ff446552b9c4205adca25908ad42d27967aa97f9f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60327.parquet",
+      "hash": "e72e0b0a8c73e0304181694113d9af203ef10662fd9dac28fb21b27e01177517"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60328.parquet",
+      "hash": "b7520e8dd1e381af5b731a3aabfd241e145b2278cadff2d07e44ff83b691f8ba"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60329.parquet",
+      "hash": "8d01c453ae0f8c29b380112fbfd7a67b8a8b5fdf2791627c00e59d82a0a6d6a1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60330.parquet",
+      "hash": "d09a087e9b120fbbc069c66aafc720c51bbf67f4d9a1807473a24aedbe1c7517"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60331.parquet",
+      "hash": "c6af4996be51922af26e3fe0d511bf719fecddcbbdd9738099466bd10e0bd508"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60332.parquet",
+      "hash": "362f3045ff57f5582787726ea6a1a48afe16b48f40a95c7bdc7548af822ded27"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60333.parquet",
+      "hash": "f06be4aceab145c726649cc3d4a2cf94564df03c2e234fdd272530356f218f09"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60334.parquet",
+      "hash": "1d4fa401c0c4e6b49ec9977d38449d14b422742b5f711dfaf5073526b9857e26"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60335.parquet",
+      "hash": "8409a86b62955624b0859989689f8fe4429b8796b391b35587c02c5f485a249f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60336.parquet",
+      "hash": "3aad316d7556c88f9f4c02795983f8d1bda742b5c501774abb800f0260437015"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60337.parquet",
+      "hash": "4ee892f0c8722a96f9cc01cdc2d69f61420535a785577b55561ee5a8aba78987"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60338.parquet",
+      "hash": "fac5034dba283825a11093b881b79d220f1fd54a6ff3e444a9da2f319e4d54fa"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60339.parquet",
+      "hash": "479b34b40b345a74f36f4a5450677b8b72d2e0a3527a40cc6fb91be135e0d562"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60340.parquet",
+      "hash": "a5d807b9676cf9be16e34f7e97e23184e6cec9093a3c5dd8d1f133e49823536d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60341.parquet",
+      "hash": "eae58887614c7617b6fc56b7b8c2578c90ae4a0d935460b19eec466a54ca649c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60342.parquet",
+      "hash": "e7ac32f7ccbcfbf0cc3fb90e195f6fbc297eaa45d36fd1a196d2c801c96369ac"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60343.parquet",
+      "hash": "dece21dc39886b9d9b1d22d586ed24a9e6fc885d1f1ad4be45e91c79a9966cc6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60344.parquet",
+      "hash": "cc12e41043d185e0b6536c9e27236a01f35ab131ff2204f3c517e570bafe21c2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60345.parquet",
+      "hash": "70b65940382005409068aa4070b252b604ba80d4989cba56e32639cdae8f723e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60346.parquet",
+      "hash": "f9f0092a4d4c49779b2d019f931900901eda6063da7a3963b6a8c547c39a77dd"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60347.parquet",
+      "hash": "2fbec3a8de8460f9ae1e953232a61d83d03d5a8707b3cdad3431f2b59fa3ff32"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60348.parquet",
+      "hash": "4f1b567dc47183404ea898b1f2275cdd20b83711cc182cfe1035345a86c92db0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60349.parquet",
+      "hash": "f9c5634af5453dd79ac1dd4de36caf1f3421c06d0f4cdbc966c7b1b3cd345550"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60350.parquet",
+      "hash": "01b249989aa060f6a20a017c4532a667acfd68085b28835ed780b9b415c5a9a3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60351.parquet",
+      "hash": "fe036a876b932f11fc0c37fc74f0b617ae678d21f815286046cb3dff79cb2213"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60352.parquet",
+      "hash": "7741718de346833fa9ec35b01238e053b372db57f48bf7a18e9a4f9cfcd82d3a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60353.parquet",
+      "hash": "878ea76fa0859afea54965c8b6b73838fd7888c249616605a3cd5f98b631a60b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60355.parquet",
+      "hash": "dc0960f1d084f3462a90570d7c53b75acc2e9bd7196191ab236c73767dac89f5"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60356.parquet",
+      "hash": "ee0be3b2d4f548d840d99970af12d3529c32d9207cb05fcd1e8b7eec6501b260"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60357.parquet",
+      "hash": "4dfaf062bef2e3e8eeedd68837ec629df5a0f9371d71144bbfbe80e7b5c5de53"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60358.parquet",
+      "hash": "3dd11c50c8ed6229ea30a857e9b597b8c62554b295cea7a3124e4239c160c740"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60359.parquet",
+      "hash": "465f1c1fec6a3ce9c3c45b4d1ce6fcb4a90f075e079b490ea8f1722e726bb084"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60360.parquet",
+      "hash": "0afdd92575ffc9f23dc9c2aaf6f0553104ab95669cea79929e3de999edf292ea"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60361.parquet",
+      "hash": "dcd4e742f3885a9092e1802361199523ab6f525be7b5ec3437a575f9ba20f280"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60362.parquet",
+      "hash": "0bd994ab7faea5f5ecadf55ddb496e5a86b5ed60ed72b487e925828d21834129"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60363.parquet",
+      "hash": "e78510b1bc84e45b7205d8034557ffde07fe564682bb2a0fffb6c48de420fa44"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60364.parquet",
+      "hash": "e294b81b37be7db08d3d9830ec93d6a6cc520730671fb46263d0044d686cfed4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60365.parquet",
+      "hash": "3919b4d85ab2897a2fe3b1804a391fe201a61cce353d3a10c54fcf26b14208be"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60366.parquet",
+      "hash": "c4b9064f7d1d4dcb6a5cf718cdba2d6e11bc80b6fe9aa7aef959d8f8454e59fc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60367.parquet",
+      "hash": "4316261cabb7bba6fdc6b65d0c23ec768aa6655da89fa4ad8234bb0656253c5c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60368.parquet",
+      "hash": "5f49a7d72bb7cfd1e12d9efb805b46a767dda2f8b647b407afd956eee0f455a2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60369.parquet",
+      "hash": "c4f653080dbb734f4888e9d554ccb7ee10994c3cc517193842f2251b8b165fef"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60370.parquet",
+      "hash": "1c137534506ac4dca0541c4102d0df738bb5c562e424e9b1ee0e8bd25ccaae99"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60371.parquet",
+      "hash": "050dd99deb11a44de3cc8982f651208736ea0f86e4b3dda85a844a375201fc52"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60372.parquet",
+      "hash": "4e17c338fc17a85fae08f80b1ca452b09c1baf375aeebf6f9e238ce6e423b788"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60373.parquet",
+      "hash": "7cd955f3801331e04e2c873bca1116372ad8ffaccd67ee274d5f420a0153af6f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60375.parquet",
+      "hash": "e39a7bf9ed20eb890608cd831361fbd9e90651006a2f68ff1877491928b6970c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60376.parquet",
+      "hash": "bb82b1444543d86c23679d313e41a9554916640475e963584b3de8d155d351b3"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60377.parquet",
+      "hash": "6b3300da7c7c6a94efe5f9fc9146a760ddd13eed81ff3bf28242c5db46f56a7d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60378.parquet",
+      "hash": "63da0b35583300a28eb4a5c517e55bfef83603086c3266c6786d6c332b77fa6b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60379.parquet",
+      "hash": "5c5d0ca951e81c14ff1e52b87c3a8f3ad9fa8f87ca392cef5a8a34908d8e9e8d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60380.parquet",
+      "hash": "a6c7b2a1fde75e55af90672b733d52f459f550cd4dd5b60fbc576f21f9159fc1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60381.parquet",
+      "hash": "0f470c7579e1c788a508aca6588ced6e0f9af809e2068dfe05f243fe00619e65"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60382.parquet",
+      "hash": "8802d603fadc917bc287edacd6e9ee47eed39a652ba7e452a30c35f392663cea"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60383.parquet",
+      "hash": "154131f59f7d0919fdef218f8f44fde3ee1d5e41f58bb54fab42b1b3ef1f8720"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60384.parquet",
+      "hash": "c1b5376f92e4ec1b2000b404121cd3deaceb58176b1ce3ca467639659ffd5e12"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60385.parquet",
+      "hash": "d7b14d9017d01581cddda51268faf1cde77ee2cf903faa15f75ca31a1b1d0de7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60386.parquet",
+      "hash": "d4b8c256f131a6f9c2699958fe4074b5f94675917828454fbdb99f015ac5d8ff"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60387.parquet",
+      "hash": "44ce131daa559329a4989b68719012ee4eb4bae9fe9dcdb73b2d13e9647acb13"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60388.parquet",
+      "hash": "150586eed0dbbcab8e0ca6b6ec278fc91d6184b9df4b71777cffb595d1a6b88b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60389.parquet",
+      "hash": "53b333d1cec821adeac3e25dedf38b6f40e5eec92ccc5dc2b31f75c091d94f2d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60390.parquet",
+      "hash": "061f32bb11fae3251967c8e96024d28a84595a06833a65e84fd37ba7f2e81eaf"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60391.parquet",
+      "hash": "f6703930e71ab5374c3a5641a4acc8d4fdab887396edcbb03ed5ade5adc4994c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60392.parquet",
+      "hash": "35315f6f852e41155192e952a4ecc28b4c9b187dab6bb799e4d5ca271f0da767"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60393.parquet",
+      "hash": "7290a59774f6b179900e0f93f6316f71d56ffc6e651f0ae33ab05254e780815b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60394.parquet",
+      "hash": "5763aff9c7cfc0db2ff3aa5a5ee7fbc98b042c018f38d3d015c0ac0a895c9214"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60395.parquet",
+      "hash": "819c814fadb4c7c50194a918741ca5e6f74cbc777be142f9299495fb64ec5b0c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60396.parquet",
+      "hash": "4d2acaadd94a46c5473b539f1ca3735929be7008923345b95d18ffc71023ea59"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60397.parquet",
+      "hash": "6562b7687ca81bbf5999b24d1608f671caefa2ca0f6ac0a2c784b722533e8ae9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60398.parquet",
+      "hash": "a5a73620e0d63a3cfaff8912f8d1859e5db157fa41287b9f7c9dba1a8f8dc5c2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60399.parquet",
+      "hash": "0bbde984e82c67cffe2639b5e1af7810ea771049f773b7ce7d9441f7cce8ec54"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60500.parquet",
+      "hash": "ba4db9eb30d4fc234ba00a2cf9eba00e44d055d17fee5d9498051009e72c235f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60501.parquet",
+      "hash": "d4988606b4e1cff2b091d0c97e496a83664c6c5eddef3b03d0e7fd1e22f7765a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60502.parquet",
+      "hash": "cff8c8c592a72719470f5e80e88304d4132d359f7e718e4191e43a938c3a5281"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60503.parquet",
+      "hash": "659411c14f1ab0fbc70c5ccde00255185a72b20e3c45e2268cc6e7558dfcb4fc"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60505.parquet",
+      "hash": "59022c24d0efc246007e2a1cfccac581cbfac53860f896f3c59e0150e9db8ff1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60506.parquet",
+      "hash": "be42095047103bdf32ce43621f8c331f48b625906c4d9a9f801569b93f94bc52"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60507.parquet",
+      "hash": "26263c040b2540aaa4d5be2cb07257e38186c125ff17d26c7f7d83838e8d9dd8"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60508.parquet",
+      "hash": "83188a994c05ea602ecebc0fed01bcd5c04c8b7e94f6d4392eb6e6f5d89fa2af"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60509.parquet",
+      "hash": "9702f1ca1059f6e6e163eaf865438d6949f47ca294700ada4bb41c979b364c9b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60510.parquet",
+      "hash": "e9dbcd1fa206a30cc2572223a56d561b01e7a629b2b374640993aa7011a46f68"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60511.parquet",
+      "hash": "2c94dcf47788a64872c629b04295e4c11761f060a84f8073b9dff900bb815e6a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60512.parquet",
+      "hash": "bd58c8da17bb05f0ca648751927240354ee7fbdc7f249d8ea0eec04fd9fa05d4"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60513.parquet",
+      "hash": "d0a89368bc5bf81f2713708a8dd7b505a7872ad61a5f50ec32a4d14503226547"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60515.parquet",
+      "hash": "d65829a524983c2659e9dcaf0cadc1ae21a30f24d3f1d3c879e0b9216fb332be"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60516.parquet",
+      "hash": "206f64a6be22a84a8863d164e60d44054939ea4c0dc89a88a9a2acc83cc25044"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60517.parquet",
+      "hash": "014327de81cd20648d3ed323ddb75d5d2b060fcc49c31a9bba690c473d590102"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60518.parquet",
+      "hash": "726ed74de55c2448d9ed0566d27a25f0ae595768cb773aabb8ca32ac6942d0fa"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60519.parquet",
+      "hash": "d6002ddca3e04d85f873513a71d9577f1161f56142a1570a659b5795ce38d64b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60520.parquet",
+      "hash": "312faffac4d88f4101676163f14b4517c581436fc0089d8302b33cf39075d0e1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60521.parquet",
+      "hash": "0818174c5d297253ad8be2fee2c885e6efc60fcdf87a3067bc98b4a0def77d81"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60522.parquet",
+      "hash": "fe2375e48c50415ef8a297ca513e5aa1a9366c476da7e39a8282717b301d6dca"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60525.parquet",
+      "hash": "53d3d1dc268b5efe8002e2dbd31f25ff1b1dce9fdd3327c1112dacf344134908"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60526.parquet",
+      "hash": "7750b78a9d5dcde3650f9fbe99b7bfe213f2153f05b0d53d59fa924b5a0445d1"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60527.parquet",
+      "hash": "39e0a87b290183797e44ee2ec3b147141d5094bf2d76564801975795a0276935"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60528.parquet",
+      "hash": "b77121cc4108f67e12eda224b2a196d50336060df4d166293f90cb31cda45d71"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60529.parquet",
+      "hash": "97675135d4ea511857814460ac64166046cc1c3859129b6794ae6bc18520a326"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60530.parquet",
+      "hash": "493deac8601b8a3ba64bb2173d7f127cbeb18b5bfc3e814ecd1a21d648017d7d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60531.parquet",
+      "hash": "079ef51ddb499dbb081057bdf21bc04294d9919012e3788e453da8f34893b7b0"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60533.parquet",
+      "hash": "99c7b7f0daabf788e6df09a525af38070387fb9e4cbd45f07b05f4460b9b2cb7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60535.parquet",
+      "hash": "ef6fe0aff8deaeccb03f7d38d09020666891c50e685e0a39b535e40984e4c5f7"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60536.parquet",
+      "hash": "9e8e96be27f591b5d8782009c88595d3ff83ffa4e8125fe9ccc5096825c778f9"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60537.parquet",
+      "hash": "d884a47f90d93b3a583b7c24c76673b535f8db025501b3090a9296419e901b78"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60538.parquet",
+      "hash": "205ee7dedaec2a2bc3e00e21e59948ae9c9ea418111a8da475586b1310e010ce"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60539.parquet",
+      "hash": "148874797046897031f40e78e9e561a11ffeedd15033a85867fc0c3fb86a1a3f"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60548.parquet",
+      "hash": "5884db0e2af89fdf215df80b5f0625eb1bc6aa67b7555154a87bff4dd44d7c0a"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60549.parquet",
+      "hash": "df9d790ea2741408a782db39252c0b5df173e5d79cb9cefdf9133c434c076143"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60550.parquet",
+      "hash": "dfad6a16672b920dbbbe6e52fca35184cf4a542c2556fd6b06980500241b3f7e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60555.parquet",
+      "hash": "1836ee0fd15214dfc37711001daa05a50373bd1200f686baedece3e476ab0abb"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60556.parquet",
+      "hash": "11c5d1e4e54d108797901eb89300f5e7d47628336edb04e710ef45c1f09d0060"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60557.parquet",
+      "hash": "a86cbe21575f52bab3bf80ac6204ab30219806c270a60ac7f13c870eda38d496"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60558.parquet",
+      "hash": "9a1da1143c1be7a65eabdf0450f4548e8904069afc44959b9255f8fad3743470"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/market/raw_daily/part-60559.parquet",
+      "hash": "1b44ef6edb4b6654b6f400cc25ff4dd13bd6c62f027dcfad22ad0597e13e9b9b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/meta.json",
+      "hash": "f8d3c6bdfa0f42449d07dd4a6e0f812105de5902e2fd954298a197a4f324a01b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-16de9d9c4679347d/security_master/part.parquet",
+      "hash": "17b60395666c55949ad4da526b42dfe23c2c177ebf994f40500e89817f8c66e6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-2abff764afcbfb52/calendar/trade_dates.parquet",
+      "hash": "598ded82c83e5fdf501e47cb0e009453552d1f9e107d8e7709a8d3e1756e425c"
+    },
+    {
+      "path": "storage/snapshots/snapshot-2abff764afcbfb52/macro/cn_yield_10y/daily.parquet",
+      "hash": "0ecfa8e7781764e4480bfe88457a806b15b86429875faec0fb2cb7783b98d47d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-2abff764afcbfb52/meta.json",
+      "hash": "b0b47c58cd8348eb8819c77c577c4b905d9a644d8adba54b163d99669e59e880"
+    },
+    {
+      "path": "storage/snapshots/snapshot-2abff764afcbfb52/security_master/part.parquet",
+      "hash": "17b60395666c55949ad4da526b42dfe23c2c177ebf994f40500e89817f8c66e6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-9b72a2666190542a/benchmark/values.parquet",
+      "hash": "d37eb5dc80bf6cf1fe05e55f65aafcb23c9de3353c97fab535306cc8e4797e6d"
+    },
+    {
+      "path": "storage/snapshots/snapshot-9b72a2666190542a/meta.json",
+      "hash": "2339f00bd69b568afe30533c9c953d0459a10509d6e87932aa24eb22bbacc11b"
+    },
+    {
+      "path": "storage/snapshots/snapshot-9b72a2666190542a/raw/response.json",
+      "hash": "5def4a69d92e57d7a42a567e0a28995a1698d437d5776916f0d8d1a5bb7cd863"
+    },
+    {
+      "path": "storage/snapshots/snapshot-a3066c7c6ab6dcd4/calendar/trade_dates.parquet",
+      "hash": "da2f9115bd5c465385417da67a7bca6c584f230cf1416911a7ff06a96f508181"
+    },
+    {
+      "path": "storage/snapshots/snapshot-a3066c7c6ab6dcd4/corporate_actions/adjustment_factors/part.parquet",
+      "hash": "4eaf11261e0502963b8005dbd71ac7765891d2745a51d039236062801b833aa6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-a3066c7c6ab6dcd4/macro/cn_yield_10y/daily.parquet",
+      "hash": "81119494fb2686aa7c920c5fe4d58776bcd2a7946b9e4af2ab95db79e8dc8201"
+    },
+    {
+      "path": "storage/snapshots/snapshot-a3066c7c6ab6dcd4/market/raw_daily/part-600.parquet",
+      "hash": "c3d53df2e50c95cead04fbef0a6aef59434bafaefb3d91587bc7465ef15ee963"
+    },
+    {
+      "path": "storage/snapshots/snapshot-a3066c7c6ab6dcd4/meta.json",
+      "hash": "cd8ed42e1726b94bad80336f06ded569b4330b9a882972769d3f73d1ecf32f9e"
+    },
+    {
+      "path": "storage/snapshots/snapshot-a3066c7c6ab6dcd4/security_master/part.parquet",
+      "hash": "17b60395666c55949ad4da526b42dfe23c2c177ebf994f40500e89817f8c66e6"
+    },
+    {
+      "path": "storage/snapshots/snapshot-d9fa4c6d8933fe39/benchmark/values.parquet",
+      "hash": "934e7599947b92e81cb03a5e7452d4f78ba643cd40aeb3b20d40475b3f429a93"
+    },
+    {
+      "path": "storage/snapshots/snapshot-d9fa4c6d8933fe39/meta.json",
+      "hash": "a66f27d9877eac7d32f47679b9cc4d574b87c1922c6c41b0e5314a48ad90bbd2"
+    },
+    {
+      "path": "storage/snapshots/snapshot-d9fa4c6d8933fe39/raw/response.json",
+      "hash": "10f0d259ab36d3e209ec4e981c08f64c57730d750fbf87cfb87c727545c202ef"
+    }
+  ],
+  "protected_files": [
+    {
+      "path": "RULE_SPEC.md",
+      "sha256": "db43fd01f88a4db7a43859abe45d2d8903fddd765363f4763fe4287eafc33812"
+    },
+    {
+      "path": "docs/releases/v1.3.1.md",
+      "sha256": "1d777d700d3e558b3385ad71120c10dd08f099f7aa2276c0731ad2090e9efdeb"
+    },
+    {
+      "path": "docs/releases/v1.3.1-identity-reattest.md",
+      "sha256": "b1ed1e686749bb4de7ac9917f332584f12707b6454868bf7f391cf608ac0d7cd"
+    },
+    {
+      "path": "docs/releases/v1.3.2.md",
+      "sha256": "839f9f708087f20a81d802fe6cf886303d8ba58db87e259944ade0b7ec2a027f"
+    },
+    {
+      "path": "turtle_quant/adapters/csindex_benchmark.py",
+      "sha256": "0a66bf68ab2fd501b7a13fc96c0a33b25b970b4fcfd6ef3fc7c6b0f090037b71"
+    },
+    {
+      "path": "turtle_quant/pit/parquet_benchmark.py",
+      "sha256": "3a418165b7ebdffa1cdc6599b69f062e00b5f651063e853331ad2befaf9e4393"
+    },
+    {
+      "path": "scripts/pilots/build_limited_diagnostics.py",
+      "sha256": "60fec86b5699d530ace8ac77a04d0c90052327b13fa239995e81e98f63ac1e31"
+    },
+    {
+      "path": "scripts/pilots/verify_minority_equity_000637.py",
+      "sha256": "3644f7a81a8c72caaf579d172b1e17a43fdbb8076b488ced85db347122b83b06"
+    },
+    {
+      "path": "docs/data-pilots/2026-10-02-limited-diagnostic-scope.json",
+      "sha256": "b31c88999c9453d292c4b6e3b60c7f5cbd164598a400582fbb9b95b7e65e14c8"
+    },
+    {
+      "path": "docs/data-pilots/2026-10-02-minority-equity-000637-inputs.json",
+      "sha256": "9b96ef05ae66225f6442401c485a70f3dc30ca890e26b81c6cbfc66a196f3d0c"
+    },
+    {
+      "path": "docs/data-pilots/limited-diagnostics-2026-10-02/shares-000858-diagnostic-only.json",
+      "sha256": "1f1d61210e4e492e0088133038b54b318938a0044f18353b2eb3fd25872ce17b"
+    },
+    {
+      "path": "docs/data-pilots/limited-diagnostics-2026-10-02/shares-000858-diagnostic-only.md",
+      "sha256": "9d2b01afda51e60622088cd0a2ee1c757caf07a1679669ea0ddb4ea20b0653d7"
+    },
+    {
+      "path": "docs/data-pilots/limited-diagnostics-2026-10-02/buybacks-600519-diagnostic-only.json",
+      "sha256": "5b6391b0973284177280925a8a4a02c7bc59eb9c24d0fe9474877ceefbcb8b7b"
+    },
+    {
+      "path": "docs/data-pilots/limited-diagnostics-2026-10-02/buybacks-600519-diagnostic-only.md",
+      "sha256": "7f729ccb10aeb23efadb0e4cdb6da3cc6349a12bc94cd4db434215ef3414cb9b"
+    },
+    {
+      "path": "docs/data-pilots/limited-diagnostics-2026-10-02/cashflow-000637-diagnostic-only.json",
+      "sha256": "5af4fda2cb3d54d67a781e8d5f54bc5f750d4662be5d38be7a91ec444be38f0f"
+    },
+    {
+      "path": "docs/data-pilots/limited-diagnostics-2026-10-02/cashflow-000637-diagnostic-only.md",
+      "sha256": "6df6748ea0c38a3a059ce04b03d7a570483fe3e5425ef388360419fa784e6fd6"
+    },
+    {
+      "path": "docs/data-pilots/limited-diagnostics-2026-10-02/financial-002570-diagnostic-only.json",
+      "sha256": "e09d36515a7014dbb2f206b3a5eea451dbd104aff931ff2599b875f71a732aed"
+    },
+    {
+      "path": "docs/data-pilots/limited-diagnostics-2026-10-02/financial-002570-diagnostic-only.md",
+      "sha256": "b1f043d96e411a8d6988ed637f94c09f78ee32cacdbd008292eddaa59c77168a"
+    },
+    {
+      "path": "docs/data-pilots/minority-equity-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "24c40115f7aa5df002f22b4158d6db5cb25cb3ea64867ae483c0f683fa3233c5"
+    },
+    {
+      "path": "docs/data-pilots/minority-equity-000637-2026-10-02/diagnostic-only.md",
+      "sha256": "39c3bec8a09ddd683754728999e74b21439013860e263115ebae7fbb12bc50eb"
+    }
+  ],
+  "not_a_backup": true,
+  "raw_pdf_capture_inventory_included": false,
+  "note": "538 个生产快照文件；不包含所有 storage/raw PDF。清单可检出变化，不能恢复数据。"
+}

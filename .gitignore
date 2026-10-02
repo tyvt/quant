@@ -2,6 +2,11 @@ __pycache__/
 *.py[cod]
 .coverage
 htmlcov/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
 
 # Raw data snapshots and transient checkpoints are local artifacts.
 /storage/

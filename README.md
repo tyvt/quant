@@ -71,6 +71,20 @@
 
 ## 本地运行
 
+本地 Git 不等于异地备份：代码/规则/文档已纳入版本控制，根目录 `storage/` 的原始 PDF/Parquet
+仍需独立备份。已提交 [538 文件快照哈希清单](docs/audits/storage-snapshot-manifest-2026-10-02.json)
+用于检出变化，不能恢复原始数据；尚未创建远程或异地备份。
+
+先保存代码提交，再运行 [Git 恢复与端到端诊断](docs/testing/diagnostic-e2e-2026-10-02.md)：
+
+```powershell
+python -X utf8 scripts/verify_workspace_integrity.py
+python -X utf8 scripts/pilots/run_diagnostic_e2e.py
+python -X utf8 scripts/pilots/run_diagnostic_e2e.py --check
+```
+
+这是纯技术验收，不补新字段、不授权真实选股或回测；默认输出目录必须不存在。
+
 领域核心仅使用 Python 标准库：
 
 ```bash

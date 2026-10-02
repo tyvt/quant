@@ -1,3 +1,7 @@
 # Approved hashes refer to exact bytes, including existing line endings.
 # Do not apply machine-global newline, clean-filter, or ident transformations.
 * -text -filter -ident
+
+# Explicit approved-file boundary; this governs Git, not editor behaviour.
+RULE_SPEC.md -text -filter -ident
+docs/releases/*.md -text -filter -ident
