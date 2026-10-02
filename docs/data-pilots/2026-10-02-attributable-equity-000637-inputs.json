@@ -1,0 +1,58 @@
+{
+  "schema_version": "attributable_equity_source_supplement_scope_v1",
+  "security_id": "sz.000637",
+  "issuer": "茂名石化实华股份有限公司",
+  "review_date": "2026-10-02",
+  "as_of": "2026-09-30",
+  "period_end": "2025-12-31",
+  "target_field": "attributable_equity",
+  "source_label": "归属于母公司所有者权益合计",
+  "statement_scope": "CONSOLIDATED",
+  "unit": "CNY",
+  "timing_policy": "UNKNOWN_UNLESS_VERIFIED",
+  "diagnostic_only": true,
+  "official_selection": false,
+  "parent_report": {
+    "path": "docs/data-pilots/limited-diagnostics-2026-10-02/cashflow-000637-diagnostic-only.json",
+    "sha256": "5af4fda2cb3d54d67a781e8d5f54bc5f750d4662be5d38be7a91ec444be38f0f",
+    "logical_content_hash": "7f4762710ee73a7d86fb8ca9cef7eb71793124a70533395f366fdb44dfb4bfcf"
+  },
+  "minority_supplement": {
+    "path": "docs/data-pilots/minority-equity-000637-2026-10-02/diagnostic-only.json",
+    "sha256": "24c40115f7aa5df002f22b4158d6db5cb25cb3ea64867ae483c0f683fa3233c5",
+    "logical_content_hash": "744d1408ce8002f560c463db66bfd1d073d0cf600dbeae228941b4fd4bee29ef"
+  },
+  "documents": [
+    {
+      "role": "original_2025_annual_report",
+      "announcement_id": "1225248741",
+      "pdf_sha256": "18231670324fb8ab60c264dbaebf4972004a4c153aa5a046dc7be4d2e40646d9",
+      "header_page": 93,
+      "continuation_page": 94,
+      "field_page": 95,
+      "expected_closing_E_cny": "504623362.49",
+      "expected_opening_comparative_E_cny": "645132659.65"
+    },
+    {
+      "role": "amended_2025_annual_report",
+      "announcement_id": "1225460240",
+      "pdf_sha256": "1188d9bcac97cc67fa75424b8382acfbb387384b5e3dfeb71f545d1f90fb4791",
+      "header_page": 93,
+      "continuation_page": 94,
+      "field_page": 95,
+      "expected_closing_E_cny": "504623362.49",
+      "expected_opening_comparative_E_cny": "645132659.65"
+    }
+  ],
+  "visual_review": {
+    "reviewer": "Codex",
+    "review_date": "2026-10-02",
+    "method": "manual_visual_check_of_2x_raw_pdf_page_renders_after_text_and_geometry_extraction",
+    "pages_per_version": [93, 95],
+    "render_directory": "storage/pilots/attributable-equity-000637-2026-10-02",
+    "verified": ["issuer", "consolidated_scope", "2025_period_end", "yuan_unit", "closing_vs_opening_columns", "attributable_equity_row_above_parent_table", "E_N_total_equity_bridge"],
+    "independent_third_party_review": false,
+    "render_is_source_evidence": false
+  },
+  "boundary": "Supplement only per-version source E. Match N by security, period, scope, unit, version and PDF hash before source alpha arithmetic. E_pit, N_pit, alpha_pit and FCF remain UNKNOWN; no historical availability assumption, Reader or strategy run. Parent/N reports and tools remain unchanged."
+}
