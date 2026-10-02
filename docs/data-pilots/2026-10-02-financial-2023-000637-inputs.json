@@ -1,0 +1,60 @@
+{
+  "schema_version": "financial_2023_000637_scope_v1",
+  "security_id": "sz.000637",
+  "issuer": "茂名石化实华股份有限公司",
+  "as_of": "2026-09-30",
+  "review_date": "2026-10-02",
+  "period_start": "2023-01-01",
+  "period_end": "2023-12-31",
+  "statement_scope": "CONSOLIDATED",
+  "unit": "CNY",
+  "diagnostic_only": true,
+  "official_selection": false,
+  "timing_policy": "UNKNOWN_UNLESS_VERIFIED",
+  "capture": {
+    "path": "storage/pilots/financial-000637-2023-chain-2026-10-02/capture.json",
+    "sha256": "dbb278396aec10978a36e0edf1f81c01134ca296e83bef1c4c320f4b2a227437"
+  },
+  "previous_2024_review": {
+    "path": "docs/data-pilots/financial-2024-000637-2026-10-02/diagnostic-only.json",
+    "sha256": "eb9a362c3ecfbf568f0f61040197a4c213cbbc40dbc40a55fae65a9805bfd2b7",
+    "logical_content_hash": "1de0afdf84b3975d6d79b4d1bb102e08a422a7db980f9f269e8e39306d8a3b9f"
+  },
+  "documents": [
+    {
+      "role": "original_2023_annual_report",
+      "announcement_id": "1221364107",
+      "pdf_sha256": "0824585f0f067ca45d46101d9e03dd62dba2cd92d308e15e792762a15a109f15",
+      "page_count": 258,
+      "asset_pages": [132, 133, 134, 135],
+      "cashflow_pages": [140, 141],
+      "lease_note_pages": [227, 228],
+      "currency_page": 156,
+      "consolidated_notes_page": 189,
+      "parent_notes_page": 249,
+      "lease_note_mode": "NO_FINANCING_DETAIL_IN_FIXED_NOTE_SECTION",
+      "expected": {"E": "728305124.36", "N": "145608980.40", "OCF": "353022150.03", "Capex": "127491365.46", "lease_financing_component": null}
+    },
+    {
+      "role": "amended_2023_annual_report",
+      "announcement_id": "1225460225",
+      "pdf_sha256": "fecc713349f0788576e4b49b67b5974af5b4ba50f2f5a04db88c91b1ad309c92",
+      "page_count": 283,
+      "asset_pages": [134, 135, 136],
+      "cashflow_pages": [141, 142, 143],
+      "lease_note_pages": [247],
+      "currency_page": 158,
+      "consolidated_notes_page": 206,
+      "parent_notes_page": 274,
+      "lease_note_mode": "EXPLICIT_FINANCING_COMPONENT",
+      "expected": {"E": "728305124.36", "N": "145608980.40", "OCF": "246804136.31", "Capex": "127491365.46", "lease_financing_component": "10104914.34"}
+    }
+  ],
+  "earlier_correction_notice": {
+    "announcement_id": "1222163844",
+    "pdf_sha256": "ca8a634bdadfb0878bea7cce7b41ef0a68ca2c17a91c2a5dac4cf4c1510ec74e",
+    "page_count": 17,
+    "evidence_pages": [1, 2, 3],
+    "interpretation": "AUDITOR_APPOINTMENT_INTEGRITY_RECORD_DISCLOSURE_NOT_ANNUAL_FINANCIAL_FIELD_VERSION"
+  }
+}
