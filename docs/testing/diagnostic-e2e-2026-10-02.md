@@ -52,3 +52,11 @@ python -m unittest discover -s tests -q
 这里证明的是**可恢复代码的管线行为和确定性**，不是必要输入完整、历史 PIT 可用或策略有效。九个未就绪域、真实编排、官方 Top-N 与真实回测权限均不改变。
 
 实际运行结果另见生成的 [验收报告](diagnostic-e2e-2026-10-02/e2e-report.md)。
+
+## 2026-10-02 实际验收
+
+- 从提交 `121375c210ced8e210d4e23bda2fd9e57eb4f2c8` 恢复运行代码；恢复模式不依赖宿主 Python 源码导入。
+- 端到端运行及 `--check` 均通过；验收报告逻辑内容哈希为 `14ede4eeb01f5afe57e0dc1bfaab922e4f50507d7a0dac959cf94f84cad9da60`。
+- 新增 27 项恢复/管线回归通过；完整 `python -X utf8 -m unittest discover -s tests -q`：427 项通过，无跳过。
+- `git fsck --full` 通过；规则、历史发布记录、基准代码、旧报告和 538 文件快照清单均保持原字节身份。
+- 本地 Git bundle 只能作为可搬移的副本；即使通过恢复验证，仍不构成外部磁盘或异地备份。不要因本地 bundle 存在而删除唯一原始数据。
