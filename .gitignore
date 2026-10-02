@@ -4,4 +4,4 @@ __pycache__/
 htmlcov/
 
 # Raw data snapshots and transient checkpoints are local artifacts.
-storage/
+/storage/
