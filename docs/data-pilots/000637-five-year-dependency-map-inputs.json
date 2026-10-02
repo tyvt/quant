@@ -1,0 +1,51 @@
+{
+  "schema_version": "five_year_dependency_map_scope_v1",
+  "security_id": "sz.000637",
+  "as_of": "2026-09-30",
+  "review_date": "2026-10-02",
+  "years": [2021, 2022, 2023, 2024, 2025],
+  "timing_policy": "UNKNOWN_UNLESS_VERIFIED",
+  "diagnostic_only": true,
+  "sources": {
+    "2021": {
+      "path": "docs/data-pilots/financial-2021-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "246c32d36c902c541207bb7af3e4973c1b3a4a85e817b6b3bd0f1d87521935a9",
+      "logical_content_hash": "11a4fe0706e17f60620ee22cd1e63d13a06387cb23b81e9c20b26f7645b885be"
+    },
+    "2022": {
+      "path": "docs/data-pilots/financial-2022-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "64edebf28344c736c2b72a807ad736d5138cbde67f610cf2e3494ace8db71eb2",
+      "logical_content_hash": "6243613599088a3dfadf925f2cf3288faf7323033a1b099c3bb3e7aa254848d8"
+    },
+    "2023": {
+      "path": "docs/data-pilots/financial-2023-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "6a7ab3c936636796b4ccb49bcb7ad09cbb9ebf6565352b1e402ea2e4cf5211a3",
+      "logical_content_hash": "d8a15652577cef027f737a325bce9265019adf5572c8f5a83ce4a9e9077ddd2f"
+    },
+    "2024": {
+      "path": "docs/data-pilots/financial-2024-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "eb9a362c3ecfbf568f0f61040197a4c213cbbc40dbc40a55fae65a9805bfd2b7",
+      "logical_content_hash": "1de0afdf84b3975d6d79b4d1bb102e08a422a7db980f9f269e8e39306d8a3b9f"
+    },
+    "2025_cashflow": {
+      "path": "docs/data-pilots/ocf-capex-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "72d245b8136f93c48c0a366e5eafcf549862f6faa75b4523d4c618c2ec0299c0",
+      "logical_content_hash": "059ccf34098000d14265e8041a6bbaff2a5460c8595c85846dfca58c34edfd02"
+    },
+    "2025_lease": {
+      "path": "docs/data-pilots/lease-cash-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "b614e7c8901bd8c1ac81b16d2501e6ccf68e557841c12d51e7c74c8b61cea022",
+      "logical_content_hash": "4f85206bebdc3497ae7fc77bfbc26d899a3b214e6d5bd2cd4b225d6857018425"
+    }
+  },
+  "next_probe": {
+    "status": "SELECTED_NOT_EXECUTED",
+    "security_id": "sz.000637",
+    "version": "original_2021_annual_report",
+    "announcement_id": "1212743936",
+    "dependency": "verified_available_at",
+    "maximum_official_read_requests": 4,
+    "assumption_authorized": false,
+    "stopping_condition": "VERIFIABLE_AVAILABILITY_EVIDENCE_OR_BOUNDED_INSUFFICIENT_EVIDENCE"
+  }
+}
