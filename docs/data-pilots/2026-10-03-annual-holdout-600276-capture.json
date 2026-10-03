@@ -1,0 +1,62 @@
+{
+  "schema": "annual-holdout-capture-v1",
+  "plan_sha256": "3934fa73516c791da9e4bc2b5a17a6d98c97a3f8e73568bdbe2e3e58439a833a",
+  "capture_code_sha256": "d0e68831fafd57154bcd8139329f3d788c88a300aa5ec38edbcdc639f9756211",
+  "source": {
+    "security_id": "sh.600276",
+    "issuer": "江苏恒瑞医药股份有限公司",
+    "fiscal_year": 2024,
+    "version": "declared_2024_annual_report",
+    "announcement_id": "1222961962",
+    "url": "https://static.cninfo.com.cn/finalpage/2025-03-31/1222961962.PDF",
+    "pdf_path": "storage/pilots/annual-holdout-600276-2026-10-03/annual.pdf",
+    "pdf_sha256": "7fad40fef23755f81ce5322f45483ea257ef026ebf1f7f5655c8d5998d7049fc",
+    "page_count": 249
+  },
+  "resources": [
+    {
+      "name": "catalogue.json",
+      "method": "POST",
+      "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "request_data": {
+        "pageNum": 1,
+        "pageSize": 30,
+        "column": "sse",
+        "tabName": "fulltext",
+        "stock": "600276,gssh0600276",
+        "searchkey": "2024年年度报告",
+        "secid": "",
+        "plate": "",
+        "category": "",
+        "trade": "",
+        "seDate": "2025-01-01~2025-06-30",
+        "sortName": "time",
+        "sortType": "asc",
+        "isHLtitle": "false"
+      },
+      "http_status": 200,
+      "sha256": "78145e9dd16e3727e81b8f20f5b9f8cace1b69767529130c2160c17161564da2",
+      "bytes": 1420,
+      "request_started_at_utc": "2026-10-03T06:45:37.093580+00:00",
+      "response_received_at_utc": "2026-10-03T06:45:37.326519+00:00"
+    },
+    {
+      "name": "annual.pdf",
+      "method": "GET",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-03-31/1222961962.PDF",
+      "request_data": null,
+      "http_status": 200,
+      "sha256": "7fad40fef23755f81ce5322f45483ea257ef026ebf1f7f5655c8d5998d7049fc",
+      "bytes": 7710195,
+      "request_started_at_utc": "2026-10-03T06:45:37.327474+00:00",
+      "response_received_at_utc": "2026-10-03T06:45:38.297279+00:00"
+    }
+  ],
+  "catalogue_time_raw_ms": 1743350400000,
+  "scope_sha256": "5d6a2ae75b279e10ca9642e995e99f1093019fdc77e2676c4a7fb6fc440a629c",
+  "pdf_body_read": false,
+  "exact_available_at_utc": null,
+  "complete_revision_chain_verified": false,
+  "snapshot_published": false,
+  "production_reader_ready": false
+}

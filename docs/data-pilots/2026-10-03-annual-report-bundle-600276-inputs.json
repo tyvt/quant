@@ -1,0 +1,18 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sh.600276",
+      "issuer": "江苏恒瑞医药股份有限公司",
+      "fiscal_year": 2024,
+      "version": "declared_2024_annual_report",
+      "announcement_id": "1222961962",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-03-31/1222961962.PDF",
+      "pdf_path": "storage/pilots/annual-holdout-600276-2026-10-03/annual.pdf",
+      "pdf_sha256": "7fad40fef23755f81ce5322f45483ea257ef026ebf1f7f5655c8d5998d7049fc",
+      "page_count": 249
+    }
+  ],
+  "reference_reports": []
+}
