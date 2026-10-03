@@ -10,3 +10,6 @@ htmlcov/
 
 # Raw data snapshots and transient checkpoints are local artifacts.
 /storage/
+
+# Full native audit pages remain local; publish evidence-index.json instead.
+/docs/data-pilots/annual-audit-assessment-2026-10-04-v1/diagnostic-only.json

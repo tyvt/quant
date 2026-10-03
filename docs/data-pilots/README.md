@@ -103,6 +103,11 @@ stdout/stderr 的 canonical 拒绝记录；冻结 Git 代码实际重放必须�
 主表被阻断；零候选行不计为附注规则通过或失败。审计类型仅为原文观察，首次结果
 由冻结 Git 代码逐字节重放，本轮不修复新样本、不导出真实硬门输入。
 
+[叙述式审计入口证据条件评估](2026-10-04-annual-audit-narrative-assessment.md)复核十一家、
+十四个已固定 PDF 的既有审计观察，并对八份未知保存九个显式源页。未实现叙述式解析器；
+意见文字、报告号和条件性责任条款不自动变成审计类型、最新版本或硬门结论。
+建议下一项只提取有界意见原文块，不合并币种、租赁或金额边界修复。
+
 [四个限定样本诊断](2026-10-02-limited-sample-diagnostics.md)冻结单证券、`as_of=2026-09-30`、输出范围与时点选择。离线工具 `scripts/pilots/build_limited_diagnostics.py` 区分“原文观察算术”和“已接纳的 PIT 输入”，不将未知值填零，不调用未就绪 Reader；逐份报告显式标注 `diagnostic_only=true`、`official_selection=false`。本批历史可用性保持 UNKNOWN，仅验证已有纯逻辑的缺口传播，不以法定澄清阻止原文对照，也不因此放宽规则依赖。
 
 [茂化实华单字段补证](2026-10-02-minority-equity-000637.md)只补原版/更正版 2025 年末少数股东权益 `N`，核对跨页表头、期末/期初列与母公司表边界；已知原文不等于已知历史 PIT。`scripts/pilots/verify_minority_equity_000637.py` 离线验证并生成独立证据包，不修改父诊断、原四份报告或生产状态。
