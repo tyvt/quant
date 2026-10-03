@@ -262,11 +262,13 @@ class AnnualAuditAssessmentTests(unittest.TestCase):
             with patch.object(assessment, "verify_parser"), self.assertRaises(ValueError):
                 assessment.build_assessment(canonical_bytes(scope))
 
-    def test_current_offline_rebuild_exact_no_network(self):
+    def test_frozen_offline_rebuild_exact_no_network(self):
+        from scripts.pilots.replay_frozen_annual_audit_assessment import replay_frozen_assessment
         with patch("requests.sessions.Session.request", side_effect=AssertionError("network forbidden")):
-            report = assessment.build_assessment(self.raw_scope)
-        self.assertEqual(canonical_bytes(report) + b"\n", self.raw_report)
-        self.assertEqual(assessment.markdown(report), (self.directory / "diagnostic-only.md").read_bytes())
+            replay = replay_frozen_assessment(self.scope_path, self.directory,
+                                             "88fcd1763339cc792a5c63f2be93f3b50cb9bf1a")
+        self.assertEqual(replay["json_sha256"], hashlib.sha256(self.raw_report).hexdigest())
+        self.assertEqual(replay["markdown_sha256"], hashlib.sha256((self.directory / "diagnostic-only.md").read_bytes()).hexdigest())
 
 
 if __name__ == "__main__":

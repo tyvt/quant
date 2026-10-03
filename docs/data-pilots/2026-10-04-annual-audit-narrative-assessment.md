@@ -150,6 +150,10 @@ UNKNOWN 均在范围内。同输入离线重建逐字节一致，`--check` 通�
 公开提交链从远端 `5bf686c` 重建；这不是在后续提交删除原文后仍推送其历史。
 公开索引具有自己的哈希，不冒充完整 JSON 的身份。`.gitignore` 不是访问控制，
 后续仍须检查待推送历史，不能用 `git add -f` 上传本地全文。
+后续[公开索引 v2](annual-audit-assessment-2026-10-04-v1/evidence-index-v2.json)补充官方 URL
+及代码身份，全文仍不外传。当前代码已扩展原文块入口，不能再用当前 CLI 覆盖本评估；
+使用 `replay_frozen_annual_audit_assessment.py` 与公开冻结提交
+`88fcd1763339cc792a5c63f2be93f3b50cb9bf1a` 实际重放，原 JSON/Markdown bytes 不变。
 公开可读不等于已取得本项目对完整原文的外传授权，不自动沿用此前代码／字段报告的推送范围。
 
 ```powershell

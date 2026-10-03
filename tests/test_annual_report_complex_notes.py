@@ -1,6 +1,7 @@
 """Complete note-cell syntax only: preserve geometry, money, UNKNOWN and old bytes."""
 
 from collections import Counter
+from copy import deepcopy
 from dataclasses import replace
 import json
 from pathlib import Path
@@ -175,11 +176,18 @@ class ComplexNoteRealRegressionTests(unittest.TestCase):
         return [r for r in self.reports[sid]["bundles"][0]["balance_sheet_row_inventory"]
                 if (r["source_label"], r["binding"]["physical_page"], tuple(r["binding"]["label_box"])) in keys]
 
-    def test_current_JSON_and_markdown_reproduce_new_directories(self):
+    def test_frozen_JSON_and_markdown_reproduce_original_directories(self):
+        from scripts.pilots.replay_frozen_annual_bundle import replay_frozen_bundle
         for sid, report in self.reports.items():
             directory = ROOT / f"docs/data-pilots/annual-complex-notes-{sid}-2026-10-03-v1"
-            self.assertEqual(canonical_bytes(report) + b"\n", (directory / "diagnostic-only.json").read_bytes())
-            self.assertEqual(markdown(report), (directory / "diagnostic-only.md").read_bytes())
+            scope = ROOT / f"docs/data-pilots/2026-10-03-annual-report-bundle-{sid}-inputs.json"
+            replay = replay_frozen_bundle(scope, directory, "88fcd1763339cc792a5c63f2be93f3b50cb9bf1a")
+            # Only the new audit raw-block observation differs; compare all old
+            # bundle fields in addition to actually replaying JSON and Markdown.
+            bundles = deepcopy(report["bundles"])
+            for bundle in bundles:
+                bundle["audit_text_observation"].pop("narrative_opinion_block")
+            self.assertEqual(bundles, replay["report"]["bundles"])
 
     def test_all_133_old_rows_gain_syntax_not_semantic_certification(self):
         self.assertEqual([len(self.formerly_blocked(sid)) for sid in self.reports], [36, 49, 48])

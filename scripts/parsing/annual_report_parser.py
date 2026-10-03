@@ -273,6 +273,82 @@ def _lease(pdf, source):
     return result
 
 
+def _audit_narrative_block(pdf, source):
+    """One exact, same-page title pair; raw words, NOT opinion classification.
+
+    Row joins below are search/guard keys only. Evidence retains each original
+    word and box. No number/date normalization, whole-report review or PIT.
+    """
+    if pdf.sha256 != source["pdf_sha256"]:
+        raise ValueError("audit block PDF/source hash mismatch")
+    result = {"state": "NOT_IDENTIFIED", "physical_page": None, "lines": [], "binding": None,
+              "opinion_type_inferred": None, "audit_gate_result": None,
+              "report_object_verified": False, "whole_audit_report_reviewed": False,
+              "public_availability_verified": False, "latest_audit_version_verified": False,
+              "report_number": None, "report_number_state": "NOT_EVALUATED",
+              "amended_whole_statement_audit_status": "UNKNOWN"}
+    start_title, end_title = "一、审计意见", "二、形成审计意见的基础"
+    pages = [(page, _lines(page.words)) for page in pdf.pages]
+    starts, ends = [], []
+    for page, groups in pages:
+        for index, group in enumerate(groups):
+            key = compact("".join(w.text for w in group))
+            if key == start_title:
+                starts.append((page, groups, index))
+            if key == end_title:
+                ends.append((page, groups, index))
+    if not starts and not ends:
+        return result
+    if len(starts) != 1 or len(ends) != 1:
+        return {**result, "state": "TITLE_PAIR_MISSING_OR_NOT_UNIQUE"}
+    page, groups, first = starts[0]
+    end_page, _, last = ends[0]
+    if page.number != end_page.number or first >= last:
+        return {**result, "state": "TITLE_PAIR_NOT_SAME_PAGE_ORDER"}
+    result["physical_page"] = page.number
+    selected = groups[first:last + 1]
+    if not inside(page, [w for group in selected for w in group]):
+        return {**result, "state": "BLOCK_GEOMETRY_UNSUPPORTED"}
+    # Reject overlap/parallel columns rather than inventing paragraph order.
+    if any(any(a.box[2] > b.box[0] + 0.01 or b.box[0] - a.box[2] > 40
+               for a, b in zip(group, group[1:])) for group in selected):
+        return {**result, "state": "BLOCK_GEOMETRY_UNSUPPORTED"}
+    body = groups[first + 1:last]
+    keys = [compact("".join(w.text for w in group)) for group in body]
+    if any(re.match(r"^(?:[（(][一二三四五六七八九十0-9]+[）)]|[一二三四五六七八九十0-9]+[、.．])", k)
+           for k in keys):
+        return {**result, "state": "NESTED_OR_OTHER_SECTION_UNSUPPORTED"}
+    context = "".join(compact("".join(w.text for w in group)) for group in groups[:first])
+    if any(k in context for k in ("专项审核", "专项鉴证", "审阅报告", "示例", "例：", "引用",
+                                  "关键审计事项", "其他信息")):
+        return {**result, "state": "NON_ANNUAL_AUDIT_CONTEXT_UNSUPPORTED"}
+    issuer = compact(source["issuer"])
+    prefix = r"^我们审计了(?:后附的)?" + re.escape(issuer) + r"(?:的|[（(]|财务报表)"
+    opinions = [i for i, key in enumerate(keys) if key.startswith("我们认为，")]
+    if not keys or not re.match(prefix, keys[0]) or len(opinions) != 1 or opinions[0] == 0:
+        return {**result, "state": "OBJECT_OR_OPINION_SENTENCE_UNSUPPORTED"}
+    split = opinions[0]
+    audited = "".join(keys[:split])
+    dates = re.findall(r"([0-9]{4})年12月31日", audited)
+    if (not dates or dates[0] != str(source["fiscal_year"]) or "财务报表" not in audited
+            or not ("合并及公司" in audited or "合并及母公司" in audited)
+            or not keys[split - 1].endswith("。") or not keys[-1].endswith("。")):
+        return {**result, "state": "OBJECT_PERIOD_OR_COMPLETENESS_UNSUPPORTED"}
+    # Neither absence of keywords nor a fair-presentation paragraph establishes
+    # the final opinion type or the amended whole-statement audit status.
+    lines = [{"words": [{"text": w.text, "box": list(w.box)} for w in group],
+              "box": list(union_box(group))} for group in body]
+    result.update(state="OBSERVED_NARRATIVE_OPINION_BLOCK_NOT_TYPE", lines=lines,
+                  binding={"security_id": source["security_id"], "issuer": source["issuer"],
+                           "fiscal_year": source["fiscal_year"], "version": source["version"],
+                           "document_sha256": source["pdf_sha256"], "physical_page": page.number,
+                           "opinion_heading": start_title, "opinion_heading_box": list(union_box(groups[first])),
+                           "basis_heading": end_title, "basis_heading_box": list(union_box(groups[last])),
+                           "object_line_indices": list(range(split)),
+                           "opinion_line_indices": list(range(split, len(lines)))})
+    return result
+
+
 def _audit(pdf, source):
     matches = [(page, word) for page in pdf.pages for word in page.words
                if compact(word.text) == "审计意见类型" and "审计报告正文" in compact(page.text)
@@ -287,10 +363,18 @@ def _audit(pdf, source):
                            "binding": binding(source, page, (word, *values), None),
                            "inside_page": inside(page, (word, *values))})
     known = len(candidates) == 1 and candidates[0]["inside_page"]
+    narrative = _audit_narrative_block(pdf, source) if not known else {
+        "state": "NOT_EVALUATED_TABLE_TYPE_TEXT_ALREADY_OBSERVED", "physical_page": None,
+        "lines": [], "binding": None, "opinion_type_inferred": None, "audit_gate_result": None,
+        "report_object_verified": False, "whole_audit_report_reviewed": False,
+        "public_availability_verified": False, "latest_audit_version_verified": False,
+        "report_number": None, "report_number_state": "NOT_EVALUATED",
+        "amended_whole_statement_audit_status": "UNKNOWN"}
     return {"raw_opinion_type": candidates[0]["raw_opinion_type"] if known else None,
             "state": "OBSERVED_TEXT_NOT_AUDIT_GATE" if known else "UNKNOWN",
             "candidates": candidates, "latest_audit_unmodified_pit": None,
-            "going_concern_uncertainty_pit": None, "amended_whole_statement_audit_status": "UNKNOWN"}
+            "going_concern_uncertainty_pit": None, "amended_whole_statement_audit_status": "UNKNOWN",
+            "narrative_opinion_block": narrative}
 
 
 def _reconcile(fields, tables):
