@@ -11,7 +11,7 @@ from __future__ import annotations
 from decimal import Decimal, localcontext
 import re
 
-from scripts.parsing.field_binder import binding, cell, compact, inside, union_box
+from scripts.parsing.field_binder import binding, cell, compact, inside, note_reference_observation, union_box
 from scripts.parsing.generic_extractor import ParsedPDF
 
 
@@ -211,8 +211,8 @@ def _table(pdf, source, kind):
             if "note_column" in header:
                 note_words = [word for word in selected if abs(word.y - (box[1] + box[3]) / 2) <= 2
                               and header["label_right"] <= word.box[0] < header["note_column"]["amount_left"]]
-                row["note_column_observation"] = {"raw_text": [word.text for word in note_words],
-                                                  "boxes": [list(word.box) for word in note_words]}
+                row["note_column_observation"] = note_reference_observation(
+                    page, note_words, header["label_right"], header["note_column"]["amount_left"])
             rows.append(row)
     return {"state": "NATIVE_TWO_COLUMN_OBSERVATIONS", "header": header,
             "end_boundary": {"physical_page": end_page.number, "text": end_word.text,

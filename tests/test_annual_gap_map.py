@@ -8,6 +8,7 @@ import unittest
 from unittest.mock import patch
 
 from scripts.pilots import build_annual_gap_map as gap
+from scripts.pilots.replay_frozen_annual_gap_map import replay_frozen_gap_map
 from scripts.screening.contracts import canonical_bytes, content_hash, load_request
 
 
@@ -19,7 +20,10 @@ class AnnualGapMapTests(unittest.TestCase):
         cls.directory = gap.ROOT / "docs/data-pilots/annual-gap-map-2026-10-03-v1"
         # Imports reuse a capture guard, but inventory must never call the network.
         with patch("requests.sessions.Session.request", side_effect=AssertionError("unexpected network")):
-            cls.report = gap.build_map(cls.raw_scope)
+            cls.replay = replay_frozen_gap_map(
+                gap.ROOT / "docs/data-pilots/2026-10-03-annual-gap-map-scope.json", cls.directory,
+                "b80a0343f86c7c64ccd4ab4c469d11e1b4f560cc")
+            cls.report = cls.replay["report"]
         cls.by_security = {r["source"]["security_id"]: r for r in cls.report["observations"]}
         cls.families = {r["id"]: r for r in cls.report["families"]}
         cls.probes = {tuple(r["note_tokens"]): r for r in cls.report["synthetic_note_probes"]}
@@ -68,12 +72,12 @@ class AnnualGapMapTests(unittest.TestCase):
         self.assertEqual(len(manifest["parser_code_sha256"]), 6)
         for name, digest in manifest["parser_code_sha256"].items():
             frozen = subprocess.check_output(["git", "show", f"{manifest['parser_commit']}:{name}"], cwd=gap.ROOT)
-            self.assertEqual(frozen, (gap.ROOT / name).read_bytes())
             self.assertEqual(hashlib.sha256(frozen).hexdigest(), digest)
         for name, key in (("scripts/pilots/build_annual_gap_map.py", "tool_sha256"),
                           ("scripts/pilots/capture_annual_holdout.py", "capture_guard_sha256"),
                           ("RULE_SPEC.md", "rule_sha256")):
-            self.assertEqual(hashlib.sha256((gap.ROOT / name).read_bytes()).hexdigest(), manifest[key])
+            frozen = subprocess.check_output(["git", "show", f"{self.replay['code_commit']}:{name}"], cwd=gap.ROOT)
+            self.assertEqual(hashlib.sha256(frozen).hexdigest(), manifest[key])
 
     def test_thirteen_versions_are_ten_issuers_not_thirteen_companies(self):
         self.assertEqual(self.report["counts"], {"issuers": 10, "PDF_versions": 13})
@@ -158,7 +162,7 @@ class AnnualGapMapTests(unittest.TestCase):
             self.assertFalse(row["note_target_resolved"])
             self.assertFalse(row["note_semantics_certified"])
 
-    def test_multiple_integer_tokens_pass_current_guard_not_unique_reference(self):
+    def test_multiple_integer_tokens_pass_frozen_old_guard_not_unique_reference(self):
         row = self.probes[("7", "1")]
         self.assertEqual(row["current_state"], "OBSERVED_NUMERIC")
         self.assertFalse(row["note_target_resolved"])
@@ -216,13 +220,13 @@ class AnnualGapMapTests(unittest.TestCase):
     def test_scope_byte_hash_mismatch_is_hard_failure(self):
         value = deepcopy(self.scope)
         value["inputs"] = [dict(value["inputs"][0], sha256="0" * 64)]
-        with self.assertRaisesRegex(ValueError, "hash mismatch"):
+        with patch.object(gap, "verify_parser"), self.assertRaisesRegex(ValueError, "hash mismatch"):
             gap.build_map(canonical_bytes(value))
 
     def test_source_path_escape_is_hard_failure(self):
         value = deepcopy(self.scope)
         value["inputs"] = [{"path": "../RULE_SPEC.md", "sha256": "0" * 64}]
-        with self.assertRaisesRegex(ValueError, "unsafe or linked source path"):
+        with patch.object(gap, "verify_parser"), self.assertRaisesRegex(ValueError, "unsafe or linked source path"):
             gap.build_map(canonical_bytes(value))
 
     def test_parser_drift_stops_before_any_source_run(self):

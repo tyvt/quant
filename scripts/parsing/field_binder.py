@@ -35,6 +35,34 @@ def money(raw: str, multiplier: int) -> str | None:
         return format(Decimal(value.replace(",", "")) * multiplier, "f")
 
 
+def note_reference_observation(page: Page, notes, left: float, right: float) -> dict:
+    """One complete native token in an explicit note column; never resolve a target.
+
+    Bounded chapter grammar: canonical Chinese integers 1..99. Complex item
+    numbers are positive ASCII integers without leading zeroes. No joining,
+    whitespace deletion, OCR, arbitrary punctuation or reference lists.
+    """
+    result = {"raw_text": [word.text for word in notes], "boxes": [list(word.box) for word in notes],
+              "syntax_state": "NO_REFERENCE_WORDS", "reference_form": None,
+              "note_target_resolved": False, "note_semantics_certified": False}
+    if any(word.box[2] >= right for word in notes):
+        result["syntax_state"] = "NOTE_AMOUNT_BOUNDARY_AMBIGUOUS"
+    elif (not 0 <= left < right <= page.width or not inside(page, notes)
+          or any(word.box[0] < left or word not in page.words for word in notes)):
+        result["syntax_state"] = "NOTE_GEOMETRY_UNKNOWN"
+    elif notes:
+        chapter = r"(?:[一二三四五六七八九]|十[一二三四五六七八九]?|[二三四五六七八九]十[一二三四五六七八九]?)"
+        forms = ((r"[0-9]+", "SINGLE_UNSIGNED_INTEGER"),
+                 (r"[-—–]", "DASH_PLACEHOLDER"),
+                 (chapter + r"、[1-9][0-9]*", "CHAPTER_DUNHAO_POSITIVE_ITEM"),
+                 (chapter + r"（[1-9][0-9]*）", "CHAPTER_FULLWIDTH_PARENS_POSITIVE_ITEM"))
+        form = next((name for pattern, name in forms if len(notes) == 1
+                     and re.fullmatch(pattern, notes[0].text)), None)
+        result["syntax_state"] = "OBSERVED_SINGLE_REFERENCE_SYNTAX" if form else "NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE"
+        result["reference_form"] = form
+    return result
+
+
 def cell(page: Page, words: tuple[Word, ...], row_y: float,
          label_right: float, split: float, multiplier: int, *, amount_left: float | None = None) -> dict:
     observed = [word for word in words if abs(word.y - row_y) <= 2
@@ -42,12 +70,9 @@ def cell(page: Page, words: tuple[Word, ...], row_y: float,
     note_problem = None
     if amount_left is not None:
         notes = [word for word in observed if word.box[0] < amount_left]
-        if any(word.box[2] >= amount_left for word in notes):
-            note_problem = "NOTE_AMOUNT_BOUNDARY_AMBIGUOUS"
-        elif not inside(page, notes):
-            note_problem = "NOTE_GEOMETRY_UNKNOWN"
-        elif any(not re.fullmatch(r"[0-9]+|[-—–]", compact(word.text)) for word in notes):
-            note_problem = "NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE"
+        syntax = note_reference_observation(page, notes, label_right, amount_left)
+        if syntax["syntax_state"].startswith("NOTE_"):
+            note_problem = syntax["syntax_state"]
         observed = [word for word in observed if word.box[0] >= amount_left]
     columns = [[word for word in observed if (word.box[0] + word.box[2]) / 2 < split],
                [word for word in observed if (word.box[0] + word.box[2]) / 2 >= split]]

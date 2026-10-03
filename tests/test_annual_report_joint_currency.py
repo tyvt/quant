@@ -65,10 +65,14 @@ class JointCurrencyTests(unittest.TestCase):
         self.assertEqual({c["difference_cny"] for c in self.bundle["reconciliations"]}, {"0.00"})
         self.assertFalse(self.bundle["full_balance_sheet_semantics_certified"])
 
-    def test_complex_note_cells_still_unknown(self):
+    def test_new_note_syntax_separate_from_frozen_joint_currency_result(self):
         row = next(r for r in self.bundle["balance_sheet_row_inventory"] if r["source_label"] == "货币资金")
-        self.assertEqual(row["current"]["state"], "NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE")
-        self.assertIsNone(row["current"]["value_cny"])
+        old = json.loads((ROOT / "docs/data-pilots/annual-joint-currency-601012-2026-10-03-v2/diagnostic-only.json").read_bytes())
+        previous = next(r for r in old["bundles"][0]["balance_sheet_row_inventory"] if r["source_label"] == "货币资金")
+        self.assertEqual(previous["current"]["state"], "NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE")
+        self.assertIsNone(previous["current"]["value_cny"])
+        self.assertEqual(row["current"]["state"], "OBSERVED_NUMERIC")
+        self.assertFalse(row["note_column_observation"]["note_target_resolved"])
 
     def test_first_failure_bytes_and_logical_identity_preserved(self):
         raw = (ROOT / "docs/data-pilots/annual-holdout-601012-2026-10-03-v1/diagnostic-only.json").read_bytes()

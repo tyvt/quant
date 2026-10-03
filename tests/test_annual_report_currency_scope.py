@@ -73,10 +73,14 @@ class CurrencyScopeTests(unittest.TestCase):
         self.assertFalse(self.bundle["full_balance_sheet_semantics_certified"])
         self.assertIsNone(self.bundle["fields"]["parent_net_profit"]["observed_value_cny"])
 
-    def test_complex_note_references_still_fail_closed(self):
+    def test_new_note_syntax_separate_from_frozen_currency_only_result(self):
         row = next(row for row in self.bundle["balance_sheet_row_inventory"] if row["source_label"] == "货币资金")
-        self.assertIsNone(row["current"]["value_cny"])
-        self.assertEqual(row["current"]["state"], "NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE")
+        old = json.loads((ROOT / "docs/data-pilots/annual-currency-600276-2026-10-03-v2/diagnostic-only.json").read_bytes())
+        previous = next(r for r in old["bundles"][0]["balance_sheet_row_inventory"] if r["source_label"] == "货币资金")
+        self.assertIsNone(previous["current"]["value_cny"])
+        self.assertEqual(previous["current"]["state"], "NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE")
+        self.assertEqual(row["current"]["state"], "OBSERVED_NUMERIC")
+        self.assertFalse(row["note_column_observation"]["note_target_resolved"])
         self.assertIn("七、", "".join(row["note_column_observation"]["raw_text"]))
 
     def test_original_first_failure_bytes_and_identity_not_rewritten(self):
