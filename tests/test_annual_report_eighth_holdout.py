@@ -7,7 +7,7 @@ import subprocess
 import unittest
 
 from scripts.extract_annual_report_bundle import ROOT, SOURCE_PATHS, build_bundle, markdown
-from scripts.parsing.annual_report_parser import _currency_section, _lines, _title
+from scripts.parsing.annual_report_parser import _lines, _title
 from scripts.parsing.field_binder import compact
 from scripts.parsing.generic_extractor import PDFCache
 from scripts.pilots.capture_annual_holdout import select_source
@@ -142,7 +142,7 @@ class EighthAnnualHoldoutTests(unittest.TestCase):
         self.assertEqual(rows[index + 2], "(五)重要性标准确定方法和选择依据")
         self.assertIn("六、税项", compact(self.pdf.pages[97].text))
         self.assertEqual(_title(rows[index]), "(四)记账本位币")
-        self.assertIsNone(_currency_section(self.pdf))
+        self.assertNotIn("currency_subsection_observation", self.bundle)
 
     def test_post_blind_subsidiary_currency_rows_not_issuer_policy(self):
         self.assertIn("子公司名称", compact(self.pdf.pages[127].text))
@@ -169,13 +169,13 @@ class EighthAnnualHoldoutTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             load_request(canonical_bytes(self.report))
 
-    def test_current_cold_warm_replay_keeps_all_unknowns(self):
+    def test_current_cold_warm_cache_is_deterministic_with_new_code_identity(self):
         cache = PDFCache()
         a, b = build_bundle(self.scope_raw, cache=cache), build_bundle(self.scope_raw, cache=cache)
         self.assertEqual(canonical_bytes(a), canonical_bytes(b))
         self.assertEqual(markdown(a), markdown(b))
         self.assertEqual((cache.parsed_documents, cache.cache_hits), (1, 1))
-        self.assertEqual(a["logical_content_hash"], self.report["logical_content_hash"])
+        self.assertNotEqual(a["logical_content_hash"], self.report["logical_content_hash"])
 
 
 if __name__ == "__main__":

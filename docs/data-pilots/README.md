@@ -67,6 +67,11 @@ stdout/stderr 的 canonical 拒绝记录；冻结 Git 代码实际重放必须�
 `(四)记账本位币`／`(五)` 下一小节这一中文序号变体，不能把支持 `(6)` 的修复
 泛化为所有括号编号。声明语序已受支持仍不能跳过边界；本轮不追修、不填人工金额。
 
+[精确中文序号小节修复](2026-10-03-annual-report-chinese-subsection-600066.md)仅增加
+`(四)` 本位币小节及指定 `(五)` 同格式终点，共用既有范围和几何守卫，不全局去括号。
+宇通新 v2 恢复 CNY 和两个利润字段；权益表头、OCF／Capex 列边界及其他未知仍保留，
+原 v1 用冻结代码重放。小节观察自身不认证币种，完整声明证据与历史 PIT 分开记录。
+
 [四个限定样本诊断](2026-10-02-limited-sample-diagnostics.md)冻结单证券、`as_of=2026-09-30`、输出范围与时点选择。离线工具 `scripts/pilots/build_limited_diagnostics.py` 区分“原文观察算术”和“已接纳的 PIT 输入”，不将未知值填零，不调用未就绪 Reader；逐份报告显式标注 `diagnostic_only=true`、`official_selection=false`。本批历史可用性保持 UNKNOWN，仅验证已有纯逻辑的缺口传播，不以法定澄清阻止原文对照，也不因此放宽规则依赖。
 
 [茂化实华单字段补证](2026-10-02-minority-equity-000637.md)只补原版/更正版 2025 年末少数股东权益 `N`，核对跨页表头、期末/期初列与母公司表边界；已知原文不等于已知历史 PIT。`scripts/pilots/verify_minority_equity_000637.py` 离线验证并生成独立证据包，不修改父诊断、原四份报告或生产状态。

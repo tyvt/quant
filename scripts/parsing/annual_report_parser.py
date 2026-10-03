@@ -320,8 +320,8 @@ def _currency_section(pdf):
     """Locate a bounded subsection, not establish its currency or PIT status.
 
     Parentheses are NOT globally stripped by _title. The new path accepts only
-    the exact (6)/(7) title pair, complete native rows on the same page inside
-    the existing uniquely identified accounting-policy chapter.
+    the exact (6)/(7) or (四)/(五) title pair, complete native rows on the same
+    page inside the existing uniquely identified accounting-policy chapter.
     """
     lines = [(page, group, compact("".join(word.text for word in group)))
              for page in pdf.pages for group in _lines(page.words)]
@@ -348,11 +348,15 @@ def _currency_section(pdf):
     if (lines[index][2] == "记账本位币" and index > start + 1
             and re.fullmatch(r"[（(][0-9一二三四五六七八九十]+[）)]?", lines[index - 1][2])):
         return None  # A split parenthesized title is not a legacy bare heading.
-    parenthesized = lines[index][2] == "(6)记账本位币"
+    supported_pairs = {
+        "(6)记账本位币": "(7)同一控制下和非同一控制下企业合并的会计处理方法",
+        "(四)记账本位币": "(五)重要性标准确定方法和选择依据",
+    }
+    parenthesized = lines[index][2] in supported_pairs
     if not parenthesized and _title(lines[index][2]) != "记账本位币":
         return None
     if parenthesized:
-        end_title = "(7)同一控制下和非同一控制下企业合并的会计处理方法"
+        end_title = supported_pairs[lines[index][2]]
         boundaries = [pos for pos in range(start + 1, end) if lines[pos][2] == end_title]
         next_numbered = next((pos for pos in range(index + 1, end)
                               if re.match(r"(?:[（(][0-9一二三四五六七八九十]+|[0-9]+[、.．])",
