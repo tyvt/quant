@@ -1,0 +1,62 @@
+{
+  "schema": "annual-holdout-capture-v1",
+  "plan_sha256": "a47fc8cfd1622e8b8d27522aa2faac49a61ff26c64562e2a39825ac34228bbbb",
+  "capture_code_sha256": "d0e68831fafd57154bcd8139329f3d788c88a300aa5ec38edbcdc639f9756211",
+  "source": {
+    "security_id": "sh.600585",
+    "issuer": "安徽海螺水泥股份有限公司",
+    "fiscal_year": 2024,
+    "version": "declared_2024_annual_report",
+    "announcement_id": "1222882790",
+    "url": "https://static.cninfo.com.cn/finalpage/2025-03-25/1222882790.PDF",
+    "pdf_path": "storage/pilots/annual-holdout-600585-2026-10-03/annual.pdf",
+    "pdf_sha256": "9ec252361911db404539df2230d83ef1b263f169753e48438657e8c8a36facef",
+    "page_count": 281
+  },
+  "resources": [
+    {
+      "name": "catalogue.json",
+      "method": "POST",
+      "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "request_data": {
+        "pageNum": 1,
+        "pageSize": 30,
+        "column": "sse",
+        "tabName": "fulltext",
+        "stock": "600585,gssh0600585",
+        "searchkey": "",
+        "secid": "",
+        "plate": "",
+        "category": "category_ndbg_szsh;",
+        "trade": "",
+        "seDate": "2025-01-01~2025-06-30",
+        "sortName": "time",
+        "sortType": "asc",
+        "isHLtitle": "false"
+      },
+      "http_status": 200,
+      "sha256": "7b8330e321c303f25f686b7c4d084015d67d048676927db8a04774600a21a59c",
+      "bytes": 1359,
+      "request_started_at_utc": "2026-10-03T08:44:16.798871+00:00",
+      "response_received_at_utc": "2026-10-03T08:44:17.236080+00:00"
+    },
+    {
+      "name": "annual.pdf",
+      "method": "GET",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-03-25/1222882790.PDF",
+      "request_data": null,
+      "http_status": 200,
+      "sha256": "9ec252361911db404539df2230d83ef1b263f169753e48438657e8c8a36facef",
+      "bytes": 2952286,
+      "request_started_at_utc": "2026-10-03T08:44:17.239082+00:00",
+      "response_received_at_utc": "2026-10-03T08:44:17.604978+00:00"
+    }
+  ],
+  "catalogue_time_raw_ms": 1742832000000,
+  "scope_sha256": "313c22c8c10723a177d1413b74d3633fe7970518172f62bc7ba13d9a8688ac44",
+  "pdf_body_read": false,
+  "exact_available_at_utc": null,
+  "complete_revision_chain_verified": false,
+  "snapshot_published": false,
+  "production_reader_ready": false
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sh.600585",
+      "issuer": "安徽海螺水泥股份有限公司",
+      "fiscal_year": 2024,
+      "version": "declared_2024_annual_report",
+      "announcement_id": "1222882790",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-03-25/1222882790.PDF",
+      "pdf_path": "storage/pilots/annual-holdout-600585-2026-10-03/annual.pdf",
+      "pdf_sha256": "9ec252361911db404539df2230d83ef1b263f169753e48438657e8c8a36facef",
+      "page_count": 281
+    }
+  ],
+  "reference_reports": []
+}
