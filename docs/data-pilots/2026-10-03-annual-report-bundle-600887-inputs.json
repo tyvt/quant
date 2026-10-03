@@ -1,0 +1,18 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sh.600887",
+      "issuer": "内蒙古伊利实业集团股份有限公司",
+      "fiscal_year": 2024,
+      "version": "declared_2024_annual_report",
+      "announcement_id": "1223421123",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-30/1223421123.PDF",
+      "pdf_path": "storage/pilots/annual-holdout-600887-2026-10-03/annual.pdf",
+      "pdf_sha256": "a82a81e52f52da3cd1b7f38ded08625dc18e3d4522b15d3ef76bf921e54c1f43",
+      "page_count": 270
+    }
+  ],
+  "reference_reports": []
+}
