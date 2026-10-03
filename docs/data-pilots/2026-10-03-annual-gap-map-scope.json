@@ -1,0 +1,25 @@
+{
+  "schema": "annual-gap-map-scope-v1",
+  "as_of": "2026-09-30",
+  "parser_commit": "ca679be283c515da96f3a152f2450d4a1887f80a",
+  "parser_code_sha256": {
+    "scripts/parsing/__init__.py": "5ba44d5f29c960876592972e3531235676b4d42c1250402d282a8468017788bc",
+    "scripts/parsing/generic_extractor.py": "1207731bb430f244c22dab06a9a8cb93e16989b1726800ede0daf3522bdeb262",
+    "scripts/parsing/field_binder.py": "dbdac7872a35b8abfee587ff922b3d6ccec63523bbd7d046e07b670346dbc581",
+    "scripts/parsing/annual_report_parser.py": "484f44080881cc71eb6e64493e36139ea1b0f90ee504d50e84122b0c37f0337a",
+    "scripts/extract_annual_report_bundle.py": "42a2e5f11c49dc41bae5f37252194fd4f3f735ae4ed8d969938059e14d13da1a",
+    "scripts/screening/contracts.py": "91fcfbbb7fb9ee306930948fdafb5d3fbef2e706f10fea1777820979690964e4"
+  },
+  "inputs": [
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-000637-inputs.json", "sha256": "93683e83c9cd4c163352a910196de84459833c38e6c334748c662c865e18f67d"},
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-002570-inputs.json", "sha256": "5885960f52046e32253ef9e2b642785650544e68e4575064bf9bb335b455b525"},
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-600900-inputs.json", "sha256": "c2ede08ed69ff9c4220a1865bb63dc899cfa73c7cf470aea1e4019963c6e2a04"},
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-600276-inputs.json", "sha256": "5d6a2ae75b279e10ca9642e995e99f1093019fdc77e2676c4a7fb6fc440a629c"},
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-601012-inputs.json", "sha256": "36814d9ffd287cdd3a4890a9f08b372723e271ca73667ebc17daa110478e7b0c"},
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-600585-inputs.json", "sha256": "313c22c8c10723a177d1413b74d3633fe7970518172f62bc7ba13d9a8688ac44"},
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-600741-inputs.json", "sha256": "1f7a96c14805cad080fbc68d0d273bff059c2005c85b1d08a436f133ea55933d"},
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-600066-inputs.json", "sha256": "c9c929229754fc5591561f639c9452c5862ca71087e15395896a6cd4b0a8b69a"},
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-600309-inputs.json", "sha256": "f618fe657eb980246524bdc42e5c2806f9c999834335ba0d004e53792173d779"},
+    {"path": "docs/data-pilots/2026-10-03-annual-report-bundle-600887-inputs.json", "sha256": "44a7e0c01d625f8393ddcb06e01d2613bdc19693c9c37cb1b2cd9b2937aa7e84"}
+  ]
+}
