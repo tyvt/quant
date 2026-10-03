@@ -16,6 +16,11 @@
 首次 JSON/Markdown 入 Git 保留，不以人工值替换 UNKNOWN，也不由失败推定原文未披露。
 后续修复后该样本属于回归，不再称未见过的独立测试集。
 
+[通用附注列与跨行科目修复](2026-10-03-annual-report-note-columns-600900.md)另存长江电力
+新结果，七项主表及两期算术对账通过。只识别显式非金额附注列，拒绝额外金额栏与
+跨行歧义，保留引用文字和坐标；租赁标签、叙述审计仍 UNKNOWN。首次失败报告不改写，
+旧断言由完整 Git 代码在临时目录重放，当前代码结果具有新身份，不冒充原盲跑成功。
+
 [四个限定样本诊断](2026-10-02-limited-sample-diagnostics.md)冻结单证券、`as_of=2026-09-30`、输出范围与时点选择。离线工具 `scripts/pilots/build_limited_diagnostics.py` 区分“原文观察算术”和“已接纳的 PIT 输入”，不将未知值填零，不调用未就绪 Reader；逐份报告显式标注 `diagnostic_only=true`、`official_selection=false`。本批历史可用性保持 UNKNOWN，仅验证已有纯逻辑的缺口传播，不以法定澄清阻止原文对照，也不因此放宽规则依赖。
 
 [茂化实华单字段补证](2026-10-02-minority-equity-000637.md)只补原版/更正版 2025 年末少数股东权益 `N`，核对跨页表头、期末/期初列与母公司表边界；已知原文不等于已知历史 PIT。`scripts/pilots/verify_minority_equity_000637.py` 离线验证并生成独立证据包，不修改父诊断、原四份报告或生产状态。

@@ -19,6 +19,7 @@ from scripts.parsing.annual_report_parser import _lines
 from scripts.parsing.field_binder import compact
 from scripts.parsing.generic_extractor import PDFCache
 from scripts.pilots.capture_annual_holdout import capture, select_source, verify_parser
+from scripts.pilots.replay_frozen_annual_bundle import replay_frozen_bundle
 from scripts.screening.contracts import canonical_bytes, content_hash, load_request
 
 
@@ -37,13 +38,16 @@ class AnnualHoldoutTests(unittest.TestCase):
         cls.catalogue = json.loads(cls.catalogue_raw)
         cls.pdf_raw = (ROOT / cls.source["pdf_path"]).read_bytes()
         cls.cache = PDFCache()
-        cls.report = build_bundle(cls.scope_raw, cache=cls.cache)
+        cls.result_dir = ROOT / "docs/data-pilots/annual-holdout-600900-2026-10-03-v1"
+        # Preserve all old-result assertions. Reproduce them with old Git bytes,
+        # not the repaired parser and not just a saved report substituted for execution.
+        cls.report = replay_frozen_bundle(
+            ROOT / "docs/data-pilots/2026-10-03-annual-report-bundle-600900-inputs.json",
+            cls.result_dir, cls.plan["parser_commit"])["report"]
         cls.bundle = cls.report["bundles"][0]
         cls.pdf = cls.cache.parse(cls.pdf_raw, cls.source["pdf_sha256"])
-        cls.result_dir = ROOT / "docs/data-pilots/annual-holdout-600900-2026-10-03-v1"
 
     def test_blind_protocol_freezes_parser_before_source_review(self):
-        verify_parser(self.plan)
         self.assertFalse(self.plan["protocol"]["pdf_body_inspected_before_first_run"])
         self.assertFalse(self.plan["protocol"]["parser_edited_before_first_run"])
         self.assertFalse(self.plan["protocol"]["fixes_in_this_run"])
@@ -199,7 +203,7 @@ class AnnualHoldoutTests(unittest.TestCase):
 
     def test_capture_refuses_existing_directory_without_network(self):
         request = Mock()
-        with self.assertRaises(FileExistsError):
+        with patch("scripts.pilots.capture_annual_holdout.verify_parser"), self.assertRaises(FileExistsError):
             capture(self.plan_path, self.raw_dir, request=request)
         request.assert_not_called()
 
@@ -210,7 +214,7 @@ class AnnualHoldoutTests(unittest.TestCase):
                 with self.subTest(status=status):
                     target = output / str(status)
                     request = Mock(return_value=SimpleNamespace(status_code=status, content=b"source unavailable"))
-                    with self.assertRaisesRegex(ValueError, "no fallback"):
+                    with patch("scripts.pilots.capture_annual_holdout.verify_parser"), self.assertRaisesRegex(ValueError, "no fallback"):
                         capture(self.plan_path, target, request=request)
                     self.assertEqual(request.call_count, 1)
                     self.assertFalse(request.call_args.kwargs["allow_redirects"])
@@ -224,7 +228,7 @@ class AnnualHoldoutTests(unittest.TestCase):
                                         SimpleNamespace(status_code=200, content=self.pdf_raw)])
             # An interface that deliberately provides no get_text/render methods.
             metadata_only = SimpleNamespace(needs_pass=False, page_count=262)
-            with patch("scripts.pilots.capture_annual_holdout.fitz.open") as pdf_open:
+            with patch("scripts.pilots.capture_annual_holdout.verify_parser"), patch("scripts.pilots.capture_annual_holdout.fitz.open") as pdf_open:
                 pdf_open.return_value.__enter__.return_value = metadata_only
                 result = capture(self.plan_path, output, request=request)
             self.assertEqual(request.call_count, 2)

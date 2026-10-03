@@ -36,15 +36,27 @@ def money(raw: str, multiplier: int) -> str | None:
 
 
 def cell(page: Page, words: tuple[Word, ...], row_y: float,
-         label_right: float, split: float, multiplier: int) -> dict:
+         label_right: float, split: float, multiplier: int, *, amount_left: float | None = None) -> dict:
     observed = [word for word in words if abs(word.y - row_y) <= 2
                 and word.box[0] >= label_right]
+    note_problem = None
+    if amount_left is not None:
+        notes = [word for word in observed if word.box[0] < amount_left]
+        if any(word.box[2] >= amount_left for word in notes):
+            note_problem = "NOTE_AMOUNT_BOUNDARY_AMBIGUOUS"
+        elif not inside(page, notes):
+            note_problem = "NOTE_GEOMETRY_UNKNOWN"
+        elif any(not re.fullmatch(r"[0-9]+|[-—–]", compact(word.text)) for word in notes):
+            note_problem = "NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE"
+        observed = [word for word in observed if word.box[0] >= amount_left]
     columns = [[word for word in observed if (word.box[0] + word.box[2]) / 2 < split],
                [word for word in observed if (word.box[0] + word.box[2]) / 2 >= split]]
     result = {}
     for key, column in zip(("current", "comparative"), columns):
         state, value = "BLANK_NOT_ZERO", None
-        if len(column) > 1:
+        if note_problem is not None:
+            state = note_problem
+        elif len(column) > 1:
             state = "AMBIGUOUS_CELL"
         elif column:
             if not inside(page, column):

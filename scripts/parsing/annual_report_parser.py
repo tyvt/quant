@@ -1,7 +1,8 @@
 """Conservative, layout-derived annual source bundles, not GeneralFCFInputs.
 
-Supported: native text, unrotated two-column consolidated statements with explicit
-boundaries, units and years. Other layouts yield UNKNOWN and evidence candidates.
+Supported: native text, unrotated two-amount-column consolidated statements with
+explicit boundaries, units and years, optionally with an explicit note column.
+Other layouts yield UNKNOWN and evidence candidates.
 No issuer-specific page or amount constants, OCR, PIT admission or audit promotion.
 """
 
@@ -20,9 +21,10 @@ SECTIONS = {
     "cashflow": ("合并现金流量表", "母公司现金流量表"),
 }
 ALIASES = {
-    "attributable_equity_end": ("balance", ("归属于母公司所有者权益合计",)),
+    "attributable_equity_end": ("balance", ("归属于母公司所有者权益合计",
+                                          "归属于母公司所有者权益（或股东权益）合计")),
     "minority_interest_end": ("balance", ("少数股东权益",)),
-    "total_equity_end": ("balance", ("所有者权益合计",)),
+    "total_equity_end": ("balance", ("所有者权益合计", "所有者权益（或股东权益）合计")),
     "parent_net_profit": ("income", ("归属于母公司股东的净利润", "归属于母公司所有者的净利润")),
     "total_net_profit": ("income", ("净利润（",)),
     "operating_cash_flow": ("cashflow", ("经营活动产生的现金流量净额",)),
@@ -59,6 +61,12 @@ def _header(page, words, year, kind, title_word, *, title_page=None):
                 columns.append([word])
             else:
                 columns[-1].append(word)
+        # Only an explicit non-amount note header, before both amount columns,
+        # can be separated. Never discard an unknown or extra numeric column.
+        note_group = None
+        if len(columns) == 3 and re.fullmatch(r"附注(?:[一二三四五六七八九十0-9]+)?",
+                                             compact("".join(word.text for word in columns[0]))):
+            note_group, columns = columns[0], columns[1:]
         if len(columns) != 2:
             continue
         left_group, right_group = columns
@@ -83,7 +91,7 @@ def _header(page, words, year, kind, title_word, *, title_page=None):
         before = "".join(compact(word.text) for word in words if word.y < group[0].y)
         if kind == "balance" and labels[0] == "期末余额" and f"{year}年12月31日" not in before:
             return None
-        return {"section": kind, "physical_page": page.number,
+        result = {"section": kind, "physical_page": page.number,
                 "title": title_word.text, "title_box": list(title_word.box),
                 "title_physical_page": title_page if title_page is not None else page.number,
                 "unit_text": unit.text, "unit_box": list(unit.box),
@@ -95,10 +103,19 @@ def _header(page, words, year, kind, title_word, *, title_page=None):
                 "column_split": (left_box[0] + left_box[2] + right_box[0] + right_box[2]) / 4,
                 "header_bottom": max(word.box[3] for word in group),
                 "fiscal_year": year}
+        if note_group is not None:
+            note_box = union_box(note_group)
+            if not label.box[2] < note_box[0] < note_box[2] < left_box[0]:
+                return None
+            result["label_right"] = (label.box[0] + label.box[2] + note_box[0] + note_box[2]) / 4
+            result["note_column"] = {"header_text": "".join(word.text for word in note_group),
+                                     "header_box": note_box,
+                                     "amount_left": (note_box[2] + left_box[0]) / 2}
+        return result
     return None
 
 
-def _row_labels(words, label_right):
+def _row_labels(words, label_right, *, amount_left=None):
     label_words = [word for word in words if word.box[0] < label_right]
     groups = _lines(label_words)
     result, index = [], 0
@@ -109,9 +126,28 @@ def _row_labels(words, label_right):
             next_group = groups[index + 1]
             appended = joined + compact("".join(word.text for word in next_group))
             gap = min(word.box[1] for word in next_group) - max(word.box[3] for word in selected)
-            capex = ALIASES["capex"][1][0]
+            exact_aliases = tuple(alias for kind, aliases in ALIASES.values() for alias in aliases
+                                  if kind in ("balance", "cashflow"))
+            completes_target = _title(appended) in exact_aliases and _title(joined) not in exact_aliases
+            # A centered amount can accompany a two-line profit label whose
+            # second line is solely the explicit loss-sign qualifier. Do not
+            # join it to another independent financial item.
+            profit_aliases = ALIASES["parent_net_profit"][1]
+            profit_qualifier = (_title(joined) in profit_aliases
+                                and re.fullmatch(r"（净亏损以[“\"][-－−][”\"]号填列）",
+                                                 compact("".join(word.text for word in next_group))) is not None)
             unclosed = joined.count("（") > joined.count("）")
-            if 0 <= gap <= 12 and (appended == capex or unclosed):
+            closes_parenthesis = unclosed and appended.count("（") <= appended.count("）")
+            merged_y = (min(word.box[1] for word in (*selected, *next_group))
+                        + max(word.box[3] for word in (*selected, *next_group))) / 2
+            data_left = label_right if amount_left is None else amount_left
+            separate_row_data = any(
+                word.box[0] >= data_left and re.fullmatch(r"[-−－]?[0-9][0-9,.]*", compact(word.text))
+                and abs(word.y - merged_y) > 2
+                and (abs(word.y - selected[0].y) <= 2 or abs(word.y - next_group[0].y) <= 2)
+                for word in words)
+            if (0 <= gap <= 12 and not separate_row_data
+                    and (completes_target or closes_parenthesis or profit_qualifier)):
                 selected.extend(next_group)
                 index += 1
         result.append(selected)
@@ -158,18 +194,26 @@ def _table(pdf, source, kind):
         repeated_units = {compact(word.text) for word in selected if compact(word.text).startswith("单位：")}
         if repeated_units and repeated_units != {compact(header["unit_text"])}:
             compatible_geometry = False
-        for label_words in _row_labels(selected, header["label_right"]):
+        for label_words in _row_labels(selected, header["label_right"],
+                                      amount_left=header.get("note_column", {}).get("amount_left")):
             text = compact("".join(word.text for word in label_words))
             if not text or text == "项目":
                 continue
             box = union_box(label_words)
             observed = cell(page, selected, (box[1] + box[3]) / 2,
-                            header["label_right"], header["column_split"], header["unit_multiplier"])
+                            header["label_right"], header["column_split"], header["unit_multiplier"],
+                            amount_left=header.get("note_column", {}).get("amount_left"))
             if not compatible_geometry or not inside(page, label_words):
                 observed = {key: {**value, "value_cny": None,
                                  "state": "PAGE_EDGE_OR_GEOMETRY_UNKNOWN"} for key, value in observed.items()}
-            rows.append({"source_label": text, **observed,
-                         "binding": binding(source, page, label_words, header)})
+            row = {"source_label": text, **observed,
+                   "binding": binding(source, page, label_words, header)}
+            if "note_column" in header:
+                note_words = [word for word in selected if abs(word.y - (box[1] + box[3]) / 2) <= 2
+                              and header["label_right"] <= word.box[0] < header["note_column"]["amount_left"]]
+                row["note_column_observation"] = {"raw_text": [word.text for word in note_words],
+                                                  "boxes": [list(word.box) for word in note_words]}
+            rows.append(row)
     return {"state": "NATIVE_TWO_COLUMN_OBSERVATIONS", "header": header,
             "end_boundary": {"physical_page": end_page.number, "text": end_word.text,
                              "box": list(end_word.box)},
