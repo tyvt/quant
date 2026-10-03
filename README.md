@@ -73,7 +73,8 @@
 
 本地 Git 不等于异地备份：代码/规则/文档已纳入版本控制，根目录 `storage/` 的原始 PDF/Parquet
 仍需独立备份。已提交 [538 文件快照哈希清单](docs/audits/storage-snapshot-manifest-2026-10-02.json)
-用于检出变化，不能恢复原始数据；尚未创建远程或异地备份。
+用于检出变化，不能恢复原始数据；代码仓库已有 GitHub 远端，忽略的 `storage/`
+仍未据此获得异地备份。
 
 先保存代码提交，再运行 [Git 恢复与端到端诊断](docs/testing/diagnostic-e2e-2026-10-02.md)：
 
@@ -84,6 +85,16 @@ python -X utf8 scripts/pilots/run_diagnostic_e2e.py --check
 ```
 
 这是纯技术验收，不补新字段、不授权真实选股或回测；默认输出目录必须不存在。
+
+新增[通用批量硬门入口](docs/testing/batch-hard-gate-screening-2026-10-03.md)：
+复用基础筛选和六项企业硬门，输出通过、停止（已知失败／范围不支持）、待补证三条
+工作队列与集中缺口索引；数量不限，UNKNOWN 不变通过，硬门通过也不是正式候选。
+当前仅验收合成输入，不接未就绪 Reader、不生成排名：
+
+```powershell
+python -X utf8 scripts/run_batch_screening.py --demo --output storage/diagnostics/batch-hard-gates-2026-10-03-v1
+python -X utf8 scripts/run_batch_screening.py --demo --output storage/diagnostics/batch-hard-gates-2026-10-03-v1 --check
+```
 
 领域核心仅使用 Python 标准库：
 
