@@ -1,0 +1,18 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sh.601012",
+      "issuer": "隆基绿能科技股份有限公司",
+      "fiscal_year": 2024,
+      "version": "declared_2024_annual_report",
+      "announcement_id": "1223421477",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-30/1223421477.PDF",
+      "pdf_path": "storage/pilots/annual-holdout-601012-2026-10-03/annual.pdf",
+      "pdf_sha256": "3dbaf5314ab01f44b58f58e8ad75fea0dce3ced0001db516829f2624b615a3a0",
+      "page_count": 301
+    }
+  ],
+  "reference_reports": []
+}
