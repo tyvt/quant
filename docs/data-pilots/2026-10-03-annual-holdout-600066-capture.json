@@ -1,0 +1,62 @@
+{
+  "schema": "annual-holdout-capture-v1",
+  "plan_sha256": "a6e8d5cf20fd7e93f86ee911ab1c81bcf23255c5123a25aa74f9cfd243347b25",
+  "capture_code_sha256": "d0e68831fafd57154bcd8139329f3d788c88a300aa5ec38edbcdc639f9756211",
+  "source": {
+    "security_id": "sh.600066",
+    "issuer": "宇通客车股份有限公司",
+    "fiscal_year": 2024,
+    "version": "declared_2024_annual_report",
+    "announcement_id": "1222974533",
+    "url": "https://static.cninfo.com.cn/finalpage/2025-04-01/1222974533.PDF",
+    "pdf_path": "storage/pilots/annual-holdout-600066-2026-10-03/annual.pdf",
+    "pdf_sha256": "5edfe6e4ac095d6c28e17903cc87e284b5d8f75ba3be3f4515a0fbb92f5bc023",
+    "page_count": 158
+  },
+  "resources": [
+    {
+      "name": "catalogue.json",
+      "method": "POST",
+      "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "request_data": {
+        "pageNum": 1,
+        "pageSize": 30,
+        "column": "sse",
+        "tabName": "fulltext",
+        "stock": "600066,gssh0600066",
+        "searchkey": "",
+        "secid": "",
+        "plate": "",
+        "category": "category_ndbg_szsh;",
+        "trade": "",
+        "seDate": "2025-01-01~2025-06-30",
+        "sortName": "time",
+        "sortType": "asc",
+        "isHLtitle": "false"
+      },
+      "http_status": 200,
+      "sha256": "5bf2589bc875aff3268d614ba0aa0fcbec4d8ddbb2d5c6856077ebc9dcb090e6",
+      "bytes": 1371,
+      "request_started_at_utc": "2026-10-03T11:13:09.646342+00:00",
+      "response_received_at_utc": "2026-10-03T11:13:09.769812+00:00"
+    },
+    {
+      "name": "annual.pdf",
+      "method": "GET",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-01/1222974533.PDF",
+      "request_data": null,
+      "http_status": 200,
+      "sha256": "5edfe6e4ac095d6c28e17903cc87e284b5d8f75ba3be3f4515a0fbb92f5bc023",
+      "bytes": 3680189,
+      "request_started_at_utc": "2026-10-03T11:13:09.770823+00:00",
+      "response_received_at_utc": "2026-10-03T11:13:10.146294+00:00"
+    }
+  ],
+  "catalogue_time_raw_ms": 1743436800000,
+  "scope_sha256": "c9c929229754fc5591561f639c9452c5862ca71087e15395896a6cd4b0a8b69a",
+  "pdf_body_read": false,
+  "exact_available_at_utc": null,
+  "complete_revision_chain_verified": false,
+  "snapshot_published": false,
+  "production_reader_ready": false
+}

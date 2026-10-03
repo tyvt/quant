@@ -1,0 +1,18 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sh.600066",
+      "issuer": "宇通客车股份有限公司",
+      "fiscal_year": 2024,
+      "version": "declared_2024_annual_report",
+      "announcement_id": "1222974533",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-01/1222974533.PDF",
+      "pdf_path": "storage/pilots/annual-holdout-600066-2026-10-03/annual.pdf",
+      "pdf_sha256": "5edfe6e4ac095d6c28e17903cc87e284b5d8f75ba3be3f4515a0fbb92f5bc023",
+      "page_count": 158
+    }
+  ],
+  "reference_reports": []
+}
