@@ -316,31 +316,84 @@ def _reconcile(fields, tables):
     return checks
 
 
-def _currency_evidence(pdf):
-    # Native line observations, not a full-text substring search. A quoted or
-    # subsidiary-only sentence elsewhere cannot establish issuer currency.
+def _currency_section(pdf):
+    """Locate a bounded subsection, not establish its currency or PIT status.
+
+    Parentheses are NOT globally stripped by _title. The new path accepts only
+    the exact (6)/(7) title pair, complete native rows on the same page inside
+    the existing uniquely identified accounting-policy chapter.
+    """
     lines = [(page, group, compact("".join(word.text for word in group)))
              for page in pdf.pages for group in _lines(page.words)]
     starts = [index for index, (_, _, text) in enumerate(lines)
               if re.fullmatch(r"[一二三四五六七八九十]+、重要会计政策及会计估计", text)]
     if len(starts) != 1:
-        return []
+        return None
     start = starts[0]
     chapter = lines[start][2].split("、", 1)[0]
     numerals = ("一", "二", "三", "四", "五", "六", "七", "八", "九", "十")
     if chapter not in numerals[:-1]:
-        return []
+        return None
     next_chapter = numerals[numerals.index(chapter) + 1] + "、"
     end = next((index for index in range(start + 1, len(lines))
                 if lines[index][2].startswith(next_chapter)), None)
     if end is None or not all(inside(lines[index][0], lines[index][1]) for index in (start, end)):
-        return []
-    headings = [index for index in range(start + 1, end) if _title(lines[index][2]) == "记账本位币"]
+        return None
+    headings = [index for index in range(start + 1, end)
+                if (_title(lines[index][2]) == "记账本位币"
+                    or re.fullmatch(r"[（(][0-9一二三四五六七八九十]+[）)]记账本位币", lines[index][2]))]
     if len(headings) != 1:
-        return []
+        return None
     index = headings[0]
+    if (lines[index][2] == "记账本位币" and index > start + 1
+            and re.fullmatch(r"[（(][0-9一二三四五六七八九十]+[）)]?", lines[index - 1][2])):
+        return None  # A split parenthesized title is not a legacy bare heading.
+    parenthesized = lines[index][2] == "(6)记账本位币"
+    if not parenthesized and _title(lines[index][2]) != "记账本位币":
+        return None
+    if parenthesized:
+        end_title = "(7)同一控制下和非同一控制下企业合并的会计处理方法"
+        boundaries = [pos for pos in range(start + 1, end) if lines[pos][2] == end_title]
+        next_numbered = next((pos for pos in range(index + 1, end)
+                              if re.match(r"(?:[（(][0-9一二三四五六七八九十]+|[0-9]+[、.．])",
+                                          lines[pos][2])), None)
+        if (len(boundaries) != 1 or next_numbered != boundaries[0]
+                or boundaries[0] <= index + 1
+                or lines[boundaries[0]][0].number != lines[index][0].number
+                or not lines[index][0].text.strip()
+                or not inside(lines[index][0], lines[index][1])
+                or not inside(lines[boundaries[0]][0], lines[boundaries[0]][1])):
+            return None
+        section_end = boundaries[0]
+    else:
+        section_end = next((pos for pos in range(index + 1, end)
+                            if re.match(r"[0-9]+[、.．]", lines[pos][2])), end)
+    return {"lines": lines, "start": start, "end": end, "index": index,
+            "section_end": section_end, "parenthesized": parenthesized}
+
+
+def _currency_section_observation(pdf, section):
+    """Raw title/boundary bindings do not certify the first currency sentence."""
+    observation = {"kind": "EXACT_PARENTHESIZED_CURRENCY_SUBSECTION_BOUNDARIES",
+                   "document_sha256": pdf.sha256, "currency_verified": False,
+                   "public_availability_verified": False}
+    for name, key in (("policy_heading", "start"), ("heading", "index"),
+                      ("subsection_end", "section_end"), ("policy_end", "end")):
+        page, words, text = section["lines"][section[key]]
+        observation[name] = {"physical_page": page.number, "text": text, "box": union_box(words)}
+    return observation
+
+
+def _currency_evidence(pdf, *, section=None):
+    # Native line observations, not a full-text substring search. A quoted or
+    # subsidiary-only sentence elsewhere cannot establish issuer currency.
+    section = section if section is not None else _currency_section(pdf)
+    if section is None:
+        return []
+    lines = section["lines"]
+    start, end, index, section_end = (section[key] for key in ("start", "end", "index", "section_end"))
     page, heading, heading_text = lines[index]
-    if index + 1 >= end:
+    if index + 1 >= section_end:
         return []
     first_page, first, text = lines[index + 1]
     gap = min(word.box[1] for word in first) - max(word.box[3] for word in heading)
@@ -351,8 +404,6 @@ def _currency_evidence(pdf):
                 "本集团以人民币为记账本位币。", "本集团采用人民币为记账本位币。",
                 "本公司的记账本位币为人民币。", "本集团的记账本位币为人民币。",
                 "采用人民币为记账本位币。", "以人民币为记账本位币。")
-    section_end = next((pos for pos in range(index + 1, end)
-                        if re.match(r"[0-9]+[、.．]", lines[pos][2])), end)
     joint_sentence = "本公司及境内子公司记账本位币为人民币。"
     joint = text.startswith(joint_sentence)
     continuation = None
@@ -468,7 +519,8 @@ def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
     if pdf.sha256 != source["pdf_sha256"]:
         raise ValueError("source identity does not match parsed PDF")
     identity = _annual_identity(pdf, source)
-    currency_evidence = _currency_evidence(pdf)
+    currency_section = _currency_section(pdf)
+    currency_evidence = _currency_evidence(pdf, section=currency_section)
     currency = sorted({item["physical_page"] for item in currency_evidence})
     tables = {kind: (_table(pdf, source, kind) if currency else
                      {"state": "CURRENCY_EVIDENCE_UNKNOWN", "rows": []}) for kind in SECTIONS}
@@ -496,4 +548,6 @@ def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
             "full_balance_sheet_semantics_certified": False}
     if identity is not None:
         result["document_identity_evidence"] = identity
+    if currency_section is not None and currency_section["parenthesized"]:
+        result["currency_subsection_observation"] = _currency_section_observation(pdf, currency_section)
     return result
