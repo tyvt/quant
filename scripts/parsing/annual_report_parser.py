@@ -351,19 +351,49 @@ def _currency_evidence(pdf):
                 "本集团以人民币为记账本位币。", "本集团采用人民币为记账本位币。",
                 "本公司的记账本位币为人民币。", "本集团的记账本位币为人民币。",
                 "采用人民币为记账本位币。", "以人民币为记账本位币。")
-    if not any(text == sentence or text.startswith(sentence + "境外子公司") for sentence in accepted):
-        return []
-    # Another issuer/group declaration before the next numbered subheading is
-    # an ambiguity, even if one line alone happens to state CNY. Do not choose it.
     section_end = next((pos for pos in range(index + 1, end)
                         if re.match(r"[0-9]+[、.．]", lines[pos][2])), end)
-    claim = re.compile(r"^(?:(?:本公司|本集团)(?:以|采用).+为记账本位币。"
-                       r"|(?:本公司|本集团)的记账本位币为.+。|(?:以|采用).+为记账本位币。)")
-    if sum(bool(claim.match(lines[pos][2])) for pos in range(index + 1, section_end)) != 1:
+    joint_sentence = "本公司及境内子公司记账本位币为人民币。"
+    joint = text.startswith(joint_sentence)
+    continuation = None
+    if joint and text != joint_sentence:
+        # The issuer sentence itself must be complete on one native row. Only
+        # this explicit subsidiary-determination context may continue on the
+        # immediately adjacent row; never join a split currency declaration.
+        prefix = "本公司下属子公司根据其经营所处的主要经济环境确定其记账本位币，境外子公司"
+        tail = text[len(joint_sentence):]
+        context_words = [first]
+        if not tail.startswith(prefix):
+            if index + 2 >= section_end:
+                return []
+            next_page, following, following_text = lines[index + 2]
+            context_gap = min(word.box[1] for word in following) - max(word.box[3] for word in first)
+            if (not prefix.startswith(tail) or not tail.startswith("本公司下属子公司")
+                    or next_page.number != page.number or not inside(page, following)
+                    or not 0 <= context_gap <= 12 or not (tail + following_text).startswith(prefix)):
+                return []
+            context_words.append(following)
+        continuation = {"kind": "SUBSIDIARY_DETERMINATION_NOT_ISSUER_CURRENCY",
+                        "physical_page": page.number,
+                        "text": "".join(word.text for group in context_words for word in group),
+                        "boxes": [union_box(group) for group in context_words]}
+    if not joint and not any(text == sentence or text.startswith(sentence + "境外子公司") for sentence in accepted):
+        return []
+    # Repeated/conflicting issuer claims also count when they share a row or
+    # lack a final full stop. Foreign subsidiary statements do not replace the
+    # issuer, and arbitrary joint subjects are not new supported declarations.
+    subject = r"(?:本公司及境内子公司|本公司|本集团)"
+    claim = re.compile(subject + r"(?:以|采用)[^。]*?为记账本位币"
+                       r"|" + subject + r"(?:的)?记账本位币为"
+                       r"|(?:^|(?<=。))(?:以|采用)[^。]*?为记账本位币")
+    # Joining context is only a veto for extra claims, never positive evidence
+    # for a broken declaration. A wrapped conflicting claim is still unsafe.
+    context_text = "".join(lines[pos][2] for pos in range(index + 1, section_end))
+    if len(claim.findall(context_text)) != 1:
         return []
     policy_page, policy_words, policy_text = lines[start]
     end_page, end_words, end_text = lines[end]
-    return [{"physical_page": page.number, "kind": "SCOPED_CURRENCY_POLICY_DECLARATION",
+    evidence = {"physical_page": page.number, "kind": "SCOPED_CURRENCY_POLICY_DECLARATION",
              "subject_scope": "ISSUER_ACCOUNTING_POLICY_NOT_SUBSIDIARY_OR_EXAMPLE",
              "document_sha256": pdf.sha256,
              "policy_heading_text": policy_text, "policy_heading_box": union_box(policy_words),
@@ -372,7 +402,12 @@ def _currency_evidence(pdf):
              "policy_end_physical_page": end_page.number,
              "heading_text": heading_text, "heading_box": union_box(heading),
              "declaration_text": "".join(word.text for word in first),
-             "declaration_box": union_box(first)}]
+             "declaration_box": union_box(first)}
+    if joint:
+        evidence["matched_sentence"] = joint_sentence
+        if continuation is not None:
+            evidence["continuation_context"] = continuation
+    return [evidence]
 
 
 def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
