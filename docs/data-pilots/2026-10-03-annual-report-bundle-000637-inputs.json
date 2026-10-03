@@ -1,0 +1,42 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sz.000637",
+      "issuer": "茂名石化实华股份有限公司",
+      "fiscal_year": 2025,
+      "version": "original_2025_annual_report",
+      "announcement_id": "1225248741",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225248741.PDF",
+      "pdf_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-annual-original.pdf",
+      "pdf_sha256": "18231670324fb8ab60c264dbaebf4972004a4c153aa5a046dc7be4d2e40646d9",
+      "page_count": 209
+    },
+    {
+      "security_id": "sz.000637",
+      "issuer": "茂名石化实华股份有限公司",
+      "fiscal_year": 2025,
+      "version": "amended_2025_annual_report",
+      "announcement_id": "1225460240",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-06/1225460240.PDF",
+      "pdf_path": "storage/pilots/financial-revision-2026-10-01/sz-000637-2025-annual-amended.pdf",
+      "pdf_sha256": "1188d9bcac97cc67fa75424b8382acfbb387384b5e3dfeb71f545d1f90fb4791",
+      "page_count": 209
+    }
+  ],
+  "reference_reports": [
+    {
+      "path": "docs/data-pilots/attributable-equity-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "e9977536167e19dd9f4a61ff266ba0863bd30a4a9717971d6187f5c3a79e425c"
+    },
+    {
+      "path": "docs/data-pilots/ocf-capex-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "72d245b8136f93c48c0a366e5eafcf549862f6faa75b4523d4c618c2ec0299c0"
+    },
+    {
+      "path": "docs/data-pilots/lease-cash-000637-2026-10-02/diagnostic-only.json",
+      "sha256": "b614e7c8901bd8c1ac81b16d2501e6ccf68e557841c12d51e7c74c8b61cea022"
+    }
+  ]
+}
