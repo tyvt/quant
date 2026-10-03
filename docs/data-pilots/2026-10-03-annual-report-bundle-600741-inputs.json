@@ -1,0 +1,18 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sh.600741",
+      "issuer": "华域汽车系统股份有限公司",
+      "fiscal_year": 2024,
+      "version": "declared_2024_annual_report",
+      "announcement_id": "1223375149",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-29/1223375149.PDF",
+      "pdf_path": "storage/pilots/annual-holdout-600741-2026-10-03/annual.pdf",
+      "pdf_sha256": "0e6c40acb8919acef249e2ce3520ff7c7bba00f524e8ccff34d1d58f88f996c8",
+      "page_count": 224
+    }
+  ],
+  "reference_reports": []
+}
