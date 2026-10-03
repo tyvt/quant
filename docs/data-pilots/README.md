@@ -26,6 +26,11 @@
 “本公司的记账本位币为人民币。”语序而被币种门控阻断；原文有披露不回填程序 UNKNOWN。
 保留计划、原文索引、失败 JSON/Markdown，本轮不修复该样本或更换容易样本。
 
+[主体与政策范围限定的币种修复](2026-10-03-annual-report-currency-600276.md)只扩展明确
+人民币语序，并把新旧语序都限定到唯一会计政策章节和本位币小节，绑定原文/坐标/章末。
+恒瑞新 v2 恢复五项主表字段，两个利润字段及租赁/审计仍 UNKNOWN；旧失败通过旧 Git
+代码重放，不改写原报告，不用修复后的回归冒充新盲跑。
+
 [四个限定样本诊断](2026-10-02-limited-sample-diagnostics.md)冻结单证券、`as_of=2026-09-30`、输出范围与时点选择。离线工具 `scripts/pilots/build_limited_diagnostics.py` 区分“原文观察算术”和“已接纳的 PIT 输入”，不将未知值填零，不调用未就绪 Reader；逐份报告显式标注 `diagnostic_only=true`、`official_selection=false`。本批历史可用性保持 UNKNOWN，仅验证已有纯逻辑的缺口传播，不以法定澄清阻止原文对照，也不因此放宽规则依赖。
 
 [茂化实华单字段补证](2026-10-02-minority-equity-000637.md)只补原版/更正版 2025 年末少数股东权益 `N`，核对跨页表头、期末/期初列与母公司表边界；已知原文不等于已知历史 PIT。`scripts/pilots/verify_minority_equity_000637.py` 离线验证并生成独立证据包，不修改父诊断、原四份报告或生产状态。

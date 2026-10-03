@@ -317,27 +317,62 @@ def _reconcile(fields, tables):
 
 
 def _currency_evidence(pdf):
-    evidence = []
-    explicit = ("本公司以人民币为记账本位币", "本公司采用人民币为记账本位币",
-                "本集团以人民币为记账本位币", "本集团采用人民币为记账本位币")
-    for page in pdf.pages:
-        if any(sentence in compact(page.text) for sentence in explicit):
-            evidence.append({"physical_page": page.number, "kind": "EXPLICIT_ISSUER_CURRENCY_STATEMENT"})
-            continue
-        for heading in page.words:
-            if _title(heading.text) != "记账本位币" or not inside(page, (heading,)):
-                continue
-            groups = _lines(tuple(word for word in page.words if word.y > heading.y))
-            if not groups:
-                continue
-            first = groups[0]
-            text = compact("".join(word.text for word in first))
-            if (inside(page, first) and text.startswith(("采用人民币为记账本位币。", "以人民币为记账本位币。"))):
-                evidence.append({"physical_page": page.number, "kind": "SCOPED_CURRENCY_POLICY_DECLARATION",
-                                 "heading_text": heading.text, "heading_box": list(heading.box),
-                                 "declaration_text": "".join(word.text for word in first),
-                                 "declaration_box": union_box(first)})
-    return evidence
+    # Native line observations, not a full-text substring search. A quoted or
+    # subsidiary-only sentence elsewhere cannot establish issuer currency.
+    lines = [(page, group, compact("".join(word.text for word in group)))
+             for page in pdf.pages for group in _lines(page.words)]
+    starts = [index for index, (_, _, text) in enumerate(lines)
+              if re.fullmatch(r"[一二三四五六七八九十]+、重要会计政策及会计估计", text)]
+    if len(starts) != 1:
+        return []
+    start = starts[0]
+    chapter = lines[start][2].split("、", 1)[0]
+    numerals = ("一", "二", "三", "四", "五", "六", "七", "八", "九", "十")
+    if chapter not in numerals[:-1]:
+        return []
+    next_chapter = numerals[numerals.index(chapter) + 1] + "、"
+    end = next((index for index in range(start + 1, len(lines))
+                if lines[index][2].startswith(next_chapter)), None)
+    if end is None or not all(inside(lines[index][0], lines[index][1]) for index in (start, end)):
+        return []
+    headings = [index for index in range(start + 1, end) if _title(lines[index][2]) == "记账本位币"]
+    if len(headings) != 1:
+        return []
+    index = headings[0]
+    page, heading, heading_text = lines[index]
+    if index + 1 >= end:
+        return []
+    first_page, first, text = lines[index + 1]
+    gap = min(word.box[1] for word in first) - max(word.box[3] for word in heading)
+    if (first_page.number != page.number or not page.text.strip()
+            or not inside(page, (*heading, *first)) or not 0 <= gap <= 48):
+        return []  # No arbitrary paragraph/page joins, rotation or clipping.
+    accepted = ("本公司以人民币为记账本位币。", "本公司采用人民币为记账本位币。",
+                "本集团以人民币为记账本位币。", "本集团采用人民币为记账本位币。",
+                "本公司的记账本位币为人民币。", "本集团的记账本位币为人民币。",
+                "采用人民币为记账本位币。", "以人民币为记账本位币。")
+    if not any(text == sentence or text.startswith(sentence + "境外子公司") for sentence in accepted):
+        return []
+    # Another issuer/group declaration before the next numbered subheading is
+    # an ambiguity, even if one line alone happens to state CNY. Do not choose it.
+    section_end = next((pos for pos in range(index + 1, end)
+                        if re.match(r"[0-9]+[、.．]", lines[pos][2])), end)
+    claim = re.compile(r"^(?:(?:本公司|本集团)(?:以|采用).+为记账本位币。"
+                       r"|(?:本公司|本集团)的记账本位币为.+。|(?:以|采用).+为记账本位币。)")
+    if sum(bool(claim.match(lines[pos][2])) for pos in range(index + 1, section_end)) != 1:
+        return []
+    policy_page, policy_words, policy_text = lines[start]
+    end_page, end_words, end_text = lines[end]
+    return [{"physical_page": page.number, "kind": "SCOPED_CURRENCY_POLICY_DECLARATION",
+             "subject_scope": "ISSUER_ACCOUNTING_POLICY_NOT_SUBSIDIARY_OR_EXAMPLE",
+             "document_sha256": pdf.sha256,
+             "policy_heading_text": policy_text, "policy_heading_box": union_box(policy_words),
+             "policy_heading_physical_page": policy_page.number,
+             "policy_end_text": end_text, "policy_end_box": union_box(end_words),
+             "policy_end_physical_page": end_page.number,
+             "heading_text": heading_text, "heading_box": union_box(heading),
+             "declaration_text": "".join(word.text for word in first),
+             "declaration_box": union_box(first)}]
 
 
 def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
