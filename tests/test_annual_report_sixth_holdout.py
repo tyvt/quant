@@ -13,7 +13,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from scripts.extract_annual_report_bundle import ROOT, SOURCE_PATHS, build_bundle
+from scripts.extract_annual_report_bundle import ROOT, SOURCE_PATHS
 from scripts.parsing.field_binder import compact
 from scripts.parsing.generic_extractor import PDFCache
 from scripts.pilots.capture_annual_holdout import select_source
@@ -135,9 +135,11 @@ class SixthAnnualHoldoutTests(unittest.TestCase):
         self.assertFalse((self.result_dir / "diagnostic-only.json").exists())
         self.assertFalse((self.result_dir / "diagnostic-only.md").exists())
 
-    def test_current_parser_also_rejects_without_bypass_or_field_injection(self):
-        with self.assertRaisesRegex(ValueError, "issuer, annual period or security identity"):
-            build_bundle(self.scope_raw)
+    def test_frozen_parser_rejects_without_bypass_or_field_injection(self):
+        # Current code may support new titles; the original refusal must still
+        # be executed and checked against its own complete frozen Git code.
+        self.assertEqual(self.replayed["exit_code"], 2)
+        self.assertFalse(self.replayed["normal_bundle_created"])
         for key in ("bundles", "fields", "reconciliations"):
             self.assertNotIn(key, self.rejection)
 

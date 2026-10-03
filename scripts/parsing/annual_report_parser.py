@@ -410,13 +410,64 @@ def _currency_evidence(pdf):
     return [evidence]
 
 
+def _annual_identity(pdf, source):
+    """Keep legacy Arabic admission; narrowly bind a new Chinese cover title.
+
+    A catalogue, publication date or digits elsewhere cannot stand in for the
+    new path's issuer, A-share identity and complete reporting-period evidence.
+    No title repair changes currency, amount units or statement boundaries.
+    """
+    first = "".join(compact(page.text) for page in pdf.pages[:10])
+    year, issuer, code = source["fiscal_year"], compact(source["issuer"]), source["security_id"].split(".")[1]
+    if issuer not in first or code not in first:
+        raise ValueError("issuer, annual period or security identity absent/mismatched")
+    cover = pdf.pages[0]
+    rows = [(group, compact("".join(word.text for word in group))) for group in _lines(cover.words)]
+    titles = [(group, text) for group, text in rows
+              if re.fullmatch(r"(?:[0-9]{4}年?|[〇零一二三四五六七八九]{4}年?)年度报告", text)]
+    chinese_year = "".join("〇一二三四五六七八九"[int(digit)] for digit in str(year))
+    allowed = {f"{year}年年度报告", chinese_year + "年度报告"}
+    if any(text not in allowed for _, text in titles):
+        raise ValueError("cover annual title year or syntax disagrees with declared source")
+    # Legacy reports may use varied period definitions. An explicit full-year
+    # definition, when recognized, must not conflict even on the old path.
+    periods = []
+    for page in pdf.pages[:10]:
+        for group in _lines(page.words):
+            text = compact("".join(word.text for word in group))
+            if re.match(r"(?:报告期[:：]|报告期指|本报告期指|报告期、本报告期指)", text):
+                match = re.fullmatch(r"(?:报告期[:：]|报告期指|本报告期指|报告期、本报告期指)"
+                                     r"([0-9]{4})年1月1日至([0-9]{4})年12月31日(?:之期间)?", text)
+                if match and match.groups() != (str(year), str(year)):
+                    raise ValueError("explicit reporting period disagrees with declared source")
+                periods.append((page, group, text, match))
+    selected = [(group, text) for group, text in titles if text == chinese_year + "年度报告"]
+    if f"{year}年年度报告" in first and not selected:
+        return None  # Existing Arabic path and its table date/unit guards remain.
+    names = [group for group, text in rows if text == issuer]
+    shares = [(group, text) for group, text in rows
+              if re.fullmatch(r"（A股：[0-9]{6}(?:H股：[0-9]{5})?）", text)]
+    if (len(selected) != 1 or len(names) != 1 or len(shares) != 1
+            or not re.fullmatch(r"（A股：" + re.escape(code) + r"(?:H股：[0-9]{5})?）", shares[0][1])
+            or len(periods) != 1 or periods[0][3] is None
+            or not inside(cover, (*selected[0][0], *names[0], *shares[0][0]))
+            or not inside(periods[0][0], periods[0][1])):
+        raise ValueError("Chinese annual title requires bound issuer, A-share code and full-year period")
+    period_page, period_words, period_text, _ = periods[0]
+    return {"kind": "CHINESE_ANNUAL_TITLE_WITH_EXPLICIT_FULL_YEAR_PERIOD",
+            "document_sha256": pdf.sha256, "declared_fiscal_year": year,
+            "physical_page": cover.number, "issuer_text": issuer, "issuer_box": union_box(names[0]),
+            "title_text": selected[0][1], "title_box": union_box(selected[0][0]),
+            "share_code_text": shares[0][1], "share_code_box": union_box(shares[0][0]),
+            "period_physical_page": period_page.number, "period_text": period_text,
+            "period_box": union_box(period_words), "period_start": f"{year}-01-01", "period_end": f"{year}-12-31",
+            "public_availability_verified": False}
+
+
 def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
     if pdf.sha256 != source["pdf_sha256"]:
         raise ValueError("source identity does not match parsed PDF")
-    first = "".join(compact(page.text) for page in pdf.pages[:10])
-    if (compact(source["issuer"]) not in first or f"{source['fiscal_year']}年年度报告" not in first
-            or source["security_id"].split(".")[1] not in first):
-        raise ValueError("issuer, annual period or security identity absent/mismatched")
+    identity = _annual_identity(pdf, source)
     currency_evidence = _currency_evidence(pdf)
     currency = sorted({item["physical_page"] for item in currency_evidence})
     tables = {kind: (_table(pdf, source, kind) if currency else
@@ -428,7 +479,7 @@ def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
     lease = _lease(pdf, source) if currency else _field([], ("偿还租赁负债支付的金额",))
     lease.update(is_complete_lease_cash=False, full_lease_cash_not_already_deducted=None)
     audit = _audit(pdf, source)
-    return {"source": source, "currency": "CNY" if currency else None, "currency_evidence_pages": currency,
+    result = {"source": source, "currency": "CNY" if currency else None, "currency_evidence_pages": currency,
             "currency_evidence": currency_evidence,
             "statement_scope": "CONSOLIDATED", "fields": fields,
             "lease_financing_component": lease, "audit_text_observation": audit,
@@ -443,3 +494,6 @@ def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
             "diagnostic_available_at": None, "pit_admitted_observation_count": 0,
             "rule_execution": "NOT_EXECUTED_SOURCE_EXTRACTION_ONLY",
             "full_balance_sheet_semantics_certified": False}
+    if identity is not None:
+        result["document_identity_evidence"] = identity
+    return result
