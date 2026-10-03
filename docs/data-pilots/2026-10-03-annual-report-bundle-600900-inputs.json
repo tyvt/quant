@@ -1,0 +1,18 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sh.600900",
+      "issuer": "中国长江电力股份有限公司",
+      "fiscal_year": 2024,
+      "version": "declared_2024_annual_report",
+      "announcement_id": "1223421172",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-30/1223421172.PDF",
+      "pdf_path": "storage/pilots/annual-holdout-600900-2026-10-03/annual.pdf",
+      "pdf_sha256": "556767ca1f7c06bb679c827aa6522ff9927d2a63dc2ab64b57194fdc57192048",
+      "page_count": 262
+    }
+  ],
+  "reference_reports": []
+}

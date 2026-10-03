@@ -1,0 +1,62 @@
+{
+  "schema": "annual-holdout-capture-v1",
+  "plan_sha256": "a808e5509f837a15f28c6549b550650609b3bcce869f03e30f84c38ae61e095e",
+  "capture_code_sha256": "d0e68831fafd57154bcd8139329f3d788c88a300aa5ec38edbcdc639f9756211",
+  "source": {
+    "security_id": "sh.600900",
+    "issuer": "中国长江电力股份有限公司",
+    "fiscal_year": 2024,
+    "version": "declared_2024_annual_report",
+    "announcement_id": "1223421172",
+    "url": "https://static.cninfo.com.cn/finalpage/2025-04-30/1223421172.PDF",
+    "pdf_path": "storage/pilots/annual-holdout-600900-2026-10-03/annual.pdf",
+    "pdf_sha256": "556767ca1f7c06bb679c827aa6522ff9927d2a63dc2ab64b57194fdc57192048",
+    "page_count": 262
+  },
+  "resources": [
+    {
+      "name": "catalogue.json",
+      "method": "POST",
+      "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "request_data": {
+        "pageNum": 1,
+        "pageSize": 30,
+        "column": "sse",
+        "tabName": "fulltext",
+        "stock": "600900,gssh0600900",
+        "searchkey": "2024年年度报告",
+        "secid": "",
+        "plate": "",
+        "category": "",
+        "trade": "",
+        "seDate": "2025-01-01~2025-06-30",
+        "sortName": "time",
+        "sortType": "asc",
+        "isHLtitle": "false"
+      },
+      "http_status": 200,
+      "sha256": "9474eb3de208efc11a81bda58ea1986c6067327b184eb37e6634982e9dffa01a",
+      "bytes": 1419,
+      "request_started_at_utc": "2026-10-03T05:05:07.547271+00:00",
+      "response_received_at_utc": "2026-10-03T05:05:07.719160+00:00"
+    },
+    {
+      "name": "annual.pdf",
+      "method": "GET",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-30/1223421172.PDF",
+      "request_data": null,
+      "http_status": 200,
+      "sha256": "556767ca1f7c06bb679c827aa6522ff9927d2a63dc2ab64b57194fdc57192048",
+      "bytes": 1711311,
+      "request_started_at_utc": "2026-10-03T05:05:07.719160+00:00",
+      "response_received_at_utc": "2026-10-03T05:05:07.957103+00:00"
+    }
+  ],
+  "catalogue_time_raw_ms": 1745942400000,
+  "scope_sha256": "c2ede08ed69ff9c4220a1865bb63dc899cfa73c7cf470aea1e4019963c6e2a04",
+  "pdf_body_read": false,
+  "exact_available_at_utc": null,
+  "complete_revision_chain_verified": false,
+  "snapshot_published": false,
+  "production_reader_ready": false
+}
