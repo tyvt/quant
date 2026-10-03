@@ -1,0 +1,18 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sh.600309",
+      "issuer": "万华化学集团股份有限公司",
+      "fiscal_year": 2024,
+      "version": "declared_2024_annual_report",
+      "announcement_id": "1223097325",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-15/1223097325.PDF",
+      "pdf_path": "storage/pilots/annual-holdout-600309-2026-10-03/annual.pdf",
+      "pdf_sha256": "0c37e70c554609f4a22990fd97f3da4ee92bb717e44d641ac7800083789d4df7",
+      "page_count": 223
+    }
+  ],
+  "reference_reports": []
+}
