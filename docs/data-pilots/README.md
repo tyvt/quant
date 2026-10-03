@@ -77,6 +77,11 @@ stdout/stderr 的 canonical 拒绝记录；冻结 Git 代码实际重放必须�
 说明式引导语、跨行联合主体及境外说明未被现有入口支持。与括号编号问题区分，
 不任意拼接整段、不注入人工币种／金额、不在本轮追修；首次包由冻结 Git 代码重放。
 
+[说明式引导语证据条件](2026-10-03-annual-report-currency-intro-600309.md)将完整经济环境
+描述作为不认证币种的原文观察，只在同行或紧邻完整直接声明的精确组合中接纳币种。
+万华新 v2 绑定引导语，但跨行联合主体与新增尾句未支持，CNY／主表仍 UNKNOWN；
+不从经济环境句推断本位币，不改写旧盲跑，不合并追修其他缺口。
+
 [四个限定样本诊断](2026-10-02-limited-sample-diagnostics.md)冻结单证券、`as_of=2026-09-30`、输出范围与时点选择。离线工具 `scripts/pilots/build_limited_diagnostics.py` 区分“原文观察算术”和“已接纳的 PIT 输入”，不将未知值填零，不调用未就绪 Reader；逐份报告显式标注 `diagnostic_only=true`、`official_selection=false`。本批历史可用性保持 UNKNOWN，仅验证已有纯逻辑的缺口传播，不以法定澄清阻止原文对照，也不因此放宽规则依赖。
 
 [茂化实华单字段补证](2026-10-02-minority-equity-000637.md)只补原版/更正版 2025 年末少数股东权益 `N`，核对跨页表头、期末/期初列与母公司表边界；已知原文不等于已知历史 PIT。`scripts/pilots/verify_minority_equity_000637.py` 离线验证并生成独立证据包，不修改父诊断、原四份报告或生产状态。

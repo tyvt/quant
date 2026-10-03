@@ -388,6 +388,38 @@ def _currency_section_observation(pdf, section):
     return observation
 
 
+CURRENCY_INTRO = "人民币为本公司及境内子公司经营所处的主要经济环境中的货币"
+
+
+def _currency_intro_observation(pdf, section):
+    """Bind one complete scoped introduction; it never establishes CNY.
+
+    The rest of its native row is preserved, not joined with following rows.
+    A broken issuer declaration after the comma stays broken.
+    """
+    if section is None or section["index"] + 1 >= section["section_end"]:
+        return None
+    lines = section["lines"]
+    page, heading, heading_text = lines[section["index"]]
+    first_page, first, text = lines[section["index"] + 1]
+    gap = min(word.box[1] for word in first) - max(word.box[3] for word in heading)
+    if (first_page.number != page.number or not page.text.strip()
+            or not inside(page, (*heading, *first)) or not 0 <= gap <= 48
+            or not text.startswith((CURRENCY_INTRO + "，", CURRENCY_INTRO + "。"))):
+        return None
+    observation = {"kind": "EXACT_SCOPED_CURRENCY_INTRO_NOT_DECLARATION",
+                   "state": "OBSERVED_INTRO_NOT_CURRENCY_PROOF",
+                   "document_sha256": pdf.sha256, "physical_page": page.number,
+                   "matched_intro": CURRENCY_INTRO, "text": "".join(word.text for word in first),
+                   "box": union_box(first), "heading_text": heading_text,
+                   "heading_box": union_box(heading), "currency_verified": False,
+                   "public_availability_verified": False}
+    for name, key in (("policy_heading", "start"), ("subsection_end", "section_end"), ("policy_end", "end")):
+        bound_page, words, bound_text = lines[section[key]]
+        observation[name] = {"physical_page": bound_page.number, "text": bound_text, "box": union_box(words)}
+    return observation
+
+
 def _currency_evidence(pdf, *, section=None):
     # Native line observations, not a full-text substring search. A quoted or
     # subsidiary-only sentence elsewhere cannot establish issuer currency.
@@ -409,6 +441,25 @@ def _currency_evidence(pdf, *, section=None):
                 "本公司的记账本位币为人民币。", "本集团的记账本位币为人民币。",
                 "采用人民币为记账本位币。", "以人民币为记账本位币。")
     joint_sentence = "本公司及境内子公司记账本位币为人民币。"
+    intro = _currency_intro_observation(pdf, section)
+    declaration_index = index + 1
+    if intro is not None:
+        # No inference from the economic-environment sentence. Only the
+        # already supported, complete same-subject direct declaration works.
+        if text == CURRENCY_INTRO + "，" + joint_sentence:
+            text = joint_sentence
+        elif text == CURRENCY_INTRO + "。" and declaration_index + 1 < section_end:
+            next_page, following, following_text = lines[declaration_index + 1]
+            context_gap = min(word.box[1] for word in following) - max(word.box[3] for word in first)
+            if (next_page.number != page.number or not inside(page, following)
+                    or not 0 <= context_gap <= 12 or following_text != joint_sentence):
+                return []
+            declaration_index += 1
+            first, text = following, following_text
+        else:
+            return []  # Partial subjects, new "以" variants and tails stay unsupported.
+        if declaration_index + 1 != section_end:
+            return []  # This bounded new path does not process extra narrative/tails.
     joint = text.startswith(joint_sentence)
     continuation = None
     if joint and text != joint_sentence:
@@ -419,9 +470,9 @@ def _currency_evidence(pdf, *, section=None):
         tail = text[len(joint_sentence):]
         context_words = [first]
         if not tail.startswith(prefix):
-            if index + 2 >= section_end:
+            if declaration_index + 1 >= section_end:
                 return []
-            next_page, following, following_text = lines[index + 2]
+            next_page, following, following_text = lines[declaration_index + 1]
             context_gap = min(word.box[1] for word in following) - max(word.box[3] for word in first)
             if (not prefix.startswith(tail) or not tail.startswith("本公司下属子公司")
                     or next_page.number != page.number or not inside(page, following)
@@ -462,6 +513,8 @@ def _currency_evidence(pdf, *, section=None):
         evidence["matched_sentence"] = joint_sentence
         if continuation is not None:
             evidence["continuation_context"] = continuation
+    if intro is not None:
+        evidence["intro_context"] = intro
     return [evidence]
 
 
@@ -554,4 +607,7 @@ def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
         result["document_identity_evidence"] = identity
     if currency_section is not None and currency_section["parenthesized"]:
         result["currency_subsection_observation"] = _currency_section_observation(pdf, currency_section)
+    intro = _currency_intro_observation(pdf, currency_section)
+    if intro is not None:
+        result["currency_intro_observation"] = intro
     return result
