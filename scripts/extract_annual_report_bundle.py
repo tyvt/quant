@@ -25,6 +25,13 @@ SOURCE_KEYS = {"security_id", "issuer", "fiscal_year", "version", "announcement_
                "url", "pdf_path", "pdf_sha256", "page_count"}
 
 
+def _code_hashes(root):
+    return {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in SOURCE_PATHS}
+
+
+LOADED_CODE_SHA256 = _code_hashes(ROOT)
+
+
 def _unique(pairs):
     result = {}
     for key, value in pairs:
@@ -102,11 +109,24 @@ def build_bundle(raw_scope: bytes, *, root: Path = ROOT, cache: PDFCache | None 
     rule_hash = hashlib.sha256((root / "RULE_SPEC.md").read_bytes()).hexdigest()
     if rule_hash != RULE_SHA256:
         raise ValueError("RULE_SPEC baseline drift")
+    code_hashes = _code_hashes(root)
+    if code_hashes != LOADED_CODE_SHA256:
+        raise ValueError("annual extraction implementation changed during session; restart")
     reference_documents = []
     for ref in scope["reference_reports"]:
         raw = verified_bytes(root, ref["path"], ref["sha256"])
         report = json.loads(raw.decode("utf-8"), object_pairs_hook=_unique, parse_constant=_nonfinite)
-        if report.get("diagnostic_only") is not True or report.get("pit_admitted_observation_count") != 0:
+        timing = report.get("timing_assumptions", {})
+        direct_zero = type(report.get("pit_admitted_observation_count")) is int and report["pit_admitted_observation_count"] == 0
+        limited_zero = (report.get("schema_version") == "limited_sample_diagnostic_v1"
+                        and report.get("real_pit_strategy_run") is False
+                        and report.get("production_reader_ready") is False
+                        and report.get("official_selection") is False
+                        and isinstance(timing, dict) and timing.get("policy") == "UNKNOWN_UNLESS_VERIFIED"
+                        and "available_at" in timing and timing["available_at"] is None
+                        and type(timing.get("admitted_pit_observation_count")) is int
+                        and timing["admitted_pit_observation_count"] == 0)
+        if report.get("diagnostic_only") is not True or not (direct_zero or limited_zero):
             raise ValueError("reference is not a frozen source-only diagnostic")
         reference_documents.extend(report.get("source_documents", []))
     cache = cache if cache is not None else PDFCache()
@@ -136,8 +156,7 @@ def build_bundle(raw_scope: bytes, *, root: Path = ROOT, cache: PDFCache | None 
         "manifest": {"rule_version": "v1.3.2", "rule_sha256": rule_hash,
                      "scope_sha256": hashlib.sha256(raw_scope).hexdigest(),
                      "reference_reports": scope["reference_reports"],
-                     "code_sha256": {name: hashlib.sha256((root / name).read_bytes()).hexdigest()
-                                     for name in SOURCE_PATHS},
+                     "code_sha256": code_hashes,
                      "pdf_backend": {"name": "PyMuPDF", "version": pdf.backend_version},
                      "cache": "process_local_native_pdf_text_and_geometry_only_no_runtime_stats_in_identity"},
     }
@@ -206,6 +225,11 @@ def main(argv=None):
                                  for row in bundle["audit_text_observation"]["candidates"])
                     pages.update(row["binding"]["physical_page"]
                                  for row in bundle["lease_financing_component"]["candidates"])
+                    for table in bundle["table_states"].values():
+                        if "header" in table:
+                            pages.add(table["header"]["physical_page"])
+                            pages.add(table["header"].get("title_physical_page", table["header"]["physical_page"]))
+                    pages.update(bundle["currency_evidence_pages"])
                     source = bundle["source"]
                     raw = verified_bytes(ROOT, source["pdf_path"], source["pdf_sha256"])
                     with fitz.open(stream=raw, filetype="pdf") as pdf:

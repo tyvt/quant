@@ -1,0 +1,45 @@
+{
+  "schema": "annual-source-bundle-scope-v1",
+  "as_of": "2026-09-30",
+  "sources": [
+    {
+      "security_id": "sz.002570",
+      "issuer": "贝因美股份有限公司",
+      "fiscal_year": 2022,
+      "version": "original_annual",
+      "announcement_id": "1216702448",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-04-29/1216702448.PDF",
+      "pdf_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/original_annual-1216702448.pdf",
+      "pdf_sha256": "00c181533558cb7f4dac647d25a2d7d92b8aaafcb5f495e1f6a08582904558fc",
+      "page_count": 188
+    },
+    {
+      "security_id": "sz.002570",
+      "issuer": "贝因美股份有限公司",
+      "fiscal_year": 2022,
+      "version": "first_corrected_annual",
+      "announcement_id": "1219043674",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-01-31/1219043674.PDF",
+      "pdf_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/first_corrected_annual-1219043674.pdf",
+      "pdf_sha256": "d84185d150bc513af25a06921ce617fd1d311d0819d47cfad02b3096458bc76e",
+      "page_count": 188
+    },
+    {
+      "security_id": "sz.002570",
+      "issuer": "贝因美股份有限公司",
+      "fiscal_year": 2022,
+      "version": "second_corrected_annual",
+      "announcement_id": "1223388226",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-29/1223388226.PDF",
+      "pdf_path": "storage/pilots/financial-002570-2022-recorrection-2026-10-01/second_corrected_annual-1223388226.pdf",
+      "pdf_sha256": "21fbe574b039f6004558ef89aeaa787d5d89b51e7b7998862b56c08ffee84410",
+      "page_count": 188
+    }
+  ],
+  "reference_reports": [
+    {
+      "path": "docs/data-pilots/limited-diagnostics-2026-10-02/financial-002570-diagnostic-only.json",
+      "sha256": "e09d36515a7014dbb2f206b3a5eea451dbd104aff931ff2599b875f71a732aed"
+    }
+  ]
+}

@@ -30,6 +30,7 @@ ALIASES = {
 }
 UNITS = {"单位：元": 1, "单位：人民币元": 1, "单位：万元": 10000,
          "单位：人民币万元": 10000, "单位：亿元": 100000000}
+LEASE_LABELS = ("偿还租赁负债支付的金额", "租赁支付的现金")
 
 
 def _title(text):
@@ -46,22 +47,28 @@ def _lines(words):
     return [sorted(group, key=lambda item: item.box[0]) for group in groups]
 
 
-def _header(page, words, year, kind, title_word):
+def _header(page, words, year, kind, title_word, *, title_page=None):
     groups = _lines(words)
     for group in groups:
         if not any(compact(word.text) == "项目" for word in group):
             continue
-        current = [word for word in group if compact(word.text) in
-                   (("期末余额", str(year), f"{year}年12月31日") if kind == "balance"
-                    else (str(year), f"{year}年度", "本期发生额"))]
-        prior = [word for word in group if compact(word.text) in
-                 (("期初余额", str(year - 1), f"{year - 1}年12月31日") if kind == "balance"
-                  else (str(year - 1), f"{year - 1}年度", "上期发生额"))]
-        if len(current) != 1 or len(prior) != 1:
+        label = next(word for word in group if compact(word.text) == "项目")
+        columns = []
+        for word in (item for item in group if item.box[0] > label.box[2]):
+            if not columns or word.box[0] - columns[-1][-1].box[2] > 18:
+                columns.append([word])
+            else:
+                columns[-1].append(word)
+        if len(columns) != 2:
             continue
-        left, right = current[0], prior[0]
-        left_group = [word for word in group if left.box[0] <= word.box[0] < right.box[0]]
-        right_group = [word for word in group if word.box[0] >= right.box[0]]
+        left_group, right_group = columns
+        labels = [compact("".join(word.text for word in column)) for column in columns]
+        allowed = (({"期末余额", f"{year}年12月31日"},
+                    {"期初余额", f"{year - 1}年12月31日", f"{year}年1月1日"}) if kind == "balance"
+                   else ({"本期发生额"}, {"上期发生额"}) if kind == "lease"
+                   else ({f"{year}年度"}, {f"{year - 1}年度"}))
+        if labels[0] not in allowed[0] or labels[1] not in allowed[1]:
+            continue
         left_box, right_box = union_box(left_group), union_box(right_group)
         delta = (right_box[0] + right_box[2] - left_box[0] - left_box[2]) / 2
         if delta <= 0 or not inside(page, group):
@@ -74,18 +81,17 @@ def _header(page, words, year, kind, title_word):
             return None
         # Balance headers using closing/opening labels still require the dated title.
         before = "".join(compact(word.text) for word in words if word.y < group[0].y)
-        if kind == "balance" and compact(left.text) == "期末余额" and f"{year}年12月31日" not in before:
-            return None
-        if kind not in ("balance", "lease") and "年度" not in "".join(word.text for word in group):
+        if kind == "balance" and labels[0] == "期末余额" and f"{year}年12月31日" not in before:
             return None
         return {"section": kind, "physical_page": page.number,
                 "title": title_word.text, "title_box": list(title_word.box),
+                "title_physical_page": title_page if title_page is not None else page.number,
                 "unit_text": unit.text, "unit_box": list(unit.box),
                 "unit_multiplier": UNITS[compact(unit.text)],
                 "current_column": "".join(word.text for word in left_group),
                 "comparative_column": "".join(word.text for word in right_group),
                 "column_boxes": [left_box, right_box],
-                "label_right": left.box[0] - delta / 3,
+                "label_right": left_box[0] - delta / 3,
                 "column_split": (left_box[0] + left_box[2] + right_box[0] + right_box[2]) / 4,
                 "header_bottom": max(word.box[3] for word in group),
                 "fiscal_year": year}
@@ -119,19 +125,30 @@ def _table(pdf, source, kind):
     if len(starts) != 1:
         return {"state": "TABLE_NOT_IDENTIFIED" if not starts else "AMBIGUOUS_TABLE", "rows": []}
     start_page, title = starts[0]
+    if not inside(start_page, (title,)):
+        return {"state": "TABLE_TITLE_GEOMETRY_UNKNOWN", "rows": []}
     ends = [(page, word) for page in pdf.pages for word in page.words
             if _title(word.text) == end_title and (page.number, word.y) > (start_page.number, title.y)]
     if not ends:
         return {"state": "CONSOLIDATED_BOUNDARY_UNKNOWN", "rows": []}
     end_page, end_word = min(ends, key=lambda item: (item[0].number, item[1].y))
-    opening = tuple(word for word in start_page.words if word.y > title.y
-                    and (start_page.number != end_page.number or word.y < end_word.y))
-    header = _header(start_page, opening, source["fiscal_year"], kind, title)
+    header = None
+    # Explicit table title may be at a page's foot. Search only that page and
+    # its immediate successor, never arbitrary later pages or parent tables.
+    for page in pdf.pages[start_page.number - 1:min(start_page.number + 1, end_page.number)]:
+        opening = tuple(word for word in page.words
+                        if (page.number != start_page.number or word.y > title.y)
+                        and (page.number != end_page.number or word.y < end_word.y))
+        header = _header(page, opening, source["fiscal_year"], kind, title, title_page=start_page.number)
+        if header is not None:
+            break
+        if any(compact(word.text) == "项目" for word in opening):
+            break  # An explicit but invalid first header cannot be bypassed.
     if header is None:
         return {"state": "HEADER_UNIT_YEAR_OR_COLUMNS_UNKNOWN", "rows": []}
     rows = []
-    for page in pdf.pages[start_page.number - 1:end_page.number]:
-        lower = header["header_bottom"] if page.number == start_page.number else 60
+    for page in pdf.pages[header["physical_page"] - 1:end_page.number]:
+        lower = header["header_bottom"] if page.number == header["physical_page"] else 60
         upper = end_word.box[1] if page.number == end_page.number else page.height - 35
         selected = tuple(word for word in page.words if lower < word.y < upper)
         signatures = [word.box[1] for word in selected if "法定代表人" in word.text]
@@ -180,7 +197,7 @@ def _lease(pdf, source):
     rows = []
     for page in pdf.pages:
         for word in page.words:
-            if compact(word.text) != "偿还租赁负债支付的金额" or not start < (page.number, word.y) < end:
+            if compact(word.text) not in LEASE_LABELS or not start < (page.number, word.y) < end:
                 continue
             prior = tuple(item for item in page.words if item.y < word.y)
             headers = [group for group in _lines(prior) if any(compact(item.text) == "项目" for item in group)]
@@ -194,14 +211,19 @@ def _lease(pdf, source):
             units_word = max(units, key=lambda item: item.y)
             note_words = (units_word, *group)
             header = _header(page, note_words, source["fiscal_year"], "lease", word)
-            financing = [item for item in prior if "与筹资活动有关的现金" in compact(item.text)]
-            if header is None or not financing:
+            cash_contexts = [item for item in prior
+                             if re.search(r"与(?:经营|投资|筹资)活动有关的现金", compact(item.text))]
+            context = max(cash_contexts, key=lambda item: item.y) if cash_contexts else None
+            if (header is None or context is None or "与筹资活动有关的现金" not in compact(context.text)
+                    or "支付" not in context.text or not inside(page, (context,))):
                 continue
             observed = cell(page, page.words, word.y, header["label_right"],
                             header["column_split"], header["unit_multiplier"])
             rows.append({"source_label": word.text, **observed,
+                         "classification_evidence": {"physical_page": page.number, "text": context.text,
+                                                     "box": list(context.box), "classification": "FINANCING_PAYMENT"},
                          "binding": binding(source, page, (word,), header)})
-    result = _field(rows, ("偿还租赁负债支付的金额",))
+    result = _field(rows, LEASE_LABELS)
     result["is_complete_lease_cash"] = False
     result["full_lease_cash_not_already_deducted"] = None
     return result
@@ -250,6 +272,30 @@ def _reconcile(fields, tables):
     return checks
 
 
+def _currency_evidence(pdf):
+    evidence = []
+    explicit = ("本公司以人民币为记账本位币", "本公司采用人民币为记账本位币",
+                "本集团以人民币为记账本位币", "本集团采用人民币为记账本位币")
+    for page in pdf.pages:
+        if any(sentence in compact(page.text) for sentence in explicit):
+            evidence.append({"physical_page": page.number, "kind": "EXPLICIT_ISSUER_CURRENCY_STATEMENT"})
+            continue
+        for heading in page.words:
+            if _title(heading.text) != "记账本位币" or not inside(page, (heading,)):
+                continue
+            groups = _lines(tuple(word for word in page.words if word.y > heading.y))
+            if not groups:
+                continue
+            first = groups[0]
+            text = compact("".join(word.text for word in first))
+            if (inside(page, first) and text.startswith(("采用人民币为记账本位币。", "以人民币为记账本位币。"))):
+                evidence.append({"physical_page": page.number, "kind": "SCOPED_CURRENCY_POLICY_DECLARATION",
+                                 "heading_text": heading.text, "heading_box": list(heading.box),
+                                 "declaration_text": "".join(word.text for word in first),
+                                 "declaration_box": union_box(first)})
+    return evidence
+
+
 def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
     if pdf.sha256 != source["pdf_sha256"]:
         raise ValueError("source identity does not match parsed PDF")
@@ -257,9 +303,8 @@ def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
     if (compact(source["issuer"]) not in first or f"{source['fiscal_year']}年年度报告" not in first
             or source["security_id"].split(".")[1] not in first):
         raise ValueError("issuer, annual period or security identity absent/mismatched")
-    currency = [page.number for page in pdf.pages if any(sentence in compact(page.text)
-                for sentence in ("本公司以人民币为记账本位币", "本公司采用人民币为记账本位币",
-                                 "本集团以人民币为记账本位币", "本集团采用人民币为记账本位币"))]
+    currency_evidence = _currency_evidence(pdf)
+    currency = sorted({item["physical_page"] for item in currency_evidence})
     tables = {kind: (_table(pdf, source, kind) if currency else
                      {"state": "CURRENCY_EVIDENCE_UNKNOWN", "rows": []}) for kind in SECTIONS}
     fields = {key: _field(tables[kind]["rows"], aliases, prefix=(key in ("parent_net_profit", "total_net_profit")))
@@ -270,6 +315,7 @@ def parse_annual(pdf: ParsedPDF, source: dict) -> dict:
     lease.update(is_complete_lease_cash=False, full_lease_cash_not_already_deducted=None)
     audit = _audit(pdf, source)
     return {"source": source, "currency": "CNY" if currency else None, "currency_evidence_pages": currency,
+            "currency_evidence": currency_evidence,
             "statement_scope": "CONSOLIDATED", "fields": fields,
             "lease_financing_component": lease, "audit_text_observation": audit,
             "balance_sheet_row_inventory": tables["balance"]["rows"],
