@@ -1,0 +1,40 @@
+{
+  "schema": "annual-currency-comma-assessment-scope-v1",
+  "as_of": "2026-09-30",
+  "method": "OFFLINE_NATIVE_COMMA_FORM_ASSESSMENT_NOT_CURRENCY_PARSER_FIX",
+  "parser_commit": "f74cc1716daa65c2877c59919c9ede23c5adcacb",
+  "parser_code_sha256": {
+    "scripts/parsing/__init__.py": "5ba44d5f29c960876592972e3531235676b4d42c1250402d282a8468017788bc",
+    "scripts/parsing/generic_extractor.py": "2a3404dbee94303ca0aefc079e65497da88f5729e450e1e69aa87029b5100bf4",
+    "scripts/parsing/field_binder.py": "7599555aa17bcdcf81170eca0bd22782d408923b930b949b1067ba722a3f96d9",
+    "scripts/parsing/annual_report_parser.py": "525299589b33f4f62fb51115a0e626f9dc6d841cc88eca398eb726be1868e571",
+    "scripts/extract_annual_report_bundle.py": "42a2e5f11c49dc41bae5f37252194fd4f3f735ae4ed8d969938059e14d13da1a",
+    "scripts/screening/contracts.py": "91fcfbbb7fb9ee306930948fdafb5d3fbef2e706f10fea1777820979690964e4"
+  },
+  "input_refs_scope": {
+    "path": "docs/data-pilots/2026-10-04-annual-audit-assessment-scope.json",
+    "sha256": "312220d0d70b6fb117c36a6e01bb73edf29f830e1b01ecbd44daeb022a31e70f"
+  },
+  "baseline_private_report": {
+    "path": "storage/pilots/annual-note-hyphen-subitem-fix-2026-10-04-v1/diagnostic-only.json",
+    "sha256": "c6e4af6abb87ccb06ca225945f2d5b066c8c8b63666f94de295d7c24f478fb96"
+  },
+  "baseline_public_index": {
+    "path": "docs/data-pilots/annual-note-hyphen-subitem-fix-2026-10-04-v1/evidence-index.json",
+    "sha256": "e0d6cabd4b1d6c3468b8ff41a0460ffbd43a3213e7c438afe1a3e1bddb4a7d89"
+  },
+  "search": {
+    "scope": "EXISTING_BOUNDED_CURRENCY_SUBSECTION_ONLY",
+    "native_word_contains": "记账本位币",
+    "maximum_word_characters": 180,
+    "join_tokens_or_rows": false
+  },
+  "review_pages": [
+    {
+      "security_id": "sz.000651",
+      "fiscal_year": 2024,
+      "version": "declared_2024_annual_report",
+      "physical_pages": [124]
+    }
+  ]
+}
