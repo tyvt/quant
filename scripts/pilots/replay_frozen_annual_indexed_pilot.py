@@ -28,7 +28,8 @@ TOOLS = {"annual-lease-label-assessment-v1": "scripts/pilots/assess_annual_lease
          "annual-audit-block-diagnostic-v1": "scripts/pilots/build_annual_audit_blocks.py",
          "annual-lease-label-regression-v1": "scripts/pilots/build_annual_lease_label_regression.py",
          "annual-lease-continuation-assessment-v1": "scripts/pilots/assess_annual_lease_continuation.py",
-         "annual-lease-continuation-regression-v1": "scripts/pilots/build_annual_lease_continuation_regression.py"}
+         "annual-lease-continuation-regression-v1": "scripts/pilots/build_annual_lease_continuation_regression.py",
+         "annual-lease-bare-regression-v1": "scripts/pilots/build_annual_lease_bare_regression.py"}
 SUPPORT = ("scripts/pilots/assess_annual_audit_narratives.py",
            "scripts/pilots/capture_annual_holdout.py",
            "scripts/pilots/capture_financial_2024_000637.py")
@@ -91,6 +92,9 @@ def replay_indexed_pilot(scope_path, private_path, public_path, code_commit, *, 
     elif report["schema"] == "annual-lease-continuation-regression-v1":
         extra = ("scripts/pilots/assess_annual_lease_labels.py", "scripts/pilots/build_annual_lease_label_regression.py",
                  "scripts/pilots/assess_annual_lease_continuation.py")
+    elif report["schema"] == "annual-lease-bare-regression-v1":
+        extra = ("scripts/pilots/assess_annual_lease_labels.py", "scripts/pilots/build_annual_lease_label_regression.py",
+                 "scripts/pilots/assess_annual_lease_continuation.py", "scripts/pilots/build_annual_lease_continuation_regression.py")
     for p in extra:
         files[p] = blob(p, manifest["support_code_sha256"][p])
     if report["schema"] == "annual-audit-block-diagnostic-v1":
@@ -127,6 +131,10 @@ def replay_indexed_pilot(scope_path, private_path, public_path, code_commit, *, 
         for name in ("baseline_private_report", "baseline_public_index", "assessment_scope",
                      "assessment_private_report", "assessment_public_index"):
             asset(scope[name])
+    elif report["schema"] == "annual-lease-bare-regression-v1":
+        parent = strict_json(asset(scope["input_refs_scope"]))
+        asset(scope["baseline_private_report"])
+        asset(scope["baseline_public_index"])
     else:
         parent = scope
     if parent["inputs"] != manifest.get("input_scopes") or parent["as_of"] != report["as_of"]:

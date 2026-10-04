@@ -1,0 +1,27 @@
+{
+  "schema": "annual-lease-bare-regression-scope-v1",
+  "as_of": "2026-09-30",
+  "implementation_base_commit": "27ada9544e1a82cde3a1f8c1e8429c6f5ca44805",
+  "bare_label": "租赁负债",
+  "reconciliation_policy": "BOTH_COLUMNS_ALL_COMPONENTS_EXPLICIT_NUMERIC_MATCH_TOTAL",
+  "expected_parser_code_sha256": {
+    "scripts/parsing/__init__.py": "5ba44d5f29c960876592972e3531235676b4d42c1250402d282a8468017788bc",
+    "scripts/parsing/generic_extractor.py": "2a3404dbee94303ca0aefc079e65497da88f5729e450e1e69aa87029b5100bf4",
+    "scripts/parsing/field_binder.py": "58a9f242d91e743ae908afe7b7ae0ddda4d5680cc40a54f9ecb8143beb63777d",
+    "scripts/parsing/annual_report_parser.py": "525299589b33f4f62fb51115a0e626f9dc6d841cc88eca398eb726be1868e571",
+    "scripts/extract_annual_report_bundle.py": "42a2e5f11c49dc41bae5f37252194fd4f3f735ae4ed8d969938059e14d13da1a",
+    "scripts/screening/contracts.py": "91fcfbbb7fb9ee306930948fdafb5d3fbef2e706f10fea1777820979690964e4"
+  },
+  "input_refs_scope": {
+    "path": "docs/data-pilots/2026-10-04-annual-audit-assessment-scope.json",
+    "sha256": "312220d0d70b6fb117c36a6e01bb73edf29f830e1b01ecbd44daeb022a31e70f"
+  },
+  "baseline_private_report": {
+    "path": "storage/pilots/annual-lease-continuation-fix-2026-10-04-v2/diagnostic-only.json",
+    "sha256": "046ff86ed9f5c2f79365980aaa8020f007ad096dd95caaa8c63571829990c154"
+  },
+  "baseline_public_index": {
+    "path": "docs/data-pilots/annual-lease-continuation-fix-2026-10-04-v2/evidence-index.json",
+    "sha256": "ad661a042480e1bb03290c5590605d12fdfaab18f588c774936b3bccb4982b10"
+  }
+}

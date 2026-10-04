@@ -35,6 +35,7 @@ UNITS = {"单位：元": 1, "单位：人民币元": 1, "单位：万元": 10000
 LEASE_LABELS = ("偿还租赁负债支付的金额", "租赁支付的现金",
                 "支付租赁款", "长期租赁付款", "支付租赁负债")
 LEASE_CONTINUATION_LABEL = "偿还租赁负债本金和利息所支付的现金"
+LEASE_BARE_LABEL = "租赁负债"
 
 
 def _title(text):
@@ -319,6 +320,131 @@ def _lease_continuation(pdf, source, page, word, start, end):
             "binding": binding(source, page, (word,), header)}
 
 
+def _lease_bare_payment(pdf, source, page, word, start, end):
+    """A bare liability label ONLY inside one explicitly closed payment table.
+
+    Every native component and both printed totals must be observed and reconcile.
+    This binds a financing cash PART, not full lease cash, a note target or PIT.
+    Never search another page for context, units, headers, totals or missing cells.
+    """
+    if pdf.sha256 != source["pdf_sha256"]:
+        raise ValueError("bare lease PDF/source identity mismatch")
+    if (word.text != LEASE_BARE_LABEL or word not in page.words
+            or not start < (page.number, word.y) < end or page.rotation
+            or page.cropbox is None or page.mediabox is None
+            or page.cropbox != page.mediabox
+            or page.mediabox != (0, 0, page.width, page.height)):
+        return None
+    scoped = tuple(w for w in page.words if start < (page.number, w.y) < end)
+    contexts = [w for w in scoped if w.y < word.y
+                and re.search(r"与(?:经营|投资|筹资)活动有关的现金", w.text)]
+    if not contexts:
+        return None
+    heading = max(contexts, key=lambda w: w.y)
+    if (heading.text != "支付的其他与筹资活动有关的现金"
+            or sum(abs(w.y - heading.y) <= 2 for w in contexts) != 1):
+        return None
+    previous_closings = [w.y for w in scoped if w.y < heading.y
+                         and w.text == "支付的其他与筹资活动有关的现金说明："]
+    previous_closing = max(previous_closings, default=float("-inf"))
+    if len([w for w in scoped if previous_closing < w.y <= heading.y
+            and w.text == "支付的其他与筹资活动有关的现金"]) != 1:
+        return None
+    next_openings = [w.y for w in scoped if w.y > heading.y
+                     and w.text == "支付的其他与筹资活动有关的现金"]
+    next_opening = min(next_openings, default=float("inf"))
+    closings = [w for w in scoped if heading.y < w.y < next_opening
+                and w.text == "支付的其他与筹资活动有关的现金说明："]
+    if len(closings) != 1:
+        return None
+    closing = closings[0]
+    if not heading.y < word.y < closing.y:
+        return None
+    interval = tuple(w for w in scoped if heading.y < w.y < closing.y)
+    headers = [g for g in _lines(interval) if any(w.text == "项目" for w in g)]
+    if len(headers) != 1:
+        return None
+    group = headers[0]
+    opening = tuple(w for w in interval if w.y < group[0].y)
+    units = [w for w in opening if "单位" in w.text]
+    if (len(units) != 1 or len([w for w in opening if w.text == "币种：人民币"]) != 1
+            or any(w != units[0] and w.text not in
+                   ("币种：人民币", "√适用", "□不适用", "√适用□不适用") for w in opening)):
+        return None
+    header = _header(page, (units[0], *group), source["fiscal_year"], "lease", word)
+    if header is None:
+        return None
+    table = tuple(w for w in interval if w.y > header["header_bottom"])
+    if (not inside(page, (heading, closing, *interval)) or word not in table
+            or word.box[2] >= header["label_right"]
+            or any(re.search(r"(?:经营|投资|筹资)活动有关的现金", w.text)
+                   or re.match(r"[0-9一二三四五六七八九十]+[、.．][\u4e00-\u9fff]", w.text)
+                   for w in table)):
+        return None
+    groups = _lines(table)
+    totals = [g for g in groups if any(w.text == "合计" for w in g)]
+    if len(totals) != 1 or totals[0] != groups[-1] or len(groups) < 2:
+        return None
+    components, total = [], None
+    for index, g in enumerate(groups):
+        labels = [w for w in g if w.box[0] < header["label_right"]]
+        if (len(labels) != 1 or labels[0].box[2] >= header["label_right"]
+                or labels[0].text in ("项目", "单位：元", "币种：人民币")):
+            return None
+        label = labels[0]
+        observed = cell(page, tuple(g), label.y, header["label_right"],
+                        header["column_split"], header["unit_multiplier"])
+        row = {"source_label": label.text, **observed,
+               "binding": binding(source, page, (label,), header)}
+        if index == len(groups) - 1:
+            if label.text != "合计":
+                return None
+            total = row
+        else:
+            components.append(row)
+    matches = [r for r in components if r["source_label"] == LEASE_BARE_LABEL]
+    if not matches:
+        return None
+    observed = cell(page, table, word.y, header["label_right"],
+                    header["column_split"], header["unit_multiplier"])
+    ambiguous = (len(matches) != 1 or any(r["source_label"] in (*LEASE_LABELS, LEASE_CONTINUATION_LABEL)
+                                         for r in components))
+    reconciliations = {}
+    for key in ("current", "comparative"):
+        cells = [r[key] for r in components]
+        complete = all(c["state"] == "OBSERVED_NUMERIC" and c["value_cny"] is not None
+                       for c in (*cells, total[key]))
+        value = None
+        if complete:
+            with localcontext() as context:
+                context.prec = max(28, sum(len(c["value_cny"]) for c in (*cells, total[key])) + 12)
+                value = sum((Decimal(c["value_cny"]) for c in cells), Decimal(0))
+                state = "MATCH" if value == Decimal(total[key]["value_cny"]) else "MISMATCH"
+        else:
+            state = "UNKNOWN_INCOMPLETE_COMPONENTS"
+        reconciliations[key] = {"state": state, "component_sum_cny": format(value, "f") if value is not None else None,
+                                "printed_total_cny": total[key]["value_cny"]}
+    failure = ("AMBIGUOUS_LEASE_PAYMENT_ROWS" if ambiguous else
+               "PAYMENT_TABLE_RECONCILIATION_MISMATCH" if any(r["state"] == "MISMATCH" for r in reconciliations.values()) else
+               "PAYMENT_TABLE_RECONCILIATION_UNKNOWN" if any(r["state"] != "MATCH" for r in reconciliations.values()) else None)
+    if failure is not None:
+        observed = {k: {**v, "state": failure, "value_cny": None} for k, v in observed.items()}
+    return {"source_label": word.text, **observed,
+            "classification_evidence": {"physical_page": page.number, "text": heading.text,
+                                        "box": list(heading.box), "classification": "FINANCING_PAYMENT"},
+            "payment_table_evidence": {"state": "OBSERVED_BOUNDED_PAYMENT_TABLE_NOT_FULL_LEASE",
+                "document_sha256": pdf.sha256, "physical_page": page.number,
+                "opening": {"text": heading.text, "box": list(heading.box)},
+                "closing": {"text": closing.text, "box": list(closing.box)},
+                "cropbox": list(page.cropbox), "mediabox": list(page.mediabox),
+                "components": components, "printed_total": total, "reconciliations": reconciliations,
+                "all_components_and_both_totals_required": True,
+                "unit_and_header_inherited": False, "label_or_amount_joined": False,
+                "note_target_resolved": False, "complete_lease_cash_certified": False,
+                "public_availability_verified": False},
+            "binding": binding(source, page, (word,), header)}
+
+
 def _lease(pdf, source):
     starts = [(page, word) for page in pdf.pages for word in page.words
               if _title(word.text) == "合并财务报表项目注释"]
@@ -330,6 +456,11 @@ def _lease(pdf, source):
     rows = []
     for page in pdf.pages:
         for word in page.words:
+            if word.text == LEASE_BARE_LABEL:
+                row = _lease_bare_payment(pdf, source, page, word, start, end)
+                if row is not None:
+                    rows.append(row)
+                continue
             if word.text == LEASE_CONTINUATION_LABEL:
                 row = _lease_continuation(pdf, source, page, word, start, end)
                 if row is not None:
@@ -361,7 +492,7 @@ def _lease(pdf, source):
                          "classification_evidence": {"physical_page": page.number, "text": context.text,
                                                      "box": list(context.box), "classification": "FINANCING_PAYMENT"},
                          "binding": binding(source, page, (word,), header)})
-    result = _field(rows, (*LEASE_LABELS, LEASE_CONTINUATION_LABEL))
+    result = _field(rows, (*LEASE_LABELS, LEASE_CONTINUATION_LABEL, LEASE_BARE_LABEL))
     result["is_complete_lease_cash"] = False
     result["full_lease_cash_not_already_deducted"] = None
     return result

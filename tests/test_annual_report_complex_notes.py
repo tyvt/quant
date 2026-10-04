@@ -229,7 +229,9 @@ class ComplexNoteRealRegressionTests(unittest.TestCase):
                         self.assertIsNone(row[column]["value_cny"])
 
     def test_currency_audit_and_complete_lease_not_promoted(self):
-        expected_parts = {"600276": "47375294.97", "601012": "191934806.52", "600887": None}
+        # Current-code observations may improve; frozen first reports above are
+        # still replayed by their own code. No full lease or PIT promotion.
+        expected_parts = {"600276": "47375294.97", "601012": "191934806.52", "600887": "174129885.66"}
         for sid, report in self.reports.items():
             bundle = report["bundles"][0]
             self.assertEqual(bundle["currency"], "CNY")

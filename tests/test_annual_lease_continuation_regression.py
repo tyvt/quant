@@ -10,6 +10,7 @@ from unittest.mock import patch
 from scripts.parsing.annual_report_parser import _lease, LEASE_LABELS, LEASE_CONTINUATION_LABEL
 from scripts.parsing.generic_extractor import PDFCache, Page, ParsedPDF, Word
 from scripts.pilots import build_annual_lease_continuation_regression as regression
+from scripts.pilots.replay_frozen_annual_indexed_pilot import replay_indexed_pilot
 from scripts.screening.contracts import canonical_bytes, content_hash, load_request
 
 ROOT = regression.ROOT
@@ -214,7 +215,8 @@ class ContinuationRegressionTests(unittest.TestCase):
         cls.raw = SCOPE.read_bytes()
         cls.plan = json.loads(cls.raw)
         with patch("requests.sessions.Session.request", side_effect=AssertionError("offline")):
-            cls.report = regression.build_regression(cls.raw)
+            cls.report = replay_indexed_pilot(SCOPE, PRIVATE, PUBLIC,
+                "27ada9544e1a82cde3a1f8c1e8429c6f5ca44805")["report"]
         cls.index = regression.public_index(cls.report)
         cls.rows = {r["source"]["security_id"]: r for r in cls.report["observations"]}
 
@@ -319,8 +321,9 @@ class ContinuationRegressionTests(unittest.TestCase):
         for name in regression.REFS:
             plan = deepcopy(self.plan)
             plan[name]["sha256"] = "0" * 64
-            with self.assertRaisesRegex(ValueError, "hash mismatch"):
-                regression.build_regression(canonical_bytes(plan))
+            with patch.object(regression, "verify_code", return_value=self.report["manifest"]["parser_code_sha256"]):
+                with self.assertRaisesRegex(ValueError, "hash mismatch"):
+                    regression.build_regression(canonical_bytes(plan))
         plan = deepcopy(self.plan)
         plan["expected_parser_code_sha256"]["scripts/parsing/annual_report_parser.py"] = "0" * 64
         with self.assertRaisesRegex(ValueError, "implementation drift"):
