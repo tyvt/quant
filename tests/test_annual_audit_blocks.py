@@ -296,9 +296,15 @@ class AuditBlockRealRegressionTests(unittest.TestCase):
     def test_canonical_hash_and_offline_rebuild_are_exact(self):
         self.assertEqual(self.raw, canonical_bytes(self.report) + b"\n")
         self.assertEqual(self.report["logical_content_hash"], content_hash({k: v for k, v in self.report.items() if k != "logical_content_hash"}))
+        from scripts.pilots.replay_frozen_annual_indexed_pilot import replay_indexed_pilot
+        public = ROOT / "docs/data-pilots/annual-audit-blocks-2026-10-04-v2/evidence-index.json"
+        replay = replay_indexed_pilot(self.scope, self.path, public,
+                                     "2a42a0f8e4f8dd3b8dfb601f9a104bcf3c46e125")
+        self.assertEqual(self.raw, canonical_bytes(replay["report"]) + b"\n")
         with patch("requests.sessions.Session.request", side_effect=AssertionError("network forbidden")):
             rebuilt = build_blocks(self.scope.read_bytes())
-        self.assertEqual(self.raw, canonical_bytes(rebuilt) + b"\n")
+        # New parser identity is different; audit observations themselves must not change.
+        self.assertEqual(rebuilt["observations"], self.report["observations"])
 
     def test_public_index_has_source_urls_and_no_original_words(self):
         index = public_index(self.raw)

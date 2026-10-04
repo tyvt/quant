@@ -4,6 +4,7 @@ from copy import deepcopy
 from dataclasses import replace
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -148,12 +149,12 @@ class LeaseScopeTests(unittest.TestCase):
 
     def test_scope_reference_hash_drift_rejected(self):
         self.scope["input_refs_scope"]["sha256"] = "0" * 64
-        with self.assertRaisesRegex(ValueError, "hash mismatch"):
+        with patch.object(lease, "verify_parser"), self.assertRaisesRegex(ValueError, "hash mismatch"):
             lease.build_assessment(canonical_bytes(self.scope))
 
     def test_as_of_drift_rejected(self):
         self.scope["as_of"] = "2026-08-31"
-        with self.assertRaisesRegex(ValueError, "as_of drift"):
+        with patch.object(lease, "verify_parser"), self.assertRaisesRegex(ValueError, "as_of drift"):
             lease.build_assessment(canonical_bytes(self.scope))
 
     def test_parser_identity_drift_rejected(self):
@@ -186,7 +187,9 @@ class LeaseActualEvidenceTests(unittest.TestCase):
                          "source_dedup_bridges_observed": 1})
 
     def test_actual_offline_execution_reproduces_both_files(self):
-        report = lease.build_assessment(SCOPE.read_bytes())
+        from scripts.pilots.replay_frozen_annual_indexed_pilot import replay_indexed_pilot
+        report = replay_indexed_pilot(SCOPE, PRIVATE, PUBLIC,
+                                     "e023535e5b28afbb85a1382f31865728cf0f38b1")["report"]
         self.assertEqual(canonical_bytes(report) + b"\n", PRIVATE.read_bytes())
         self.assertEqual(canonical_bytes(lease.public_index(report)) + b"\n", PUBLIC.read_bytes())
 
@@ -199,7 +202,11 @@ class LeaseActualEvidenceTests(unittest.TestCase):
 
     def test_same_parser_and_rule_identity_not_modified(self):
         self.assertFalse(self.report["parser_modified"])
-        lease.verify_parser(json.loads(SCOPE.read_text(encoding="utf-8")))
+        # The old identity is immutable; the current parser may legitimately advance.
+        plan = json.loads(SCOPE.read_text(encoding="utf-8"))
+        for p, digest in plan["parser_code_sha256"].items():
+            raw = subprocess.check_output(["git", "show", f"{plan['parser_commit']}:{p}"], cwd=ROOT)
+            self.assertEqual(lease.sha(raw), digest)
         self.assertEqual(self.report["manifest"]["rule_sha256"], lease.RULE_SHA256)
         for p, digest in self.report["manifest"]["support_code_sha256"].items():
             self.assertEqual(lease.sha((ROOT / p).read_bytes()), digest)

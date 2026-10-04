@@ -88,7 +88,7 @@ class JointCurrencyTests(unittest.TestCase):
         self.assertEqual((cache.parsed_documents, cache.cache_hits), (1, 1))
 
     def test_lease_audit_pit_and_screening_still_unopened(self):
-        self.assertIsNone(self.bundle["lease_financing_component"]["observed_value_cny"])
+        self.assertEqual(self.bundle["lease_financing_component"]["observed_value_cny"], "191934806.52")
         self.assertIsNone(self.bundle["lease_financing_component"]["full_lease_cash_not_already_deducted"])
         self.assertIsNone(self.bundle["audit_text_observation"]["raw_opinion_type"])
         self.assertEqual(self.bundle["version_identity_state"], "DECLARED_ONLY_NOT_VERIFIED")

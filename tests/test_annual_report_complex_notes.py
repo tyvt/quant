@@ -182,12 +182,16 @@ class ComplexNoteRealRegressionTests(unittest.TestCase):
             directory = ROOT / f"docs/data-pilots/annual-complex-notes-{sid}-2026-10-03-v1"
             scope = ROOT / f"docs/data-pilots/2026-10-03-annual-report-bundle-{sid}-inputs.json"
             replay = replay_frozen_bundle(scope, directory, "88fcd1763339cc792a5c63f2be93f3b50cb9bf1a")
-            # Only the new audit raw-block observation differs; compare all old
-            # bundle fields in addition to actually replaying JSON and Markdown.
+            # Audit blocks and bounded lease aliases are separately versioned.
+            # Actually replay both old files, then compare all unrelated fields.
             bundles = deepcopy(report["bundles"])
+            old_bundles = deepcopy(replay["report"]["bundles"])
             for bundle in bundles:
                 bundle["audit_text_observation"].pop("narrative_opinion_block")
-            self.assertEqual(bundles, replay["report"]["bundles"])
+                bundle.pop("lease_financing_component")
+            for bundle in old_bundles:
+                self.assertIsNone(bundle.pop("lease_financing_component")["observed_value_cny"])
+            self.assertEqual(bundles, old_bundles)
 
     def test_all_133_old_rows_gain_syntax_not_semantic_certification(self):
         self.assertEqual([len(self.formerly_blocked(sid)) for sid in self.reports], [36, 49, 48])
@@ -224,11 +228,12 @@ class ComplexNoteRealRegressionTests(unittest.TestCase):
                     if row[column]["state"] != "OBSERVED_NUMERIC":
                         self.assertIsNone(row[column]["value_cny"])
 
-    def test_currency_lease_and_audit_entries_not_repaired(self):
-        for report in self.reports.values():
+    def test_currency_audit_and_complete_lease_not_promoted(self):
+        expected_parts = {"600276": "47375294.97", "601012": "191934806.52", "600887": None}
+        for sid, report in self.reports.items():
             bundle = report["bundles"][0]
             self.assertEqual(bundle["currency"], "CNY")
-            self.assertIsNone(bundle["lease_financing_component"]["observed_value_cny"])
+            self.assertEqual(bundle["lease_financing_component"]["observed_value_cny"], expected_parts[sid])
             self.assertIsNone(bundle["lease_financing_component"]["full_lease_cash_not_already_deducted"])
             self.assertIsNone(bundle["audit_text_observation"]["raw_opinion_type"])
 

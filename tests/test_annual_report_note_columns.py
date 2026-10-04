@@ -233,8 +233,8 @@ class AnnualNoteColumnTests(unittest.TestCase):
             self.assertEqual(bound["source_version"], self.source["version"])
             self.assertFalse(bound["pit_admitted"])
 
-    def test_lease_and_narrative_audit_not_solved_by_table_fix(self):
-        self.assertIsNone(self.bundle["lease_financing_component"]["observed_value_cny"])
+    def test_current_lease_component_does_not_solve_complete_lease_or_audit(self):
+        self.assertEqual(self.bundle["lease_financing_component"]["observed_value_cny"], "148332535.64")
         self.assertIsNone(self.bundle["lease_financing_component"]["full_lease_cash_not_already_deducted"])
         self.assertIsNone(self.bundle["audit_text_observation"]["raw_opinion_type"])
         self.assertIsNone(self.bundle["audit_text_observation"]["latest_audit_unmodified_pit"])
