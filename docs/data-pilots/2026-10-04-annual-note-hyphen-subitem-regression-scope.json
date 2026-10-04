@@ -1,0 +1,34 @@
+{
+  "schema": "annual-note-hyphen-subitem-regression-scope-v1",
+  "as_of": "2026-09-30",
+  "baseline_code_commit": "541b8ca737288c4321ee4d666f1f5706e8e464b6",
+  "new_reference_form": "CHAPTER_HYPHEN_ITEM_FULLWIDTH_PARENS_SUBITEM",
+  "baseline_parser_code_sha256": {
+    "scripts/parsing/__init__.py": "5ba44d5f29c960876592972e3531235676b4d42c1250402d282a8468017788bc",
+    "scripts/parsing/generic_extractor.py": "2a3404dbee94303ca0aefc079e65497da88f5729e450e1e69aa87029b5100bf4",
+    "scripts/parsing/field_binder.py": "b87e36c41768cadd8480eb8894a50bf24d1062f66594ae258052482ba92ba5db",
+    "scripts/parsing/annual_report_parser.py": "525299589b33f4f62fb51115a0e626f9dc6d841cc88eca398eb726be1868e571",
+    "scripts/extract_annual_report_bundle.py": "42a2e5f11c49dc41bae5f37252194fd4f3f735ae4ed8d969938059e14d13da1a",
+    "scripts/screening/contracts.py": "91fcfbbb7fb9ee306930948fdafb5d3fbef2e706f10fea1777820979690964e4"
+  },
+  "expected_parser_code_sha256": {
+    "scripts/parsing/__init__.py": "5ba44d5f29c960876592972e3531235676b4d42c1250402d282a8468017788bc",
+    "scripts/parsing/generic_extractor.py": "2a3404dbee94303ca0aefc079e65497da88f5729e450e1e69aa87029b5100bf4",
+    "scripts/parsing/field_binder.py": "7599555aa17bcdcf81170eca0bd22782d408923b930b949b1067ba722a3f96d9",
+    "scripts/parsing/annual_report_parser.py": "525299589b33f4f62fb51115a0e626f9dc6d841cc88eca398eb726be1868e571",
+    "scripts/extract_annual_report_bundle.py": "42a2e5f11c49dc41bae5f37252194fd4f3f735ae4ed8d969938059e14d13da1a",
+    "scripts/screening/contracts.py": "91fcfbbb7fb9ee306930948fdafb5d3fbef2e706f10fea1777820979690964e4"
+  },
+  "input_refs_scope": {
+    "path": "docs/data-pilots/2026-10-04-annual-audit-assessment-scope.json",
+    "sha256": "312220d0d70b6fb117c36a6e01bb73edf29f830e1b01ecbd44daeb022a31e70f"
+  },
+  "baseline_private_report": {
+    "path": "storage/pilots/annual-note-dunhao-subitem-fix-2026-10-04-v1/diagnostic-only.json",
+    "sha256": "fb5ca8e47f1ecf13206bdc813bb5faf34d6437e8d3a4ae100ce415052fd27237"
+  },
+  "baseline_public_index": {
+    "path": "docs/data-pilots/annual-note-dunhao-subitem-fix-2026-10-04-v1/evidence-index.json",
+    "sha256": "e08c19cb2a5e329688510a78b1c72d6aa03a6a2ec80e3f97451df725dc6d9e01"
+  }
+}

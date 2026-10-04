@@ -80,8 +80,8 @@ class NoteSuffixSyntaxTests(unittest.TestCase):
         for s in ("七（79", "七（79)3", "七(79）3", "七79）3"): self.rejected((s,))
     def test_list_or_multiple_references(self):
         for s in ("七（79）3、4", "七（79）3，4", "七（79）3/4", "七（79）3七（80）4"): self.rejected((s,))
-    def test_hyphen_multilevel_family_remains_rejected(self):
-        for s in ("七-59（1）", "五-70（3）"): self.rejected((s,))
+    def test_non_ASCII_hyphens_remain_rejected(self):
+        for s in ("七－59（1）", "五—70（3）"): self.rejected((s,))
     def test_dotted_or_prefixed_forms_remain_rejected(self):
         for s in ("七、79.3", "附注七（79）3", "七-79.3"): self.rejected((s,))
     def test_no_whitespace_deletion(self):

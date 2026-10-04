@@ -75,8 +75,8 @@ class DunhaoSubitemSyntaxTests(unittest.TestCase):
         for t in ("七、78（1","七、78（1)","七、78(1）","七、781）"): self.rejected((t,))
     def test_lists_multiple_references(self):
         for t in ("七、78（1）、（2）","七、78（1）/2","七、78（1）七、79（2）"): self.rejected((t,))
-    def test_hyphen_family_remains_unsupported(self):
-        for t in ("七-59（1）","七－59（1）","七—59（1）","五-70（3）"): self.rejected((t,))
+    def test_non_ASCII_hyphens_remain_unsupported(self):
+        for t in ("七－59（1）","七—59（1）","七–59（1）","五−70（3）"): self.rejected((t,))
     def test_commas_and_dotted_not_dunhao(self):
         for t in ("七,78（1）","七，78（1）","七、78.1","七.78（1）"): self.rejected((t,))
     def test_prefix_or_suffix_or_nested_reference(self):
@@ -128,8 +128,10 @@ class DunhaoSubitemRealRegressionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.plan=json.loads(SCOPE.read_bytes())
+        from scripts.pilots.replay_frozen_annual_indexed_pilot import replay_indexed_pilot
         with patch("requests.sessions.Session.request",side_effect=AssertionError("offline")):
-            cls.report=regression.build_regression(SCOPE.read_bytes())
+            cls.report=replay_indexed_pilot(SCOPE,PRIVATE,PUBLIC,
+                "541b8ca737288c4321ee4d666f1f5706e8e464b6")["report"]
         cls.index=regression.public_index(cls.report)
         cls.changes=[c for r in cls.report["observations"] for cs in r["changes"].values() for c in cs]
 
@@ -231,7 +233,8 @@ class DunhaoSubitemRealRegressionTests(unittest.TestCase):
     def test_parent_hash_drift_rejected(self):
         for k in regression.REFS:
             p=deepcopy(self.plan); p[k]["sha256"]="0"*64
-            with self.assertRaisesRegex(ValueError,"hash mismatch"): regression.build_regression(canonical_bytes(p))
+            with patch.object(regression,"verify_code",return_value=self.plan["expected_parser_code_sha256"]):
+                with self.assertRaisesRegex(ValueError,"hash mismatch"): regression.build_regression(canonical_bytes(p))
     def test_baseline_blob_hash_drift_rejected(self):
         p=deepcopy(self.plan); p["baseline_parser_code_sha256"]["scripts/parsing/field_binder.py"]="0"*64
         with self.assertRaisesRegex(ValueError,"blob mismatch"): regression.frozen_snapshot(p,[],ROOT)
@@ -241,7 +244,7 @@ class DunhaoSubitemRealRegressionTests(unittest.TestCase):
               "baseline_python_support_sha256":m["baseline_python_support_sha256"],
               "pdf_backend_version":m["pdf_backend_version"],"python_version":m["python_version"]}
         next(r for r in snap["observations"] if r["source"]["security_id"]=="sh.600276")["tables"]["cashflow"]["state"]="TAMPERED"
-        with patch.object(regression,"frozen_snapshot",return_value=snap):
+        with patch.object(regression,"frozen_snapshot",return_value=snap),patch.object(regression,"verify_code",return_value=self.plan["expected_parser_code_sha256"]):
             with self.assertRaisesRegex(ValueError,"approved parent content"): regression.build_regression(SCOPE.read_bytes())
     def test_actual_baseline_bundle_drift_from_parent_rejected(self):
         m=self.report["manifest"]
@@ -249,7 +252,7 @@ class DunhaoSubitemRealRegressionTests(unittest.TestCase):
               "baseline_python_support_sha256":m["baseline_python_support_sha256"],
               "pdf_backend_version":m["pdf_backend_version"],"python_version":m["python_version"]}
         next(r for r in snap["observations"] if r["source"]["security_id"]=="sh.600276")["bundle"]["currency"]="USD"
-        with patch.object(regression,"frozen_snapshot",return_value=snap):
+        with patch.object(regression,"frozen_snapshot",return_value=snap),patch.object(regression,"verify_code",return_value=self.plan["expected_parser_code_sha256"]):
             with self.assertRaisesRegex(ValueError,"approved parent content"): regression.build_regression(SCOPE.read_bytes())
     def test_binding_header_order_outside_grammar_rejected(self):
         r=next(r for r in self.report["observations"] if any(r["changes"].values()))

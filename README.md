@@ -19,6 +19,7 @@
 - [财报法定 PDF 修订链探针](docs/data-pilots/2026-10-01-financial-revision-000637.md)：茂化实华 2025 年报原版/更正版及经营现金流变更的点时边界。
 - [财报单年度公告链复核](docs/data-pilots/2026-10-01-financial-year-chain-000637.md)：原版审计、重列报表与后续再次归档的修订/时点阻塞。
 - [法定 PDF 探针工具边界](docs/data-pilots/README.md)：页级相似度仅用于筛查；经验阈值、目视核对与法定版本证明不可混淆。
+- [ASCII 横杠多级附注语法验收](docs/data-pilots/2026-10-04-annual-note-hyphen-subitem-fix.md)：宇通三行引用语法恢复，比较栏三项数值、本期三项列边界歧义仍 UNKNOWN；不认证引用目标、财务语义或真实硬门。
 - [财报再次更正法定公告候选](docs/data-pilots/2026-10-01-annual-recorrection-candidate-000662.md)：已固定 000662 三版年报、两份更正公告及原审计；精确披露时点和平台撤回/替换关系仍未闭环。
 - [三域公开法定证据限定续查](docs/data-pilots/2026-10-01-public-evidence-gaps-followup.md)：保荐书未补足目标重审说明，年报注销总量和股本端点不能替代逐日流水/登记。
 - [核心财务科目多次更正探针](docs/data-pilots/2026-10-01-core-financial-recorrection-002570.md)：固定贝因美 2022 年报三版和两轮利润表/资产负债表更正，隔离专项鉴证年份歧义；尚非完整 PIT 链。

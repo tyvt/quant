@@ -35,8 +35,10 @@ REFS = ("input_refs_scope", "baseline_private_report", "baseline_public_index")
 PERMISSIONS = ("production_reader_ready", "screening_input_exported", "real_pit_run_authorized", "official_selection")
 FORM = "CHAPTER_FULLWIDTH_PARENS_ITEM_SUFFIX"
 DUNHAO_FORM = "CHAPTER_DUNHAO_ITEM_FULLWIDTH_PARENS_SUBITEM"
+HYPHEN_FORM = "CHAPTER_HYPHEN_ITEM_FULLWIDTH_PARENS_SUBITEM"
 SCHEMAS = {FORM: "annual-note-suffix-regression",
-           DUNHAO_FORM: "annual-note-dunhao-subitem-regression"}
+           DUNHAO_FORM: "annual-note-dunhao-subitem-regression",
+           HYPHEN_FORM: "annual-note-hyphen-subitem-regression"}
 CHAPTER = r"(?:[一二三四五六七八九]|十[一二三四五六七八九]?|[二三四五六七八九]十[一二三四五六七八九]?)"
 FORMS = {FORM: CHAPTER + r"（[1-9][0-9]*）[1-9][0-9]*",
          "DUNHAO_PARENS_SUBITEM_NOT_IMPLEMENTED": CHAPTER + r"、[1-9][0-9]*（[1-9][0-9]*）",
@@ -46,8 +48,10 @@ FORMS = {FORM: CHAPTER + r"（[1-9][0-9]*）[1-9][0-9]*",
 def grammar_forms(form):
     if form not in SCHEMAS:
         raise ValueError("unsupported bounded note form")
-    return {DUNHAO_FORM if form == DUNHAO_FORM and key == "DUNHAO_PARENS_SUBITEM_NOT_IMPLEMENTED" else key: value
-            for key, value in FORMS.items()}
+    names = {} if form == FORM else {"DUNHAO_PARENS_SUBITEM_NOT_IMPLEMENTED": DUNHAO_FORM}
+    if form == HYPHEN_FORM:
+        names["HYPHEN_PARENS_SUBITEM_NOT_IMPLEMENTED"] = HYPHEN_FORM
+    return {names.get(key, key): value for key, value in FORMS.items()}
 
 # ASCII source is intentional: no PowerShell pipe, locale-dependent transcoding
 # or current-repository imports can rewrite the frozen parser's native tokens.
@@ -185,7 +189,9 @@ def build_regression(raw, *, root=ROOT):
     frozen = {k: verified_bytes(root, plan[k]["path"], plan[k]["sha256"]) for k in REFS}
     inputs, parent = read_assessment_scope(frozen["input_refs_scope"]), strict_json(frozen["baseline_private_report"])
     projection = parent_index(parent) if form == FORM else public_index(parent)
-    if ((form == DUNHAO_FORM and parent.get("schema") != SCHEMAS[FORM] + "-v1")
+    expected_parent = {DUNHAO_FORM: SCHEMAS[FORM] + "-v1",
+                       HYPHEN_FORM: SCHEMAS[DUNHAO_FORM] + "-v1"}
+    if ((form in expected_parent and parent.get("schema") != expected_parent[form])
             or canonical_bytes(projection) + b"\n" != frozen["baseline_public_index"]
             or parent["manifest"]["parser_code_sha256"] != plan["baseline_parser_code_sha256"]
             or inputs["as_of"] != plan["as_of"] or parent["as_of"] != plan["as_of"]
@@ -214,7 +220,7 @@ def build_regression(raw, *, root=ROOT):
             tables = {k: (_table(pdf, source, k) if bundle["currency"] == "CNY" else
                          {"state": "CURRENCY_EVIDENCE_UNKNOWN", "rows": []}) for k in ("balance", "income", "cashflow")}
             before = old[key]
-            if form == DUNHAO_FORM and (before["tables"] != parents[key]["current_tables"]
+            if form != FORM and (before["tables"] != parents[key]["current_tables"]
                     or content_hash(before["bundle"]) != parents[key]["bundle_content_hash"]):
                 raise ValueError("frozen baseline differs from approved parent content")
             # Main seven fields, currency, audit, lease, source identity and all
