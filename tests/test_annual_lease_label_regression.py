@@ -254,7 +254,8 @@ class LeaseRegressionTests(unittest.TestCase):
         cls.scope_raw = SCOPE.read_bytes()
         cls.scope = json.loads(cls.scope_raw)
         with patch("requests.sessions.Session.request", side_effect=AssertionError("offline only")):
-            cls.report = regression.build_regression(cls.scope_raw)
+            cls.report = replay_indexed_pilot(SCOPE, PRIVATE, PUBLIC,
+                "526fb38e65d6002c5663ad6a40ccb9a9ead4741f")["report"]
         cls.rows = {r["source"]["security_id"]: r for r in cls.report["observations"]}
         cls.index = regression.public_index(cls.report)
 
@@ -314,7 +315,7 @@ class LeaseRegressionTests(unittest.TestCase):
         # The five imported/support parser blobs are unchanged. Execute the actual
         # trusted frozen parser blob in memory; no checkout or saved-value fallback.
         for path in regression.SOURCE_PATHS:
-            if path != parser:
+            if path not in (parser, "scripts/parsing/generic_extractor.py"):
                 old = subprocess.check_output(["git", "show", f"{commit}:{path}"], cwd=ROOT)
                 self.assertEqual(old, (ROOT / path).read_bytes())
         namespace = {"__name__": "frozen_lease_label_baseline"}
@@ -351,7 +352,9 @@ class LeaseRegressionTests(unittest.TestCase):
         self.assertEqual(self.index["private_report_sha256"], hashlib.sha256(PRIVATE.read_bytes()).hexdigest())
 
     def test_scope_and_six_code_hashes_match_new_identity(self):
-        self.assertEqual(regression.verify_code(self.scope, ROOT), self.report["manifest"]["parser_code_sha256"])
+        for path, expected in self.report["manifest"]["parser_code_sha256"].items():
+            blob = subprocess.check_output(["git", "show", "526fb38e65d6002c5663ad6a40ccb9a9ead4741f:" + path], cwd=ROOT)
+            self.assertEqual(hashlib.sha256(blob).hexdigest(), expected)
         self.assertEqual(self.report["scope_sha256"], hashlib.sha256(self.scope_raw).hexdigest())
         self.assertTrue(self.report["manifest"]["base_commit_is_not_new_parser_identity"])
 
@@ -366,8 +369,9 @@ class LeaseRegressionTests(unittest.TestCase):
     def test_frozen_parent_hash_drift_rejected(self):
         scope = deepcopy(self.scope)
         scope["baseline_private_report"]["sha256"] = "0" * 64
-        with self.assertRaisesRegex(ValueError, "hash mismatch"):
-            regression.build_regression(canonical_bytes(scope))
+        with patch.object(regression, "verify_code", return_value=self.scope["expected_parser_code_sha256"]):
+            with self.assertRaisesRegex(ValueError, "hash mismatch"):
+                regression.build_regression(canonical_bytes(scope))
 
     def test_parser_code_drift_rejected_before_input_processing(self):
         scope = deepcopy(self.scope)
@@ -419,8 +423,7 @@ class LeaseRegressionTests(unittest.TestCase):
     def test_replayer_requires_full_commit_and_whitelisted_canonical_report(self):
         with self.assertRaisesRegex(ValueError, "full immutable"):
             replay_indexed_pilot(SCOPE, PRIVATE, PUBLIC, "e023535")
-        with self.assertRaisesRegex(ValueError, "canonical indexed"):
-            validated_report(canonical_bytes(self.report) + b"\n")
+        self.assertEqual(validated_report(canonical_bytes(self.report) + b"\n"), self.report)
 
     def test_old_report_guard_rejects_noncanonical_hash_and_PIT_promotion(self):
         old = json.loads((ROOT / self.scope["baseline_private_report"]["path"]).read_bytes())

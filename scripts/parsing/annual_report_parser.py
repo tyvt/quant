@@ -34,6 +34,7 @@ UNITS = {"单位：元": 1, "单位：人民币元": 1, "单位：万元": 10000
          "单位：人民币万元": 10000, "单位：亿元": 100000000}
 LEASE_LABELS = ("偿还租赁负债支付的金额", "租赁支付的现金",
                 "支付租赁款", "长期租赁付款", "支付租赁负债")
+LEASE_CONTINUATION_LABEL = "偿还租赁负债本金和利息所支付的现金"
 
 
 def _title(text):
@@ -231,6 +232,93 @@ def _field(rows, aliases, *, prefix=False):
             "diagnostic_available_at": None, "historical_pit_status": "UNKNOWN"}
 
 
+def _lease_continuation(pdf, source, page, word, start, end):
+    """One exact native row after an adjacent page-foot payment heading.
+
+    No amounts/units/headers are inherited; only a bounded source context is
+    linked. These observations are NOT full lease cash, semantic or PIT proof.
+    """
+    if pdf.sha256 != source["pdf_sha256"]:
+        raise ValueError("lease continuation PDF/source identity mismatch")
+    if (word.text != LEASE_CONTINUATION_LABEL or word not in page.words
+            or page.number <= 1 or page.number > len(pdf.pages)
+            or pdf.pages[page.number - 1] != page):
+        return None
+    previous = pdf.pages[page.number - 2]
+    if (previous.number + 1 != page.number or previous.rotation or page.rotation
+            or abs(previous.width - page.width) > 1 or abs(previous.height - page.height) > 1
+            or any(p.cropbox is None or p.mediabox is None or p.cropbox != p.mediabox
+                   or p.mediabox != (0, 0, p.width, p.height) for p in (previous, page))):
+        return None
+
+    def body(p):
+        return tuple(w for w in p.words if w.box[1] >= 60 and w.box[3] <= p.height - 45
+                     and not re.fullmatch(r"[0-9]+/[0-9]+", w.text))
+
+    prev, current = body(previous), body(page)
+    headings = [w for w in prev if w.text == "支付的其他与筹资活动有关的现金"
+                and w.box[1] >= previous.height * .8]
+    if len(headings) != 1:
+        return None
+    heading = headings[0]
+    if not (start < (previous.number, heading.y) < (page.number, word.y) < end):
+        return None
+    tail = tuple(w for w in prev if w.y > heading.y)
+    if (any(w.text not in ("√适用", "□不适用") for w in tail)
+            or not inside(previous, (heading, *tail))):
+        return None
+    labels = [w for w in current if w.text == LEASE_CONTINUATION_LABEL]
+    headers = [g for g in _lines(current) if any(compact(w.text) == "项目" for w in g)]
+    if len(labels) != 1 or labels[0] != word or not headers:
+        return None
+    group = headers[0]
+    units = [w for w in current if w.y < group[0].y and "单位" in compact(w.text)]
+    if len(units) != 1:
+        return None
+    unit = units[0]
+    opening = tuple(w for w in current if w.y < group[0].y)
+    if (any(w != unit and w.text not in ("币种：人民币", "√适用", "□不适用") for w in opening)
+            or not inside(page, opening)):
+        return None
+    header = _header(page, (unit, *group), source["fiscal_year"], "lease", word)
+    if header is None:
+        return None
+    # Stop at the first explicit numbered native Chinese note, never a decimal
+    # amount. A missing, preceding or ambiguous boundary is not inferred.
+    notes = [w for w in current if w.box[0] < header["label_right"]
+             and re.match(r"[0-9]+[、.．][\u4e00-\u9fff]", w.text)]
+    if not notes:
+        return None
+    boundary = min(notes, key=lambda w: w.y)
+    if (sum(abs(w.y - boundary.y) <= 2 for w in notes) != 1
+            or not group[0].y < word.y < boundary.y or not inside(page, (word, boundary))
+            or len([g for g in headers if g[0].y < boundary.y]) != 1):
+        return None
+    table = tuple(w for w in current if header["header_bottom"] < w.y < boundary.box[1])
+    if (not inside(page, table) or word not in table
+            or word.box[2] >= header["label_right"]
+            or any(compact(w.text) in LEASE_LABELS for w in table)
+            or any("与" in w.text and re.search(r"(?:经营|投资|筹资)活动有关的现金", w.text)
+                   for w in table)):
+        return None
+    observed = cell(page, table, word.y, header["label_right"],
+                    header["column_split"], header["unit_multiplier"])
+    return {"source_label": word.text, **observed,
+            "classification_evidence": {"physical_page": previous.number, "text": heading.text,
+                                        "box": list(heading.box), "classification": "FINANCING_PAYMENT"},
+            "continuation_evidence": {"state": "OBSERVED_BOUNDED_ADJACENT_CONTEXT_NOT_FULL_LEASE",
+                "document_sha256": pdf.sha256, "heading_physical_page": previous.number,
+                "table_physical_page": page.number, "heading_box": list(heading.box),
+                "page_geometry": [{"physical_page": p.number, "cropbox": list(p.cropbox),
+                                   "mediabox": list(p.mediabox), "rotation": p.rotation}
+                                  for p in (previous, page)],
+                "post_heading_native_words": [{"text": w.text, "box": list(w.box)} for w in tail],
+                "next_note": {"physical_page": page.number, "text": boundary.text, "box": list(boundary.box)},
+                "unit_and_header_inherited": False, "label_or_amount_joined": False,
+                "complete_lease_cash_certified": False, "public_availability_verified": False},
+            "binding": binding(source, page, (word,), header)}
+
+
 def _lease(pdf, source):
     starts = [(page, word) for page in pdf.pages for word in page.words
               if _title(word.text) == "合并财务报表项目注释"]
@@ -242,6 +330,11 @@ def _lease(pdf, source):
     rows = []
     for page in pdf.pages:
         for word in page.words:
+            if word.text == LEASE_CONTINUATION_LABEL:
+                row = _lease_continuation(pdf, source, page, word, start, end)
+                if row is not None:
+                    rows.append(row)
+                continue
             if compact(word.text) not in LEASE_LABELS or not start < (page.number, word.y) < end:
                 continue
             prior = tuple(item for item in page.words if item.y < word.y)
@@ -268,7 +361,7 @@ def _lease(pdf, source):
                          "classification_evidence": {"physical_page": page.number, "text": context.text,
                                                      "box": list(context.box), "classification": "FINANCING_PAYMENT"},
                          "binding": binding(source, page, (word,), header)})
-    result = _field(rows, LEASE_LABELS)
+    result = _field(rows, (*LEASE_LABELS, LEASE_CONTINUATION_LABEL))
     result["is_complete_lease_cash"] = False
     result["full_lease_cash_not_already_deducted"] = None
     return result

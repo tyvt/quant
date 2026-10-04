@@ -29,6 +29,8 @@ class Page:
     rotation: int
     text: str
     words: tuple[Word, ...]
+    cropbox: tuple[float, float, float, float] | None = None
+    mediabox: tuple[float, float, float, float] | None = None
 
 
 @dataclass(frozen=True)
@@ -71,7 +73,9 @@ class PDFCache:
                               for item in text_page.extractWORDS())
                 pages.append(Page(index + 1, round(page.rect.width, 3),
                                   round(page.rect.height, 3), page.rotation,
-                                  text_page.extractText(), words))
+                                  text_page.extractText(), words,
+                                  tuple(round(v, 3) for v in page.cropbox),
+                                  tuple(round(v, 3) for v in page.mediabox)))
         result = ParsedPDF(actual, fitz.VersionBind, code_hash, tuple(pages))
         self._cache[key] = result
         self.parsed_documents += 1

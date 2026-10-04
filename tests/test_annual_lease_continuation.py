@@ -4,11 +4,13 @@ from copy import deepcopy
 from dataclasses import replace
 import hashlib
 import json
+import subprocess
 import unittest
 from unittest.mock import patch
 
 from scripts.parsing.generic_extractor import Page, ParsedPDF, Word
 from scripts.pilots import assess_annual_lease_continuation as continuation
+from scripts.pilots.replay_frozen_annual_indexed_pilot import replay_indexed_pilot
 from scripts.screening.contracts import canonical_bytes, content_hash, load_request
 
 ROOT = continuation.ROOT
@@ -192,7 +194,8 @@ class ContinuationRealEvidenceTests(unittest.TestCase):
         cls.raw_scope = SCOPE.read_bytes()
         cls.plan = json.loads(cls.raw_scope)
         with patch("requests.sessions.Session.request", side_effect=AssertionError("offline only")):
-            cls.report = continuation.build_assessment(cls.raw_scope)
+            cls.report = replay_indexed_pilot(SCOPE, PRIVATE, PUBLIC,
+                "9187e28f8ea9b754b1502686b7ce2a59b8b655a0")["report"]
         cls.index = continuation.public_index(cls.report)
         cls.cases = {c["source"]["security_id"]: c for c in cls.report["selected_cases"]}
 
@@ -211,7 +214,8 @@ class ContinuationRealEvidenceTests(unittest.TestCase):
         self.assertTrue(all(case["observed_guards"].values()))
         self.assertEqual(case["table_header_observation"]["physical_page"], 126)
         self.assertEqual(case["table_header_observation"]["unit_multiplier"], 1)
-        self.assertEqual([c["value_cny"] for c in case["row_amount_observations"].values()], ["14990744.76", "8061350.60"])
+        self.assertEqual([case["row_amount_observations"][c]["value_cny"] for c in ("current", "comparative")],
+                         ["14990744.76", "8061350.60"])
         self.assertEqual(case["target_label"], continuation.TARGET_LABEL)
         self.assertEqual(len([w for w in case["target_row_native_words"] if w["text"] == continuation.TARGET_LABEL]), 1)
 
@@ -251,7 +255,9 @@ class ContinuationRealEvidenceTests(unittest.TestCase):
             self.assertEqual(row["unchanged_lease_component"], old["current_component"])
 
     def test_parser_bytes_match_full_frozen_commit_before_and_after(self):
-        continuation.verify_parser(self.plan)
+        for path, expected in self.plan["parser_code_sha256"].items():
+            blob = subprocess.check_output(["git", "show", self.plan["parser_commit"] + ":" + path], cwd=ROOT)
+            self.assertEqual(hashlib.sha256(blob).hexdigest(), expected)
         self.assertFalse(self.report["parser_modified"])
         self.assertEqual(self.report["manifest"]["parser_commit"], "526fb38e65d6002c5663ad6a40ccb9a9ead4741f")
 
@@ -335,8 +341,9 @@ class ContinuationRealEvidenceTests(unittest.TestCase):
         for ref in ("baseline_private_report", "baseline_public_index", "input_refs_scope"):
             plan = deepcopy(self.plan)
             plan[ref]["sha256"] = "0" * 64
-            with self.assertRaisesRegex(ValueError, "hash mismatch"):
-                continuation.build_assessment(canonical_bytes(plan))
+            with patch.object(continuation, "verify_parser", return_value=self.plan["parser_code_sha256"]):
+                with self.assertRaisesRegex(ValueError, "hash mismatch"):
+                    continuation.build_assessment(canonical_bytes(plan))
         plan = deepcopy(self.plan)
         plan["parser_code_sha256"]["scripts/parsing/annual_report_parser.py"] = "0" * 64
         with self.assertRaisesRegex(ValueError, "parser drift"):

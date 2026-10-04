@@ -1,0 +1,38 @@
+{
+  "schema": "annual-lease-continuation-regression-scope-v1",
+  "as_of": "2026-09-30",
+  "implementation_base_commit": "9187e28f8ea9b754b1502686b7ce2a59b8b655a0",
+  "continuation_label": "偿还租赁负债本金和利息所支付的现金",
+  "expected_parser_code_sha256": {
+    "scripts/parsing/__init__.py": "5ba44d5f29c960876592972e3531235676b4d42c1250402d282a8468017788bc",
+    "scripts/parsing/generic_extractor.py": "2a3404dbee94303ca0aefc079e65497da88f5729e450e1e69aa87029b5100bf4",
+    "scripts/parsing/field_binder.py": "58a9f242d91e743ae908afe7b7ae0ddda4d5680cc40a54f9ecb8143beb63777d",
+    "scripts/parsing/annual_report_parser.py": "9d4cf996adccb0384e3b276ddccdf96303739d7bbd9272d4ab76ed738edb57e4",
+    "scripts/extract_annual_report_bundle.py": "42a2e5f11c49dc41bae5f37252194fd4f3f735ae4ed8d969938059e14d13da1a",
+    "scripts/screening/contracts.py": "91fcfbbb7fb9ee306930948fdafb5d3fbef2e706f10fea1777820979690964e4"
+  },
+  "input_refs_scope": {
+    "path": "docs/data-pilots/2026-10-04-annual-audit-assessment-scope.json",
+    "sha256": "312220d0d70b6fb117c36a6e01bb73edf29f830e1b01ecbd44daeb022a31e70f"
+  },
+  "baseline_private_report": {
+    "path": "storage/pilots/annual-lease-label-fix-2026-10-04-v1/diagnostic-only.json",
+    "sha256": "4c7eddf62e40e54419aa846ef3639c58e5b2b38c21748aa1afe4108526798bb6"
+  },
+  "baseline_public_index": {
+    "path": "docs/data-pilots/annual-lease-label-fix-2026-10-04-v1/evidence-index.json",
+    "sha256": "645e880c82fc0bbd1984d977ac84404cfcde1a400e825f9af236779cf3d1b227"
+  },
+  "assessment_scope": {
+    "path": "docs/data-pilots/2026-10-04-annual-lease-continuation-scope.json",
+    "sha256": "5c418f56d6a88bb474fbd1a6d9bbb942d09884f784146f070ac241057586c2b9"
+  },
+  "assessment_private_report": {
+    "path": "storage/pilots/annual-lease-continuation-2026-10-04-v2/diagnostic-only.json",
+    "sha256": "d24ede5aad87276b3083f376ba15320d117152d3ecbc55d1446b83723baa0939"
+  },
+  "assessment_public_index": {
+    "path": "docs/data-pilots/annual-lease-continuation-2026-10-04-v2/evidence-index.json",
+    "sha256": "e97192826a8e78cb1f50f0c119a2e24a44db2a014721671fa966386ed9c1a750"
+  }
+}
