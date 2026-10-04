@@ -1,0 +1,26 @@
+{
+  "schema": "annual-lease-continuation-assessment-scope-v1",
+  "as_of": "2026-09-30",
+  "method": "OFFLINE_POSTHOC_CONTINUATION_ASSESSMENT_NOT_PARSER_FIX",
+  "parser_commit": "526fb38e65d6002c5663ad6a40ccb9a9ead4741f",
+  "parser_code_sha256": {
+    "scripts/parsing/__init__.py": "5ba44d5f29c960876592972e3531235676b4d42c1250402d282a8468017788bc",
+    "scripts/parsing/generic_extractor.py": "1207731bb430f244c22dab06a9a8cb93e16989b1726800ede0daf3522bdeb262",
+    "scripts/parsing/field_binder.py": "58a9f242d91e743ae908afe7b7ae0ddda4d5680cc40a54f9ecb8143beb63777d",
+    "scripts/parsing/annual_report_parser.py": "6c521f3e55d368b4526c04055fb34d9e10e57820e060ef961d034f2106d1ed2d",
+    "scripts/extract_annual_report_bundle.py": "42a2e5f11c49dc41bae5f37252194fd4f3f735ae4ed8d969938059e14d13da1a",
+    "scripts/screening/contracts.py": "91fcfbbb7fb9ee306930948fdafb5d3fbef2e706f10fea1777820979690964e4"
+  },
+  "input_refs_scope": {"path": "docs/data-pilots/2026-10-04-annual-audit-assessment-scope.json", "sha256": "312220d0d70b6fb117c36a6e01bb73edf29f830e1b01ecbd44daeb022a31e70f"},
+  "baseline_private_report": {"path": "storage/pilots/annual-lease-label-fix-2026-10-04-v1/diagnostic-only.json", "sha256": "4c7eddf62e40e54419aa846ef3639c58e5b2b38c21748aa1afe4108526798bb6"},
+  "baseline_public_index": {"path": "docs/data-pilots/annual-lease-label-fix-2026-10-04-v1/evidence-index.json", "sha256": "645e880c82fc0bbd1984d977ac84404cfcde1a400e825f9af236779cf3d1b227"},
+  "search": {
+    "exact_native_payment_labels": ["偿还租赁负债支付的金额", "租赁支付的现金", "支付租赁款", "长期租赁付款", "支付租赁负债", "偿还租赁负债款", "偿还租赁负债本金和利息所支付的现金"],
+    "maximum_word_characters": 48,
+    "previous_page_limit": 1
+  },
+  "review_cases": [
+    {"security_id": "sh.600066", "fiscal_year": 2024, "version": "declared_2024_annual_report", "physical_pages": [125, 126], "role": "CROSS_PAGE_TARGET"},
+    {"security_id": "sh.600585", "fiscal_year": 2024, "version": "declared_2024_annual_report", "physical_pages": [206], "role": "SAME_LABEL_SAME_PAGE_CURRENCY_BLOCKED_CONTROL"}
+  ]
+}
