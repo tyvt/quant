@@ -80,8 +80,8 @@ class NoteSuffixSyntaxTests(unittest.TestCase):
         for s in ("七（79", "七（79)3", "七(79）3", "七79）3"): self.rejected((s,))
     def test_list_or_multiple_references(self):
         for s in ("七（79）3、4", "七（79）3，4", "七（79）3/4", "七（79）3七（80）4"): self.rejected((s,))
-    def test_other_two_multilevel_families_remain_rejected(self):
-        for s in ("七、78（1）", "七、79（4）", "七-59（1）", "五、70（3）"): self.rejected((s,))
+    def test_hyphen_multilevel_family_remains_rejected(self):
+        for s in ("七-59（1）", "五-70（3）"): self.rejected((s,))
     def test_dotted_or_prefixed_forms_remain_rejected(self):
         for s in ("七、79.3", "附注七（79）3", "七-79.3"): self.rejected((s,))
     def test_no_whitespace_deletion(self):
@@ -148,8 +148,10 @@ class NoteSuffixRealRegressionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.raw=SCOPE.read_bytes(); cls.plan=json.loads(cls.raw)
+        from scripts.pilots.replay_frozen_annual_indexed_pilot import replay_indexed_pilot
         with patch("requests.sessions.Session.request",side_effect=AssertionError("offline")):
-            cls.report=regression.build_regression(cls.raw)
+            cls.report=replay_indexed_pilot(SCOPE,PRIVATE,PUBLIC,
+                "9b2be0fd137d422fddce183b9b69cba1039b3cfe")["report"]
         cls.index=regression.public_index(cls.report)
         cls.changes=[c for r in cls.report["observations"] for cs in r["changes"].values() for c in cs]
 
@@ -247,7 +249,8 @@ class NoteSuffixRealRegressionTests(unittest.TestCase):
     def test_parent_and_current_code_hash_drift_rejected(self):
         for key in regression.REFS:
             plan=deepcopy(self.plan); plan[key]["sha256"]="0"*64
-            with self.assertRaisesRegex(ValueError,"hash mismatch"): regression.build_regression(canonical_bytes(plan))
+            with patch.object(regression,"verify_code",return_value=self.plan["expected_parser_code_sha256"]):
+                with self.assertRaisesRegex(ValueError,"hash mismatch"): regression.build_regression(canonical_bytes(plan))
         plan=deepcopy(self.plan); plan["expected_parser_code_sha256"]["scripts/parsing/field_binder.py"]="0"*64
         with self.assertRaisesRegex(ValueError,"implementation drift"): regression.build_regression(canonical_bytes(plan))
     def test_baseline_blob_drift_rejected_before_execution(self):

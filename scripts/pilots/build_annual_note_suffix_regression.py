@@ -1,4 +1,4 @@
-"""One native note-reference suffix grammar; no target or semantic resolution.
+"""Explicit bounded note-grammar scopes; no target or semantic resolution.
 
 Actually execute the six frozen baseline parser blobs, then compare all three
 tables. Full observations stay local; the public projection is allowlisted.
@@ -34,10 +34,20 @@ TOOL_SHA256 = sha(Path(__file__).read_bytes())
 REFS = ("input_refs_scope", "baseline_private_report", "baseline_public_index")
 PERMISSIONS = ("production_reader_ready", "screening_input_exported", "real_pit_run_authorized", "official_selection")
 FORM = "CHAPTER_FULLWIDTH_PARENS_ITEM_SUFFIX"
+DUNHAO_FORM = "CHAPTER_DUNHAO_ITEM_FULLWIDTH_PARENS_SUBITEM"
+SCHEMAS = {FORM: "annual-note-suffix-regression",
+           DUNHAO_FORM: "annual-note-dunhao-subitem-regression"}
 CHAPTER = r"(?:[一二三四五六七八九]|十[一二三四五六七八九]?|[二三四五六七八九]十[一二三四五六七八九]?)"
 FORMS = {FORM: CHAPTER + r"（[1-9][0-9]*）[1-9][0-9]*",
          "DUNHAO_PARENS_SUBITEM_NOT_IMPLEMENTED": CHAPTER + r"、[1-9][0-9]*（[1-9][0-9]*）",
          "HYPHEN_PARENS_SUBITEM_NOT_IMPLEMENTED": CHAPTER + r"-[1-9][0-9]*（[1-9][0-9]*）"}
+
+
+def grammar_forms(form):
+    if form not in SCHEMAS:
+        raise ValueError("unsupported bounded note form")
+    return {DUNHAO_FORM if form == DUNHAO_FORM and key == "DUNHAO_PARENS_SUBITEM_NOT_IMPLEMENTED" else key: value
+            for key, value in FORMS.items()}
 
 # ASCII source is intentional: no PowerShell pipe, locale-dependent transcoding
 # or current-repository imports can rewrite the frozen parser's native tokens.
@@ -74,7 +84,8 @@ def read_plan(raw):
     keys = {*REFS, "schema", "as_of", "baseline_code_commit", "baseline_parser_code_sha256",
             "expected_parser_code_sha256", "new_reference_form"}
     if (not isinstance(plan, dict) or set(plan) != keys
-            or plan["schema"] != "annual-note-suffix-regression-scope-v1" or plan["new_reference_form"] != FORM
+            or plan.get("new_reference_form") not in SCHEMAS
+            or plan["schema"] != SCHEMAS[plan["new_reference_form"]] + "-scope-v1"
             or not re.fullmatch(r"[0-9a-f]{40}", str(plan["baseline_code_commit"]))
             or not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", str(plan["as_of"]))):
         raise ValueError("invalid bounded note-suffix scope")
@@ -135,7 +146,8 @@ def frozen_snapshot(plan, inputs, root):
         return result
 
 
-def row_changes(before, after):
+def row_changes(before, after, *, form=FORM):
+    pattern = grammar_forms(form)[form]
     if {k: v for k, v in before.items() if k != "rows"} != {k: v for k, v in after.items() if k != "rows"}:
         raise ValueError("table boundary/header change outside note grammar")
     if len(before["rows"]) != len(after["rows"]):
@@ -146,8 +158,8 @@ def row_changes(before, after):
             continue
         note = new.get("note_column_observation", {})
         old_note = old.get("note_column_observation", {})
-        if (len(note.get("raw_text", [])) != 1 or not re.fullmatch(FORMS[FORM], note["raw_text"][0])
-                or note.get("syntax_state") != "OBSERVED_SINGLE_REFERENCE_SYNTAX" or note.get("reference_form") != FORM
+        if (len(note.get("raw_text", [])) != 1 or not re.fullmatch(pattern, note["raw_text"][0])
+                or note.get("syntax_state") != "OBSERVED_SINGLE_REFERENCE_SYNTAX" or note.get("reference_form") != form
                 or old_note.get("syntax_state") != "NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE"
                 or any(note.get(k) is not False for k in ("note_target_resolved", "note_semantics_certified"))):
             raise ValueError("row change outside bounded note-suffix syntax")
@@ -167,10 +179,14 @@ def row_changes(before, after):
 def build_regression(raw, *, root=ROOT):
     root = root.resolve()
     plan = read_plan(raw)
+    form = plan["new_reference_form"]
+    forms = grammar_forms(form)
     code = verify_code(plan, root)
     frozen = {k: verified_bytes(root, plan[k]["path"], plan[k]["sha256"]) for k in REFS}
     inputs, parent = read_assessment_scope(frozen["input_refs_scope"]), strict_json(frozen["baseline_private_report"])
-    if (canonical_bytes(parent_index(parent)) + b"\n" != frozen["baseline_public_index"]
+    projection = parent_index(parent) if form == FORM else public_index(parent)
+    if ((form == DUNHAO_FORM and parent.get("schema") != SCHEMAS[FORM] + "-v1")
+            or canonical_bytes(projection) + b"\n" != frozen["baseline_public_index"]
             or parent["manifest"]["parser_code_sha256"] != plan["baseline_parser_code_sha256"]
             or inputs["as_of"] != plan["as_of"] or parent["as_of"] != plan["as_of"]
             or parent["manifest"]["input_scopes"] != inputs["inputs"]):
@@ -198,13 +214,18 @@ def build_regression(raw, *, root=ROOT):
             tables = {k: (_table(pdf, source, k) if bundle["currency"] == "CNY" else
                          {"state": "CURRENCY_EVIDENCE_UNKNOWN", "rows": []}) for k in ("balance", "income", "cashflow")}
             before = old[key]
+            if form == DUNHAO_FORM and (before["tables"] != parents[key]["current_tables"]
+                    or content_hash(before["bundle"]) != parents[key]["bundle_content_hash"]):
+                raise ValueError("frozen baseline differs from approved parent content")
             # Main seven fields, currency, audit, lease, source identity and all
             # other bundle outputs must be identical, not merely numerically close.
-            if bundle != before["bundle"] or bundle["lease_financing_component"] != parents[key]["current_component"]:
+            component = (parents[key]["current_component"] if form == FORM else
+                         parents[key]["baseline_snapshot"]["bundle"]["lease_financing_component"])
+            if bundle != before["bundle"] or bundle["lease_financing_component"] != component:
                 raise ValueError("non-note bundle or lease output changed")
-            changes = {k: row_changes(before["tables"][k], tables[k]) for k in tables}
-            inventory = [{"reference_form": form, "native_reference": w.text, "physical_page": p.number, "box": list(w.box)}
-                         for p in pdf.pages for w in p.words for form, pattern in FORMS.items()
+            changes = {k: row_changes(before["tables"][k], tables[k], form=form) for k in tables}
+            inventory = [{"reference_form": name, "native_reference": w.text, "physical_page": p.number, "box": list(w.box)}
+                         for p in pdf.pages for w in p.words for name, pattern in forms.items()
                          if re.fullmatch(pattern, w.text)]
             rows.append({"source": source, "currency": bundle["currency"], "bundle_content_hash": content_hash(bundle),
                 "baseline_snapshot": before, "current_tables": tables, "changes": changes, "native_reference_inventory": inventory,
@@ -216,9 +237,9 @@ def build_regression(raw, *, root=ROOT):
         raise ValueError("frozen/current backend mismatch")
     verify_code(plan, root)
     rows.sort(key=lambda r: source_key(r["source"]))
-    result = {"schema": "annual-note-suffix-regression-v1", "diagnostic_only": True, "as_of": plan["as_of"],
+    result = {"schema": SCHEMAS[form] + "-v1", "diagnostic_only": True, "as_of": plan["as_of"],
         "scope_sha256": sha(raw), "method": "SINGLE_NATIVE_TOKEN_SYNTAX_ONLY_NOT_TARGET_RESOLUTION",
-        "new_reference_form": FORM, "observations": rows,
+        "new_reference_form": form, "observations": rows,
         "counts": {"issuers": len({key[0] for key in seen}), "PDF_versions": len(rows),
             "changed_PDFs": sum(any(r["changes"].values()) for r in rows),
             "changed_rows": sum(len(v) for r in rows for v in r["changes"].values()),
@@ -237,7 +258,8 @@ def build_regression(raw, *, root=ROOT):
 
 
 def public_index(report):
-    if (report.get("schema") != "annual-note-suffix-regression-v1" or report.get("new_reference_form") != FORM
+    form = report.get("new_reference_form")
+    if (form not in SCHEMAS or report.get("schema") != SCHEMAS[form] + "-v1"
             or report.get("logical_content_hash") != content_hash({k: v for k, v in report.items() if k != "logical_content_hash"})
             or report.get("diagnostic_only") is not True or report.get("diagnostic_available_at") is not None
             or type(report.get("pit_admitted_observation_count")) is not int or report["pit_admitted_observation_count"] != 0
@@ -254,8 +276,8 @@ def public_index(report):
                 raise ValueError("unknown note table")
             for change in values:
                 c, n = change["after"], change["after"]["note_column_observation"]
-                if (len(n["raw_text"]) != 1 or not re.fullmatch(FORMS[FORM], n["raw_text"][0])
-                        or n["reference_form"] != FORM or n["syntax_state"] != "OBSERVED_SINGLE_REFERENCE_SYNTAX"
+                if (len(n["raw_text"]) != 1 or not re.fullmatch(grammar_forms(form)[form], n["raw_text"][0])
+                        or n["reference_form"] != form or n["syntax_state"] != "OBSERVED_SINGLE_REFERENCE_SYNTAX"
                         or any(n[k] is not False for k in ("note_target_resolved", "note_semantics_certified"))):
                     raise ValueError("non-allowlisted note reference or promotion")
                 b = c["binding"]
@@ -264,7 +286,7 @@ def public_index(report):
                 changes.append({"section": kind, "native_reference": n["raw_text"][0], "physical_page": b["physical_page"],
                     "note_boxes": [numeric_box(box) for box in n["boxes"]], "label_box": numeric_box(b["label_box"]),
                     "label_sha256": sha(c["source_label"].encode("utf-8")), "header_sha256": sha(canonical_bytes(b["table_header"])),
-                    "reference_form": FORM, "syntax_state": n["syntax_state"],
+                    "reference_form": form, "syntax_state": n["syntax_state"],
                     **{key: projected_cell(c[key]) for key in ("current", "comparative")},
                     "note_target_resolved": False, "note_semantics_certified": False})
         rows.append({"source": {k: r["source"][k] for k in ("security_id", "issuer", "fiscal_year", "version", "url", "announcement_id", "pdf_sha256", "page_count")},
@@ -272,7 +294,7 @@ def public_index(report):
             "baseline_tables_sha256": sha(canonical_bytes(r["baseline_snapshot"]["tables"])),
             "current_tables_sha256": sha(canonical_bytes(r["current_tables"])),
             "native_reference_inventory_sha256": sha(canonical_bytes(r["native_reference_inventory"]))})
-    result = {"schema": "annual-note-suffix-regression-public-index-v1", "diagnostic_only": True, "as_of": report["as_of"],
+    result = {"schema": SCHEMAS[form] + "-public-index-v1", "diagnostic_only": True, "as_of": report["as_of"],
         "scope_sha256": report["scope_sha256"], "manifest": report["manifest"], "counts": report["counts"], "observations": rows,
         "private_report_sha256": sha(canonical_bytes(report) + b"\n"), "private_report_logical_hash": report["logical_content_hash"],
         "projection": "source identities, short reference syntax, numeric cells/boxes and hashes only",
