@@ -55,7 +55,8 @@ def note_reference_observation(page: Page, notes, left: float, right: float) -> 
         forms = ((r"[0-9]+", "SINGLE_UNSIGNED_INTEGER"),
                  (r"[-—–]", "DASH_PLACEHOLDER"),
                  (chapter + r"、[1-9][0-9]*", "CHAPTER_DUNHAO_POSITIVE_ITEM"),
-                 (chapter + r"（[1-9][0-9]*）", "CHAPTER_FULLWIDTH_PARENS_POSITIVE_ITEM"))
+                 (chapter + r"（[1-9][0-9]*）", "CHAPTER_FULLWIDTH_PARENS_POSITIVE_ITEM"),
+                 (chapter + r"（[1-9][0-9]*）[1-9][0-9]*", "CHAPTER_FULLWIDTH_PARENS_ITEM_SUFFIX"))
         form = next((name for pattern, name in forms if len(notes) == 1
                      and re.fullmatch(pattern, notes[0].text)), None)
         result["syntax_state"] = "OBSERVED_SINGLE_REFERENCE_SYNTAX" if form else "NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE"

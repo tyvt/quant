@@ -247,8 +247,10 @@ class BareRegressionTests(unittest.TestCase):
     def setUpClass(cls):
         cls.raw=SCOPE.read_bytes()
         cls.plan=json.loads(cls.raw)
+        from scripts.pilots.replay_frozen_annual_indexed_pilot import replay_indexed_pilot
         with patch("requests.sessions.Session.request",side_effect=AssertionError("offline")):
-            cls.report=regression.build_regression(cls.raw)
+            cls.report=replay_indexed_pilot(SCOPE,PRIVATE,PUBLIC,
+                "e530dd915840aac5c8cc311b931234604ad8b1b1")["report"]
         cls.index=regression.public_index(cls.report)
         cls.rows={r["source"]["security_id"]:r for r in cls.report["observations"]}
 
@@ -286,13 +288,15 @@ class BareRegressionTests(unittest.TestCase):
         self.assertEqual(len(matches),6)
         self.assertEqual([p.number for p,w in matches if _lease_bare_payment(pdf,s,p,w,start,end) is not None],[216])
 
-    def test_multilevel_main_table_note_is_still_blocked(self):
+    def test_current_multilevel_main_note_observation_does_not_certify_target(self):
         s=self.rows["sh.600887"]["source"]
         pdf=PDFCache().parse((ROOT/s["pdf_path"]).read_bytes(),s["pdf_sha256"])
         row=next(r for r in _table(pdf,s,"cashflow")["rows"] if r["source_label"]=="支付其他与筹资活动有关的现金")
         self.assertEqual(row["note_column_observation"]["raw_text"],["七（79）3"])
-        self.assertEqual(row["current"]["state"],"NOTE_CELL_NOT_UNAMBIGUOUS_REFERENCE")
-        self.assertIsNone(row["current"]["value_cny"])
+        self.assertEqual(row["current"]["state"],"OBSERVED_NUMERIC")
+        self.assertEqual(row["current"]["value_cny"],"965171650.04")
+        self.assertFalse(row["note_column_observation"]["note_target_resolved"])
+        self.assertFalse(row["note_column_observation"]["note_semantics_certified"])
 
     def test_other_thirteen_components_and_all_non_lease_hashes_unchanged(self):
         old=json.loads((ROOT/self.plan["baseline_private_report"]["path"]).read_bytes())
@@ -378,8 +382,9 @@ class BareRegressionTests(unittest.TestCase):
         for n in regression.REFS:
             plan=deepcopy(self.plan)
             plan[n]["sha256"]="0"*64
-            with self.assertRaisesRegex(ValueError,"hash mismatch"):
-                regression.build_regression(canonical_bytes(plan))
+            with patch.object(regression,"verify_code",return_value=self.plan["expected_parser_code_sha256"]):
+                with self.assertRaisesRegex(ValueError,"hash mismatch"):
+                    regression.build_regression(canonical_bytes(plan))
         plan=deepcopy(self.plan)
         plan["expected_parser_code_sha256"]["scripts/parsing/annual_report_parser.py"]="0"*64
         with self.assertRaisesRegex(ValueError,"implementation drift"):

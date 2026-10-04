@@ -312,18 +312,23 @@ class LeaseRegressionTests(unittest.TestCase):
         old_code = subprocess.check_output(["git", "show", f"{commit}:{parser}"], cwd=ROOT)
         self.assertEqual(hashlib.sha256(old_code).hexdigest(),
                          "82d67859ed8767f13a62f0a4fb985eab74ef0f431a12ddc868c6a7bb063bd842")
-        # The five imported/support parser blobs are unchanged. Execute the actual
-        # trusted frozen parser blob in memory; no checkout or saved-value fallback.
+        # Generic page metadata and the note suffix guard have newer identities.
+        # Execute all six old blobs and same-commit Python dependencies, not an
+        # old parser importing the current field binder from this process.
         for path in regression.SOURCE_PATHS:
-            if path not in (parser, "scripts/parsing/generic_extractor.py"):
+            if path not in (parser, "scripts/parsing/generic_extractor.py", "scripts/parsing/field_binder.py"):
                 old = subprocess.check_output(["git", "show", f"{commit}:{path}"], cwd=ROOT)
                 self.assertEqual(old, (ROOT / path).read_bytes())
-        namespace = {"__name__": "frozen_lease_label_baseline"}
-        exec(compile(old_code, f"{commit}:{parser}", "exec"), namespace)
+        from scripts.pilots.build_annual_note_suffix_regression import frozen_snapshot
+        hashes = dict(self.scope["expected_parser_code_sha256"])
+        hashes[parser] = "82d67859ed8767f13a62f0a4fb985eab74ef0f431a12ddc868c6a7bb063bd842"
+        snapshot = frozen_snapshot({"baseline_code_commit": commit, "baseline_parser_code_sha256": hashes,
+            "as_of": self.scope["as_of"]}, self.report["manifest"]["input_scopes"], ROOT)
+        baseline = {r["source"]["security_id"]: r["bundle"] for r in snapshot["observations"]}
         for security in ("sh.600276", "sh.601012", "sh.600900"):
             source = self.rows[security]["source"]
             pdf = cache.parse((ROOT / source["pdf_path"]).read_bytes(), source["pdf_sha256"])
-            old, current = namespace["parse_annual"](pdf, source), parse_annual(pdf, source)
+            old, current = baseline[security], parse_annual(pdf, source)
             for bundle in (old, current):
                 bundle.pop("lease_financing_component")
             self.assertEqual(current, old, security)
